@@ -1,0 +1,18 @@
+name: V3.2 TODO-Nachweis
+
+on:
+  pull_request:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  todo-consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aufgabenlogik und Negativfälle testen
+        run: python3 scripts/test_render_todo.py
+      - name: Checkliste und Fortschrittsgrafik abgleichen
+        run: python3 scripts/render_todo.py --check
