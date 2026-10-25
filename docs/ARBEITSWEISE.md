@@ -75,3 +75,23 @@ Immer in dieser Reihenfolge: Was ist fertig? Was fehlt? Was blockiert?
 Was passiert jetzt? Was folgt danach unter welchen Bedingungen?
 Technische Belege sind verlinkbar, aber nicht Voraussetzung zum Verstehen.
 Erfolg, Speichern, Prüfen und Freigabe sind unterschiedliche Aussagen.
+
+## Automatische Hilfe und lernende Regression
+
+Ein Aufruf `python3 scripts/assist.py` verbindet Registervalidierung,
+Informationsprüfung, risikoabhängige Testauswahl und Laufbericht.
+`--refresh` regeneriert ausschließlich REGRESSION_INFO.md, TODO, SVG,
+Kurzstatus und Hashregister. Bei unbekanntem Impact läuft die vollständige
+vorhandene Entwicklungssuite; kein doppelter Volltest im Pflichtworkflow.
+Push, PR und manueller Workflowstart führen dieselbe Hilfe automatisch aus.
+
+`governance/regressions.yaml` ist die einzige Fehlerfamilienquelle, bewusst
+JSON-kompatibles YAML ohne neue Paketabhängigkeit. Die Infodatei wird erzeugt.
+Berichte enthalten Source-SHA, Inhaltsschnappschuss, Plan-/Registerhash,
+Python-Kontext, ausgeführte Check-IDs und tatsächliche Resultate.
+Ein Lauf mit Inhaltsänderung während der Prüfung ist ungültig.
+Lokale Beobachtungen werden als Kandidaten gezählt; verifizierte Ursachen
+und Negativtests werden anschließend gezielt in die führende Quelle übernommen.
+Es gibt keinen selbstständigen Quellcode-Writer, Merge oder privaten Datenzugriff.
+Q001 ist damit begonnen; die verpflichtende Reportprüfung im Route-Abschluss
+und die Gatebindung bleiben offen und werden nicht automatisch abgehakt.

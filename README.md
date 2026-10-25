@@ -21,6 +21,12 @@ gilt nicht als Abschluss. G−1 und der Plan bleiben noch nicht freigegeben.
 [Arbeitsweise und Aktualisierungstrigger](docs/ARBEITSWEISE.md) ·
 [Audit und Prüfgrenzen](docs/AUDIT_2026_10_25.md)
 
+## Automatische Entwicklungshilfe
+
+`python3 scripts/assist.py` prüft Register, Informationsdateien und Regressionen.
+`python3 scripts/assist.py --refresh` aktualisiert zusätzlich abgeleitete Ansichten.
+[Erklärung und Lernregeln](docs/REGRESSION_INFO.md).
+
 ## Einstieg für Laien
 
 Die Anwendung wird später lokal im Browser unter Linux/Kubuntu gestartet,

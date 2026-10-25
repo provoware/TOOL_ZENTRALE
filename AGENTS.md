@@ -21,7 +21,12 @@
 6. Vorher Basis/Scope/Abhängigkeiten prüfen; nachher direkte Tests und bei
    Risiko Negativfälle. Kein VERIFIED ohne passende Evidenz; kein Gate-PASS
    aus Modelltests. G-1/G0 bleiben ohne dokumentierte Abnahme offen.
-7. Trigger: nach Änderungen `python3 scripts/render_todo.py`, dann
+7. Regressionsquelle: `governance/regressions.yaml`; Infodatei erzeugen,
+   nicht separat pflegen. `python3 scripts/assist.py --refresh` aktualisiert
+   Ansichten und prüft selbstständig. Berichte/Lernkandidaten bleiben in
+   `work/regression/`; Ursache und Negativtest vor Regelübernahme prüfen.
+   Keine automatische Quellcodereparatur oder Gatefreigabe.
+   Trigger: nach Änderungen `python3 scripts/render_todo.py`, dann
    `python3 scripts/project_state.py`. Vor Übergabe beide mit `--check`
    und `python3 -m unittest discover -s scripts -p 'test_*.py'` ausführen.
 8. Laien zuerst: kurze deutsche Statusmeldungen, eindeutige Hauptaktion,

@@ -229,6 +229,34 @@ modules:
     state: PLANNED
     min_gate: G6
 files:
+  scripts/test_run_evidence.py:
+    owner: QA
+    stability: S2
+    catalog: CONFIRMED
+  scripts/regression_registry.py:
+    owner: TOOL
+    stability: S2
+    catalog: CONFIRMED
+  scripts/run_evidence.py:
+    owner: TOOL
+    stability: S2
+    catalog: CONFIRMED
+  scripts/assist.py:
+    owner: TOOL
+    stability: S2
+    catalog: CONFIRMED
+  scripts/test_assist.py:
+    owner: QA
+    stability: S2
+    catalog: CONFIRMED
+  docs/REGRESSION_INFO.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  docs/ITERATION_REGRESSION.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
   scripts/project_state.py:
     owner: TOOL
     stability: S2

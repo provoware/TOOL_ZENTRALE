@@ -8,32 +8,38 @@
   "files": [
     {
       "path": ".github/workflows/todo-check.yml",
-      "sha256": "7bfb721adfa403f5e520696ee3e1735e7e2d30096308fad4bb7626766317f1e4",
-      "bytes": 520,
+      "sha256": "3d39bfc781c7bd8188b247f9fdbcb7a4aacaf6e62011f2d5e6554908d12c2922",
+      "bytes": 675,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "9db00cf929aef856e1bf3b2232da34e374b97e4667b92f55e6cc2f65022b7f63",
+      "bytes": 44,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "AGENTS.md",
-      "sha256": "d3b53e90880357a99fad1c42b6b9b4bc921c77cb78adc92f404eaa1a7e7cf441",
-      "bytes": 2450,
+      "sha256": "d1af2908de38eb13c8b96713031251fc81359eee2c4db1dfa3efedcae454ec0d",
+      "bytes": 2811,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "README.md",
-      "sha256": "49a028b5393687fb182810a9d5cc175257f33429363d286dc7f82a2b4ae3924b",
-      "bytes": 2798,
+      "sha256": "3c013ddd30f795cd2d12d22322a4cf60d4c3f87e6d8e39b79d53867a25468e45",
+      "bytes": 3057,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "blueprint/architecture.yaml",
-      "sha256": "ef2736143d704d2b56bbbebaa7df9333e3d9bd61d474f9f57f3f1b035ed08b93",
-      "bytes": 37301,
+      "sha256": "f53b6639f693182a7946808bf40183f8d826fa16a821ec28e79a3471a29502e5",
+      "bytes": 37893,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "docs/ARBEITSWEISE.md",
-      "sha256": "1c2729f6ad197279e766562e70eed239a8860ab3f278e1db12ff3c02da55b937",
-      "bytes": 4516,
+      "sha256": "7c75f093e74c9fb8fa79b146ff4273c75931d497727a15f356180f67d6738b3c",
+      "bytes": 5759,
       "state": "PRESENT_HASHED"
     },
     {
@@ -46,6 +52,12 @@
       "path": "docs/ENTWICKLUNGSSTANDARD.md",
       "sha256": "b4efcdef605b643c9d6a2259e8d406157e10d208bde490a8ae54fd5b1e76c38a",
       "bytes": 11411,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/ITERATION_REGRESSION.md",
+      "sha256": "4d9d042e020f80c4eb1f893bfaf08c754f9d32e61c3b1203bb05e0fd89e36923",
+      "bytes": 4429,
       "state": "PRESENT_HASHED"
     },
     {
@@ -73,6 +85,12 @@
       "state": "PRESENT_HASHED"
     },
     {
+      "path": "docs/REGRESSION_INFO.md",
+      "sha256": "72da64029de2c505a0d2a4f3890d475bc405b8cbea692097740c0efd3cff7478",
+      "bytes": 3198,
+      "state": "PRESENT_HASHED"
+    },
+    {
       "path": "docs/TODO_V3_2.md",
       "sha256": "bb7ec1f057a3cb2149b894c02b5c30c2c37120f0a5639592ab70478be3dd7855",
       "bytes": 12195,
@@ -91,21 +109,51 @@
       "state": "PRESENT_HASHED"
     },
     {
+      "path": "governance/regressions.yaml",
+      "sha256": "6a02b18708d09ef340b9e657480b2a4254c62ef462d12df64e6bd9cb84a6c546",
+      "bytes": 6307,
+      "state": "PRESENT_HASHED"
+    },
+    {
       "path": "governance/route.json",
       "sha256": "19a5d6159679ead77cec327eba98ea72e7f3025113b6273263444bc6f8f93d65",
       "bytes": 29663,
       "state": "PRESENT_HASHED"
     },
     {
+      "path": "scripts/assist.py",
+      "sha256": "303503e3730032fd2555341e2b4fada21e3c7d95d45231d120e60f04af62f02f",
+      "bytes": 6603,
+      "state": "PRESENT_HASHED"
+    },
+    {
       "path": "scripts/project_state.py",
-      "sha256": "326b3d75e2ab25f70b0b735020ea52a9b5840ecd8c393544a66896bbaeee28fe",
-      "bytes": 3744,
+      "sha256": "2a1bdaf5782107ecb8aca74c2119527ae300b7a08b8cebb876967a1399a2fe61",
+      "bytes": 3824,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/regression_registry.py",
+      "sha256": "6e128a30083fbf52a4267067d473394e42275cf83c66e77bd2b94c2b8b30d071",
+      "bytes": 6400,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "scripts/render_todo.py",
       "sha256": "1602e4d08b5b38d92531a505c77c9c915bd63ee818ac5927cc5fa1cfc6b74be0",
       "bytes": 14924,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/run_evidence.py",
+      "sha256": "5eab23d8692448bcfb43aa9457685d96d7ea978877985bdad3fc0e85f873dc26",
+      "bytes": 3253,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/test_assist.py",
+      "sha256": "6a29602b53c356feb28811003fc26df4cf1103deee68e74c31b6bc66666b909d",
+      "bytes": 5375,
       "state": "PRESENT_HASHED"
     },
     {
@@ -118,6 +166,12 @@
       "path": "scripts/test_render_todo.py",
       "sha256": "82fc1181e6f58b92773cbfe6c3e3730b899821722ad9fd7db26cfcbe1257474b",
       "bytes": 7251,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/test_run_evidence.py",
+      "sha256": "7fe91c9607592ed3c5fffd887e0258a237143a07870765a751d00a3c3c9b93e1",
+      "bytes": 1860,
       "state": "PRESENT_HASHED"
     }
   ]

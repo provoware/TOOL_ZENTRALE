@@ -18,6 +18,7 @@ und die erforderliche Freigabe voraus. Keine Ausführungszusage.
 Entwicklungsregeln: [Arbeitsweise](ARBEITSWEISE.md).
 Details: [TODO](TODO_V3_2.md); Befunde: [Audit](AUDIT_2026_10_25.md).
 Dateihashes: [maschinenlesbares Register](../governance/file_state.json).
+Automatische Hilfe: [Lernende Regression](REGRESSION_INFO.md).
 Vorhanden/gehasht bedeutet nicht funktionsgeprüft.
 
 Erzeugt mit `python3 scripts/project_state.py`; nicht manuell bearbeiten.
