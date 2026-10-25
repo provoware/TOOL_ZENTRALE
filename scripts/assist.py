@@ -5,9 +5,11 @@ from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
 import unittest
+import urllib.request
 
 import regression_registry as registry
 import render_todo
@@ -15,6 +17,104 @@ from run_evidence import context, learning_candidates, report_valid
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / 'work/regression/latest.json'
+START_REPORT = ROOT / 'work/iteration/start.json'
+GITHUB_API = 'https://api.github.com/repos/provoware/TOOL_ZENTRALE'
+MAIN_WORKFLOW = '.github/workflows/todo-check.yml'
+
+
+def github_json(path):
+    headers = {'Accept': 'application/vnd.github+json', 'User-Agent': 'PROVOWARE-preflight'}
+    token = os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN')
+    if token:
+        headers['Authorization'] = 'Bearer ' + token
+    with urllib.request.urlopen(urllib.request.Request(GITHUB_API + path, headers=headers), timeout=12) as response:
+        return json.load(response)
+
+
+def git_value(*args):
+    return subprocess.check_output(['git', *args], cwd=ROOT, text=True).strip()
+
+
+def decide_preflight(local, sha, pulls, runs):
+    blockers = []
+    if not local['origin_valid']:
+        blockers.append('Falsches oder unbekanntes origin-Repository')
+    if local['branch'] != 'main':
+        blockers.append('Lokaler Checkout ist nicht main')
+    if not local['clean']:
+        blockers.append('Lokale Reständerungen müssen geprüft werden')
+    if local['pending_branches']:
+        blockers.append('Nicht integrierte lokale Branches benötigen Prüfung')
+    if local['stash_count']:
+        blockers.append('Lokale Stashes benötigen Prüfung')
+    if local['head'] != sha:
+        blockers.append('Lokaler HEAD weicht von aktuellem GitHub-Main ab')
+    if pulls:
+        blockers.append('Offene Pull Requests benötigen eine Integrationsprüfung')
+    if len(pulls) == 100:
+        blockers.append('PR-Liste möglicherweise unvollständig (Pagination)')
+    matching = [run for run in runs if isinstance(run, dict)
+                and run.get('path') == MAIN_WORKFLOW and run.get('event') == 'push'
+                and run.get('head_sha') == sha]
+    matching.sort(key=lambda run: (run.get('created_at') or '', run.get('run_attempt') or 0),
+                  reverse=True)
+    latest = matching[0] if matching else {}
+    if latest.get('status') != 'completed' or latest.get('conclusion') != 'success':
+        blockers.append('Aktueller Main-Push-CI-Erfolg nicht nachgewiesen')
+    return {'schema': 'provoware-iteration-start/1',
+            'checked_at_utc': datetime.now(timezone.utc).isoformat(),
+            'main_sha': sha, 'local_head': local['head'], 'branch': local['branch'],
+            'worktree_clean_at_start': local['clean'],
+            'pending_local_branches': local['pending_branches'],
+            'stash_count': local['stash_count'],
+            'open_prs': [p['number'] for p in pulls],
+            'transferable_parts': [], 'integrated_prs': [],
+            'blocked_parts': [{'reason': reason} for reason in blockers],
+            'main_ci': {'run_id': latest.get('id'),
+                        'conclusion': latest.get('conclusion') or 'UNKNOWN',
+                        'url': latest.get('html_url')},
+            'result': 'BLOCKED' if blockers else 'MAIN_VERIFIED',
+            'planning_allowed': not bool(blockers)}
+
+
+def main_preflight():
+    """Fresh read-only remote checks; an incomplete response is never success."""
+    try:
+        origin = git_value('remote', 'get-url', 'origin').removesuffix('.git').rstrip('/')
+        local = {'head': git_value('rev-parse', 'HEAD'),
+                 'branch': git_value('branch', '--show-current'),
+                 'clean': not bool(git_value('status', '--porcelain')),
+                 'pending_branches': git_value('for-each-ref', '--no-merged=refs/heads/main',
+                                               '--format=%(refname:short)', 'refs/heads').splitlines(),
+                 'stash_count': len(git_value('stash', 'list', '--format=%gd').splitlines()),
+                 'origin_valid': origin in {'https://github.com/provoware/TOOL_ZENTRALE',
+                                            'git@github.com:provoware/TOOL_ZENTRALE'}}
+        branch = github_json('/branches/main')
+        pulls = github_json('/pulls?state=open&per_page=100')
+        runs = github_json('/actions/runs?branch=main&per_page=100')
+        sha = branch.get('commit', {}).get('sha') if isinstance(branch, dict) else None
+        if (not isinstance(sha, str) or not re.fullmatch(r'[0-9a-f]{40}', sha)
+                or not isinstance(pulls, list)
+                or not all(isinstance(p, dict) and type(p.get('number')) is int for p in pulls)
+                or not isinstance(runs, dict) or not isinstance(runs.get('workflow_runs'), list)):
+            raise ValueError('Unvollständige GitHub-Daten')
+        report = decide_preflight(local, sha, pulls, runs['workflow_runs'])
+    except (OSError, ValueError, KeyError, subprocess.CalledProcessError):
+        report = {'schema': 'provoware-iteration-start/1',
+                  'checked_at_utc': datetime.now(timezone.utc).isoformat(),
+                  'main_sha': None, 'local_head': None, 'worktree_clean_at_start': None,
+                  'open_prs': [], 'transferable_parts': [], 'integrated_prs': [],
+                  'blocked_parts': [{'reason': 'Git-/GitHub-Abfrage nicht vollständig'}],
+                  'main_ci': {'conclusion': 'UNKNOWN'},
+                  'result': 'BLOCKED', 'planning_allowed': False}
+    START_REPORT.parent.mkdir(parents=True, exist_ok=True)
+    temp = START_REPORT.with_suffix('.tmp')
+    temp.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    temp.replace(START_REPORT)
+    print('MAIN-VORPRÜFUNG: ' + report['result'])
+    for item in report['blocked_parts']:
+        print('BLOCKER: ' + item['reason'])
+    return 0 if report['planning_allowed'] else 1
 
 
 def test_selection_valid(names):
@@ -50,7 +150,12 @@ def main():
     parser.add_argument('--changed', action='append', default=[], help='Repo-relativer Änderungspfad')
     parser.add_argument('--refresh', action='store_true', help='Nur bekannte Ansichten neu erzeugen')
     parser.add_argument('--verify-report', action='store_true', help='Vorigen Lauf auf Aktualität prüfen')
+    parser.add_argument('--main-preflight', action='store_true', help='Main/PR/CI vor neuer Planung lesen')
     args = parser.parse_args()
+    if args.main_preflight:
+        if args.refresh or args.changed or args.verify_report:
+            parser.error('--main-preflight wird allein verwendet')
+        return main_preflight()
     if args.verify_report:
         if args.refresh or args.changed:
             parser.error('--verify-report wird allein verwendet')

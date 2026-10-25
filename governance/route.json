@@ -1669,18 +1669,6 @@
     "B009": "VERIFIED"
   },
   "evidence_by_step": {
-    "Q001": {
-      "record": "governance/evidence/Q001.json",
-      "sha256": "71d91e26bd04d13319495585a611d3f742a70f5464461f8bb0c394eebc4c10fc"
-    },
-    "Q002": {
-      "record": "governance/evidence/Q002.json",
-      "sha256": "17be37d35cdd91d570e7bcabd0b6877b8557cb20137ed0c2303464e27dd6614b"
-    },
-    "Q003": {
-      "record": "governance/evidence/Q003.json",
-      "sha256": "e721ec172e3d9fb4aa599ce21870be6f54d3b4661e1b0eed0d4560e53a91a22f"
-    },
     "B001": {
       "record": "governance/evidence/B001.json",
       "sha256": "d6b5e22c8ac97f400a8f155cfb4707bd894c07a16c05fd4b75486fea4af2adaf"
@@ -1732,6 +1720,18 @@
     "B009": {
       "record": "governance/evidence/B009.json",
       "sha256": "4c63101a3c7bea0d68661c3855e86f2c9078be459a42d5e43f56d6601b29fadf"
+    },
+    "Q001": {
+      "record": "governance/evidence/Q001.json",
+      "sha256": "e973cfe744a09f25167d0ed8c18aae4fe9746d9fbbc1aeffedba054537df4262"
+    },
+    "Q002": {
+      "record": "governance/evidence/Q002.json",
+      "sha256": "56f35a445b65d68127a2db3036d5144db4ade858f6d73b638cf6237ba1466182"
+    },
+    "Q003": {
+      "record": "governance/evidence/Q003.json",
+      "sha256": "bd700aeb6d9d615cd3afc09b3c9fcc26324d76b28a933d769b9f1c56ce82569a"
     }
   },
   "step_selector_specification": {

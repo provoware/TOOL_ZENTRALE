@@ -20,6 +20,15 @@ Sollstatus VIRTUAL und Teststatus VERIFIED bleiben getrennte Dimensionen.
    diesen Stand abgleichen. Vorhandene Arbeit auf zusammenhängende, geprüfte
    und bereits autorisierte Übernahmeteile prüfen. Weder Cache noch ein alter
    origin/main-Verweis ersetzen die aktuelle GitHub-Abfrage.
+   Auf sauberem lokalen `main` zunächst `python3 scripts/assist.py --main-preflight`
+   ausführen: das Werkzeug liest den aktuellen GitHub-SHA, offene PRs und
+   den zu diesem SHA passenden Push-CI-Lauf (GitHub-API; bei Bedarf GH_TOKEN).
+   Nur bei identischem HEAD, korrektem origin, sauberem Baum, ohne offene PRs,
+   unintegrierte lokale Branches oder Stashes
+   und mit erfolgreicher CI schreibt es `MAIN_VERIFIED`; andernfalls `BLOCKED`.
+   Bei offenen PRs ist eine manuelle Übernahmeprüfung notwendig; das Werkzeug
+   entscheidet niemals über deren Inhalt und führt keine Merges aus.
+   Offline/API-Fehler überschreiben frühere Erfolge mit BLOCKED.
 1. **Übernahme zuerst:** Übertragbare Teile kontrolliert integrieren. Nur einen
    kohärenten Stand mit passenden Prüfnachweisen und erwartetem Head-SHA mergen.
    Blockierte/unfreigegebene Teile samt Grund registrieren, keine fremden Änderungen
