@@ -2,6 +2,7 @@
 
 **Phase:** Planung; noch keine startbare Anwendung.
 **Belegt abgeschlossen:** 0/112 Hauptschritte (0 %).
+**Entwicklungsbasis:** 3/3 Korrekturaufgaben geprüft.
 **Planstatus:** `CANDIDATE_NOT_APPROVED`; keine automatische Freigabe.
 
 ## Nächste drei Schritte
@@ -9,9 +10,9 @@
 Bedingte Vorschau: jeder Folgeschritt setzt den Erfolg seiner Vorgänger
 und die erforderliche Freigabe voraus. Keine Ausführungszusage.
 
-1. **Q001:** Echte Evidenzbindung spezifizieren und prüfen
-2. **Q002:** Gateentscheidungen und Blueprintprüfung absichern
-3. **Q003:** Frühen laiengerechten Nutzungsweg priorisieren
+1. **B001:** Stabile PROVOWARE-Identität und Repositorygrenze
+2. **B002:** Altbestand rückwärts in Nutzungsfälle zerlegen
+3. **B003:** Gemeinsame Bausteine und Wiederverwendungsgrenzen
 
 ## So geht es weiter
 

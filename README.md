@@ -23,9 +23,12 @@ gilt nicht als Abschluss. G−1 und der Plan bleiben noch nicht freigegeben.
 
 ## Automatische Entwicklungshilfe
 
-`python3 scripts/assist.py` prüft Register, Informationsdateien und Regressionen.
+Einmalig: `python3 -m pip install -r requirements-dev.txt`.
+`python3 scripts/assist.py` prüft Register, Informationsdateien, Evidenz, Gates und Regressionen.
 `python3 scripts/assist.py --refresh` aktualisiert zusätzlich abgeleitete Ansichten.
-[Erklärung und Lernregeln](docs/REGRESSION_INFO.md).
+[Erklärung und Lernregeln](docs/REGRESSION_INFO.md) ·
+[Abschluss- und Gatevertrag](docs/ABSCHLUSS_UND_GATES.md) ·
+[Früher Laienablauf](docs/FRUEHER_LAIENABLAUF.md).
 
 ## Einstieg für Laien
 

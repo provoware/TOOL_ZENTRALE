@@ -1,4 +1,5 @@
 """Bind local check results to exact content and runtime; no gate authority."""
+import importlib.metadata
 import hashlib
 import json
 import platform
@@ -6,6 +7,7 @@ import subprocess
 import sys
 
 from project_state import snapshot
+from plan_contract import plan_fingerprint
 
 
 def fingerprint(value):
@@ -22,11 +24,14 @@ def context(root):
         generated[name] = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
     return {'source_sha': subprocess.check_output(
                 ['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(),
-            'content_sha256': fingerprint(files), 'generated_sha256': generated,
+            'content_sha256': fingerprint(files), 'file_manifest': files,
+            'plan_contract_sha256': plan_fingerprint(json.loads((root / 'governance/route.json').read_text()))
+                if (root / 'governance/route.json').exists() else None, 'generated_sha256': generated,
             'plan_sha256': by_path.get('governance/route.json'),
             'registry_sha256': by_path.get('governance/regressions.yaml'),
             'python': platform.python_version(),
-            'implementation': platform.python_implementation(), 'platform': sys.platform}
+            'implementation': platform.python_implementation(), 'platform': sys.platform,
+            'dependencies': {'PyYAML': importlib.metadata.version('PyYAML')}}
 
 
 def report_valid(report, current, expected_ids):

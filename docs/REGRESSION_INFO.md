@@ -30,8 +30,8 @@ sind bei verändertem Dateiinhalt, Plan oder Python-Kontext STALE.
 
 Prüfen: `python3 scripts/assist.py --verify-report` (führt keine Tests erneut aus).
 Ein frischer Bericht mit FAIL bleibt FAIL. Ein gültiger Bericht hebt weder
-Schrittstatus noch Gatefreigaben automatisch an; Q001 bleibt bis zur
-verbindlichen Einbindung in die Schritt-/Gateprüfung offen.
+Schrittstatus noch Gatefreigaben automatisch an. Abschlussbelege werden mit
+`python3 scripts/complete_step.py ID` verbindlich an den Schritt gebunden.
 
 ## Registrierte Fehlerfamilien
 
@@ -45,10 +45,15 @@ verbindlichen Einbindung in die Schritt-/Gateprüfung offen.
 | RG006 | PREVENTIVE | Veralteter oder fehlgeschlagener Laufbericht | Prüfhilfe erneut ausführen; keine Gatefreigabe ableiten |
 | RG007 | PREVENTIVE | Unbekannte Testzuordnung | Zuordnung ergänzen und Negativtest behalten |
 | RG008 | PREVENTIVE | Wiederholungsfehler ohne Lernbeleg | Minimalfall reproduzieren und Register erweitern |
+| RG009 | CONFIRMED | Ungebundener oder veralteter Schrittabschluss | Vollständig prüfen und Abschlussakte neu erzeugen |
+| RG010 | CONFIRMED | Gate oder frühe Nutzungspriorität umgangen | Fehlende Abnahme klären; geplante frühe Nutzerreise erhalten |
+| RG011 | CONFIRMED | Testfixture übernimmt Live-Abschlussmetadaten | Testfixture isolieren, vollständigen Lauf und Abschlussbelege erneuern |
 
 ## Pflege und Grenzen
 
-Quelle: `governance/regressions.yaml` (JSON-kompatibles YAML, ohne Zusatzpaket).
+Quelle: `governance/regressions.yaml` (JSON-kompatibles YAML).
+Einmalig `python3 -m pip install -r requirements-dev.txt`: gepinnter YAML-Parser
+für die dauerhafte Blueprintprüfung. Die Produktlaufzeit bleibt getrennt.
 Diese Infodatei wird daraus erzeugt. CONFIRMED bezieht sich auf belegte
 Entwicklungsfehler, PREVENTIVE auf Schutzfälle; keine behaupteten Produktfehler.
 Die Hilfe prüft Entwicklungsartefakte. Browser, Datenbank, Barrierefreiheit

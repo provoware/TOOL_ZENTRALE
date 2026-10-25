@@ -159,6 +159,79 @@
       ],
       "prevention": "Check-ID und Signatur lokal protokollieren; Ursache geprüft übernehmen",
       "next_action": "Minimalfall reproduzieren und Register erweitern"
+    },
+    {
+      "id": "RG009",
+      "title": "Ungebundener oder veralteter Schrittabschluss",
+      "kind": "CONFIRMED",
+      "severity": "HIGH",
+      "symptom": "VERIFIED trotz bloßem Legacy-PASS oder verändertem Prüfgegenstand",
+      "cause": "Abschlussstatus und Prüflauf waren nicht verbindlich gekoppelt",
+      "source": "Audit A03 / Q001 und neue Negativtests",
+      "trigger_paths": [
+        "scripts/completion_contract.py",
+        "scripts/complete_step.py",
+        "scripts/plan_contract.py",
+        "scripts/test_completion.py",
+        "scripts/run_evidence.py",
+        "governance/route.json"
+      ],
+      "test_ids": [
+        "test_completion.TestCompletion.test_legacy_pass_and_wrong_target_are_rejected",
+        "test_completion.TestCompletion.test_source_test_and_plan_drift_rejected",
+        "test_completion.TestCompletion.test_valid_scope_and_status_do_not_create_hash_cycle",
+        "test_completion.TestCompletion.test_development_suite_cannot_certify_product_step",
+        "test_close_transaction.TestCloseTransaction.test_symlink_or_traversal_rejected_before_write",
+        "test_close_transaction.TestCloseTransaction.test_route_write_failure_restores_existing_artifact"
+      ],
+      "prevention": "Gebundene Akte, echte Commitbasis und identische Scopebytes verlangen",
+      "next_action": "Vollständig prüfen und Abschlussakte neu erzeugen"
+    },
+    {
+      "id": "RG010",
+      "title": "Gate oder frühe Nutzungspriorität umgangen",
+      "kind": "CONFIRMED",
+      "severity": "HIGH",
+      "symptom": "Folgearbeit beginnt ohne Freigabe oder Komfort blockiert den ersten Song",
+      "cause": "Gategrenzen nur beschrieben; numerische Kette statt Nutzerreise",
+      "source": "Audit A04/A07 / Q002/Q003 und Review",
+      "trigger_paths": [
+        "scripts/completion_contract.py",
+        "scripts/check_governance.py",
+        "scripts/test_gates.py",
+        "scripts/test_blueprint.py",
+        "governance/route.json",
+        "blueprint/architecture.yaml",
+        "scripts/gate_contract.py",
+        "scripts/test_close_transaction.py"
+      ],
+      "test_ids": [
+        "test_gates.TestGates.test_checked_does_not_open_next_gate",
+        "test_gates.TestGates.test_missing_incomplete_or_stale_gate_evidence_rejected",
+        "test_gates.TestGates.test_approved_requires_bound_decision",
+        "test_blueprint.TestBlueprint.test_real_blueprint_and_early_song_path"
+      ],
+      "prevention": "Gatemitglieder, Entscheidung und Abhängigkeiten mechanisch prüfen",
+      "next_action": "Fehlende Abnahme klären; geplante frühe Nutzerreise erhalten"
+    },
+    {
+      "id": "RG011",
+      "title": "Testfixture übernimmt Live-Abschlussmetadaten",
+      "kind": "CONFIRMED",
+      "severity": "MEDIUM",
+      "symptom": "Graph-Negativtests scheitern nach erstem echten Abschluss an fremden Evidenz-IDs",
+      "cause": "Fixture löschte Warteschlange, behielt aber deren Evidenzreferenzen",
+      "source": "Erster Q001–Q003-Abschlusslauf dieser Iteration; anschließender Pflichtlauf erkannte den Fehler",
+      "trigger_paths": [
+        "scripts/test_render_todo.py",
+        "governance/route.json"
+      ],
+      "test_ids": [
+        "test_render_todo.TestTodo.test_initial_view_is_not_approved",
+        "test_render_todo.TestTodo.test_fake_completion_is_rejected"
+      ],
+      "prevention": "Live-Status, Evidenz und Gates in isolierten Graphfixtures gemeinsam zurücksetzen",
+      "next_action": "Testfixture isolieren, vollständigen Lauf und Abschlussbelege erneuern"
     }
   ]
 }

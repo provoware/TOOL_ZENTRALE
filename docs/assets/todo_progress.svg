@@ -24,10 +24,10 @@
 <text x="866" y="301" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/10</text>
 <text x="28" y="336" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G5 · Songs und Kreativfunktionen</text>
 <rect x="330" y="322" width="520" height="17" rx="8" fill="#34465B"/>
-<text x="866" y="336" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/13</text>
+<text x="866" y="336" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/5</text>
 <text x="28" y="371" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G6 · Projekte</text>
 <rect x="330" y="357" width="520" height="17" rx="8" fill="#34465B"/>
-<text x="866" y="371" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/8</text>
+<text x="866" y="371" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/16</text>
 <text x="28" y="406" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G7 · Medien und Dateien</text>
 <rect x="330" y="392" width="520" height="17" rx="8" fill="#34465B"/>
 <text x="866" y="406" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/7</text>
@@ -43,5 +43,5 @@
 <text x="28" y="546" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G11 · Release und Betrieb</text>
 <rect x="330" y="532" width="520" height="17" rx="8" fill="#34465B"/>
 <text x="866" y="546" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/7</text>
-<text x="28" y="580" font-size="13" fill="#AFCCD5" font-family="Arial,sans-serif">Statusquelle: governance/route.json · G−1 offen</text>
+<text x="28" y="580" font-size="13" fill="#AFCCD5" font-family="Arial,sans-serif">Statusquelle: governance/route.json · G−1 OPEN</text>
 </svg>

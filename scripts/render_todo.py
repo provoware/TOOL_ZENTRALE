@@ -11,6 +11,9 @@ import re
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+from completion_contract import record_valid
+from gate_contract import enforce_gate_entry, gate_states
+
 
 ROOT = Path(__file__).resolve().parents[1]
 ROUTE = ROOT / "governance/route.json"
@@ -44,14 +47,16 @@ def load_route(path):
     expected.update(f"P{index:03d}" for index in range(1, 101))
     if set(steps) != expected:
         raise ValueError("Stabile Schrittnummern fehlen")
+    for gate, item in gates.items():
+        members = [sid for sid, step in steps.items() if step['gate'] == gate]
+        if (item.get('members') != members or item.get('first') != members[0]
+                or item.get('last') != members[-1]):
+            raise ValueError(f'{gate}: Gate-Mitglieder inkonsistent')
     return payload
 
 
-def evidence_valid(entry):
-    return isinstance(entry, dict) and all(
-        isinstance(entry.get(field), str) and entry[field].strip()
-        for field in ("source_sha", "test_run", "result")
-    ) and entry["result"] == "PASS" and bool(re.fullmatch(r"[0-9a-f]{40}", entry["source_sha"]))
+def evidence_valid(entry, route, sid):
+    return record_valid(entry, route, sid, ROOT)
 
 
 def dependency_graph(route):
@@ -142,13 +147,13 @@ def resolve(route):
             sub_status = statuses.get(sub_id, route["default_step_and_gate_status"])
             if sub_status not in STATUSES:
                 raise ValueError(f"{sub_id}: unbekannter Status {sub_status}")
-            if sub_status == DONE and not evidence_valid(evidence.get(sub_id)):
+            if sub_status == DONE and not evidence_valid(evidence.get(sub_id), route, sub_id):
                 raise ValueError(f"{sub_id}: VERIFIED ohne aktuellen Prüfnachweis")
             actual[sub_id] = sub_status == DONE
         status = statuses.get(step_id, route["default_step_and_gate_status"])
         if status not in STATUSES:
             raise ValueError(f"{step_id}: unbekannter Status {status}")
-        if status == DONE and not evidence_valid(evidence.get(step_id)):
+        if status == DONE and not evidence_valid(evidence.get(step_id), route, step_id):
             raise ValueError(f"{step_id}: VERIFIED ohne aktuellen Prüfnachweis")
         if status == DONE and any(not actual[sub["id"]] for sub in step.get("substeps", [])):
             raise ValueError(f"{step_id}: VERIFIED vor Abschluss der Unteraufgaben")
@@ -157,12 +162,13 @@ def resolve(route):
         sid = item["id"]
         if sid in statuses:
             raise ValueError(f"{sid}: Abweichungsstatus nur in iteration_queue pflegen")
-        if item["status"] == DONE and not evidence_valid(evidence.get(sid)):
+        if item["status"] == DONE and not evidence_valid(evidence.get(sid), route, sid):
             raise ValueError(f"{sid}: VERIFIED ohne aktuellen Pruefnachweis")
         actual[sid] = item["status"] == DONE
     for sid, dependencies in graph.items():
         if actual[sid] and any(not actual[dep] for dep in dependencies):
             raise ValueError(f"{sid}: VERIFIED vor Abschluss der Abhaengigkeiten")
+    enforce_gate_entry(route, actual, ROOT)
     return actual
 
 
@@ -179,15 +185,16 @@ def make_markdown(route, actual, totals):
     all_steps = sum(total for _, total in totals.values())
     sub_ids = [sub["id"] for item in route["steps"].values() for sub in item.get("substeps", [])]
     sub_done = sum(actual[sid] for sid in sub_ids)
+    gate_state = gate_states(route, actual, ROOT)['G-1']
     result = [
         "# TOOL_ZENTRALE – intelligente TODO V3.2",
         "",
-        "> **Planungsdokument.** Keine Produktimplementierung und keine G−1-Freigabe.",
+        "> **Planungsdokument.** Keine Produktimplementierung; Gatefreigaben nur aus geprüften Entscheidungsakten.",
         "",
         "![Grafischer Fortschritt: nach Gates und gesamt](assets/todo_progress.svg)",
         "",
         f"**Gesamt:** {completed}/{all_steps} Hauptschritte ({100 * completed // all_steps} %) · "
-        f"**Unteraufgaben:** {sub_done}/{len(sub_ids)} · **G−1:** NICHT FREIGEGEBEN.",
+        f"**Unteraufgaben:** {sub_done}/{len(sub_ids)} · **G−1:** {gate_state}.",
         "",
         "## Bedienung und verbindliche Regeln",
         "",
@@ -195,8 +202,8 @@ def make_markdown(route, actual, totals):
         "- **Autoritative Quelle:** [`governance/route.json`](../governance/route.json), "
         "nicht die Markdown-Datei. Nur dort Status und commitgebundene Evidenz ändern.",
         "- **Abhaken:** `progress_overrides.ID = VERIFIED` und "
-        "`evidence_by_step.ID = {source_sha, test_run, result: PASS}` "
-        "hinterlegen; anschließend `python3 scripts/render_todo.py` ausführen.",
+        "`evidence_by_step.ID = {record, sha256}` "
+        "nur über `python3 scripts/complete_step.py ID` erzeugen; danach Ansichten aktualisieren.",
         "- GitHub-Dateiansicht: Kästchen zeigen den Status, Änderungen erfolgen über einen "
         "prüfbaren Datei-/Pull-Request-Patch. Bloßes Anklicken ist kein Nachweis.",
         "- **NO-OP** nur mit dokumentierter Begründung und gültiger Evidenz "
@@ -253,7 +260,7 @@ def make_markdown(route, actual, totals):
     return "\n".join(result)
 
 
-def make_svg(totals):
+def make_svg(totals, gate_status='OPEN'):
     width, height, left, length = 930, 605, 330, 520
     completed = sum(x for x, _ in totals.values())
     total = sum(y for _, y in totals.values())
@@ -285,7 +292,7 @@ def make_svg(totals):
         lines.append(f'<text x="866" y="{y + 14}" fill="#EBF6FA" font-size="13" '
                      f'font-family="Arial,sans-serif">{done}/{count}</text>')
     lines.extend(['<text x="28" y="580" font-size="13" fill="#AFCCD5" '
-                  'font-family="Arial,sans-serif">Statusquelle: governance/route.json · G−1 offen</text>',
+                  f'font-family="Arial,sans-serif">Statusquelle: governance/route.json · G−1 {escape(gate_status)}</text>',
                   '</svg>', ''])
     return "\n".join(lines)
 
@@ -298,7 +305,7 @@ def main():
     actual = resolve(route)
     totals = stats(route, actual)
     targets = ((TODO, make_markdown(route, actual, totals)),
-               (GRAPH, make_svg(totals)))
+               (GRAPH, make_svg(totals, gate_states(route, actual, ROOT)['G-1'])))
     for path, rendered in targets:
         if args.check:
             if not path.exists() or path.read_text(encoding="utf-8") != rendered:

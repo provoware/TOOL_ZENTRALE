@@ -62,7 +62,7 @@ def main():
             if not isinstance(changed, list) or any(not isinstance(p, str) for p in changed):
                 raise ValueError('Ungültiger Prüfumfang')
             selected = registry.select_tests(registry.load_registry(), changed)
-            expected = ['regression-info', 'render_todo.py', 'project_state.py']
+            expected = ['regression-info', 'render_todo.py', 'project_state.py', 'governance-contract']
             expected += ['development-suite'] if selected is None else selected
             valid = report_valid(previous, context(ROOT), expected)
         except (OSError, ValueError, KeyError):
@@ -88,6 +88,7 @@ def main():
                    and registry.INFO.read_text(encoding='utf-8') == guide else 1}]
         for script in ('render_todo.py', 'project_state.py'):
             checks.append(run_check(script, ['scripts/' + script, '--check']))
+        checks.append(run_check('governance-contract', ['scripts/check_governance.py']))
         if selected is None:
             print('Testauswahl: vollständige vorhandene Entwicklungssuite.', flush=True)
             checks.append(run_check('development-suite',

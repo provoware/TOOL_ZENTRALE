@@ -41,9 +41,12 @@ def short_status(route):
     entries = dict(route['steps'])
     entries.update({item['id']: item for item in route.get('iteration_queue', [])})
     done = sum(actual[sid] for sid in route['steps'])
+    queued = route.get('iteration_queue', [])
+    prepared = sum(actual[item['id']] for item in queued)
     lines = ['# Projektstatus', '',
              '**Phase:** Planung; noch keine startbare Anwendung.',
              f'**Belegt abgeschlossen:** {done}/112 Hauptschritte ({done * 100 // 112} %).',
+             f'**Entwicklungsbasis:** {prepared}/{len(queued)} Korrekturaufgaben geprüft.',
              f"**Planstatus:** `{route['plan_status']}`; keine automatische Freigabe.", '',
              '## Nächste drei Schritte', '',
              'Bedingte Vorschau: jeder Folgeschritt setzt den Erfolg seiner Vorgänger',

@@ -1,16 +1,16 @@
 # TOOL_ZENTRALE – intelligente TODO V3.2
 
-> **Planungsdokument.** Keine Produktimplementierung und keine G−1-Freigabe.
+> **Planungsdokument.** Keine Produktimplementierung; Gatefreigaben nur aus geprüften Entscheidungsakten.
 
 ![Grafischer Fortschritt: nach Gates und gesamt](assets/todo_progress.svg)
 
-**Gesamt:** 0/112 Hauptschritte (0 %) · **Unteraufgaben:** 0/22 · **G−1:** NICHT FREIGEGEBEN.
+**Gesamt:** 0/112 Hauptschritte (0 %) · **Unteraufgaben:** 0/22 · **G−1:** OPEN.
 
 ## Bedienung und verbindliche Regeln
 
 - `[ ]` = offen, `[x]` = mit Nachweis abgeschlossen; GitHub zeigt die Kästchen an.
 - **Autoritative Quelle:** [`governance/route.json`](../governance/route.json), nicht die Markdown-Datei. Nur dort Status und commitgebundene Evidenz ändern.
-- **Abhaken:** `progress_overrides.ID = VERIFIED` und `evidence_by_step.ID = {source_sha, test_run, result: PASS}` hinterlegen; anschließend `python3 scripts/render_todo.py` ausführen.
+- **Abhaken:** `progress_overrides.ID = VERIFIED` und `evidence_by_step.ID = {record, sha256}` nur über `python3 scripts/complete_step.py ID` erzeugen; danach Ansichten aktualisieren.
 - GitHub-Dateiansicht: Kästchen zeigen den Status, Änderungen erfolgen über einen prüfbaren Datei-/Pull-Request-Patch. Bloßes Anklicken ist kein Nachweis.
 - **NO-OP** nur mit dokumentierter Begründung und gültiger Evidenz im Schrittbericht, niemals durch blindes Abhaken.
 - **PATCH-KARTE:** `ID | GRUND | EFFEKT | UMFANG | M/S/K | RISIKO | DATEIEN | CHECK | SHA | STATUS`; vor Umsetzung Scope und Budget prüfen.
@@ -126,35 +126,35 @@
 </details>
 
 <details>
-<summary><strong>G5 – Songs und Kreativfunktionen</strong> (0/13; 0 %)</summary>
+<summary><strong>G5 – Songs und Kreativfunktionen</strong> (0/5; 0 %)</summary>
 
-- [ ] **P044** Profil-Stammdaten `S` · `R2`
-- [ ] **P045** Genre-Zufall und Favoriten `S` · `R2`
-- [ ] **P046** Charakterfibel und Referenzen `S` · `R2`
 - [ ] **P047** Song-Dokumentenmodell `S` · `R1`
 - [ ] **P048** Songbibliothek und Filter `S` · `R2`
 - [ ] **P049** Songeditor mit Speicherzustand `K` · `R1`
 - [ ] **P050** Song-Fassungen und Wiederherstellung `S` · `R1`
-- [ ] **P051** Allgemeiner Texteditor `S` · `R2`
-- [ ] **P052** Textbuttons und Platzhalter `S` · `R2`
-- [ ] **P053** Buch-/Kapitelwerkstatt `S` · `R2`
-- [ ] **P054** Ideenarchiv und Kompositionskopien `S` · `R2`
-- [ ] **P055** Wiki und Wissensverweise `S` · `R2`
 - [ ] **P056** Gemeinsame Suche/Export und kreatives MVP-Gate `K` · `R1`
 
 </details>
 
 <details>
-<summary><strong>G6 – Projekte</strong> (0/8; 0 %)</summary>
+<summary><strong>G6 – Projekte</strong> (0/16; 0 %)</summary>
 
+- [ ] **P063** Entwicklungspool und Projektimporte `K` · `R1`
+  - [ ] `P063.01` Benutzerfuehrung fuer Importvorschau und Konfliktliste anlegen
 - [ ] **P057** Aufgaben- und Statusmodell `S` · `R2`
 - [ ] **P058** Aufgabenoberfläche und Schnellaktionen `S` · `R2`
 - [ ] **P059** Kalenderdaten und Ansichten `S` · `R2`
 - [ ] **P060** Erinnerung mit klarer Browsergrenze `S` · `R2`
 - [ ] **P061** Link-Schnellstarter `S` · `R2`
 - [ ] **P062** Kontometadaten ohne Passworttresor `S` · `R1`
-- [ ] **P063** Entwicklungspool und Projektimporte `K` · `R1`
-  - [ ] `P063.01` Benutzerfuehrung fuer Importvorschau und Konfliktliste anlegen
+- [ ] **P044** Profil-Stammdaten `S` · `R2`
+- [ ] **P045** Genre-Zufall und Favoriten `S` · `R2`
+- [ ] **P046** Charakterfibel und Referenzen `S` · `R2`
+- [ ] **P051** Allgemeiner Texteditor `S` · `R2`
+- [ ] **P052** Textbuttons und Platzhalter `S` · `R2`
+- [ ] **P053** Buch-/Kapitelwerkstatt `S` · `R2`
+- [ ] **P054** Ideenarchiv und Kompositionskopien `S` · `R2`
+- [ ] **P055** Wiki und Wissensverweise `S` · `R2`
 - [ ] **P064** G6 modulübergreifende Nutzerreise `S` · `R2`
 
 </details>
@@ -235,9 +235,9 @@
 ## Nächster Schritt und Warteschlange
 
 Bedingte Vorschau: Jeder Folgeschritt setzt den belegten Abschluss seiner Voraussetzungen voraus. Keine Ausfuehrungs- oder Gatefreigabe.
-1. **Q001 – Echte Evidenzbindung spezifizieren und prüfen** · PRIORITAET: Abweichung
-2. **Q002 – Gateentscheidungen und Blueprintprüfung absichern** · PRIORITAET: Abweichung
-3. **Q003 – Frühen laiengerechten Nutzungsweg priorisieren** · PRIORITAET: Abweichung
+1. **B001 – Stabile PROVOWARE-Identität und Repositorygrenze** · Planung
+2. **B002 – Altbestand rückwärts in Nutzungsfälle zerlegen** · Planung
+3. **B003 – Gemeinsame Bausteine und Wiederverwendungsgrenzen** · Planung
 
 **Patch-Karte beim Start ausfüllen:**
 

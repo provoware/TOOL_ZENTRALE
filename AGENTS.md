@@ -18,7 +18,11 @@
 5. Kleine reversible Patches: M 1500 Zeichen/30 Zeilen/2 Dateien;
    S 6000/120/3; K 12000/250/5, hinzugefügt plus entfernt.
    Ausnahme vorher begründen, messen und Rückweg dokumentieren.
-6. Vorher Basis/Scope/Abhängigkeiten prüfen; nachher direkte Tests und bei
+6. VERIFIED nur über `python3 scripts/complete_step.py ID` nach aktuellem
+   vollständigem Prüflauf; Scope, Testbytes, Plan und Toolchain bleiben gebunden.
+   Gate CHECKED ist keine Freigabe. APPROVED erfordert gebundene menschliche
+   Entscheidungsakte und freigegebenes Vorgängergate.
+   Vorher Basis/Scope/Abhängigkeiten prüfen; nachher direkte Tests und bei
    Risiko Negativfälle. Kein VERIFIED ohne passende Evidenz; kein Gate-PASS
    aus Modelltests. G-1/G0 bleiben ohne dokumentierte Abnahme offen.
 7. Regressionsquelle: `governance/regressions.yaml`; Infodatei erzeugen,

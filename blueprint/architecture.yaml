@@ -229,6 +229,66 @@ modules:
     state: PLANNED
     min_gate: G6
 files:
+  scripts/gate_contract.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_close_transaction.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/Q001.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/Q002.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/Q003.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  scripts/plan_contract.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/completion_contract.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/complete_step.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/check_governance.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_completion.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_gates.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_blueprint.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  requirements-dev.txt:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  docs/FRUEHER_LAIENABLAUF.md:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  docs/ABSCHLUSS_UND_GATES.md:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
   scripts/test_run_evidence.py:
     owner: QA
     stability: S2

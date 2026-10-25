@@ -5,6 +5,7 @@ import json
 import tempfile
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 from xml.etree import ElementTree
 
 import render_todo
@@ -14,7 +15,13 @@ class TestTodo(unittest.TestCase):
     def setUp(self):
         self.route = render_todo.load_route(render_todo.ROUTE)
         self.route = copy.deepcopy(self.route)
-        self.route["iteration_queue"] = []  # Isolate route logic from live work queue.
+        self.route["iteration_queue"] = []  # Isolate graph tests from live completion metadata.
+        self.route["evidence_by_step"] = {}
+        self.route["progress_overrides"] = {}
+        self.route["gate_decisions"] = {}
+        mock = patch('render_todo.evidence_valid', side_effect=lambda entry, *_: bool(entry))
+        mock.start()
+        self.addCleanup(mock.stop)
 
     def test_initial_view_is_not_approved(self):
         actual = render_todo.resolve(self.route)

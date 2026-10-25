@@ -93,5 +93,14 @@ Ein Lauf mit Inhaltsänderung während der Prüfung ist ungültig.
 Lokale Beobachtungen werden als Kandidaten gezählt; verifizierte Ursachen
 und Negativtests werden anschließend gezielt in die führende Quelle übernommen.
 Es gibt keinen selbstständigen Quellcode-Writer, Merge oder privaten Datenzugriff.
-Q001 ist damit begonnen; die verpflichtende Reportprüfung im Route-Abschluss
-und die Gatebindung bleiben offen und werden nicht automatisch abgehakt.
+Die verbindliche Abschluss-/Gateprüfung ist in `docs/ABSCHLUSS_UND_GATES.md`
+spezifiziert. Q001–Q003 erhalten erst nach dem vollständigen Prüflauf
+eigene gebundene Abschlussakten. Gatefreigaben bleiben davon getrennt.
+
+## Aktualisierte Priorität und Nachweise
+
+Vorrang vor älteren numerischen Reihenfolgen hat `docs/FRUEHER_LAIENABLAUF.md`:
+G5 führt direkt zum Song-Speichern/Wiederöffnen, G6 beginnt mit Projektvorschau.
+Planidentität wird ohne Status-/Evidenzverwaltung berechnet; jeder zertifizierte
+Scope bleibt dennoch bytegenau an Code, Tests und Python-/Parserkontext gebunden.
+Die permanente Governanceprüfung benötigt `PyYAML==6.0.3` aus requirements-dev.txt.
