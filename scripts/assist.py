@@ -77,7 +77,7 @@ def main():
         guide = registry.render_info(data)
         if args.refresh:
             registry.INFO.write_text(guide, encoding='utf-8')
-            for script in ('foundation.py', 'blueprint_view.py', 'render_todo.py', 'project_state.py'):
+            for script in ('foundation.py', 'contract_view.py', 'blueprint_view.py', 'render_todo.py', 'project_state.py'):
                 if run_check('refresh:' + script, ['scripts/' + script])['result'] != 'PASS':
                     raise ValueError('Aktualisierung fehlgeschlagen: ' + script)
         selected = registry.select_tests(data, args.changed)

@@ -152,3 +152,42 @@ einem vollständigen Lauf erneut ausgestellt; kein Status wird blind übernommen
 Rückweg: eigene Änderungen gegen PR-Stand 39153e5 prüfen; Planänderungen und
 zugehörige Akten zusammen zurücknehmen, Ansichten regenerieren. Keine
 Produktstubs, Nutzdatenmigration oder Gatefreigabe werden daraus abgeleitet.
+
+## Main-Übernahme und Fortsetzung B007–B009
+
+PR #2 wurde auf ausdrücklichen Nutzerauftrag mit geprüftem Head 2479577 nach
+Main gemergt: 9fc0f5a87c48742bb6b9a13dbe7145496d177851. Alle 62 damaligen
+Projektdateien waren lokal und im PR blobidentisch. Der Main-Pushlauf
+40220907900 war erfolgreich. Der direkte Git-Proxy war nicht erreichbar;
+Original-Blobs, Bäume und Commits wurden über die GitHub-Verbindung geladen,
+gegen ihre Git-Hashes geprüft und lokal importiert. Der signierte Merge-Commit
+wurde exakt reproduziert, git fsck bestätigte vollständige Konnektivität.
+Lokales Main war vor Beginn dieser Fortsetzung sauber und inhaltsgleich.
+
+B007/B007.01 ergänzen Sollpayloads für Songs, Notizen, Suche, Katalog,
+Import, Medien und freigegebene Starter. API-Aktionen erhalten explizite
+Capabilities. Notiz-ID-Wiederholung, ID-Konflikt, dauerhafte Bestätigung,
+Serverversionen, getrennte Versionsachsen und private Datenhoheit sind konkret
+gefasst. Globale HTTP-Grenze 1 MiB, engere Notizgrenze 8192 Bytes; Schema- und
+Bytegrenzen gelten gleichzeitig. Dies ist kein implementierter HTTP-Server.
+
+B008/B008.01 erhalten die acht bestehenden Szenarien; ein zusätzlicher
+Notiz-ID-Konflikt ergibt 34 Modellfälle. Fall-IDs, Mindestumfang, positive und
+negative Erwartungen, QA-Zuordnung und Schutzpunkte werden geprüft. LBOOT
+besitzt ausdrücklich deklarierte Vorstartguards, keine verbotenen Coreimporte.
+Modellresultat MODEL_CONTRACT_PASS und Runtime NOT_TESTED bleiben getrennt.
+
+B009/B009.01 definieren Inputs, feste Prüfdimensionen, Outputs, Cachegrenze und
+bekannte Refresh-Ziele für die vorhandene assist.py-Pipeline. Es entsteht
+keine zweite ausführbare Planungssprache. Nicht unterstützte JSON-Schema-
+Schlüssel werden bei Beispielen abgelehnt; das Tool ist kein vollständiger
+JSON-Schema- oder OpenAPI-Laufzeitvalidator.
+
+EX-CONTRACT-01 kennzeichnet reine Vertrags-/Registerdaten und generierte
+Ansichten/Abschlussakten. Quellcode bleibt nach Vertragsprüfung, fachneutralen
+Schemabeispielen, API-Grenzen und Szenarioprüfung getrennt; kleine kontrollierte
+Pakete werden einzeln gemessen. 81 Entwicklungstests, Governance, Ansichten
+und Evidenzprüfung bilden den Nachweis; reale Produktprüfung und Gatefreigabe
+werden daraus nicht abgeleitet. Review-Gegenbeispiele sind in RG014 erfasst.
+Rückweg: eigene Änderungen gegen Main 9fc0f5a prüfen, Plan und Belege zusammen
+zurücknehmen und Ansichten erneuern. Keine privaten Daten werden geändert.

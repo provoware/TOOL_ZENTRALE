@@ -50,6 +50,7 @@ Schrittstatus noch Gatefreigaben automatisch an. Abschlussbelege werden mit
 | RG011 | CONFIRMED | Testfixture übernimmt Live-Abschlussmetadaten | Testfixture isolieren, vollständigen Lauf und Abschlussbelege erneuern |
 | RG012 | PREVENTIVE | Unbelegte Legacyübernahme oder unvollständige Grundlage | Quellenzuordnung und Vertragsmatrix korrigieren; danach vollständig prüfen |
 | RG013 | CONFIRMED | Unvollständiger Architektur-/Codevertrag | Modellfehler gezielt korrigieren; erzeugte Ansicht und Abschlussbelege erneuern |
+| RG014 | CONFIRMED | Modell-PASS trotz lückenhafter Sollverträge | Sollvertrag korrigieren; vollständigen Lauf und neue Abschlussakte erzeugen |
 
 ## Pflege und Grenzen
 

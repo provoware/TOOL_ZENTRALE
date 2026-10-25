@@ -239,6 +239,66 @@ modules:
     state: PLANNED
     min_gate: G6
 files:
+  scripts/schema_examples.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/api_contract_rules.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_contract_consistency.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  scripts/contract_rules.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/scenario_rules.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/contract_view.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_contract_rules.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_scenario_rules.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  docs/VERTRAEGE_B007_B009.md:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B007.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B007.01.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B008.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B008.01.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B009.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B009.01.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
   scripts/test_code_history.py:
     owner: QA
     stability: S1
@@ -1387,6 +1447,9 @@ codebook:
     - AIMP
     - SIMP
   LBOOT:
+    guard_contracts:
+    - KCFG
+    - KLOG
     interface: "Lokale Instanz prüfen und erst nach gültigem Health-Signal öffnen"
     label: Klickstarter
     layer: TOOL
@@ -1496,6 +1559,8 @@ simulation_policy:
     dependency_cycles: 0
     invalid_layer_edges: 0
     missing_scenario_tests: 0
+  runtime_status: NOT_TESTED
+
 ux_traceability:
   source_of_requirements: docs/UX_BARRIEREFREIHEIT.md
   shared_browser_test: tests/e2e/test_accessibility.py
@@ -1621,15 +1686,19 @@ scenarios:
     - id: SNG_POS
       input: valid_song
       expected: stored_and_reopenable
+      kind: POSITIVE
     - id: SNG_INV
       input: invalid_song
       expected: reject_without_mutation
+      kind: NEGATIVE
     - id: SNG_REV
       input: obsolete_revision
       expected: conflict_instead_of_overwrite
+      kind: NEGATIVE
     - id: SNG_FAIL
       input: interrupted_commit
       expected: transaction_rollback
+      kind: NEGATIVE
     unresolved_until_real_code:
     - actual_transaction_rollback
     - browser_draft_handling
@@ -1654,15 +1723,19 @@ scenarios:
     - id: PRJ_POS
       input: scoped_query
       expected: matching_sorted_results
+      kind: POSITIVE
     - id: PRJ_NOM
       input: no_matches
       expected: accessible_empty_state
+      kind: POSITIVE
     - id: PRJ_XSS
       input: malicious_search_text
       expected: escaped_display
+      kind: NEGATIVE
     - id: PRJ_OVR
       input: overlarge_query
       expected: bounded_validation_error
+      kind: NEGATIVE
     unresolved_until_real_code:
     - query_performance
     - actual_data_scoping
@@ -1687,15 +1760,19 @@ scenarios:
     - id: PLG_POS
       input: trusted_declarative_manifest
       expected: metadata_loaded
+      kind: POSITIVE
     - id: PLG_CAP
       input: unauthorized_capability
       expected: denied_without_execution
+      kind: NEGATIVE
     - id: PLG_ABI
       input: incompatible_contract_major
       expected: rejected
+      kind: NEGATIVE
     - id: PLG_EXEC
       input: executable_foreign_plugin
       expected: rejected_in_v1
+      kind: NEGATIVE
     unresolved_until_real_code:
     - manifest_parser_exploits
     - actual_permission_enforcement
@@ -1718,18 +1795,27 @@ scenarios:
     - id: NOTE_OK
       input: valid_one_line
       expected: append_and_reopen
+      kind: POSITIVE
     - id: NOTE_DUP
       input: repeated_request_id
       expected: not_duplicated
+      kind: POSITIVE
     - id: NOTE_DISK
       input: disk_full
       expected: draft_kept_no_false_ack
+      kind: NEGATIVE
     - id: NOTE_TAIL
       input: interrupted_append
       expected: partial_tail_detected
+      kind: NEGATIVE
     - id: NOTE_VER
       input: version_changed_mid_session
       expected: server_version_stamped
+      kind: POSITIVE
+    - id: NOTE_CONFLICT
+      input: same_request_id_different_text
+      expected: conflict_without_second_write
+      kind: NEGATIVE
     unresolved_until_real_code:
     - actual_runtime_test_and_evidence
   offline_launch:
@@ -1747,15 +1833,19 @@ scenarios:
     - id: BOOT_OK
       input: complete_offline_package
       expected: browser_open_and_health_ok
+      kind: POSITIVE
     - id: BOOT_MISS
       input: missing_wheel
       expected: safe_guided_failure
+      kind: NEGATIVE
     - id: BOOT_DBL
       input: double_start
       expected: one_server_reused
+      kind: POSITIVE
     - id: BOOT_PERM
       input: unwritable_data_dir
       expected: no_corruption_clear_help
+      kind: NEGATIVE
     unresolved_until_real_code:
     - actual_runtime_test_and_evidence
   import_preview:
@@ -1776,15 +1866,19 @@ scenarios:
     - id: IMP_OK
       input: valid_legacy_data
       expected: preview_counts_match
+      kind: POSITIVE
     - id: IMP_DUP
       input: conflicting_ids
       expected: visible_collision_list
+      kind: NEGATIVE
     - id: IMP_REF
       input: broken_media_reference
       expected: no_hidden_loss
+      kind: NEGATIVE
     - id: IMP_FAIL
       input: interrupted_apply
       expected: restore_or_transaction_recovery
+      kind: NEGATIVE
     unresolved_until_real_code:
     - actual_runtime_test_and_evidence
   media_open:
@@ -1805,15 +1899,19 @@ scenarios:
     - id: MED_OK
       input: valid_image_or_audio
       expected: preview_visible
+      kind: POSITIVE
     - id: MED_BAD
       input: corrupt_payload
       expected: safe_error
+      kind: NEGATIVE
     - id: MED_PATH
       input: traversal_or_symlink
       expected: denied
+      kind: NEGATIVE
     - id: MED_BIG
       input: overlarge_payload
       expected: bounded_rejection
+      kind: NEGATIVE
     unresolved_until_real_code:
     - actual_runtime_test_and_evidence
   plugin_trusted_launch:
@@ -1835,17 +1933,22 @@ scenarios:
     - id: PLX_OK
       input: allowlisted_local_tool
       expected: approved_process_only
+      kind: POSITIVE
     - id: PLX_CMD
       input: shell_injection_attempt
       expected: denied
+      kind: NEGATIVE
     - id: PLX_PERM
       input: unapproved_capability
       expected: denied
+      kind: NEGATIVE
     - id: PLX_FREE
       input: arbitrary_python_plugin
       expected: disabled_without_isolation
+      kind: NEGATIVE
     unresolved_until_real_code:
     - actual_runtime_test_and_evidence
+
 analysis_findings:
 - id: BF-001
   state: resolved_in_blueprint
@@ -1930,3 +2033,560 @@ revision_notes:
   status: draft_pr_candidate_not_approved
   added_source_files_are_virtual: true
   canonical_plan_is_base_plus_delta_until_approved: true
+
+contracts:
+  schema: provoware-design-contracts/1
+  status: PLANNED_NOT_RUNTIME_IMPLEMENTED
+  version_axes:
+    product: semver
+    build: git_sha_plus_artifact_sha256
+    api: explicit_major
+    database: monotonic_migration_integer
+    module: manifest_contract_major
+    config: format_schema_major
+  independent_versions: true
+  payloads:
+    song_request:
+      type: object
+      required:
+      - document_id
+      - title
+      - sections
+      - expected_revision
+      - request_id
+      additionalProperties: false
+      properties:
+        document_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        title:
+          type: string
+          minLength: 1
+          maxLength: 200
+        sections:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+            - kind
+            - text
+            additionalProperties: false
+            properties:
+              kind:
+                type: string
+                minLength: 1
+                maxLength: 80
+              text:
+                type: string
+                maxLength: 100000
+        expected_revision:
+          type: integer
+          minimum: 0
+        request_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+    song_response:
+      type: object
+      required:
+      - document_id
+      - revision
+      - saved_at
+      - saved
+      additionalProperties: false
+      properties:
+        document_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        revision:
+          type: integer
+          minimum: 1
+        saved_at:
+          type: string
+          minLength: 1
+          maxLength: 40
+        saved:
+          type: boolean
+          const: true
+    note_request:
+      type: object
+      required:
+      - request_id
+      - text
+      additionalProperties: false
+      properties:
+        request_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        text:
+          type: string
+          minLength: 1
+          maxLength: 1000
+    note_response:
+      type: object
+      required:
+      - note_id
+      - utc_iso8601
+      - app_version
+      - build_sha
+      - durable
+      additionalProperties: false
+      properties:
+        note_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        utc_iso8601:
+          type: string
+          minLength: 1
+          maxLength: 40
+        app_version:
+          type: string
+          minLength: 1
+          maxLength: 40
+        build_sha:
+          type: string
+          minLength: 1
+          maxLength: 40
+        durable:
+          type: boolean
+          const: true
+    error:
+      type: object
+      required:
+      - code
+      - message
+      - correlation_id
+      - retryable
+      - next_action
+      additionalProperties: false
+      properties:
+        code:
+          type: string
+          minLength: 1
+          maxLength: 64
+        message:
+          type: string
+          minLength: 1
+          maxLength: 300
+        correlation_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        retryable:
+          type: boolean
+        next_action:
+          type: string
+          minLength: 1
+          maxLength: 300
+    project_query:
+      type: object
+      required:
+      - query
+      - scope_id
+      - limit
+      additionalProperties: false
+      properties:
+        query:
+          type: string
+          minLength: 1
+          maxLength: 200
+        scope_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 200
+    project_response:
+      type: object
+      required:
+      - project_ids
+      - has_more
+      additionalProperties: false
+      properties:
+        project_ids:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 64
+          maxItems: 200
+        has_more:
+          type: boolean
+    module_manifest:
+      type: object
+      required:
+      - module_id
+      - version
+      - contract_major
+      - capabilities
+      additionalProperties: false
+      properties:
+        module_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        version:
+          type: string
+          minLength: 1
+          maxLength: 40
+        contract_major:
+          type: integer
+          minimum: 1
+        capabilities:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 64
+          maxItems: 16
+    catalog_response:
+      type: object
+      required:
+      - module_id
+      - catalog_enabled
+      - executable
+      additionalProperties: false
+      properties:
+        module_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        catalog_enabled:
+          type: boolean
+        executable:
+          type: boolean
+          const: false
+    import_preview:
+      type: object
+      required:
+      - source_id
+      - strategy
+      - apply
+      additionalProperties: false
+      properties:
+        source_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        strategy:
+          type: string
+          enum:
+          - KEEP_BOTH
+          - REJECT_CONFLICTS
+        apply:
+          type: boolean
+          const: false
+    import_apply:
+      type: object
+      required:
+      - preview_id
+      - request_id
+      - confirmed
+      - expected_revision
+      additionalProperties: false
+      properties:
+        preview_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        request_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        confirmed:
+          type: boolean
+          const: true
+        expected_revision:
+          type: integer
+          minimum: 0
+    import_response:
+      type: object
+      required:
+      - preview_id
+      - conflict_ids
+      - applied
+      additionalProperties: false
+      properties:
+        preview_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        conflict_ids:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 64
+        applied:
+          type: boolean
+    media_request:
+      type: object
+      required:
+      - asset_id
+      - purpose
+      additionalProperties: false
+      properties:
+        asset_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        purpose:
+          type: string
+          enum:
+          - PREVIEW
+          - PLAY
+    media_response:
+      type: object
+      required:
+      - asset_id
+      - mime
+      - available
+      additionalProperties: false
+      properties:
+        asset_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        mime:
+          type: string
+          minLength: 1
+          maxLength: 128
+        available:
+          type: boolean
+    launch_request:
+      type: object
+      required:
+      - tool_id
+      - request_id
+      - confirmed
+      additionalProperties: false
+      properties:
+        tool_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        request_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        confirmed:
+          type: boolean
+          const: true
+    launch_response:
+      type: object
+      required:
+      - tool_id
+      - started
+      - correlation_id
+      additionalProperties: false
+      properties:
+        tool_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+        started:
+          type: boolean
+        correlation_id:
+          type: string
+          minLength: 1
+          maxLength: 64
+  examples:
+    song_request:
+      document_id: song-001
+      title: Beispiel
+      sections:
+      - kind: Strophe
+        text: Beispiel
+      expected_revision: 0
+      request_id: request-song-001
+    song_response:
+      document_id: song-001
+      revision: 1
+      saved_at: '2026-10-25T18:00:00Z'
+      saved: true
+    note_request:
+      request_id: request-note-001
+      text: Beispielnotiz
+    note_response:
+      note_id: request-note-001
+      utc_iso8601: '2026-10-25T18:00:00Z'
+      app_version: 0.1.0
+      build_sha: '0000000000000000000000000000000000000000'
+      durable: true
+    error:
+      code: REVISION_CONFLICT
+      message: Der gespeicherte Stand wurde geändert.
+      correlation_id: example-001
+      retryable: false
+      next_action: Neu laden und Änderungen vergleichen.
+    project_query:
+      query: Beispiel
+      scope_id: local-projects
+      limit: 20
+    project_response:
+      project_ids:
+      - project-001
+      has_more: false
+    module_manifest:
+      module_id: notes
+      version: 0.1.0
+      contract_major: 1
+      capabilities: []
+    catalog_response:
+      module_id: notes
+      catalog_enabled: false
+      executable: false
+    import_preview:
+      source_id: source-001
+      strategy: KEEP_BOTH
+      apply: false
+    import_apply:
+      preview_id: preview-001
+      request_id: request-import-001
+      confirmed: true
+      expected_revision: 0
+    import_response:
+      preview_id: preview-001
+      conflict_ids: []
+      applied: false
+    media_request:
+      asset_id: asset-001
+      purpose: PREVIEW
+    media_response:
+      asset_id: asset-001
+      mime: image/png
+      available: true
+    launch_request:
+      tool_id: tool-001
+      request_id: request-launch-001
+      confirmed: true
+    launch_response:
+      tool_id: tool-001
+      started: false
+      correlation_id: example-launch-001
+  permissions:
+    default: DENY
+    unknown_capability: DENY
+    capabilities:
+    - catalog.read
+    - notes.append
+    - songs.read
+    - songs.write
+    - projects.read
+    - projects.import_preview
+    - projects.import_apply
+    - media.read
+    - tool.launch
+    - catalog.manage
+    trust_levels:
+      BUILTIN: REVIEWED_MANIFEST_CAPABILITIES
+      DECLARATIVE: METADATA_ONLY
+      LOCAL_TOOL: EXPLICIT_ALLOWLIST_ONLY
+      FOREIGN_CODE: DENY
+  note_semantics:
+    same_id_same_content: SAME_ACK_NO_SECOND_WRITE
+    same_id_other_content: CONFLICT_NO_WRITE
+    success_after: DURABLE_WRITE
+    record_id: VALIDATED_REQUEST_ID
+    server_fields:
+    - utc_iso8601
+    - app_version
+    - build_sha
+    client_version_policy: REJECT_UNKNOWN_REQUEST_FIELDS
+    max_request_bytes: 8192
+  data_ownership:
+    runtime_data: OUTSIDE_GIT_AND_RELEASE
+    documents: USER_PRIVATE_DOCUMENT_STORE
+    notes: TOOL_PRIVATE_APPEND_STORE
+    media: AUTHORIZED_ASSET_REGISTRY
+    legacy_sources: READ_ONLY
+  error_statuses:
+    VALIDATION: 400
+    PERMISSION_DENIED: 403
+    NOT_FOUND: 404
+    REVISION_CONFLICT: 409
+    LIMIT_EXCEEDED: 413
+    STORAGE_UNAVAILABLE: 503
+  http_boundary:
+    bind: 127.0.0.1
+    api_major: 1
+    max_request_bytes: 1048576
+    origin_policy: SAME_ORIGIN_ONLY
+    remote_access: OUT_OF_V1_SCOPE
+  log_sensitive_fields_forbidden:
+  - note_text
+  - document_text
+  - tokens
+  - absolute_paths
+  api_capabilities:
+    ASNG:
+      read: songs.read
+      write: songs.write
+    APSR:
+      query: projects.read
+    APLG:
+      catalog: catalog.read
+      manage: catalog.manage
+    ANOTE:
+      append: notes.append
+    AIMP:
+      preview: projects.import_preview
+      apply: projects.import_apply
+    AMED:
+      read: media.read
+    APLX:
+      launch: tool.launch
+  payload_byte_limits:
+    song_request: 1048576
+    note_request: 8192
+    project_query: 8192
+    module_manifest: 8192
+    import_preview: 8192
+    import_apply: 8192
+    media_request: 8192
+    launch_request: 8192
+checker_contract:
+  schema: provoware-checker/1
+  inputs:
+  - blueprint/architecture.yaml
+  - governance/route.json
+  - governance/regressions.yaml
+  - reachable_git_history
+  - git_index_and_worktree
+  phases:
+  - parse_unique_keys
+  - contracts
+  - ids_graph_layers
+  - catalog
+  - scenario_contracts
+  - evidence_gates
+  - views
+  - regression_tests
+  phase_semantics: LOGICAL_CHECK_DIMENSIONS_FIXED_TOOL_EXECUTION
+  outputs:
+  - model_result
+  - dynamic_counts
+  - derived_views
+  - local_run_evidence
+  failure_policy: STOP_WITH_FAIL
+  source_mutation: false
+  result_kind: MODEL_CONTRACT_PASS
+  runtime_result: NOT_TESTED
+  cache: PROCESS_LOCAL_HISTORY_ONLY_NO_PASS_REUSE
+  execution_owner: scripts/assist.py
+  refresh_outputs:
+  - docs/REGRESSION_INFO.md
+  - docs/GRUNDLAGE_B001_B003.md
+  - docs/ARCHITEKTUR_B004_B006.md
+  - docs/VERTRAEGE_B007_B009.md
+  - docs/TODO_V3_2.md
+  - docs/assets/todo_progress.svg
+  - governance/file_state.json
+  - docs/STATUS_KURZ.md
