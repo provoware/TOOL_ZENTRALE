@@ -1,7 +1,7 @@
 # Schichten, Dateikatalog und Codelegende B004–B006
 
 **Nachweis:** statisches Modell und tatsächlicher Dateibestand; keine Produktprüfung.
-**Bestand:** 62 vorhanden, 134 nur geplant; 55 Codes.
+**Bestand:** 77 vorhanden, 134 nur geplant; 55 Codes.
 
 PRESENT bedeutet vorhandene Datei, nicht implementierte oder geprüfte Produktfunktion.
 VIRTUAL bedeutet nur Sollpfad. Es werden keine Produktstubs angelegt.
@@ -146,6 +146,7 @@ Diese Regeln gelten für den geplanten Graphen. Reale Import-/Browserprüfung fo
 | `docs/TODO_V3_2.md` | PRESENT | GOV | S1 | CONFIRMED |
 | `docs/USER_GUIDE.md` | VIRTUAL | GOV | S2 | CONFIRMED |
 | `docs/UX_BARRIEREFREIHEIT.md` | PRESENT | GOV | S1 | CONFIRMED |
+| `docs/VERTRAEGE_B007_B009.md` | PRESENT | GOV | S1 | CONFIRMED |
 | `docs/assets/todo_progress.svg` | PRESENT | GOV | S2 | CONFIRMED |
 | `docs/decisions/0001-architecture.md` | VIRTUAL | GOV | S1 | CONFIRMED |
 | `docs/operations.md` | VIRTUAL | GOV | S2 | RESERVED |
@@ -158,6 +159,12 @@ Diese Regeln gelten für den geplanten Graphen. Reale Import-/Browserprüfung fo
 | `governance/evidence/B005.01.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/B005.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/B006.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B007.01.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B007.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B008.01.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B008.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B009.01.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B009.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/Q001.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/Q002.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/Q003.json` | PRESENT | GOV | S1 | CONFIRMED |
@@ -172,6 +179,7 @@ Diese Regeln gelten für den geplanten Graphen. Reale Import-/Browserprüfung fo
 | `pyproject.toml` | VIRTUAL | TOOL | S1 | CONFIRMED |
 | `requirements-dev.txt` | PRESENT | GOV | S1 | CONFIRMED |
 | `requirements.lock` | VIRTUAL | TOOL | S1 | CONFIRMED |
+| `scripts/api_contract_rules.py` | PRESENT | TOOL | S1 | CONFIRMED |
 | `scripts/assist.py` | PRESENT | TOOL | S2 | CONFIRMED |
 | `scripts/blueprint_contract.py` | PRESENT | TOOL | S1 | CONFIRMED |
 | `scripts/blueprint_preview.py` | VIRTUAL | TOOL | S1 | RESERVED |
@@ -180,6 +188,8 @@ Diese Regeln gelten für den geplanten Graphen. Reale Import-/Browserprüfung fo
 | `scripts/check_governance.py` | PRESENT | TOOL | S1 | CONFIRMED |
 | `scripts/complete_step.py` | PRESENT | TOOL | S1 | CONFIRMED |
 | `scripts/completion_contract.py` | PRESENT | TOOL | S1 | CONFIRMED |
+| `scripts/contract_rules.py` | PRESENT | TOOL | S1 | CONFIRMED |
+| `scripts/contract_view.py` | PRESENT | TOOL | S1 | CONFIRMED |
 | `scripts/foundation.py` | PRESENT | TOOL | S1 | CONFIRMED |
 | `scripts/gate_contract.py` | PRESENT | TOOL | S1 | CONFIRMED |
 | `scripts/impact_select.py` | VIRTUAL | TOOL | S1 | RESERVED |
@@ -193,6 +203,8 @@ Diese Regeln gelten für den geplanten Graphen. Reale Import-/Browserprüfung fo
 | `scripts/route_guard.py` | VIRTUAL | TOOL | S1 | CONFIRMED |
 | `scripts/run_evidence.py` | PRESENT | TOOL | S2 | CONFIRMED |
 | `scripts/scaffold.py` | VIRTUAL | TOOL | S1 | RESERVED |
+| `scripts/scenario_rules.py` | PRESENT | TOOL | S1 | CONFIRMED |
+| `scripts/schema_examples.py` | PRESENT | TOOL | S1 | CONFIRMED |
 | `scripts/start_tool.sh` | VIRTUAL | TOOL | S1 | CONFIRMED |
 | `scripts/test_assist.py` | PRESENT | QA | S2 | CONFIRMED |
 | `scripts/test_blueprint.py` | PRESENT | QA | S1 | CONFIRMED |
@@ -201,11 +213,14 @@ Diese Regeln gelten für den geplanten Graphen. Reale Import-/Browserprüfung fo
 | `scripts/test_close_transaction.py` | PRESENT | QA | S1 | CONFIRMED |
 | `scripts/test_code_history.py` | PRESENT | QA | S1 | CONFIRMED |
 | `scripts/test_completion.py` | PRESENT | QA | S1 | CONFIRMED |
+| `scripts/test_contract_consistency.py` | PRESENT | QA | S1 | CONFIRMED |
+| `scripts/test_contract_rules.py` | PRESENT | QA | S1 | CONFIRMED |
 | `scripts/test_foundation.py` | PRESENT | QA | S1 | CONFIRMED |
 | `scripts/test_gates.py` | PRESENT | QA | S1 | CONFIRMED |
 | `scripts/test_project_state.py` | PRESENT | QA | S2 | CONFIRMED |
 | `scripts/test_render_todo.py` | PRESENT | QA | S2 | CONFIRMED |
 | `scripts/test_run_evidence.py` | PRESENT | QA | S2 | CONFIRMED |
+| `scripts/test_scenario_rules.py` | PRESENT | QA | S1 | CONFIRMED |
 | `tests/architecture/test_catalog.py` | VIRTUAL | QA | S2 | RESERVED |
 | `tests/architecture/test_graph.py` | VIRTUAL | QA | S1 | CONFIRMED |
 | `tests/architecture/test_route.py` | VIRTUAL | QA | S2 | RESERVED |

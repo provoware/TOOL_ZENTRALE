@@ -2,7 +2,9 @@
 
 1. Führendes Remote: https://github.com/provoware/TOOL_ZENTRALE.
    Vor Änderungen Remote-Stand prüfen; bei Übergabe geprüfte Änderungen auf
-   Arbeitsbranch synchronisieren und PR verlinken. Bei fehlendem Zugriff
+   Arbeitsbranch synchronisieren und PR verlinken. Explizit beauftragte Merges
+   nur am geprüften Head-SHA durchführen, danach Main-Baum und Main-CI prüfen.
+   Bei fehlendem Zugriff
    ausdrücklich „nur lokal“ melden; keine dauernde Hintergrundsynchronisation.
    Nutzerauftrag und vorhandene Änderungen prüfen; Referenzrepos nur lesen.
    Basis-SHA, Planrevision, Scope und Dateihashes vor jedem Patch erfassen.

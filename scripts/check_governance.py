@@ -78,6 +78,9 @@ def main():
     from foundation import DOC, load, render
     if not DOC.exists() or DOC.read_text() != render(load()):
         raise ValueError('Grundlagenansicht fehlt oder ist veraltet')
+    from contract_view import DOC as CONTRACT_DOC, build as build_contract, render as render_contract
+    if not CONTRACT_DOC.exists() or CONTRACT_DOC.read_text() != render_contract(build_contract(data)):
+        raise ValueError('Vertragsansicht fehlt oder ist veraltet')
     print('GOVERNANCE PASS: Blueprint, Evidenz und Gates geprüft; keine Freigabe erteilt.')
 
 

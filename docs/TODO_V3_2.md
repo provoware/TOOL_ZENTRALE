@@ -4,7 +4,7 @@
 
 ![Grafischer Fortschritt: nach Gates und gesamt](assets/todo_progress.svg)
 
-**Gesamt:** 6/112 Hauptschritte (5 %) · **Unteraufgaben:** 1/22 · **G−1:** OPEN.
+**Gesamt:** 9/112 Hauptschritte (8 %) · **Unteraufgaben:** 4/22 · **G−1:** OPEN.
 
 ## Bedienung und verbindliche Regeln
 
@@ -21,7 +21,7 @@
 ## Nummerierte Checkliste
 
 <details open>
-<summary><strong>G-1 – Architektur und Blueprint</strong> (6/12; 50 %)</summary>
+<summary><strong>G-1 – Architektur und Blueprint</strong> (9/12; 75 %)</summary>
 
 - [x] **B001** Stabile PROVOWARE-Identität und Repositorygrenze `PLAN` · `R1`
 - [x] **B002** Altbestand rückwärts in Nutzungsfälle zerlegen `PLAN` · `R1`
@@ -30,12 +30,12 @@
 - [x] **B005** Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen `PLAN` · `R2`
   - [x] `B005.01` Dateikatalog mit echter Bestandsliste und Medien-/Importmodulen abgleichen
 - [x] **B006** Semantische Kurzcode-Legende `PLAN` · `R2`
-- [ ] **B007** Verträge, Datenformate und Rechte `PLAN` · `R1`
-  - [ ] `B007.01` Notizvertrag und Fremdplugin-Vertrauensstufen festlegen
-- [ ] **B008** Drei durchgängige Funktionssimulationen formulieren `PLAN` · `R2`
-  - [ ] `B008.01` Fuenf neue Szenarien inklusive negativen Faellen modellieren
-- [ ] **B009** Architektur-Prüfautomat spezifizieren `PLAN` · `R2`
-  - [ ] `B009.01` Dynamischen Schema-/Graphvalidator statt fixer Sollzahlen definieren
+- [x] **B007** Verträge, Datenformate und Rechte `PLAN` · `R1`
+  - [x] `B007.01` Notizvertrag und Fremdplugin-Vertrauensstufen festlegen
+- [x] **B008** Drei durchgängige Funktionssimulationen formulieren `PLAN` · `R2`
+  - [x] `B008.01` Fuenf neue Szenarien inklusive negativen Faellen modellieren
+- [x] **B009** Architektur-Prüfautomat spezifizieren `PLAN` · `R2`
+  - [x] `B009.01` Dynamischen Schema-/Graphvalidator statt fixer Sollzahlen definieren
 - [ ] **B010** Virtuellen Dry-Run und Fault-Katalog beurteilen `PLAN` · `R2`
   - [ ] `B010.01` TXT-Abbruch-/Doppelrequest- und Offline-Fault-Tests simulieren
 - [ ] **B011** Minimalen echten Durchstich spezifizieren `PLAN` · `R1`
@@ -235,9 +235,9 @@
 ## Nächster Schritt und Warteschlange
 
 Bedingte Vorschau: Jeder Folgeschritt setzt den belegten Abschluss seiner Voraussetzungen voraus. Keine Ausfuehrungs- oder Gatefreigabe.
-1. **B007 – Verträge, Datenformate und Rechte** · Planung
-2. **B008 – Drei durchgängige Funktionssimulationen formulieren** · Planung
-3. **B009 – Architektur-Prüfautomat spezifizieren** · Planung
+1. **B010 – Virtuellen Dry-Run und Fault-Katalog beurteilen** · Planung
+2. **B011 – Minimalen echten Durchstich spezifizieren** · Planung
+3. **B012 – Architekturfreigabe G-1 und offene Entscheidungen** · Planung
 
 **Patch-Karte beim Start ausfüllen:**
 

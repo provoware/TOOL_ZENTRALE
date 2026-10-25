@@ -282,6 +282,35 @@
       ],
       "prevention": "Strikte Schicht-/Pfad-/Besitzerregeln, vollständige erreichbare Git-Historie und abgeleitete geplante Testspuren prüfen",
       "next_action": "Modellfehler gezielt korrigieren; erzeugte Ansicht und Abschlussbelege erneuern"
+    },
+    {
+      "id": "RG014",
+      "title": "Modell-PASS trotz lückenhafter Sollverträge",
+      "kind": "CONFIRMED",
+      "severity": "HIGH",
+      "symptom": "Leere Beispiele, unvollständige Bestätigung, falsche Rechte oder unterbrochene Szenariokante werden akzeptiert",
+      "cause": "Deklarierte Grenzen waren nicht vollständig quergeprüft",
+      "source": "Lesender B007–B009-Review mit reproduzierten Modell-Gegenbeispielen vor Abschluss",
+      "trigger_paths": [
+        "blueprint/architecture.yaml",
+        "scripts/contract_rules.py",
+        "scripts/scenario_rules.py",
+        "scripts/api_contract_rules.py",
+        "scripts/schema_examples.py",
+        "scripts/contract_view.py",
+        "scripts/test_contract_rules.py",
+        "scripts/test_contract_consistency.py",
+        "scripts/test_scenario_rules.py"
+      ],
+      "test_ids": [
+        "test_contract_consistency.TestContractConsistency.test_missing_examples_ack_and_byte_budget_rejected",
+        "test_contract_consistency.TestContractConsistency.test_writable_legacy_false_error_status_and_owner_rejected",
+        "test_contract_consistency.TestContractConsistency.test_standalone_model_rejects_broken_path_and_unsafe_import",
+        "test_scenario_rules.TestScenarioRules.test_duplicate_case_or_empty_expectation_rejected",
+        "test_scenario_rules.TestScenarioRules.test_fabricated_runtime_pass_rejected"
+      ],
+      "prevention": "Feld-/Beispielabdeckung, Owner, Budgets, Rechte, Pfadkanten und explizite Modellgrenzen prüfen",
+      "next_action": "Sollvertrag korrigieren; vollständigen Lauf und neue Abschlussakte erzeugen"
     }
   ]
 }
