@@ -4,7 +4,7 @@
 
 ![Grafischer Fortschritt: nach Gates und gesamt](assets/todo_progress.svg)
 
-**Gesamt:** 9/112 Hauptschritte (8 %) · **Unteraufgaben:** 4/22 · **G−1:** OPEN.
+**Gesamt:** 11/112 Hauptschritte (9 %) · **Unteraufgaben:** 5/22 · **G−1:** OPEN.
 
 ## Bedienung und verbindliche Regeln
 
@@ -21,7 +21,7 @@
 ## Nummerierte Checkliste
 
 <details open>
-<summary><strong>G-1 – Architektur und Blueprint</strong> (9/12; 75 %)</summary>
+<summary><strong>G-1 – Architektur und Blueprint</strong> (11/12; 91 %)</summary>
 
 - [x] **B001** Stabile PROVOWARE-Identität und Repositorygrenze `PLAN` · `R1`
 - [x] **B002** Altbestand rückwärts in Nutzungsfälle zerlegen `PLAN` · `R1`
@@ -36,9 +36,9 @@
   - [x] `B008.01` Fuenf neue Szenarien inklusive negativen Faellen modellieren
 - [x] **B009** Architektur-Prüfautomat spezifizieren `PLAN` · `R2`
   - [x] `B009.01` Dynamischen Schema-/Graphvalidator statt fixer Sollzahlen definieren
-- [ ] **B010** Virtuellen Dry-Run und Fault-Katalog beurteilen `PLAN` · `R2`
-  - [ ] `B010.01` TXT-Abbruch-/Doppelrequest- und Offline-Fault-Tests simulieren
-- [ ] **B011** Minimalen echten Durchstich spezifizieren `PLAN` · `R1`
+- [x] **B010** Virtuellen Dry-Run und Fault-Katalog beurteilen `PLAN` · `R2`
+  - [x] `B010.01` TXT-Abbruch-/Doppelrequest- und Offline-Fault-Tests simulieren
+- [x] **B011** Minimalen echten Durchstich spezifizieren `PLAN` · `R1`
 - [ ] **B012** Architekturfreigabe G-1 und offene Entscheidungen `PLAN` · `R1`
 
 </details>
@@ -235,9 +235,9 @@
 ## Nächster Schritt und Warteschlange
 
 Bedingte Vorschau: Jeder Folgeschritt setzt den belegten Abschluss seiner Voraussetzungen voraus. Keine Ausfuehrungs- oder Gatefreigabe.
-1. **B010 – Virtuellen Dry-Run und Fault-Katalog beurteilen** · Planung
-2. **B011 – Minimalen echten Durchstich spezifizieren** · Planung
-3. **B012 – Architekturfreigabe G-1 und offene Entscheidungen** · Planung
+1. **B012 – Architekturfreigabe G-1 und offene Entscheidungen** · Planung
+2. **P001 – Quellenstand fixieren** · Planung
+3. **P002 – Funktionale Bestandsmatrix** · Planung
 
 **Patch-Karte beim Start ausfüllen:**
 

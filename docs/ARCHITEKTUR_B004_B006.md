@@ -1,7 +1,7 @@
 # Schichten, Dateikatalog und Codelegende B004–B006
 
 **Nachweis:** statisches Modell und tatsächlicher Dateibestand; keine Produktprüfung.
-**Bestand:** 77 vorhanden, 134 nur geplant; 55 Codes.
+**Bestand:** 80 vorhanden, 134 nur geplant; 55 Codes.
 
 PRESENT bedeutet vorhandene Datei, nicht implementierte oder geprüfte Produktfunktion.
 VIRTUAL bedeutet nur Sollpfad. Es werden keine Produktstubs angelegt.
@@ -165,6 +165,9 @@ Diese Regeln gelten für den geplanten Graphen. Reale Import-/Browserprüfung fo
 | `governance/evidence/B008.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/B009.01.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/B009.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B010.01.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B010.json` | PRESENT | GOV | S1 | CONFIRMED |
+| `governance/evidence/B011.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/Q001.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/Q002.json` | PRESENT | GOV | S1 | CONFIRMED |
 | `governance/evidence/Q003.json` | PRESENT | GOV | S1 | CONFIRMED |

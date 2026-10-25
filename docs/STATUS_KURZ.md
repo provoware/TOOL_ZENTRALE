@@ -1,7 +1,7 @@
 # Projektstatus
 
 **Phase:** Planung; noch keine startbare Anwendung.
-**Belegt abgeschlossen:** 9/112 Hauptschritte (8 %).
+**Belegt abgeschlossen:** 11/112 Hauptschritte (9 %).
 **Entwicklungsbasis:** 3/3 Korrekturaufgaben geprüft.
 **Planstatus:** `CANDIDATE_NOT_APPROVED`; keine automatische Freigabe.
 
@@ -10,9 +10,9 @@
 Bedingte Vorschau: jeder Folgeschritt setzt den Erfolg seiner Vorgänger
 und die erforderliche Freigabe voraus. Keine Ausführungszusage.
 
-1. **B010:** Virtuellen Dry-Run und Fault-Katalog beurteilen
-2. **B011:** Minimalen echten Durchstich spezifizieren
-3. **B012:** Architekturfreigabe G-1 und offene Entscheidungen
+1. **B012:** Architekturfreigabe G-1 und offene Entscheidungen
+2. **P001:** Quellenstand fixieren
+3. **P002:** Funktionale Bestandsmatrix
 
 ## So geht es weiter
 

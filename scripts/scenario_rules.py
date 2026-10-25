@@ -3,6 +3,20 @@ from blueprint_contract import reachable, planned_tests
 
 REQUIRED = {'song_save', 'project_search', 'plugin_load', 'quick_note_append',
             'offline_launch', 'import_preview', 'media_open', 'plugin_trusted_launch'}
+CRITICAL_FAULTS = {
+    'quick_note_append': {
+        'NOTE_DUP': ('POSITIVE', 'repeated_request_id', 'not_duplicated'),
+        'NOTE_TAIL': ('NEGATIVE', 'interrupted_append', 'partial_tail_detected'),
+        'NOTE_CONFLICT': ('NEGATIVE', 'same_request_id_different_text',
+                          'conflict_without_second_write'),
+        'NOTE_DISK': ('NEGATIVE', 'disk_full', 'draft_kept_no_false_ack'),
+    },
+    'offline_launch': {
+        'BOOT_MISS': ('NEGATIVE', 'missing_wheel', 'safe_guided_failure'),
+        'BOOT_DBL': ('POSITIVE', 'double_start', 'one_server_reused'),
+        'BOOT_PERM': ('NEGATIVE', 'unwritable_data_dir', 'no_corruption_clear_help'),
+    },
+}
 
 
 def validate_scenarios(blueprint):
@@ -51,6 +65,11 @@ def validate_scenarios(blueprint):
                 raise ValueError('Doppelte Fall-ID oder leere Erwartung')
             case_ids.add(case['id'])
             total += 1
+        by_id = {case['id']: case for case in cases}
+        for case_id, expected in CRITICAL_FAULTS.get(name, {}).items():
+            case = by_id.get(case_id)
+            if not case or tuple(case.get(field) for field in ('kind', 'input', 'expected')) != expected:
+                raise ValueError(f'{name}/{case_id}: kritischer Fault-Vertrag fehlt')
         if not scenario.get('unresolved_until_real_code'):
             raise ValueError('Offene reale Nachweise fehlen')
     return {'scenarios': len(scenarios), 'cases': total,

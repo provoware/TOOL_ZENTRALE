@@ -5,7 +5,7 @@ import unittest
 import yaml
 
 from check_governance import ROOT, UniqueLoader
-from scenario_rules import validate_scenarios
+from scenario_rules import CRITICAL_FAULTS, validate_scenarios
 
 
 class TestScenarioRules(unittest.TestCase):
@@ -58,3 +58,20 @@ class TestScenarioRules(unittest.TestCase):
         self.data['simulation_policy']['runtime_status'] = 'PASS'
         with self.assertRaises(ValueError):
             validate_scenarios(self.data)
+
+    def test_critical_txt_and_offline_faults_cannot_disappear_or_change(self):
+        for name, required in CRITICAL_FAULTS.items():
+            for case_id in required:
+                for mutation in ('missing', 'expected', 'kind', 'input'):
+                    data = copy.deepcopy(self.data)
+                    cases = data['scenarios'][name]['simulation_cases']
+                    case = next(item for item in cases if item['id'] == case_id)
+                    if mutation == 'missing':
+                        cases.remove(case)
+                    else:
+                        case[mutation] = 'POSITIVE' if mutation == 'kind' else 'false_pass'
+                        if mutation == 'kind' and required[case_id][0] == 'POSITIVE':
+                            case['kind'] = 'NEGATIVE'
+                    with self.subTest(name=name, case_id=case_id, mutation=mutation):
+                        with self.assertRaises(ValueError):
+                            validate_scenarios(data)
