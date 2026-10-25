@@ -1,6 +1,8 @@
 # TOOL_ZENTRALE – Arbeitsvertrag
 
 1. Jede Iteration beginnt mit MAIN-VORPRÜFUNG, erst danach mit Planung.
+   Read-only Startprüfung: `python3 scripts/assist.py --main-preflight` auf sauberem
+   lokalen main; BLOCKED bedeutet STOP, auch bei API-/Netzausfall.
    Führendes Remote: https://github.com/provoware/TOOL_ZENTRALE.
    Lokale Restarbeit, unveröffentlichte Commits und offene PRs gegen GitHub-Main
    abgleichen. Zusammenhängende, geprüfte und autorisierte übertragbare Teile

@@ -16,6 +16,52 @@ class TestAssist(unittest.TestCase):
     def setUp(self):
         self.data = registry.load_registry()
 
+    def test_main_preflight_only_clean_synced_ci_green_allows_planning(self):
+        sha = 'a' * 40
+        local = {'head': sha, 'branch': 'main', 'clean': True, 'origin_valid': True,
+                 'pending_branches': [], 'stash_count': 0}
+        good = {'path': assist.MAIN_WORKFLOW, 'event': 'push', 'head_sha': sha,
+                'status': 'completed', 'conclusion': 'success', 'id': 42,
+                'created_at': '2026-10-25T19:00:00Z'}
+        passed = assist.decide_preflight(local, sha, [], [good])
+        self.assertTrue(passed['planning_allowed'])
+        self.assertEqual(passed['result'], 'MAIN_VERIFIED')
+        cases = [(dict(local, clean=False), sha, [], [good]),
+                 (dict(local, branch='feature'), sha, [], [good]),
+                 (dict(local, origin_valid=False), sha, [], [good]),
+                 (dict(local, pending_branches=['unmerged']), sha, [], [good]),
+                 (dict(local, stash_count=1), sha, [], [good]),
+                 (local, 'b' * 40, [], [good]),
+                 (local, sha, [{'number': 7}], [good]),
+                 (local, sha, [], []),
+                 (local, sha, [], [dict(good, conclusion='failure')]),
+                 (local, sha, [], [good, dict(good, id=43, conclusion='failure',
+                                             created_at='2026-10-25T19:01:00Z')])]
+        for facts, remote, prs, runs in cases:
+            with self.subTest(local=facts, remote=remote, prs=prs, runs=runs):
+                blocked = assist.decide_preflight(facts, remote, prs, runs)
+                self.assertFalse(blocked['planning_allowed'])
+                self.assertEqual(blocked['result'], 'BLOCKED')
+
+    def test_preflight_remote_failure_overwrites_stale_success(self):
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory) / 'start.json'
+            target.write_text('{"result":"MAIN_VERIFIED"}')
+            with patch.object(assist, 'START_REPORT', target), \
+                 patch.object(assist, 'git_value', return_value='main'), \
+                 patch.object(assist, 'github_json', side_effect=OSError('offline')):
+                self.assertEqual(assist.main_preflight(), 1)
+            report = json.loads(target.read_text())
+            self.assertEqual(report['result'], 'BLOCKED')
+            self.assertFalse(report['planning_allowed'])
+
+    def test_preflight_invalid_api_payload_is_blocked(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with patch.object(assist, 'START_REPORT', Path(directory) / 'start.json'), \
+                 patch.object(assist, 'git_value', return_value='main'), \
+                 patch.object(assist, 'github_json', side_effect=[{'commit': {'sha': 'short'}}, [], {}]):
+                self.assertEqual(assist.main_preflight(), 1)
+
     def test_unknown_impact_expands_suite(self):
         self.assertIsNone(registry.select_tests(self.data, ['unmapped/new.py']))
         self.assertIsNone(registry.select_tests(self.data, []))
