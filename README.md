@@ -2,10 +2,20 @@
 
 **PROVOWARE – geplante modulare HTML-Webanwendung für Kreativarbeit, Projekte und Organisation.**
 
-Status: **Planung / noch keine lauffähige Anwendung** (25.10.2026).
+Status: **Planung V3.2 (Entwurf) / noch keine lauffähige Anwendung** (25.10.2026).
 Dieses Repository enthält zunächst ausschließlich freizugebende Architektur-
 und Entwicklungsunterlagen. Der existierende Desktopcode aus
 [TOOL_2026_Multi](https://github.com/provoware/TOOL_2026_Multi) bleibt unangetastet.
+
+## Entwicklungsstand zum Anklicken und Nachverfolgen
+
+![Grafischer Entwicklungsfortschritt – 112 Hauptschritte](docs/assets/todo_progress.svg)
+
+**[Nummerierte TODO mit GitHub-Abhakkästchen öffnen](docs/TODO_V3_2.md)**
+
+Die Anzeige wird aus `governance/route.json` erzeugt. Ein Häkchen zählt erst
+nach `VERIFIED` und Prüfnachweis; das bloße Bearbeiten des Markdown-Kästchens
+gilt nicht als Abschluss. G−1 und der Plan bleiben noch nicht freigegeben.
 
 ## Einstieg für Laien
 
@@ -17,6 +27,7 @@ kontextbezogener Hilfe und sicheren Speicher-/Wiederherstellungswegen.
 ## Verbindliche Planunterlagen
 
 1. [Masterplan 3.1 – 112 nummerierte Schritte / 13 Gates](docs/MASTERPLAN_V3_1.txt)
+   und [verbindlicher V3.2-Ergänzungsentwurf](docs/MASTERPLAN_V3_2_DELTA.txt)
 2. [UX und Barrierefreiheit – WCAG 2.2 AA als Ziel](docs/UX_BARRIEREFREIHEIT.md)
 3. [Entwicklungs- und Patchstandard](docs/ENTWICKLUNGSSTANDARD.md)
 4. [Überarbeiteter Auftrag](docs/PROMPT_OPTIMIERT.txt)
@@ -24,6 +35,7 @@ kontextbezogener Hilfe und sicheren Speicher-/Wiederherstellungswegen.
 6. [Architektur-Blueprint – virtuelle Dateien, Kurzcodes, Szenarien](blueprint/architecture.yaml)
 7. [Maschinenlesbare Entwicklungsroute](governance/route.json)
 8. [Arbeitsregeln für Programmierung und Prüfer](AGENTS.md)
+9. [Intelligente TODO und Fortschritt](docs/TODO_V3_2.md)
 
 ## Fixierte Identität
 
