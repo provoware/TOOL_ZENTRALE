@@ -20,8 +20,8 @@
     },
     {
       "path": "AGENTS.md",
-      "sha256": "fa62b619f624bfb507e2aedbeebb01b193b8448a3f2003b6e6415b2ac66f466b",
-      "bytes": 3215,
+      "sha256": "1a0ad9aeaff2fbfeaea4a6657a2ed5a77b78c73257cb8b893cfb1822a7c9134d",
+      "bytes": 3702,
       "state": "PRESENT_HASHED"
     },
     {
@@ -44,8 +44,8 @@
     },
     {
       "path": "docs/ARBEITSWEISE.md",
-      "sha256": "5a0713b380c70d7cdb499166854b605c112ed7fe62348cb318772749045ad4e0",
-      "bytes": 11869,
+      "sha256": "cd0bccf6323a64ffaefdbebb376533ea4f09953f3bd04070b2ae643496a4250f",
+      "bytes": 14694,
       "state": "PRESENT_HASHED"
     },
     {

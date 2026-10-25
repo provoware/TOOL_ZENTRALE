@@ -1,19 +1,25 @@
 # TOOL_ZENTRALE – Arbeitsvertrag
 
-1. Führendes Remote: https://github.com/provoware/TOOL_ZENTRALE.
-   Vor Änderungen Remote-Stand prüfen; bei Übergabe geprüfte Änderungen auf
-   Arbeitsbranch synchronisieren und PR verlinken. Explizit beauftragte Merges
-   nur am geprüften Head-SHA durchführen, danach Main-Baum und Main-CI prüfen.
-   Bei fehlendem Zugriff
-   ausdrücklich „nur lokal“ melden; keine dauernde Hintergrundsynchronisation.
-   Nutzerauftrag und vorhandene Änderungen prüfen; Referenzrepos nur lesen.
+1. Jede Iteration beginnt mit MAIN-VORPRÜFUNG, erst danach mit Planung.
+   Führendes Remote: https://github.com/provoware/TOOL_ZENTRALE.
+   Lokale Restarbeit, unveröffentlichte Commits und offene PRs gegen GitHub-Main
+   abgleichen. Zusammenhängende, geprüfte und autorisierte übertragbare Teile
+   zuerst integrieren; erwarteten Head-SHA und gültige CI verlangen.
+   Danach Main-Baum, Main-CI und lokalen Stand prüfen; bei nichts Übertragbarem
+   NO-OP dokumentieren. Ergebnis: `work/iteration/start.json`.
+   Blockierte Teile begründet registrieren; ungeprüfte Main-Basis sperrt den
+   Start eines neuen Entwicklungsplans. Bei fehlendem Zugriff „nur lokal“ melden.
+   Vor Übergabe geprüfte Änderungen synchronisieren; beauftragte Merges und
+   anschließende Main-Prüfung abschließen. Keine Hintergrundsynchronisation.
+   Nutzerauftrag/fremde Änderungen beachten; Referenzrepos nur lesen.
    Basis-SHA, Planrevision, Scope und Dateihashes vor jedem Patch erfassen.
 2. Quellen: `blueprint/architecture.yaml` = Sollstruktur;
    `governance/route.json` = Aufgaben, Status, Abweichungswarteschlange;
    Git = Ist-Inhalt; Testläufe = Nachweise. Ansichten nie manuell pflegen.
 3. Ein Writer je Dateiscope. Subagent erhält genau eine Aufgabe, Trigger,
    erlaubte Pfade, Basis, Abnahme und Ergebnisformat. Prüfer schreiben nicht.
-4. Vor Beginn drei logische Schritte voraussehen; Folgeschritte sind bedingt,
+4. Erst nach abgeschlossener Main-Vorprüfung drei logische Schritte planen.
+   Registrierte Blocker zuerst bearbeiten; Folgeschritte sind bedingt,
    keine Freigabe. Blocker zuerst. Abweichungen begründet in `iteration_queue`
    registrieren und vor regulären Aufgaben der nächsten Iteration abarbeiten.
    Bei Daten-/Sicherheitsgefahr laufende Arbeit sofort sicher anhalten.
