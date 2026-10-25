@@ -1,0 +1,313 @@
+PROVOWARE / TOOL_ZENTRALE
+MASTERPLAN-REVISION 3.2 - KORREKTURPAKET, ENTWURF AUF GITHUB-DRAFT-PR
+Stand: 25. Oktober 2026 | Freigabe: NICHT ERTEILT | Ausgangsbasis: Masterplan 3.1
+Ergaenzung zum Hauptdokument, keine zweite selbststaendige Projektwahrheit.
+
+00. EXECUTIVE ENTSCHEIDUNG UND GUELTIGKEIT
+00.01 Die gesamte Anwendung entsteht langfristig in provoware/TOOL_ZENTRALE.
+00.02 V1 laeuft lokal auf Linux/Kubuntu und bietet eine Browseroberflaeche,
+      einen Python-Backendserver und die fuer V1 geeignete SQLite-Datenbank.
+00.03 Verbindliche V1-Bereiche: Songs/Texte, Projekte/Suche, Werkzeug- und
+      Pluginverwaltung, kontrollierter Legacy-Import, Medien/Dateien.
+00.04 Zusaetzlich verbindlich: toolweite Schnellnotiz-TXT, Klickstarter,
+      Komfort-/Kompaktumschaltung, laiengerechte Kontexthilfe, lernendes
+      Fehler-/Regressionsregister, getrennte Versionierungsachsen.
+00.05 Offline-Erstinstallation ist ein Packaging-Ziel. Einzig wenn die
+      realen Abhaengigkeiten/Zielsysteme es verhindern, darf ein gesondert
+      kenntlich gemachter Download-Fallback angeboten werden.
+00.06 Fremdwerkzeuge sollen ueber gepruefte lokale Startadapter nutzbar sein.
+      Fremdplugin-Manifeste in V1: JA; beliebige Drittcodeausfuehrung: NEIN,
+      solange keine tatsaechlich nachgewiesene Isolation samt Rechtegrenzen
+      existiert. Kein Shellstring aus Benutzereingaben.
+00.07 Die bekannte Basis umfasst 112 unveraenderte Ober-IDs, 13 Gates,
+      urspruenglich 92 virtuelle Dateipfade und 29 Kurzcodes. Die v3.2-
+      Kandidatendateien bilden eine ERWEITERUNG, keinen bewiesenen Produktstand.
+00.08 Eine neue V3.2-Planfreigabe autorisiert KEINEN Produktivcode, keinen
+      Merge und keine Migration persoenlicher Daten.
+
+01. ARCHITEKTURPRINZIP - FESTE BASIS, VARIABLE SCHICHTEN
+01.01 Kern: Konfiguration, Sicherheitsgrenzen, Versions-/Modulregister,
+      Fehlermodelle, Diagnose, persistente Transaktionsadapter.
+01.02 Fachmodule: Songs, Projekte, Plugin-Katalog, Importwerkzeug, Medien,
+      toolweite Schnellnotizen. Jedes besitzt nur seine spezifische Logik.
+01.03 Gemeinsame Dienste: Suche, Validierung, Versionierung, Import-/Export,
+      Dateizugriff, Backup, UI-Feedback und Hilfe. Erst nach realer zweifacher
+      Nutzung wird eine Hilfsfunktion verallgemeinert.
+01.04 Alle Daten-, Plugin- und API-Grenzen werden explizit versioniert.
+      Der Kern importiert keine Fachmodulinterna. Ein Modul ruft andere
+      Module ueber vertragliche Adapter, nicht ihre lokalen Python-Dateien.
+01.05 HTML/CSS/ES-Module bleiben startleicht. Bei Bedarf lazy load;
+      keine ungeprueften Bibliotheken oder permanenten Hintergrundpoller.
+01.06 Keine physische Massenanlage von 145 Stubs. VIRTUAL bedeutet Plan,
+      SCAFFOLDED erst nach freigegebener Datei-Erzeugung, VERIFIED nur nach
+      passender echter Testevidenz fuer Commit und Umgebung.
+01.07 Latenzprofil: Zeit bis zur ersten benutzbaren Aktion, Bestaetigung
+      einer Schnellnotiz, Projektsuch-p95 und Moduloeffnungs-p95 messen.
+      Referenzhardware und Messbestand ab G4 fixieren, finale Budgets G10;
+      keine willkuerlichen Millisekundenzusagen ohne echtes Produktprofil.
+
+02. ANPASSUNG DER ARBEITSREIHENFOLGE
+02.01 Die urspruenglichen Gates G-1/G0..G11 und P001..P100 bleiben stabil.
+02.02 Neuer kritischer Nutzenpfad:
+      A. Installations- und Kernstartvertrag.
+      B. Song speichern/erneut laden plus Schnellnotiz protokollieren.
+      C. Projekt finden plus Importvorschau ohne Quellmutation.
+      D. Medien oeffnen/pruefen und sicheren Fremdstarter registrieren.
+      E. Vollstaendige Qualitaets-/Backups-/Laienabnahme fuer V1.
+02.03 Breite Extras wie ausfuehrlicher Buch-, Wiki-, Charakter- oder
+      Kalenderkomfort bleiben fachlich registriert, duerfen aber die fuenf
+      bestaetigten V1-Kernbereiche nicht unbemerkt blockieren.
+02.04 Unteraufgaben verwenden Pnnn.01 statt bestehende P-IDs umzunummerieren.
+      Die Kandidatenroute enthaelt 22 nachvollziehbare Unteraufgaben.
+02.05 Jede Unteraufgabe erhaelt zusaetzlich direkte Test-/Impactzuordnung
+      beim Schrittstart; leere Platzhalter duerfen nicht als PASS gelten.
+
+03. DATEI- UND MODULKATALOG - KORREKTUR DER V3.1-LUECKEN
+03.01 Die tatsaechlich vorhandenen Planungsdateien README, AGENTS und
+      docs/* werden als vorhandener Basisbestand erfasst; ihre physische
+      Existenz ist von virtuellen Produktdateien zu unterscheiden.
+03.02 Registrierung aller notwendigen Medienbausteine: manifest.yaml,
+      backend/domain.py, backend/service.py, backend/routes.py,
+      public/media.js, tests/test_media.py, help/de.md.
+03.03 Registrierung Importoberflaeche: eigenes Manifest, API-Route,
+      Dialog, Importkonflikttest und Hilfe; gemeinsamer Parser-/Importdienst.
+03.04 Registrierung Schnellnotizfunktion: Domainmodell, Text-Append-Adapter,
+      Dienst, API, globale Browserkomponente, Test und Hilfetext.
+03.05 Registrierung Startup und Offlinepaket: .desktop, Starter,
+      Offlineinstaller, Manifest, pyproject, Lockdaten, Tests, CI.
+03.06 Das neue Kandidatenregister dokumentiert 150 virtuelle/eingeordnete
+      Sollpfade, davon die urspruenglichen 92 unangetastet. Es enthaelt
+      54 eindeutige Komponentencodes, acht simulierte Wege und 16 UX-Faelle.
+03.07 Reservierte/optionale Dateipfade sind keine Implementierungszusage.
+      Neuer Katalogbestand wird nur ueber das zentrale Blueprint gepflegt.
+03.08 Pfade bleiben relativ zum Repo; Nutzdaten liegen ausserhalb Git/Release.
+
+04. SCHNELLNOTIZ - VERBINDLICHER DURCHSTICH
+04.01 Logische Dateisicht: TOOL_ZENTRALE/daten/VERBESSERUNGEN.txt.
+      Physisch nutzt sie den konfigurierten persoenlichen Anwendungsdatenordner,
+      ausserhalb von Git, Release und oeffentlichem Webverzeichnis.
+04.02 Einzelsequenz: Browser-Einzeiler -> API -> Notizdienst -> TXT-Adapter
+      -> dauerhaft bestaetigter Append -> sichtbarer Speicherstatus.
+04.03 Je Datensatz exakt eine physische UTF-8-Zeile. Pflichtfelder:
+      UTC-Zeit im ISO-8601-Format, Produktversion, Build-SHA, stabile
+      idempotente Request-ID und Text. Lokale Zeitzone nur Anzeigeoption.
+04.04 Beispieldatensatz:
+      2026-10-25T09:45:00Z | app=0.1.0 | build=abcdef0 | id=N0001 | text=Suchfilter verbessern
+04.05 Grenzen: Unicodepruefung, Steuerzeichen-/Zeilenumbruchbereinigung,
+      voreingestellte Textlaenge 1000 Zeichen, max. Request-Bytes.
+04.06 Nach Doppelclick/Retry derselbe Request-ID kein zweiter Datensatz;
+      Schreibserialisierung, Dauerhaftigkeitsbestaetigung und Erkennung
+      abgeschnittener letzter Zeilen. Bei Fehler bleibt das Eingabefeld erhalten.
+04.07 Keine stillschweigende Korrektur/Kuerzung defekter Dateiinhalte;
+      geschuetzte Diagnose, Vorschau und gesicherter Wiederherstellungsweg.
+04.08 Schnellbutton 1: Datei innerhalb der App anzeigen. Button 2 optional:
+      persoenlichen Dateispeicherort im Dateimanager anzeigen.
+04.09 Ein Appupdate darf die Notizdatei niemals ersetzen. Backupmanifest
+      listet die Notizdatei und ihren konkreten Sicherungsstand.
+04.10 Fachprojekt-Notizen duerfen den Append-Adapter spaeter wiederverwenden,
+      aber die TOOL-Zentrale-TXT nicht durch Datenkopien verdoppeln.
+
+05. KLICKSTART UND OFFLINEPAKET
+05.01 Start_TOOL_ZENTRALE.desktop ist das userseitige Klick-Ziel.
+      Startskript, Python-Laufzeit und Abhaengigkeiten duerfen aus mehreren
+      intern versionierten Bausteinen bestehen.
+05.02 Vor jedem eigentlichen Start: Pakete, ABI-/Python-Version, Speicherort,
+      Schreibrechte, Lockdatei, lokale Portbelegung, Appversion pruefen.
+05.03 Lokaler HTTP-Server bindet nur 127.0.0.1. Browser erst oeffnen,
+      wenn der Health-Endpunkt mit passender Build-ID antwortet.
+05.04 Zweiter Klick startet KEINEN konkurrierenden Datenbankwriter.
+      Bereits laufende gueltige Instanz wird wieder geoeffnet.
+05.05 Fehlende Pakete und Schreibprobleme erzeugen Dialog, Diagnose-ID und
+      sichere Loesung - niemals eine still ausgefuehrte sudo-Installation.
+05.06 Offline-Paket: gepinnte und gepruefte lokale Wheels, Python-Matrix,
+      Manifest mit Dateihashes und Herkunft; automatische Netzwerkfreiheit
+      beim Erststart eines nachweislich vollstaendigen Pakets.
+05.07 Test auf frisch installiertem Kubuntu unter mehreren erwarteten
+      Python-Setups; Installation, Start, Neustart, Deinstallation und Erhalt
+      der Nutzdaten. Kein Offline-Versprechen nur aufgrund eines Skriptnamens.
+
+06. FREMDTOOLS, PLUGIN-KATALOG UND RECHTE
+06.01 Eigene Module sind interne Featureteile mit manifestierter API.
+06.02 Fremde Programme duerfen ausschliesslich ueber explizit bestaetigte
+      lokale Executable-/Argumentlisten gestartet werden. Shell=True mit
+      untrusted Input ist verboten. Kein moeglicher beliebiger Pfadstart.
+06.03 Fremdplugin-Katalog akzeptiert nur formal gueltige Manifeste,
+      eindeutige IDs, Provenienz, API-Range und angefragte Capabilities.
+06.04 Dritt-Python- oder Browser-JS im selben Prozess/Origin ist nicht
+      per Manifest allein isoliert. Ohne getestete Sandbox nur KATALOGISIERT,
+      nicht AUSGEFUEHRT. Fremdcodefreigabe benoetigt eigenes G8-Sicherheitsgate.
+06.05 Denial-Cases: Capability-Eskalation, Shell-/Pfadinjektion, alter Vertrag,
+      defekter Starter, fehlendes Programm, Rechteaenderung nach Freigabe.
+06.06 Kernmodule koennen nicht als Fremdplugin ueberschrieben/deaktiviert
+      werden. Keine stillschweigende privilegierte Selbstreparatur.
+06.07 Plugin-Katalog und externer Starter sind architektonisch getrennt:
+      katalogisieren benoetigt keinen geladenen Prozessstarter. Erst der
+      gesondert berechtigte Starterpfad kennt den Ausfuehrungsadapter.
+
+07. ANZEIGEPROFILE, GRID UND LAIENHILFE
+07.01 Komfortansicht: groessere klar beschriftete Buttons, reduzierte
+      gleichzeitige Auswahl, sichtbarer Status, schrittweiser Prozess.
+07.02 Kompaktansicht: zusaetzliche Informationen ohne Funktionsverlust.
+      Beide Profile besitzen dieselbe Semantik und dasselbe Datenmodell.
+07.03 Umschalten darf Entwurf, Cursor, Tastaturfokus und Dialogposition
+      nicht veraendern oder loeschen. Reset ist jederzeit erreichbar.
+07.04 Theme/Zoom/Kontrast nicht auf nur einen Modus reduzieren. WCAG 2.2 AA
+      bleibt Ziel fuer BEIDE Modi; Nutzerpruefung bleibt Pflicht.
+07.05 Globale Notizzeile ist per Tastatur, Screenreader und vergroesserter
+      Ansicht erreichbar. Einzeiler besitzt sichtbares Label und Statusmeldung.
+07.06 Die bisherigen UX-Faelle U02/U03/U06/U07 werden am Shell-Gate G4 nur
+      fuer tatsaechlich existierende Shellkomponenten gewertet. Song-,
+      Projekt- und Pluginpruefungen folgen bei G5, G6 und G8.
+07.07 Neue Szenarien U11-U16: Notizeingabe, Klickstart, gepruefter
+      Fremdstarter, Ansichtswechsel, Medienvorschau, Importdialog.
+
+08. VERSIONEN, PROTOKOLLIERUNG UND DATENGRENZEN
+08.01 Die sechs V3.1-Versionsachsen bleiben unveraendert und getrennt.
+08.02 Appversionswert und Build-SHA stammen beim Notizschreiben aus der
+      laufenden Backendinstanz, niemals aus blind vertrauenswuerdigem UI-Text.
+08.03 Versionsregister ist die autoritative Releasequelle, Git der Code-
+      Iststand. Keine zweite manuell gefuehrte Dateiversionstabelle.
+08.04 Fehlerlog enthaelt Ereignis-ID und Fehlersignatur, aber NICHT den
+      Notiztext, private Songinhalte oder sensible Dateipfade.
+08.05 Komplexe Datenbank-Restoreprozeduren werden nicht auf TXT-Anhaenge
+      uebertragen. Ein Backup des Gesamtnutzdatenstands muss konsistente
+      Querschnitte von SQLite, Textdatei und Medien erfassen oder den
+      jeweiligen Zeitpunkt/Ausschluss explizit deklarieren.
+
+09. AUTOMATISCHER SCHRITTERMITTLER: MINIMALER VERTRAG
+09.01 Original 112 Ober-IDs und 13 Gates bleiben unveraendert.
+09.02 Je Schritt steht depends_on mit optionalen Unteraufgaben.
+      Checkprofil, Status, Impactquelle und Evidenzpflicht werden aus
+      zentralen, maschinenlesbaren Standardregeln abgeleitet, nicht
+      112-mal dupliziert. Damit bleibt die Route klein und aenderungsarm.
+09.03 Ist-Diff und Komponentenkatalog bestimmen konkrete betroffene Dateien,
+      Verbraucher und Tests. Unbekannter Pfad/inkonsistente Registry -> STOP
+      und konservativer Check, nicht unbesehenen Test auslassen.
+09.04 Patches haben weiterhin die Grenzen M(1500 Zeichen, 30 Zeilen,
+      2 Dateien), S(6000/120/3), K(12000/250/5); es gelten immer alle.
+09.05 Vor einem Schritt: Basis-SHA, Planversion, Budget, Schreibberechtigung,
+      Abhaengigkeiten, freigegebene Dateien und Risiko belegen.
+09.06 Direkt nach einem Patch: Diff, Syntax, zugeordneter Contract-/Unit-
+      Test, bei kritischen Daten-/Sicherheitsstellen ein Negativtest.
+09.07 Breite Integrations-/UX-/Restore-Checks nur an passenden Gates oder
+      frueher bei hohem Risiko; Hauptbranch-/Release-Volltest bleibt Pflicht.
+09.08 Ein geplanter Check ist NICHT implementiert, nur weil er in route.json
+      steht. `check_profile_definitions.*.implemented=false` haelt dies fest.
+09.09 READY erfordert reale, aktuelle Evidenz fuer vorherige Steps, Rechte,
+      Branch-/Commitidentitaet und nicht ueberholte Testdefinition.
+09.10 In V3.2-Entwurf bleiben alle Schritte und Unteraufgaben PLANNED;
+      Ergebnisse existierender Blueprint-Simulationen sind nur MODELL-PASS.
+09.11 Ein Elternschritt kann erst VERIFIED werden, wenn alle registrierten
+      Unteraufgaben VERIFIED sind. Unteraufgaben erben die Vorbedingungen
+      ihres Elternschritts und blockieren den Gateabschluss bei Fehlern.
+
+10. VIERFACHPRUEFUNG DES REVISIONSPAKETS
+10.01 DURCHGANG A - Syntax und konservierte Identitaet: YAML und JSON
+      eindeutig, keine Key-/Pfad-/Codekollision, fruehere 92/29 erhalten.
+10.02 DURCHGANG B - Logik und Abhaengigkeiten: zyklenfreier Graph,
+      erlaubte Schichten, szenarische requires-Ketten, Gate-/UX-Reife.
+10.03 DURCHGANG C - Negativfaelle: TXT-Abbruch, Doppelrequest, Offline-
+      Paketfehler, Fremdpluginrechte, Medienpfad, Importkonflikt.
+10.04 DURCHGANG D - Entwicklungsdisziplin: 112 stabile Haupt-IDs,
+      Unteraufgaben ohne Kollision, Checkprofil, Abhaengigkeiten, Gate,
+      Planfreigabestatus, keine Produktdatei erzeugt.
+10.05 Nur A/D und der modellierte Teil von B/C sind heute mechanisch
+      pruefbar. Die tatsaechlichen Browser-/DB-/Plugin-/Offlinefaelle
+      bleiben bis zur separaten Implementierung bewusst NOT_TESTED.
+
+11. FÜNF KLEINE PLANUNGS-BUENDEL (KEIN PRODUKTCODE)
+11.01 DP01 ENTSCHEIDUNGEN: G-1-Beschluss, Datenpfad, Fremdplugin-Vertrag,
+      Risikoausnahmen und Releasegrenzen eindeutig protokollieren.
+11.02 DP02 KATALOG: Hauptdatei- und Codebuch nur gezielt erweitern;
+      keine breite Platzhalteranlage, alte IDs erhalten.
+11.03 DP03 ROUTE: Abhaengigkeiten/Checkprofile/Unteraufgaben maschinen-
+      lesbar spezifizieren und Parser auf stabile Invarianten umstellen.
+11.04 DP04 SIMULATION: bestehende 3 Pfade erhalten, 5 neue erfassen,
+      alle mit mindestens vier erkennbaren Fehler-/Erfolgsfaellen.
+11.05 DP05 REGRESSION: vier Konzeptchecks, Datenschutz-, UX- und
+      Datengrenzen, ehrlichen PASS/FAIL/NOT_TESTED-Bericht erzeugen.
+11.06 Bei spaeteren Repoaenderungen gelten kleine Patches je Einzel-Scope,
+      separate PR-Reviews und ausdrueckliche Nutzerfreigabe.
+
+12. RISIKOREGISTER UND KOSTENABWAEGUNG
+12.01 R32-01 / HOCH: unkontrollierte Drittcode-Ausfuehrung.
+      STOP bei fehlender echter Isolation, nur Manifestvorschau erlauben.
+12.02 R32-02 / HOCH: txt-Append nach Prozessabsturz teilweise geschrieben.
+      Idempotenz, Lock, unvollstaendige-Zeile-Erkennung, kein falsches OK.
+12.03 R32-03 / HOCH: Backup von SQLite ohne zeitlich zugeordnete TXT/Medien.
+      Manifest und getrennten konsistenten Snapshotvertrag nachweisen.
+12.04 R32-04 / HOCH: Startskript installiert still privilegierte Pakete.
+      Expliziter Installationsmodus, Benutzerbestaetigung, kein sudo-Zwang.
+12.05 R32-05 / MITTEL: Vollstaendige fuenf V1-Bereiche fuehren zu Ueberlast.
+      Fruehe vertikale Arbeitsreisen; Nice-to-have nur nach Gatefreigabe.
+12.06 R32-06 / MITTEL: Aufwandstreibende dauernde Vollregression.
+      Impactauswahl, negative Risikofallbacks, Vollpruefung an Releases.
+12.07 R32-07 / MITTEL: Schema-/API-/Pluginversionskollision.
+      Kompatibilitaet und Migrationsledger; unklare Lage -> STOP.
+12.08 R32-08 / MITTEL: G4 meldet UX-PASS fuer noch fehlende Fachmodule.
+      Abnahme am fruehesten tatsaechlich verfuegbaren Modul-Gate.
+12.09 R32-09 / MITTEL: Offlinepaket nutzt nicht passende Wheel-/Python-ABI.
+      Saubere Zielsystempruefung und eindeutiges Installationsmanifest.
+12.10 R32-10 / MITTEL: Daten / Programm im gleichen Updateverzeichnis.
+      Nutzdaten stets ausserhalb des Replace-/Git-Scope.
+
+13. FREIGABE - EXAKTE ENTSCHEIDUNGSGRENZE
+13.01 Ein Candidate-PASS bedeutet: konsistente V3.2-Planmodelle und
+      nachvollziehbare Risiken; es ist keine Aussage ueber Produktqualitaet.
+13.02 G-1 bleibt NICHT FREIGEGEBEN, bis der Entwurf vom Nutzer inhaltlich
+      abgenommen und entsprechend dokumentiert ist.
+13.03 Mit ausdruecklicher Nutzeranweisung duerfen Planungsdokumente
+      auf Branch docs/blueprint-v3-1 und im offenen Draft-PR #1 geaendert
+      werden. main, Produktcode und Freigabe bleiben unberuehrt.
+13.04 Die naechste erwuenschte Aktion ist eine Nutzerpruefung der
+      Entwurfsartefakte; ein Repo-Patch ist eine SEPARATE Freigabe.
+
+14. NACHPRUEFUNG UND UEBERNAHMEVORBEREITUNG
+14.01 Pruefe die beiden Dateien TOOL_ZENTRALE_BLUEPRINT_V3_2.yaml und
+      TOOL_ZENTRALE_ROUTE_V3_2.json mit dem separaten V3.2-Validator.
+14.02 Pruefe, dass die urspruenglichen Code- und Dateigrafen unveraendert
+      erhalten bleiben; die neue Ausfuehrungskette UPLX-APLX-SPLX-PCMD
+      ist vom bestehenden deklarativen Plugin-Katalog getrennt.
+14.03 Bei Repo-Uebernahme darf die bestehende V3.1-Dokumentation nicht
+      durch Generator-Formatierungsdiffs blind vollstaendig ersetzt werden.
+      Eine autorisierte Uebernahme erzeugt semantische Minimal-Diffs.
+14.04 Eine Planfreigabe ist niemals zugleich eine Freigabe fuer den ersten
+      echten Anwendungs-Patch. Der staendige Autorisierungsstatus ist Pflicht.
+
+QUELLEN UND ABGRENZUNG
+Projektbasis: Masterplan 3.1, Blueprint 1.1, route 3.1, AGENTS und UX-Standard
+aus GitHub-Entwurfs-PR #1 vom 25.10.2026.
+Linux Desktop Entry: https://specifications.freedesktop.org/desktop-entry/
+Offline Python Wheels: https://pip.pypa.io/en/stable/user_guide/
+SQLite Backup: https://www.sqlite.org/backup.html
+W3C WCAG 2.2: https://www.w3.org/TR/WCAG22/
+Status: UNFREIGEGEBENER V3.2-KANDIDAT IM DRAFT-PR. Kein Produktcode.
+
+15. INTELLIGENTE TODO - VERBINDLICHER V3.2-PLANBESTANDTEIL
+15.01 Die einzige Aufgaben-/Statusquelle ist governance/route.json. Die
+      nummerierte GitHub-Checkliste docs/TODO_V3_2.md sowie die grafische
+      Fortschrittsanzeige docs/assets/todo_progress.svg sind ableitbar.
+15.02 Keine zweite handgepflegte TODO-Wahrheit. Ein Generator unter
+      scripts/render_todo.py erzeugt beide Ansichten deterministisch;
+      `--check` bricht ab, wenn die angezeigten Daten veraltet sind.
+15.03 Checkbox [x] nur nach VERIFIED und commitbezogenem Testnachweis;
+      Hauptschritte mit Unteraufgaben zaehlen erst nach deren Nachweisen.
+      112 Hauptschritte / 13 Gates / 22 Unteraufgaben bleiben stabil.
+15.04 Jedes Arbeitspaket besitzt einen Kurzvertrag:
+      ID | Grund | erwarteter Effekt | minimaler Umfang | Patchklasse |
+      Risiko | betroffene Dateien/Verbraucher | gezielte Tests | SHA.
+15.05 Schrittermitter prueft erst Blocker und Abhaengigkeiten, dann
+      Sicherheit/Datenrisiko, Wiederverwendung, Nutzen und Aufwand.
+      Unnoetige Arbeiten ergeben NO-OP mit Begruendung, nie blind PASS.
+15.06 Pro Patch: kleiner verpflichtender Guard plus betroffene Tests;
+      Risiko erzwingt Negativtest, breite Regression nur an Gates oder
+      bei relevanter querschnittlicher Wirkung. Unbekannt -> STOP/erweitern.
+15.07 GitHub-Markdown-Kaestchen zeigen den erzeugten Zustand. Ein Klick
+      in die Dateiansicht aendert keine registrierte Evidenz. Statuspatch
+      erfolgt als kontrollierter PR mit route.json und anschliessender
+      Regeneration; der grafische Balken ist daher niemals manuell gepflegt.
+15.08 G-1 bleibt NICHT FREIGEGEBEN. Die Integration dieser TODO-Logik
+      erlaubt weder Produktcode noch Merge und ersetzt keine Gateentscheidung.
+15.09 Die fuenf zusaetzlichen Plan-/Generator-/CI-Dateien sind im
+      zentralen Dateikatalog registriert. Die Route bleibt einzige
+      Aufgabenquelle; generierte Ansichten sind keine zweite Wahrheit.

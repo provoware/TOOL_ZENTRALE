@@ -1,0 +1,1535 @@
+PROVOWARE WEB 2026
+MASTERPLAN 3.1 - TOOL_ZENTRALE / OUTLINE, BLUEPRINT UND ENTWICKLUNGSROUTE
+Stand: 25. Oktober 2026 | Status: REPO-PLANUNG / NICHT ALS PRODUKT FREIGEGEBEN
+Erstellt für: VATER PPPOPPI / PROVOWARE
+
+LEITGEDANKE
+Ein stabiler, überprüfbarer Kern. Einfache Bedienung. Kleine, reversible Patches.
+Viel Wiederverwendung, wenig Dopplung. Ein eingefrorener Weg mit wenigen echten
+Gesamt-Checkpoints, aber niemals ohne den passenden Schutz vor und nach einem Patch.
+NEU: Ein virtueller, maschinenprüfbarer Rohbau modelliert zuerst Struktur, Codes,
+Abhängigkeiten und drei fachliche Szenarien. Erst danach entstehen echte Dateien.
+
+ENTSCHEIDENDE GRENZE
+ZIELREPOSITORY IST FESTGELEGT: https://github.com/provoware/TOOL_ZENTRALE
+Dieses Repository besteht bereits. Baseline beim Planungsbeginn:
+main / 6e9f8638f7a7b6334a23d51988d0e3ef9d82a37c; nur README.md.
+TOOL_ZENTRALE wird die vollständige lokale HTML-Webanwendung mit ihren
+integrierten Werkzeugen. Die anderen Provoware-Repositories bleiben nur
+Lesereferenzen. Diese Planungsänderung autorisiert KEINEN Produktivcode.
+
+QUELLSTAND UND BELEGKLASSEN
+Primärreferenz: https://github.com/provoware/TOOL_2026_Multi
+Fixierter Referenzstand: main / 096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d
+GitHub-Actions-Nachweis dieses Stands: Lauf #1127 erfolgreich am 25.10.2026.
+BESTÄTIGT = aus Quell-/CI-Dokument belegt; ABGELEITET = fachliche Folgerung;
+GEPLANT = noch nicht realisiert; ZU ENTSCHEIDEN = Benutzervorgabe erforderlich.
+Ein grüner Test aus einem fremden Repository ist niemals ein Test der neuen App.
+
+00. EXECUTIVE OUTLINE - DIE GESAMTE ROUTE AUF EINEN BLICK
+
+00.01 Zielzustand
+Browserbasierte PROVOWARE-Arbeitsumgebung mit semantischem HTML, adaptivem CSS,
+kleinen JavaScript-Modulen, Python-Backend und SQLite-Datenbank. Kreativwerkzeuge,
+Organisation, Projekte und Medien werden als getrennte Fachmodule geführt.
+V1 ist lokal auf Linux/Kubuntu gedacht; Fernzugriff ist ein gesonderter Ausbau.
+
+00.02 Vorgelagerter Blueprint und zwölf anschließende Entwicklungsbündel
+G-1 / B001-B012: Virtueller Projektrohbau, Codelegende, Dateikatalog,
+                Vertragssimulation und schriftliche Architekturfreigabe.
+G0 / P001-P008:  Plan klären, Quellen und Funktionsparität einfrieren.
+G1 / P009-P016: Bestehendes Repo aufbauen, Standards, Logging, Patchkontrolle.
+G2 / P017-P025: Sicherer API-/Datenbankkern und Transaktionsverträge.
+G3 / P026-P033: Alt-Datenimport, Integrität, Backup und Restore.
+G4 / P034-P043: HTML-Shell, Grid, Navigation, Barrierefreiheit und Hilfe.
+G5 / P044-P056: Kreativ-MVP mit Songs, Texten, Profilen, Vorlagen und Wiki.
+G6 / P057-P064: Aufgaben, Kalender, Link- und Projektwerkzeuge.
+G7 / P065-P071: Medien-API, Audio, Bilder, FFmpeg und Jobkontrolle.
+G8 / P072-P078: Modulverträge, Registry und nur sicher erlaubte Plugins.
+G9 / P079-P085: Adaptive Regression, Diagnostik, Self-Repair-Kandidaten.
+G10 / P086-P093: Schutztests, Performance, Zugänglichkeit, Release-Härtung.
+G11 / P094-P100: Pilot, Dokumentation, Freigabe und wiederherstellbare Version.
+GESAMT: 12 Blueprint-Arbeitseinheiten, 100 Entwicklungsarbeitseinheiten;
+13 Entscheidungsgates einschließlich G-1. Die vorhandenen P-IDs bleiben stabil.
+
+00.03 Veröffentlichungsstufen
+M-1 - Virtueller Rohbau fachlich geprüft: nach G-1 (kein Produktcode).
+M0 - Architektur und Quellenregister freigegeben: nach G0.
+M1 - sicheres technisches Grundgerüst ohne Nutzdaten: nach G2.
+M2 - Datenimport und benutzbarer Webrahmen: nach G4.
+M3 - erstes wertvolles Schreib-MVP: nach G5.
+M4 - alltagstaugliche Modulsammlung: nach G6.
+M5 - ergänzte Medien und kontrollierte Erweiterungen: nach G8.
+M6 - qualitätsgesicherter Releasekandidat: nach G10.
+M7 - abgenommene Produktversion: nach G11.
+
+00.04 Vier zentrale Qualitätsversprechen
+A. Kein Verlust oder unbemerkter Ersatz vorhandener Texte, Versionen und Projekte.
+B. Kein PASS ohne passende Evidenz für denselben Commit und dieselbe Umgebung.
+C. Keine fremde Plugin-Codeausführung als vermeintlich sichere Standardfunktion.
+D. Keine Mehrarbeit durch doppelte Registry, wiederholte Scans oder unnötige CI.
+
+01. AUFTRAG, GRENZEN UND ERFOLGSKRITERIEN
+
+01.01 Hauptauftrag
+Ein neues, modular erweiterbares Browserprodukt bauen, das den wertvollen
+Bestand aus TOOL_2026_Multi kontrolliert übernimmt und intuitiver nutzbar macht.
+Der vorhandene Desktopcode bleibt bis zu einer gesonderten Entscheidung bestehen.
+
+01.02 Bewusst nicht im ersten MVP
+Kein öffentliches Hosting, keine fremden Benutzerkonten, keine automatische
+GitHub-Schreibverwaltung, kein Passworttresor, keine beliebigen Drittplugins,
+keine komplette Videoproduktionssuite und keine autonome Produktivcodeänderung.
+Diese Themen bleiben auffindbar in der Next Queue, statt das MVP zu belasten.
+
+01.03 Zielgruppen und typische Aufgaben
+Erstnutzer: Song oder Text in weniger Orientierungsschritten neu erstellen.
+Fortgeschrittener: Vorlagen, Profile, Textbausteine und Versionen kombinieren.
+Projektverwalter: Aufgaben/Medien/Dateien zu einem Projekt zuordnen und sichern.
+Entwickler: Fehler anhand einer ID reproduzieren, kleinstmöglich beheben,
+passende Regression ausführen und den geprüften Stand wiederherstellen.
+
+01.04 Messbare Abnahmeprinzipien
+Vor einer Aktion ist die Wirkung erkennbar; danach sind Ergebnis, Speicherstatus
+und nächster Schritt sichtbar. Keine Nutzdaten verschwinden bei Abbruch.
+Der grundlegende Workflow funktioniert mit Tastatur und 200 % Browser-Zoom.
+Jeder Datenimport hat Vorschau, Umfang, Konfliktliste und Wiederherstellung.
+Performancebudgets werden bei G2/G4 anhand echter Testhardware kalibriert.
+
+01.05 Terminologie
+SCHRITT = geplante, sachlich überprüfbare Arbeitseinheit Pnnn.
+BLUEPRINT-SCHRITT = vorgeschaltete Planungseinheit Bnnn ohne Produktivpatch.
+PATCH = kleiner tatsächlicher Diff innerhalb eines Schrittes; bei Überschreitung
+werden Unterpatches wie P044.01 und P044.02 vor Ausführung festgelegt.
+BÜNDEL = fachlich verbundene Patchserie zwischen zwei Gesamt-Checkpoints.
+GATE = dokumentierte Abnahme des eingefrorenen Bündels am exakten Git-Stand.
+SNAPSHOT = Sicherungspunkt des technischen oder persönlichen Datenstands.
+VIRTUAL = Pfad nur in der Soll-Architektur vorgemerkt, nicht auf dem Datenträger.
+KOMPONENTENCODE = einmalig vergebene, 2- bis 8-stellige semantische Kennung;
+keine Programmiersprache und kein Ersatz für Fachvertrag oder Quellcode.
+
+02. QUELLENANALYSE UND KONTROLLIERTE WIEDERVERWENDUNG
+
+02.01 Reale Ausgangslage aus dem primären Repository
+356 Git-Dateien: davon 104 Python-Dateien unter app, 133 Testdateien,
+79 Dokumentdateien und 25 Skripte. PySide6 ist die aktuelle GUI-Technik.
+Das Manifest nennt Produkt 0.18.5 und Schema 32. Die Oberflächentexte besitzen
+bereits rund 295 registrierte Schlüssel; Teile sind noch direkt im Widgetcode.
+Aktive Module umfassen Songs, Texte, Profile, Charaktere, Bücher, Wiki, Ideen,
+Aufgaben, Kalender, Links, Projektpool sowie Audio-/Bild-/Video-Basis.
+
+02.02 Primäre Wiederverwendung - mit klarer Grenze
+GEEIGNET: Qt-freie Fachvalidierung, JSON-Datenregeln, Import/Export-Grenzen,
+Songversionen, Profile, Aufgabenlogik, Hashing, Fehlerredaktion, Regressionen.
+ADAPTIEREN: sichere Dateischreibwege zu DB-Transaktionen, Modulkatalog zu
+Web-/API-Verträgen, Desktop-Update-Slots zu Web-Releaserollback.
+NEU BAUEN: Browsernavigation, semantische Formulare, serverseitige Routen,
+Authentifizierungsgrenze, CSS-Grid, Tastaturabläufe und Web-API-Berechtigungen.
+NICHT BLIND ÜBERNEHMEN: Qt-Fenster, Desktop-Dateizugriffe, private Pfade,
+ungetestete Shell-Kommandos, alte Versionslisten und unklare Fremdabhängigkeiten.
+
+02.03 Belegte Quellen aus anderen Provoware-Repositories
+DATENBANKTOOL: SQLite-WAL, Migrationsprüfsummen, Recovery, HTML/Python-Server,
+Sprachdateien, Datei-Obergrenzen und Playwright-Browserprüfung.
+PROVOWARE: JavaScript-Modulzustände, Manifestvalidierung, Workspace-Raster.
+PROVOWARE-LAIENTOOL: Fehlerfamilien und kleinste zugeordnete Regressionstests.
+DB_TOOL_2026: eingefrorener Plan, Basis-SHA, Single-Writer und Evidence-Gates.
+PROVOWARE_MASTER_BOOK_2026: Änderungsabsicht mit Ablaufzeit, Hash, Undo-Vorschau.
+PROVOWARE_VIDEO_AUTOMATION_2026: responsive Rasterverträge und Fault-Lab.
+DUPLIKATE-FINDER2026: stabiler Datei-Hash vor/nach dem Lesen, Pfadschutz.
+Schnellprompter-Tool-2026: Browserfehler-Redaktion und CSP-Testmuster.
+
+02.04 Übernahmeentscheidung pro Kandidat
+Erfasse: Quell-Repo, Commit, Datei/Funktion, Zweck, Lizenz/Drittherkunft,
+Abhängigkeiten, fachliche Parität, Security-Risiko, Tests und Änderungsaufwand.
+Kategorien: DIREKT ADAPTIERBAR, IDEE ÜBERNEHMEN, SPÄTER, VERWERFEN.
+Wiederverwendung darf keinen zweiten inoffiziellen Kern erschaffen.
+
+02.05 Präventives Wissen statt unnötiger Kopien
+Die Fehlerregel ist oft wertvoller als ein großer Quellcodeblock. Beispiel:
+Aus einem dokumentierten fehlgeschlagenen Restore wird ein neuer Negativtest,
+der Restore ohne .git simuliert. Ein HTML-Layout aus einem anderen Repo wird
+nicht unverändert kopiert, wenn seine CSS-Kaskade die neue Shell verkompliziert.
+
+03. ARCHITEKTURENTSCHEIDUNG UND TECHNISCHE STANDARDISIERUNG
+
+03.01 Drei begründete Ansätze
+A / EMPFOHLEN: Python-API mit bewährtem ASGI-Framework (FastAPI als Kandidat),
+SQLite und schlanken HTML/CSS/ES-Modulen. Gute Python-Wiederverwendung.
+B / BEDINGT: stdlib-HTTP-Server und SQLite wie im DATENBANKTOOL. Weniger Pakete,
+aber mehr selbst zu härtende Routing-, Validierungs- und Sicherheitslogik.
+C / NICHT BEVORZUGT: Komplettrewrite in Node/TypeScript. Einheitliche Sprache,
+aber hoher Aufwand und geringere Wiederverwendung der vorhandenen Fachlogik.
+Entscheidung A bis G0 als Vorschlag, nicht als irreversibler Beschluss.
+
+03.02 Fünf Schichten und ihre Abhängigkeitsrichtung
+1. Präsentation: HTML, CSS, ES-Module, zentrale UI-Komponenten, Hilfe.
+2. HTTP/API: Versionierung, Validierung, Berechtigung, Fehlerantwort.
+3. Anwendungsfälle: Speichern, Kopieren, Importieren, Erstellen, Veröffentlichen.
+4. Domain: fachliche Regeln, Datenverträge und unveränderliche Modelle.
+5. Adapter: SQLite, Dateispeicher, FFmpeg, GitHub und andere optionale Dienste.
+UI darf keine SQL-Befehle kennen. Domain darf keinen FastAPI-/Qt-Import brauchen.
+
+03.03 Festkern und Erweiterung
+Kern: Laufzeitkonfiguration, Versionsregister, Datendienst, Identitäten,
+Sicherheitsgrenzen, Modulregistrierung, Ereignisse, Text-/Hilfekatalog,
+Navigation, Diagnose, zentrale Fehlerbehandlung und Test-/Release-Contracts.
+Module: fachlich entkoppelt; Plugin: deklarative Erweiterung mit manifestierten
+Capabilities und Compat-Regeln. Drittcode ist anfangs grundsätzlich deaktiviert.
+
+03.04 Dateistruktur - feature-first plus fester Kern
+Lokaler Container: PROVOWARE/TOOL_ZENTRALE/. Dieses Verzeichnis IST der Git-Root.
+Keine zweite .git-Instanz unter app/features und kein doppeltes PROVOWARE im Repo.
+Repo-/Tool-Slug TOOL_ZENTRALE ist als Benutzerentscheidung FEST; sichtbare
+Produktbezeichnung kann ohne Pfadumbenennung separat geändert werden.
+blueprint              = eine Sollquelle für Codes/Pfade/Architekturszenarien.
+governance             = autoritative Schritt-/Versions-/Fehlerregister.
+app/core               = Sicherheit, Konfiguration, Registry, DB-Basis, Logging.
+app/shared             = nur geprüfte modulübergreifende Fachkomponenten.
+app/features/<slug>    = eigenständiger vertikaler Modulbereich je Werkzeug.
+app/features/<slug>/backend = Model, Service, Routen und Repository-Adapter.
+app/features/<slug>/public  = kontrolliert freigegebene JS-/CSS-Assets.
+app/features/<slug>/tests   = spezifische Fach- und Regressionstests.
+web                    = gemeinsame HTML-Shell, Navigation, Raster, UI-Tokens.
+tests                  = übergreifende Verträge, Security, Integration, Browser.
+scripts                = Patchguard, Blueprint-Check, selektive Prüfungen.
+docs                   = Plan, UX-Standards, Entwicklungsregeln, Quellen.
+Unkontrolliertes Veröffentlichen des gesamten app-Ordners ist VERBOTEN.
+Persönliche Datenbanken, Dateien, Backups und Logs liegen außerhalb des Repos.
+Jedes Modul darf intern Schichten führen; seine Dateien bleiben für kleine
+Patches überwiegend im selben Modulordner. Kern -> Modulspezialitäten als direkte
+Importabhängigkeit ist verboten; die Registry orchestriert über Verträge.
+
+03.05 Sparsames Dependency-Modell
+Keine Bibliothek ohne nachgewiesene Funktion, Wartungsstatus und Lizenzcheck.
+Versionen werden mit Lockdaten fixiert. HTML/CSS/ES-Module benötigen im Start-MVP
+keinen schweren Bundler. Optionaler Bundler erst nach Messung der echten Kosten.
+SQLite über die Python-Standardbibliothek; PostgreSQL erst bei belegtem Bedarf.
+
+04. PATCH-DISZIPLIN: KLEIN, KORREKT, RÜCKNEHMBAR
+
+04.01 Verbindliche Patchgrößen (alle drei Grenzen gelten gleichzeitig)
+MICRO M: maximal 1.500 geänderte Unicode-Zeichen, 30 +/- Zeilen, 2 Dateien.
+STANDARD S: maximal 6.000 Zeichen, 120 +/- Zeilen, 3 Dateien.
+KONTROLLIERT K: maximal 12.000 Zeichen, 250 +/- Zeilen, 5 Dateien.
+Geänderte Zeichen = hinzugefügte PLUS entfernte Inhaltszeichen, keine Diff-Header.
+Dateigröße in UTF-8-Bytes wird zusätzlich gemessen, aber nicht verwechselt.
+
+04.02 Ausnahmen sind kontrolliert, nicht bequem
+Zulässig nur bei belegter Unteilbarkeit einer Migration, einer generierten
+Datei, einer umfangreichen reinen Textkatalogänderung oder einem zwingenden
+Sicherheitsfix. Vorher Ausnahme-ID, Ziel-SHA, Risiko, prüfbaren Plan und
+Rollback erfassen. Nie einen funktionsunfähigen Zwischenstand erzwingen.
+
+04.03 Dateigrenzen als zweite Schutzebene
+Python/JavaScript: bevorzugt bis 300 Zeilen, harte Warn-/Prüfgrenze 450.
+CSS: bevorzugt bis 400, Grenze 650. HTML: bevorzugt bis 450, Grenze 650.
+Ein Modul wird nur nach tatsächlicher Verantwortlichkeit geteilt; kleine
+Funktionen mit zu vielen indirekten Abhängigkeiten gelten nicht als sparsamer.
+
+04.04 Standard-Patchablauf
+1. Exakten HEAD, aktiven Plan und erlaubten Scope feststellen.
+2. Ähnlichen Fehler und vorhandene Testabdeckung suchen.
+3. Problemhypothese, erwarteten Nutzen und Rollback notieren.
+4. Nur betroffene Dateien/Funktionen mit knappen Kontextzeilen lesen.
+5. Minimalpatch nach definierter Klasse anwenden, keine Nebenrefactorings.
+6. Geänderte Zeichen, Zeilen, Dateien, Imports und Vertragseinfluss prüfen.
+7. Nur gezielte, risikoangemessene Prüfungen ausführen.
+8. Fall/Version/Hash/Test-Evidenz protokollieren; dann nächste Aktion ermitteln.
+
+04.05 Intelligenter Kontext- und Tokenhaushalt
+Standard: erst Dateibaum/Hash, dann Symbolsuche, dann wenige relevante
+Funktionsabschnitte. Kein wiederholtes Lesen ganzer 100-KB-Dokumente.
+Ein Kontext-Kapselpaket nennt maximal: Ziel, Basis-SHA, 3 wichtigste Invarianten,
+Scope, betroffene Symbole, Fehlersignatur, Tests, letzten Gate-Status.
+Tokenlimits sind Richtwerte und dürfen Schutzbelege nie abschneiden.
+
+04.06 No-op, Stop und Recovery
+Unveränderter Hash + identische Toolchain + identische Testdefinition = keine
+grundlose Wiederholung. Bei falscher Basis-SHA, gesperrtem Pfad, zweitem Writer,
+unklarem Dateneigentum, fehlender Freigabe oder nicht reproduzierbarem Fehler:
+STOP, Zustand schützen, Finding mit nächstem sicheren Schritt schreiben.
+
+05. DATEI-, SCHRITT- UND WISSENSREGISTER
+
+05.01 Autoritative Register - so wenig wie nötig
+Git = Quellwahrheit. route.json = Aufgaben und Gates. versions.json = Produkt-/
+API-/DB-/Plugin-Versionen. modules.json = Module und Capabilities.
+regressions.json = bestätigte Fehlerfamilien und Trigger. Events = Append-only.
+Ein generierter Impact-Index darf gelöscht und aus Fakten wiederaufgebaut werden.
+Keine parallelen handgeführten Dateistandslisten in TODO, README und Manifest.
+NEU: blueprint/architecture.yaml ist während des Entwurfs die alleinige
+Sollquelle für virtuelle Pfade, semantische Codes, Abhängigkeiten und Szenarien.
+blueprint/codes.yaml und Dateisicht sind später nur daraus erzeugte Projektionen.
+Der für TOOL_ZENTRALE überarbeitete Sollstand befindet sich im Repo unter
+blueprint/architecture.yaml. Alle Projektionen leiten sich hiervon ab.
+
+05.02 Dateisatz im Impact-Index
+Pfad | Rolle | Modul | Git-/Datei-Hash | direkte Verbraucher | Testfamilie |
+letztes geprüftes SHA | Toolchain/Config/Testhash | Zustand | Risikoklasse.
+Zustand: FROZEN, ACTIVE, GENERATED, ARCHIVE, DEPRECATED, BLOCKED.
+Nur geänderte Pfade und ihre abhängigen Konsumenten werden neu bewertet.
+NEU: Der virtuelle Dateikatalog unterscheidet VIRTUAL, RESERVED, SCAFFOLDED,
+IMPLEMENTED, VERIFIED, FROZEN und DEPRECATED. Der Realisierungsstatus kommt
+später aus Git und Testbelegen; ein Platzhalterkommentar zählt nie als Nachweis.
+Die Katalogstufen CONFIRMED, RESERVED und OPTIONAL sind davon getrennt:
+Sie beschreiben die Planungswahrscheinlichkeit, nicht den Implementierungsstand.
+
+05.03 Schrittermittler als einfacher Zustandsautomat
+PLANNED -> READY -> ACTIVE -> PATCHED -> VERIFIED -> DONE.
+Fehler-/Sonderzustände: BLOCKED, FAILED, REPAIR_CANDIDATE, DEFERRED.
+READY wird ein Schritt nur bei erfüllten Abhängigkeiten, gültigem Scope,
+passender Planversion und erteilter Einzel-Schreibberechtigung.
+DEFERRED darf eine Abhängigkeit nur nach protokollierter bewusster Gate-Entscheidung
+ersetzen. Automatische Endlosschleifen sind ausgeschlossen.
+
+05.04 Bewertungsformel für offene Optionen
+Nur unter bereits zulässigen Schritten: (3*NUTZEN + 2*WIEDERVERWENDUNG +
+2*ENTBLOCKUNG) / (1 + AUFWAND + RISIKO). Werte je 1 bis 5.
+Sicherheitsblocker und feste Gate-Abhängigkeiten haben Vorrang vor diesem Wert.
+Innerhalb einer freigegebenen Route wird die Priorität nicht unkontrolliert
+umgeworfen. Neue Erkenntnisse in die getrennte Next Queue.
+
+05.05 Beziehungstypen der Next Queue
+REQUIRES, BLOCKS, DUPLICATE, CONFLICTS, SUPERSEDES, RELATED, DEFERRED.
+Jeder Eintrag trägt Befundquelle, Nutzen, Aufwand, Risiko, Urheber, Datum
+und den frühesten Gate-Punkt für eine Planentscheidung.
+
+06. VERSIONSYSTEM MIT KLAREN KOMPATIBILITÄTSREGELN
+
+06.01 Sechs verschiedene Versionsachsen
+Produktversion: SemVer MAJOR.MINOR.PATCH für Nutzer und Releases.
+Buildidentität: vollständiger Git-SHA plus prüfbare Artefakt-Checksumme.
+API-Vertrag: /api/v1 und explizit definierte Abwärtskompatibilität.
+DB-Schema: monotoner Integer mit Migrationsledger und SQL-Checksumme.
+Plugin-/Modulvertrag: major-kompatible API- und Capability-Versionen.
+Konfig-/Datenformat: eigenständige Schema-Version für Import/Export.
+Diese Kennungen werden nicht bei jedem Mini-Patch gemeinsam erhöht.
+
+06.02 Releaseeintrag - Pflichtfelder
+release_id, product_version, commit_sha, build_sha256, created_at,
+api_version, db_schema, plugin_contract, config_schema, migrations,
+backup_contract, compatible_previous_versions, gate_evidence, rollback_plan.
+Versionen werden aus einem einzigen führenden Register abgeleitet.
+
+06.03 Sicherheitsregel für Downgrades
+Ein Code-Rollback bedeutet nicht automatisch Datenbank-Downgrade.
+Migrationen bevorzugt vorwärtskompatibel und transaktional; vor destruktiven
+Schemaänderungen geprüfter Backup-/Exportpfad und eigener Freigabe-Gate.
+Rollback kann alte Anwendung plus kompatible Datenbank oder isolierten
+Snapshot bedeuten; die konkrete Variante muss vor Update dokumentiert sein.
+
+06.04 Plugin-Lebenszyklus
+DISCOVERED -> VALIDATED -> REGISTERED -> ENABLED -> ACTIVE -> DISABLED.
+INCOMPATIBLE, QUARANTINED und FAILED verhindern die Ausführung.
+ID, SemVer, Core-/API-Ranges, Fähigkeiten, Datenrechte, Herkunft,
+Integritätswert, Migration und Abschaltzustand sind Mindestmanifestfelder.
+
+07. VALIDIERUNG: WENIGE GESAMTLÄUFE, VIELE GEZIELTE BELEGE
+
+07.01 Vorvalidierung am Micro-Patch
+SHA/Scope, abhängige Verträge, gefährdete Daten, Regressionstrigger,
+geschätzte Patchklasse und erlaubte Dateien. Keine teure Vollintegration.
+
+07.02 Nachvalidierung am Micro-Patch
+Syntax/Typ/Lint für betroffene Stellen, kleinster Unit-/Contract-Test,
+gegebenenfalls Nachbarpfad und Diff-/Budgetprüfung. Kein PASS ohne Testausgabe.
+
+07.03 Sofortige Sonderprüfungen
+Bei Berechtigungen, Migration, Backup, Dateipfad, Plugin, Medienjob oder
+Update: zusätzliche negative Sicherheitstests unmittelbar vor Gate-Freigabe.
+Kleine Patches bedeuten nicht kleine Risiken.
+
+07.04 Bündel-/Checkpoint-Prüfung
+Ein passendes Modul-Integrationsprofil, Browserreise, Schema-/Restore-Test,
+Log-/Fehlerprüfung und Abhängigkeitsprüfung. Nur einmal je unverändertem
+Commit. Fehlgeschlagene Einzelursache gezielt reparieren, danach nötigen Gate
+erneut fahren. Hauptzweig und Release erhalten den vollständigen Pflichtlauf.
+
+07.05 Release-Gesamtprüfung
+Vollregression, negative Sicherheitsfälle, Daten- und Medien-Roundtrip,
+Barrierefreiheit, Performance, Browser-/Viewport-Matrix, Paketintegrität,
+Installationsprobe, Rollback, Dokumentation und echte Nutzungsabnahme.
+Manuelle Kubuntu-/Browserabnahme ist eine eigene reale Handlung und darf
+nicht aus automatisch grünen Tests herbeigeschrieben werden.
+
+07.06 Selektive Testzuordnung
+Change-Type + Modul + geänderte Schnittstelle + bekannte Fehlersignatur
+-> kleinstes angemessenes Testset. Nach einem übersehenen Fehler wird die
+Zuordnung erweitert und ein reproduzierbarer Negativtest registriert.
+Falsch-positive/instabile Tests werden analysiert, nicht einfach ausgeblendet.
+
+08. LERNENDE REGRESSION UND KONTROLLIERTE SELBSTREPARATUR
+
+08.01 Lernen heißt nachvollziehbare Regelverbesserung
+Fehlersignaturen nur aus betroffener Funktion, Ausnahmetyp und normalisierter
+Ursache; keine Rohtexte, Tokens oder persönliche Inhalte in der Lernhistorie.
+Quelle, Schwere, erster/letzter Fall, Anzahl, Trigger, Test-ID und Nachbarwege.
+
+08.02 Fehlerfamilien, die von Anfang an verhindern sollen
+R01 - fehlende .git-Datei bei Restore nach entpacktem Release.
+R02 - Speichern/Verwerfen-Abbrechen, falscher angezeigter Speicherzustand.
+R03 - Backup ohne Projekt-Notiz oder referenzierte externe Medien.
+R04 - Symlink-, Traversal-, fremder Pfad- oder Zielkollision-Angriff.
+R05 - Dateiänderung zwischen Hashprüfung und Ausführung (TOCTOU).
+R06 - falscher Ausgangs-SHA oder zweiter schreibender Prozess.
+R07 - abgelaufene Planabsicht, falscher Projektzustand, beschädigtes Journal.
+R08 - sensible Daten in Logs, Diagnosen und Exporten.
+R09 - FFmpeg-Hänger, voller Datenträger, Job-Doppelstart, Abbruch.
+R10 - Plugin-Kompatibilität, nicht erlaubte Capability, Sandbox-Ausbruch.
+R11 - Webrisiken: XSS, CSRF, Upload/Download-/Origin-Fehler.
+R12 - stale Testbelege, geänderte Toolchain, abweichende Testdefinition.
+
+08.03 Abgrenzung zwischen historischem Fehler und neuer Vorsorge
+R01-R03 sind anhand historischer Dokumentation/Audits abgeleitet;
+R04-R10 sind aus vorhandenen Schutz-/Regression-/Fault-Lab-Verträgen
+hergeleitete Sicherheitsfamilien. R11 ist eine neue Web-Preventivregel.
+Kein Eintrag behauptet, in der späteren neuen App bereits aufgetreten zu sein.
+
+08.04 Self-Repair als begrenzter Diagnoseassistent
+1. Fehler-ID und Testfall reproduzieren.
+2. Maximal zwei getrennte Hypothesen und jeweils kleinstes Patchangebot.
+3. Kandidat nur in isoliertem Branch/Arbeitsbereich testen.
+4. Negativtest muss vorher rot und nachher grün sein.
+5. Nachbar-Regression und Gatevorgaben prüfen.
+6. Ergebnis als REVIEW_READY ausgeben; kein automatischer Produktivmerge.
+7. Bei unerklärter Wirkung oder erneutem Fehler hart abbrechen.
+
+09. LOGGING, DEBUGGING UND FEHLERKOMMUNIKATION
+
+09.01 Drei getrennte Kanäle
+Eventlog für Nutzerereignisse/Fehler, Entwicklerlog für Diagnose und
+Auditlog für sicherheitsrelevante Änderungen. Nicht alle Daten gehören in
+jedes Protokoll. JSONL maschinenlesbar, kurze deutsche TXT-Zusammenfassung.
+
+09.02 Pflichtfelder eines Ereignisses
+UTC-Zeit, Event-ID, Schwere, Modul, Appversion, Git-Build, Korrelations-ID,
+Aktion, Schutzmaßnahme, wahrscheinliche Ursache, nächster Schritt.
+Stacktrace nur im geschützten Entwicklerbereich; private Pfade, Inhalte und
+Geheimnisse maskieren. Rotation, Größenlimits und Aufbewahrungsdauer festlegen.
+
+09.03 Professioneller Debugging-Zyklus
+Sichtung -> Eingrenzung -> Reproduktion -> Hypothese -> Minimalpatch ->
+Negativtest -> Nachbarprüfung -> Evidenz -> Fehlerfamilie aktualisieren.
+Keine Symptombehandlung durch willkürliche Retries oder breites try/except.
+
+09.04 Nutzerfreundliche Fehlermeldung
+WAS ist passiert? WO? WIESO wahrscheinlich? WAS wurde geschützt?
+WAS soll ich als Nächstes tun? Technische Details bleiben einklappbar.
+
+10. DATENMODELL, MIGRATION UND WIEDERHERSTELLUNG
+
+10.01 Datenarten
+Relationale Kerndaten: Projekte, Dokumente, Fassungen, Profile,
+Charaktere, Vorlagen, Tags, Aufgaben, Termine, Module, Jobs und Zustände.
+Große Dateien: Audio/Bild/Video außerhalb der SQLite-Tabellen, mit sicherer
+ID, SHA-256, Mime-/Größenlimit, Besitzer und Backupbezug.
+
+10.02 Regeln des Legacy-Imports
+Quellordner nur lesen. Vorab Snapshot/Hash. Format und Version erkennen.
+Dry Run zeigt Zählwerte, Konflikte, beschädigte Einträge, externe Verweise
+und geplante Transformationen. Import in neue DB/Dateistruktur, danach
+Zähl-/Hash-/Versions- und Referenzvergleich. Keine stille Löschung/Umbenennung.
+
+10.03 Backups richtig unterscheiden
+Persönliche Daten: DB und ausdrücklich erfasste Anhänge mit Inhaltsverzeichnis.
+Projektpaket: zusätzlich benötigte Projekt-/Medienquellen, soweit erreichbar.
+Programm-Release: nur Code/Assets/Konfiguration, keine privaten Nutzerdaten.
+Jede Backupmeldung nennt Enthaltenes und Ausgeschlossenes ehrlich.
+
+10.04 SQLite-Konsistenz
+WAL, Fremdschlüssel, versioniertes Migrationsledger, transaction boundaries,
+busy_timeout und Integritätsprüfung. Laufende DB-Kopien über SQLite-Backup-API
+und anschließende Hash-/Schema-/Referenzprüfung, nicht blind per cp.
+
+10.05 Restore
+Backup prüfen -> isolierten neuen Bestand erzeugen -> Daten/Anhänge prüfen
+-> Rückkehrsnapshot bereitstellen -> autorisierten Swap durchführen ->
+Nachprüfung -> COMMITTED oder ROLLED_BACK. Bei beschädigtem Journal STOP.
+
+11. PLUGINS, MODULE UND RECHTEGRANZEN
+
+11.01 Phase 1: bekannte Module
+Nur vom Kern veröffentlichte Modul-IDs und deklarative Form-/Workflow-Schemata.
+Schalter aktivieren/deaktivieren Funktionen ohne Datenlöschung.
+
+11.02 Phase 2: kontrollierte Erweiterung
+Manifest: id, version, api_range, core_range, entry, permissions, dependencies,
+integrity, origin, migration, ui_slots, locale_keys. Erst nach Validierung laden.
+Browser-JavaScript im Haupt-Origin besitzt keine sichere Plugin-Isolation.
+
+11.03 Fremdplugin-Gate
+Untrusted Code nur mit echter Sandbox/Prozess- und Capability-Isolation,
+expliziten Nutzerdatenrechten, Zeit-/Speicher-/Netzgrenzen, Audit und Abbruch.
+Wenn dies nicht belegbar ist: keine Ausführung, nur Plugin-Katalog/Preview.
+
+12. UX, RASTER, HILFE UND BARRIEREFREIHEIT
+
+12.01 Arbeitsablauf statt Kachelmenge
+Nutzer beginnt mit "Was willst du tun?" und sieht eine Hauptaktion.
+Fertig, geplant und gesperrt sind klar unterscheidbar. Speicherstatus,
+Letzte Projekte, Suche und Hilfe bleiben gut auffindbar.
+
+12.02 Informationsarchitektur
+Schreiben: Songs, Texte, Buch, Ideen, Wiki, Vorlagen.
+Organisieren: Aufgaben, Kalender, Profile, Charaktere, Links.
+Projekte: Bestände, Importe, Exporte, Medienreferenzen.
+Medien: Audio, Bild, Videojobs.
+System: Module, Einstellungen, Versionen, Backup, Diagnose, Hilfe.
+
+12.03 Layout-Raster als Qualitätssensor
+CSS Grid mit 12 logischen Spalten auf breiten, 6 auf mittleren Ansichten,
+einer fließenden Spalte auf schmalen. Container-/Inhaltsbreite ist entscheidend,
+nicht eine starre Pixelposition. Debug-Layer zeigt Spalten, Gaps, Überlauf,
+Fokus-/Tab-Reihenfolge, Scrollzonen und Touchflächen. Nicht im Release sichtbar.
+
+12.04 Messmatrix
+Viewportbreiten u.a. 320, 375, 768, 1024, 1280, 1440, 1920, 2560 px;
+Zoom 100, 125, 150, 175, 200 %. Assertions: keine wesentliche Überlappung,
+kein abgeschnittener Primärknopf, erreichbare Tastatursteuerung, sinnvolles
+Scrollen, stabile Formularbeschriftungen und keine unnötige horizontale Rolle.
+
+12.05 Barrierefreiheitsziel
+WCAG 2.2 AA, semantische Überschriften/Formulare, sichtbarer Fokus,
+Skip-Link, Tastaturbedienung, Screenreader-Beschriftungen, ausreichender
+Kontrast, reduzierte Bewegung und 200%-Zoom ohne Funktionsverlust.
+Automatisierte Prüfungen ergänzen manuelle Stichproben, ersetzen sie nicht.
+
+12.06 Das dreistufige Hilfeprinzip
+SOFORT: kurze Erklärung am Element. ANLEITUNG: wenige konkrete Schritte
+mit Beispiel, Kontext und erwarteter Ausgabe. FEHLERHILFE: Ursache, Schutz,
+sicherer nächster Schritt, gegebenenfalls Diagnose-ID. F1 oder ? am Kontext.
+Alle Texte außerhalb der Fachlogik, mit stabilen Schlüsseln und Versionen.
+
+13. SICHERHEIT, DATENSCHUTZ UND BETRIEBSMODELL
+
+13.01 Sicherheitsmodell für lokale V1
+Backend bindet standardmäßig 127.0.0.1, nicht 0.0.0.0. Origin-/CSRF-Prüfung,
+serverseitige Validierung, restriktive CSP, sichere Cookies falls eingesetzt,
+keine beliebigen Dateipfade und keine Shellinterpolation. Der Browser erhält
+nur freigegebene Inhalte per API, keine unbeschränkte Festplattenberechtigung.
+
+13.02 Externes Hosting ist eine neue Produktentscheidung
+Internetbetrieb benötigt TLS, Authentifizierung, Nutzer-/Projektberechtigungen,
+Sitzungs-/Tokenkonzept, Rate Limits, Backups und rechtliche Datengrenzen.
+SQLite kann zunächst passen; konkurrierende Writes und Hostingprofil müssen
+gemessen werden. PostgreSQL ist eine Option, keine automatische Pflicht.
+
+13.03 Prüfmaßstab
+OWASP ASVS 5.0.0 als katalogisierbare Web-Sicherheitsanforderungen; relevante
+Kontrollen auswählen, nicht pauschal Vollzertifizierung versprechen.
+Eingabe-/Ausgabe-Kodierung, Berechtigungsgrenzen, Dateiuploads, SSRF/CSRF/XSS,
+Logging, Security Headers, Dependency- und Secret-Scanning.
+
+13.04 Datenschutz
+Keine heimliche Telemetrie, keine persönlichen Inhalte in Fehlerlernregistern,
+keine externen Uploads ohne explizite Handlung. Export/Löschung/Aufbewahrung,
+Verschlüsselungs-/Zugriffskonzept und Backup-Ort später konkret dokumentieren.
+
+14. KOSTEN, CODE-SPARSAMKEIT UND NUTZEN-AUFWAND-BEWERTUNG
+
+14.01 Sparen an der richtigen Stelle
+Spare doppelte Datenmodelle, unnötige Netzwerkdienste, große Abhängigkeiten,
+wiederholte CI-Läufe und Kontextvollscans. Spare nicht bei Tests, Rollback,
+Lesbarkeit oder Benutzerführung. Zeilenzahl allein ist kein Qualitätsmaß.
+
+14.02 Budgettypen
+Entwicklungsbudget: Arbeitszeit, Patchanzahl, Kontext-Tokens, Prüfzeit.
+Betriebsbudget: RAM/CPU/Datenträger, Hosting, API-Kosten, Backups.
+Wartungsbudget: Dependencies, Regressionen, Migrationen, Dokumentation.
+Risikobudget: Datenverlustwahrscheinlichkeit und Rückfallaufwand.
+Budgetüberschreitungen erfordern Begründung, nicht stille Qualitätskürzung.
+
+14.03 Effizienzmessung pro Gate
+Anzahl geprüfter Patches, geänderte Zeichen/Dateien, unnötige Testwiederholungen,
+Defekte pro Patchklasse, Testauswahl-Treffer, wiederverwendete Fachfunktionen,
+Durchlaufzeit, Baseline vs. aktueller Build, Daten-Roundtrip-Quote und UX-Reisen.
+Metriken gehören in einen kurzen Statusbericht, nicht in endlose Protokollkopien.
+
+14.04 Priorisierung mit Ursache
+P0 = Daten-/Sicherheitsblocker, P1 = MVP-Voraussetzung, P2 = wertvolle
+Produktfunktion, P3 = Komfort/Experiment. Nur zulässige Arbeiten nach
+Abhängigkeit/Entblockung/Nutzen-Aufwand sortieren. Keine Terminprognosen mit
+Scheinpräzision vor Ende G0; qualitative S/M/L-Schätzung ist ehrlicher.
+
+15. KOSTENGÜNSTIGE ZUSATZNUTZEN DURCH EINE GEMEINSAME BASIS
+
+15.01 Ein Dokumentkern, mehrere Schreibwerkzeuge
+Gemeinsame Editor-, Versions-, Metadaten-, Tag- und Exportfunktionen für
+Songtexte, freie Texte, Buchkapitel, Satire-/Blogvorlagen, Wiki und Promptmuster.
+Jede Fachart besitzt eigene Validierungs-/Exportadapter; kein unstrukturierter
+Alles-Editor, der Besonderheiten verliert.
+
+15.02 Hilfesystem und Projekt-Wiki auf demselben Technikfundament
+Beide verwenden Artikel-/Verknüpfungs-/Versionsprimitive, aber getrennte
+Inhaltsräume und Berechtigungen. Daraus entstehen kontextbezogene Hilfen
+und später ein einfacher Hilfeeditor ohne doppelte Programmlogik.
+
+15.03 Gemeinsame Suche, Tags und Vorlagen
+Ein Suchdienst für freigegebene Module, ein sicherer Vorlagenrenderer und
+ein gemeinsamer Import-/Exportvertrag sparen viele Einzelfunktionen.
+
+15.04 Medien- und Dateikomponenten
+Ein Hash-/Identitätsdienst dient Import, Sicherung, Dateivorschau, optionaler
+Duplikaterkennung und Medienjob-Validierung. Ein Queue-/Cancel-Dienst kann
+Slideshow, Audioextraktion und spätere Batchaufgaben bedienen.
+
+15.05 Nutzerfreundliche Folgefunktionen mit kleinem Zusatzaufwand
+Zuletzt verwendet, Favoriten, Schnellvorlagen, sichere Undo-Vorschau,
+Projektdiagnose als TXT/ZIP, modulübergreifende Verknüpfungen, geführte
+Projektstart-Assistenten. Erst nach Grundfunktion in echter Nutzungsreise prüfen.
+
+15.06 Bewusst keine falsche Mehrfachverwendung
+Ein gemeinsames Eingabefeld ist kein Grund, alle Daten fachlich gleichzusetzen.
+Songversionen, sensible Kontometadaten und Medienreferenzen brauchen eigene
+Grenzen. Reuse bedeutet gleiche Infrastruktur, nicht identisches Verhalten.
+
+16. ENTWICKLUNGSROLLEN, FREIGABEN UND KONFLIKTSTOPP
+
+16.01 Rollenverteilung - auch bei Arbeit durch nur einen Assistenten
+PLANER: Scope, Nutzen, Risiken, Patchroute. ERSTELLER: ein autorisierter Writer.
+PRÜFER: unabhängige Evidenz, ohne stillen Produktcode-Patch.
+FREIGABEINSTANZ: kontrolliert Gate, Version und Risikoausnahme.
+Rollen sind Verantwortungsgrenzen, nicht zwingend teure Mehrfachagenten.
+
+16.02 Plan-Freeze
+Ab G0 bleibt die aktive Route mit Ziel, Risiken und Invarianten fest.
+Neue Ideen gehen append-only in NEXT_QUEUE. Änderungen an Frozen-Bündeln nur
+mit Änderungsantrag, Vorbedingungen, Folgen, Rückweg und eigener Planversion.
+
+16.03 Single Writer und SHA-Schutz
+Eine autorisierte Schreibberechtigung je Scope; jeder produktive Patch
+erwartet den exakten HEAD. Ein zweiter Writer oder abweichender Ausgangsstand
+verursacht BLOCKED, nie automatisches Überschreiben.
+
+16.04 Reproduzierbare Übergabe zwischen Arbeitssitzungen
+RECOVERY CAPSULE: Projekt, Source-SHA, aktiver Plan, letzter Gate, nächste
+zulässige Patch-ID, erlaubte/verbotene Dateien, offene Findings, verfügbare
+Sicherung, Prüfprofile und Sperrgründe. Keine Abhängigkeit von Chatgedächtnis.
+
+17. QUALITÄTS- UND RISIKOMODELL
+
+17.01 Qualitätsdimensionen
+Funktionalität, Datenintegrität, Sicherheit, Barrierefreiheit, Benutzbarkeit,
+Wiederherstellbarkeit, Wartbarkeit, Build-Reproduzierbarkeit, Performance,
+Sparsamkeit und quellbezogene Nachvollziehbarkeit.
+
+17.02 Schweregrade
+R0 / kritisch: Datenverlust, unautorisierter Zugriff, nicht begrenzte
+Codeausführung. Sofort STOP und isolierte Analyse.
+R1 / hoch: defekter Import/Restore, fehlerhafte Versions-/Rechteprüfung.
+R2 / mittel: Kernworkflow beschädigt, sichtbare starke UI-Behinderung.
+R3 / gering: kosmetisch oder nicht blockierender Komfortfehler.
+
+17.03 Positiv- und Negativnachweis
+Zu jedem kritischen Schutz gehört nicht nur der normale Erfolg, sondern der
+gezielt provozierte Fehlweg: falscher Hash, fehlendes Recht, volles Medium,
+schadhafte Eingabe, Abbruch, doppelte Anfrage, Zeitlimit und Restart.
+
+17.04 Drei Wirkungsebenen
+L1 lokale Prüfung je Mini-Diff. L2 Bündelgate nach zusammengehörenden
+Arbeiten. L3 kompletter Release-/Sicherheits-/Nutzer-Gate.
+Diese Trennung senkt Kosten, ohne Tests willkürlich auszulassen.
+
+18. VERBINDLICHE FORM EINES EINZELSCHRITTS
+
+18.01 Jede P-ID enthält
+Ziel, Nutzen, Basis-SHA, Abhängigkeiten, Scope, erwartete Dateien,
+Patchklasse, Risikograd, genaue Aktionen, Vorprüfung, Nachprüfung,
+Abnahmekriterium, Rückfallweg und Evidenz-ID.
+
+18.02 Schreibweise der nachfolgenden Route
+Pnnn | PATCHKLASSE | RISIKO | KURZTITEL
+  AKTION: konkrete kleinste Tätigkeit.
+  NACHWEIS: eine beobachtbare Abnahme und wichtigste gezielte Prüfung.
+M = Micro; S = Standard; K = Kontrolliert; PLAN = nur Planung.
+Eine P-ID darf mehrere Unterpatches benötigen. Diese werden vor Bearbeitung
+als .01/.02 usw. festgeschrieben, ohne das Gate heimlich zu ändern.
+
+19. NUMMERIERTE DETAILROUTE - 100 SCHRITTE, 12 GATES
+
+19.00 BÜNDEL 0 - ANALYSE UND PLAN-FREEZE (P001-P008 -> G0)
+
+P001 | PLAN | R1 | Quellenstand fixieren
+  AKTION: Aktuellen Main-SHA, Module, Einstiegspunkte und Referenzdokumente sichern.
+  NACHWEIS: Quellenliste mit Prüfsummen; Bestandsrepos unberührt.
+P002 | PLAN | R1 | Funktionale Bestandsmatrix
+  AKTION: Jedes Desktopmodul als bewahren, anpassen, später oder ausschließen markieren.
+  NACHWEIS: Kein vorhandener Bereich bleibt namenlos; offene Belege markiert.
+P003 | PLAN | R1 | Datenformat- und Schutzinventar
+  AKTION: JSON, Textdateien, Versionen, externe Medien und Dateigrenzen katalogisieren.
+  NACHWEIS: Quell-/Zielmapping, Verlust- und Kollisionsrisiken.
+P004 | PLAN | R1 | Andere Repositories fokussiert vergleichen
+  AKTION: Reuse-Kandidaten samt Commit, Lizenz, Tests und Aufwand einordnen.
+  NACHWEIS: Wiederverwendungsmatrix ohne ungesichtete Komplettübernahme.
+P005 | PLAN | R1 | Historische Fehlerbibliothek einfrieren
+  AKTION: CI-Ausfälle, Regressionen, UX-Audits und Fault-Lab-Szenarien deduplizieren.
+  NACHWEIS: Jede bestätigte Familie besitzt Präventionsregel und Testidee.
+P006 | PLAN | R1 | Nutzungs-/Hostingentscheidung
+  AKTION: Lokal/Remote, Nutzerzahl, Datenschutz und Backup-Ort festlegen.
+  NACHWEIS: Architekturzweig und reale Sicherheitsanforderungen dokumentiert.
+P007 | PLAN | R1 | MVP, Modulfolge und Nicht-Ziele
+  AKTION: Drei Kernreisen definieren und Modulparität priorisieren.
+  NACHWEIS: MVP-DoD, spätere Arbeiten in Next Queue, keine Doppelpflichten.
+P008 | PLAN | R1 | Route und Repositorynamen freigeben
+  AKTION: WBS, Budgets, Gates, Scope und Alternativen als Planversion versiegeln.
+  NACHWEIS: G0 mit ausdrücklicher Planfreigabe; noch kein Produktpatch.
+
+19.01 BÜNDEL 1 - REPO-BOOTSTRAP UND ENTWICKLUNGSKONTROLLE (P009-P016 -> G1)
+
+P009 | K | R1 | Vorhandenes Git-Repository kontrolliert einrichten
+  AKTION: Nach G0 TOOL_ZENTRALE auf festem Baseline-SHA mit Kernstruktur,
+  sicheren Ignore-Regeln und minimalen Prüfwerkzeugen initialisieren.
+  NACHWEIS: Referenzrepos unverändert; persönlicher Datenpfad ignoriert.
+P010 | S | R2 | Reproduzierbare Toolchain
+  AKTION: Python-/Webversion, Lockdaten und dokumentierten Nullstart definieren.
+  NACHWEIS: Gleiches Ergebnis in sauberer Testumgebung ohne Geheimnisse.
+P011 | S | R1 | Produkt-/API-/DB-/Plugin-Versionsquelle
+  AKTION: Ein führendes Register mit Schema- und Kompatibilitätsprüfung etablieren.
+  NACHWEIS: Version aus Quelle deterministisch im Test auslesbar.
+P012 | S | R2 | Minimale Qualitätspipeline
+  AKTION: Syntax, Lint, Manifestschema, Mini-Smoke und Commitbindung einrichten.
+  NACHWEIS: Grün/Rot mit echter Evidenz und definiertem Timeout.
+P013 | S | R1 | Ereignis-ID und Fehlerredaktion
+  AKTION: JSONL-Logger, Größenlimit und deutsche Kurzdiagnose erstellen.
+  NACHWEIS: Token-/Pfadmaskierungs-Negativtest besteht.
+P014 | S | R1 | Erste Regressionfamilien registrieren
+  AKTION: Historische Negativfälle als strukturierte Regeln und Testzuordnung laden.
+  NACHWEIS: Gleicher Fehler wird erkannt, aber nicht ungeprüft repariert.
+P015 | K | R1 | Patch-Budget- und SHA-Guard
+  AKTION: Diff-Zeichen/Zeilen/Dateien prüfen, Basis-SHA und erlaubten Scope binden.
+  NACHWEIS: Überschreitung, zweiter Writer und falscher SHA werden verweigert.
+P016 | S | R2 | Impact-Index und Recovery Capsule
+  AKTION: Abhängigkeits-/Testindex generieren, nächste Aktion rekonstruierbar halten.
+  NACHWEIS: G1: Index auf leerem Repository reproduzierbar und ohne Schattenliste.
+
+19.02 BÜNDEL 2 - SERVER, API UND DATENBANK (P017-P025 -> G2)
+
+P017 | S | R1 | Geschützter API-Start
+  AKTION: Lokalen Server mit Health/Version und definiertem Shutdown starten.
+  NACHWEIS: Loopback, Header/Origin-Grenze und saubere Abbruchreaktion.
+P018 | S | R1 | API-Fehler- und Validierungskontrakt
+  AKTION: Einheitliche Fehlercodes, Payloadlimits und Request-Validierung.
+  NACHWEIS: Ungültige Daten erzeugen sichere reproduzierbare Antwort.
+P019 | K | R1 | SQLite-Verbindung und Transaktionsschicht
+  AKTION: WAL, Fremdschlüssel, Busy-Limit und Writergrenzen kapseln.
+  NACHWEIS: konkurrierender Zugriff und Abbruch erzeugen keinen Teilzustand.
+P020 | S | R1 | Schema-Migrationsledger
+  AKTION: Versionsnummer, Name, Checksumme und einmalige Anwendung speichern.
+  NACHWEIS: Wiederholung idempotent; veränderte Migration verweigert.
+P021 | S | R2 | Daten-Repository-Port
+  AKTION: Laden/Speichern/Listen ohne direkte SQL-Kenntnis der Domain.
+  NACHWEIS: Fachtest läuft mit isoliertem In-Memory-Adapter.
+P022 | S | R1 | Projekt-/Dokumentgrundmodell
+  AKTION: IDs, Zeitstempel, Besitzer, Titel, Status und Versionsbezug definieren.
+  NACHWEIS: Fremdschlüssel, Kollision und fehlerhafte Datensätze getestet.
+P023 | S | R2 | Datei-/Medienreferenzmodell
+  AKTION: Sicheres Assetregister mit Mime, Größe, Hash und Bezug.
+  NACHWEIS: keine beliebigen Hostpfade, falscher Dateityp verweigert.
+P024 | S | R1 | API-Contract-Testpaket
+  AKTION: Positiv-/Negativfälle für Health, Fehlerform und Datenvalidierung.
+  NACHWEIS: Verträge stabil, Fehlerreaktion für Anfänger lesbar.
+P025 | K | R1 | G2-Datenkern-Nachweis
+  AKTION: Schema-Roundtrip, Crashpunkt und Start-/Stop-Weg prüfen.
+  NACHWEIS: G2: reproduzierbarer, geschützter Server- und Datenbankkern.
+
+19.03 BÜNDEL 3 - LEGACY-MIGRATION UND DATENSICHERUNG (P026-P033 -> G3)
+
+P026 | S | R1 | Legacy-Snapshot und Importbericht
+  AKTION: Quellbestände nur lesen, zählen, hashen und Formate erkennen.
+  NACHWEIS: keine Quellmutation, nachvollziehbare Liste aller Erkennungsfehler.
+P027 | S | R1 | JSON- und Textformatparser
+  AKTION: Größe, Schema, Unicode, Pfad und Sonderzeichen sicher validieren.
+  NACHWEIS: beschädigte/zu große Quellen werden einzeln gemeldet und isoliert.
+P028 | K | R1 | Import-Dry-Run mit Konfliktstrategie
+  AKTION: IDs, Referenzen, Dopplungen und Versionskollisionen vorab anzeigen.
+  NACHWEIS: erwartete Zieländerung als Preview, ohne produktiven Schreibakt.
+P029 | K | R1 | Transaktionaler Import in neue Datenbasis
+  AKTION: Nur freigegebene und bereits geprüfte Vorschau anwenden.
+  NACHWEIS: Datensatz-/Hash-/Versionsvergleich, Crash vollständig rücknehmbar.
+P030 | S | R1 | SQLite-Backup samt Manifest
+  AKTION: Online-Backup-API, DB-Schema, Checksumme und Versionsmetadaten verwenden.
+  NACHWEIS: WAL-Quelle geprüft, beschädigtes Paket nicht als fertig markiert.
+P031 | S | R1 | Anhänge und Ausnahmen im Backup
+  AKTION: Medien- und Notizreferenzen aufzählen, Ausschlüsse explizit nennen.
+  NACHWEIS: Nutzer weiß, welche Daten tatsächlich enthalten sind.
+P032 | K | R1 | Isolierter Restore mit Journal/Undo
+  AKTION: Prüfen, staging, erneute Prüfung, Rückfallsnapshot und kontrollierter Swap.
+  NACHWEIS: Abbruch/Stromausfall/Doppelaufruf gefährdet Original nicht.
+P033 | K | R1 | G3 vollständiger Migrations-Roundtrip
+  AKTION: Synthetische Altbestände inkl. .git-freiem Restore und Medienreferenz testen.
+  NACHWEIS: G3: Quell-/Zielzählung, Integrität und Rollback belegt.
+
+19.04 BÜNDEL 4 - WEB-OBERFLÄCHE UND HILFE (P034-P043 -> G4)
+
+P034 | S | R2 | Semantische HTML-Grundhülle
+  AKTION: Skip-Link, Header, Main, Status und Hilfe als sinnvolle Bereiche.
+  NACHWEIS: mit Tastatur erreichbar, auch bevor Module geladen sind.
+P035 | S | R2 | CSS-Farb-/Abstands-/Typografie-Tokens
+  AKTION: gemeinsame Skalen ohne verstreute Pixelsonderfälle.
+  NACHWEIS: Kontrast, Fokus und Schriftzoom ohne Layoutbruch.
+P036 | S | R2 | Responsive Grid und Debug-Raster
+  AKTION: intrinsisches 12/6/1-Raster mit optionaler Geometrieanzeige.
+  NACHWEIS: kein kritischer Überlauf in vereinbarter Viewport-Matrix.
+P037 | S | R2 | Navigation und Seitenzustände
+  AKTION: klare Arbeitsbereiche, Zurückweg, aktive Position und leere Zustände.
+  NACHWEIS: nächster sinnvoller Schritt sichtbar, kein toter Menüeintrag.
+P038 | S | R2 | Gemeinsame Formularprimitive
+  AKTION: Label, Hilfe, Fehlerhinweis, Button, Eingabe und sichere Bestätigung.
+  NACHWEIS: Fokus-/Tastatur-/Fehlerzustände mit Component-Tests.
+P039 | S | R1 | Speichern-Verwerfen-Abbrechen-Vertrag
+  AKTION: eindeutiger Zustand bei Navigation, Wechsel und Fenster-/Tab-Aktion.
+  NACHWEIS: ungesicherte Änderungen nicht still verloren.
+P040 | S | R2 | Textkatalog und fehlende Schlüssel
+  AKTION: UI-Texte, Fehlermeldungen und Beschriftungen nach de.json auslagern.
+  NACHWEIS: kein versteckter harter Fallback ohne Diagnosenachweis.
+P041 | S | R2 | Hilfestufen und F1-Kontext
+  AKTION: Kurz-, Schritt- und Fehlerhilfe mit Modul-/Versionsbezug.
+  NACHWEIS: Hilfe erklärt aktuelle Aktion und sichere Rückkehr.
+P042 | S | R2 | Erste Browser-End-to-End-Reisen
+  AKTION: Start, Navigation, leere Inhalte, Formular, Speichern/Abbruch testen.
+  NACHWEIS: echte Chromium-Prüfevidenz, nicht allein HTML-Syntax.
+P043 | K | R1 | G4 Layout-/Accessibility-Grundabnahme
+  AKTION: Tastatur, 200%-Zoom, Kontrast, Label, Layout und Screenreader-Stichprobe.
+  NACHWEIS: G4 mit echten Befunden; nicht geprüfte Aspekte ausdrücklich offen.
+
+19.05 BÜNDEL 5 - KREATIVES SCHREIB-MVP (P044-P056 -> G5)
+
+P044 | S | R2 | Profil-Stammdaten
+  AKTION: Genre-/Stimmungs-/Stilprofile mit Validierung und API-Abfrage migrieren.
+  NACHWEIS: alter Profilbestand roundtrip-fähig, keine doppelten IDs.
+P045 | S | R2 | Genre-Zufall und Favoriten
+  AKTION: Presetwahl, kontrollierter Zufall, Ausgabe und Favoritenvertrag.
+  NACHWEIS: deterministischer Test mit fixiertem Zufallsstartwert.
+P046 | S | R2 | Charakterfibel und Referenzen
+  AKTION: Figuren speichern, suchen und referenzieren, ohne Quellobjekte zu kopieren.
+  NACHWEIS: Verweise bleiben bei Text-/Songwechsel gültig.
+P047 | S | R1 | Song-Dokumentenmodell
+  AKTION: Titel, Inhalt, Metadaten, Version und Exportstatus als Domain-Vertrag.
+  NACHWEIS: ungültige Metadaten, Kollisionsfälle und Quellparität getestet.
+P048 | S | R2 | Songbibliothek und Filter
+  AKTION: Liste, Suche, Vorschau, Sortierung und sichere Auswahl verbinden.
+  NACHWEIS: gespeicherter Song wird mit richtigen Metadaten wiedergefunden.
+P049 | K | R1 | Songeditor mit Speicherzustand
+  AKTION: Editoransicht an Domain/API und Speichern-Abbrechen-Vertrag binden.
+  NACHWEIS: ungesicherte Eingabe bei Navigation geschützt.
+P050 | S | R1 | Song-Fassungen und Wiederherstellung
+  AKTION: ältere Versionen ansehen und bestätigt zurückholen; aktuelle sichern.
+  NACHWEIS: mehrstufiger Versionen-Roundtrip ohne stilles Überschreiben.
+P051 | S | R2 | Allgemeiner Texteditor
+  AKTION: gleiche UI-Grundprimitive, eigener Textschemaadapter und Notizfeld.
+  NACHWEIS: Titel, Text, Abschlussnotiz und Version behalten Bedeutung.
+P052 | S | R2 | Textbuttons und Platzhalter
+  AKTION: Vorlagen, Varianten, Kategorien und sichere Platzhalterersetzung.
+  NACHWEIS: keine ungewollte Ausführung von HTML/Skripten aus Textbausteinen.
+P053 | S | R2 | Buch-/Kapitelwerkstatt
+  AKTION: Kapitelbaum, Vorlagen und Manuskriptexport auf Dokumentkern aufsetzen.
+  NACHWEIS: Kapitelreihenfolge und Inhaltsversionen stabil.
+P054 | S | R2 | Ideenarchiv und Kompositionskopien
+  AKTION: Fragmente, Tags und kopierenden Übernahmeweg implementieren.
+  NACHWEIS: Originalidee bleibt trotz Kompositionsbearbeitung erhalten.
+P055 | S | R2 | Wiki und Wissensverweise
+  AKTION: Sammlungen, Artikel, Querverweise, Suche und Historie integrieren.
+  NACHWEIS: ungültige Verweise, Importkonflikte und History-Restore geprüft.
+P056 | K | R1 | Gemeinsame Suche/Export und kreatives MVP-Gate
+  AKTION: gemeinsamen Such-/Tagdienst in zwei Scheiben einbinden, Datenreise prüfen.
+  NACHWEIS: G5: Song/Text erstellen, finden, ändern, versionieren, exportieren,
+  importieren und restaurieren; Browserreise auf echtem Testbestand erfolgreich.
+
+19.06 BÜNDEL 6 - ORGANISATION, PROJEKTE, ARBEITSHILFEN (P057-P064 -> G6)
+
+P057 | S | R2 | Aufgaben- und Statusmodell
+  AKTION: Titel, Zustand, Termin und Archivregeln über Domain/API verwalten.
+  NACHWEIS: erledigte Aufgaben bleiben nachvollziehbar; keine Auto-Doppelanlage.
+P058 | S | R2 | Aufgabenoberfläche und Schnellaktionen
+  AKTION: Anzeigen, Bearbeiten, Erledigen, Archivieren mit Rückgängig-Hinweis.
+  NACHWEIS: eindeutige Zustände, Tastatur, keine irrtümliche Archivierung.
+P059 | S | R2 | Kalenderdaten und Ansichten
+  AKTION: Tages-/Wochen-/Monats-/Jahresansicht mit einem Terminvertrag.
+  NACHWEIS: Datum, Zeitzone, Tageswechsel und bearbeitete Termine geprüft.
+P060 | S | R2 | Erinnerung mit klarer Browsergrenze
+  AKTION: aktiver Sitzungsalarm; Hintergrund-Push nur nach späterer Freigabe.
+  NACHWEIS: keine unberechtigte Zusage bei geschlossenem Browser.
+P061 | S | R2 | Link-Schnellstarter
+  AKTION: Linkgruppen, Validierung, bewusstes Öffnen neuer Tabs.
+  NACHWEIS: unerlaubtes URL-Schema und gefährliche Weiterleitung blockiert.
+P062 | S | R1 | Kontometadaten ohne Passworttresor
+  AKTION: Adresse/Notizfelder mit gesondertem sensiblen Datenmodell.
+  NACHWEIS: keine Klartext-Geheimnisse im Log, keine Tresorbehauptung.
+P063 | K | R1 | Entwicklungspool und Projektimporte
+  AKTION: Status, sichere Projektkopie, ZIP-Export und isolierte Vorschau.
+  NACHWEIS: Links, Kollisionen, Größenlimit und Abbruch ohne Überschreiben.
+P064 | S | R2 | G6 modulübergreifende Nutzerreise
+  AKTION: Projekt anlegen, Aufgabe/Termin setzen, Link hinzufügen, sichern.
+  NACHWEIS: G6 mit konsistentem Projektkontext und eindeutigem Speicherstatus.
+
+19.07 BÜNDEL 7 - MEDIEN, FFmpeg UND JOBS (P065-P071 -> G7)
+
+P065 | S | R1 | Medienzugriffsvertrag
+  AKTION: sichere Uploads, Byte-/Dateityplimits, IDs und Berechtigung implementieren.
+  NACHWEIS: unzulässige Pfade, MIME-Tricks und zu große Dateien scheitern.
+P066 | S | R2 | Audioplayer
+  AKTION: Browser-Audio mit Playlist, Position und verständlichem Fehlerzustand.
+  NACHWEIS: Play/Pause/Sprung und nicht vorhandene Quelle mit Browser-Test.
+P067 | S | R2 | Bildvorschau
+  AKTION: skalierte Bilder, Navigation und Schutz vor übergroßen Ressourcen.
+  NACHWEIS: beschädigtes Bild meldet Fehler ohne Ausfall des Dashboards.
+P068 | K | R1 | FFmpeg-Adapter
+  AKTION: zulässige Argumente, Prozess-Timeout, Ausgabe-/Pfadprüfung kapseln.
+  NACHWEIS: kein Shellstring, keine fremden Zielpfade, saubere Terminierung.
+P069 | S | R1 | Jobwarteschlange und Wiederaufnahme
+  AKTION: eindeutig idempotente Jobs, Cancel, Retrylimit und Fortschritt.
+  NACHWEIS: Crash/Neustart dupliziert keinen fertigen Auftrag.
+P070 | S | R1 | Medienbackup und Referenzprüfung
+  AKTION: eingebettete Medien vs. externe Verweise beim Export unterscheiden.
+  NACHWEIS: korrekte Ausschlussliste und nachvollziehbarer Rückimport.
+P071 | K | R1 | G7 Medien-Fault-Lab
+  AKTION: voller Datenträger, Read-only, FFmpeg-Crash/Hänger und Abbruch.
+  NACHWEIS: G7 mit begrenzter Laufzeit, sicheren Daten und Evidenz pro Fall.
+
+19.08 BÜNDEL 8 - MODULE UND GESCHÜTZTE PLUGINS (P072-P078 -> G8)
+
+P072 | S | R1 | Deklaratives Modulmanifest
+  AKTION: ID, SemVer, API-Version, Capabilities, Abhängigkeiten und Status.
+  NACHWEIS: unbekannte Felder/Duplikate/inkompatible Version verweigert.
+P073 | S | R2 | Modulregistrierung und Lifecycle
+  AKTION: Registrierung, Aktivierung, Abschaltung und Fehlerzustand.
+  NACHWEIS: Kernmodule bleiben gesperrt gegen unzulässiges Entfernen.
+P074 | S | R1 | Capability-Grenze
+  AKTION: zugelassene Aktionen und Datenbereiche explizit per Broker freigeben.
+  NACHWEIS: verbotene Rechte bleiben auch nach UI-Manipulation verweigert.
+P075 | S | R2 | Formularbaukasten als Datenmodell
+  AKTION: sichere Felder, Label, Typen und Vorschau ohne fremde Ausführung.
+  NACHWEIS: Schemafehler werden gemeldet, nicht interpretiert.
+P076 | S | R2 | Modulhilfe und geordneter Katalog
+  AKTION: Freigabezustand, Beschreibung und Versionskonflikt laienverständlich.
+  NACHWEIS: Anwender versteht, warum ein Modul deaktiviert bleibt.
+P077 | K | R1 | Entscheidung über Drittcode-Sandbox
+  AKTION: echte Isolation, Signatur/Herkunft, Datenrechte und Broker testen;
+  wenn nicht sicher möglich, bewusstes DEFERRED ohne Codeausführung festhalten.
+  NACHWEIS: kein heimliches Pluginladen über denselben Browser-Origin.
+P078 | S | R1 | G8 Manifest-/Capability-Negativgate
+  AKTION: unbekannte, beschädigte, veraltete und unerlaubte Erweiterungen testen.
+  NACHWEIS: G8 mit sicherer Deaktivierung und unveränderten Nutzerdaten.
+
+19.09 BÜNDEL 9 - REGRESSION, FEHLERLERNEN, SELF-REPAIR (P079-P085 -> G9)
+
+P079 | S | R2 | Fehlersignaturen und Klassifizierung
+  AKTION: Fehlerarten deduplizieren, Herkunft und erste/letzte Sichtung merken.
+  NACHWEIS: keine persönlichen Texte im Signaturindex.
+P080 | S | R2 | Impact-basierte Testauswahl
+  AKTION: Modul-/Änderungstyp-Verknüpfung zu minimalen Testsets speichern.
+  NACHWEIS: künstlich betroffener Verbraucher invalidiert passendes Testprofil.
+P081 | S | R1 | Ergebnis-Cache und Stale-Schutz
+  AKTION: Cache an SHA, Toolchain, Konfiguration und Testdefinition binden.
+  NACHWEIS: verändertes Testskript macht alten PASS unwirksam.
+P082 | K | R1 | Negative Fehlerfamilien
+  AKTION: Path, Restore, Login/Origin, Doppelwriter, UI, FFmpeg und Plugin auslösen.
+  NACHWEIS: Schutztests schlagen zuverlässig am kontrolliert verletzten Vertrag an.
+P083 | S | R1 | Reparaturhypothesen statt Autonomie
+  AKTION: rote Reproduktion, max. zwei Kandidaten, isolierte Prüfung und Stopregel.
+  NACHWEIS: kein selbstständiger produktiver Schreibzugriff.
+P084 | S | R2 | Evidenz-/Recovery-Capsule erzeugen
+  AKTION: Schritt, SHA, Eingriffsgrenze, Ergebnis und nächstes Gate zusammenfassen.
+  NACHWEIS: neuer Entwickler kann ohne alten Chat sicher fortsetzen.
+P085 | K | R1 | G9 Regressions-/Reparaturtest
+  AKTION: positive, negative und stale-Evidence-Fälle durchspielen.
+  NACHWEIS: G9 mit gemessener Testselektion und hartem Abbruch bei Unsicherheit.
+
+19.10 BÜNDEL 10 - HARTE PRODUKTQUALITÄT (P086-P093 -> G10)
+
+P086 | S | R1 | Threat-Model aktualisieren
+  AKTION: lokale und potenzielle Fernzugriffs-Angriffsflächen pro Datenfluss.
+  NACHWEIS: Verantwortlicher, Grenze und Test für jeden kritischen Angriffspfad.
+P087 | K | R1 | Security-Prüfprofil nach OWASP ASVS
+  AKTION: anwendbare Anforderungen mit fixer ASVS-Version referenzieren.
+  NACHWEIS: Sicherheitsbefunde als PASS/FAIL/NOT_TESTED, keine Pauschalclaim.
+P088 | S | R1 | API-/CSP-/Upload-Sicherheitsprobe
+  AKTION: XSS/CSRF/Origin/Path/Permission-Negativfälle automatisieren.
+  NACHWEIS: unautorisierte Zustandsänderung verhindert.
+P089 | S | R2 | Accessibility-Prüfmatrix
+  AKTION: Tastatur, Screenreader, Kontrast, 200%-Zoom und Fokuswege prüfen.
+  NACHWEIS: dokumentierter WCAG-Bezug und offene manuelle Befunde.
+P090 | S | R2 | Performance-Baseline
+  AKTION: lokale Ladezeit, Interaktionslatenz, API-p95, Medienjobstart messen.
+  NACHWEIS: reproduzierbare Messumgebung, Budgetänderung begründet.
+P091 | S | R1 | Datenintegritäts-/Skalierungsprobe
+  AKTION: große synthetische Text-/Tag-/Projektbestände und parallele Writes.
+  NACHWEIS: keine korrupten Daten; Ressourcengrenzen transparent.
+P092 | S | R2 | Konsistenz von Text, Hilfe, Release und Manifest
+  AKTION: Schlüsselreferenzen, Nutzertexte, API-Version und installierte Module prüfen.
+  NACHWEIS: keine Phantomfunktion und kein falscher Versionsstatus.
+P093 | K | R1 | G10 Vollregression des Releasekandidaten
+  AKTION: Daten, Browser, Security, A11y, Performance, Backup/Restore komplett.
+  NACHWEIS: G10 bindet alle PASS/FAIL/NOT_TESTED an exakt einen Release-SHA.
+
+19.11 BÜNDEL 11 - RELEASE, BETRIEB UND ECHTE ABNAHME (P094-P100 -> G11)
+
+P094 | S | R1 | Release-Manifest und Versionstitel
+  AKTION: Git-SHA, App/API/DB/Pluginversion, Buildhash und Kompatibilität.
+  NACHWEIS: unveränderliche Versionsidentität über UI, API und Paket.
+P095 | K | R1 | Paketbau und Herkunft
+  AKTION: nur freigegebene Runtime-Dateien, Lockdaten, SBOM/Abhängigkeiten und SHA.
+  NACHWEIS: keine Testdaten, Secrets, Logs oder alten Sicherungen im Release.
+P096 | S | R2 | Laienstart und Installationsassistent
+  AKTION: sichere Erstinstallation, Portstatus, Datenspeicherort, Fehlerhilfe.
+  NACHWEIS: frischer Kubuntu-/Browserstart anhand kurzer Anleitung nachvollziehbar.
+P097 | K | R1 | Updates und Rückkehr
+  AKTION: Vorabkompatibilität, Sicherung, neues Paket, Probe, Freigabe, Rollback.
+  NACHWEIS: Fehler während Upgrade hinterlässt wieder startbaren alten Stand.
+P098 | S | R2 | Pilot mit echten Anfängeraufgaben
+  AKTION: drei Nutzerreisen ohne Entwicklereingriff beobachten und protokollieren.
+  NACHWEIS: Stolperstellen und Handlungssicherheit belegt, keine erfundene Abnahme.
+P099 | S | R2 | Endnutzer- und Betriebshandbuch
+  AKTION: Start, Arbeitsabläufe, Fehlerhilfe, Backup, Wiederherstellung, Updates.
+  NACHWEIS: alle UI-Beschriftungen und tatsächlichen Schritte stimmen überein.
+P100 | K | R1 | G11 finale Freigabeentscheidung
+  AKTION: Gate-Bericht, Risiken, Restore-Test, Version, Nutzerevidenz und offene Punkte.
+  NACHWEIS: RELEASE_APPROVED oder BLOCKED mit genauem nächsten sicheren Schritt.
+
+20. GATE-MATRIX UND GENAUE FREIGABEZEUGNISSE
+
+20.01 G0 - PLAN
+Quelle/Scope, Datenschutz, Architekturalternative, MVP, Repositoryname,
+100-Schritte-Route, Risikobudgets und Quellenrecht klar; Freigabe dokumentiert.
+20.02 G1 - ENTWICKLUNGSKERN
+Reproduzierbarer Nullstart, Manifest-/Hashprüfung, Logging/Redaktion,
+Patchbudget- und Single-Writer-Negativtests grün.
+20.03 G2 - SERVER UND DATENBANK
+API-/Schema-/Transaktionsvertrag, Health, Datenintegrität, Crashverhalten.
+20.04 G3 - DATENRÜCKKEHR
+Import-Dry-Run, Migration, Backup, isolierter Restore, fehlendes .git,
+defekte Medienreferenz und Crashfall ohne Verlust.
+20.05 G4 - WEB-SHELL
+Navigation, zentrale Texte, F1-Hilfe, Browserreise, Keyboard, Zoom und Grid.
+20.06 G5 - KREATIVER NUTZEN
+Song/Text/Profile/Versionen/Vorlagen/Wiki mit Daten-Roundtrip und Search.
+20.07 G6 - ORGANISATION
+Aufgabe/Kalender/Projekt/Link durchgängige Nutzerreise mit sicherem Speichern.
+20.08 G7 - MEDIEN
+Audio/Bild/Videojobs, Dateigrenzen, Queue, Abbruch und Medienbackup.
+20.09 G8 - MODULE
+Version-/Capability-/Sandbox-Regeln, Deaktivierung ohne Datenverlust.
+20.10 G9 - ADAPTIVE QUALITÄT
+Regressionsfamilien und Testselektor, Cache-Invalidierung, Repair-Stoppregel.
+20.11 G10 - RELEASEKANDIDAT
+Vollständige Testevidenz und gezielte reale Accessibility-/Security-/UX-Reviews.
+20.12 G11 - PRODUKTABNAHME
+Laieninstallation, Pilot, Wiederherstellung, Versionsidentität und Freigabe.
+
+21. RISIKOREGISTER UND FALLBACKS
+
+21.01 Import enthält unbekannte Altformate
+Blockiere nur betroffene Datensätze, sichere Original, nenne genaue Quelle,
+Schemafehler und sichere Alternative. Kein stilles Weglassen.
+
+21.02 Backend fällt während einer Mutation aus
+Commit oder Rollback über Journal/DB-Transaktion; niemals halb gültige
+Dateireferenzen. Beim Neustart unvollständige Operationen prüfen.
+
+21.03 Browser kann wichtige Hostdatei nicht lesen
+Der Browser ist absichtlich begrenzt. Statt versteckter Berechtigung: expliziter
+Dateiauswahldialog, sichere API-Übertragung und klarer Datenumfang.
+
+21.04 Ein Plugin verlangt zu hohe Rechte
+Plugin sperren oder deklarative Preview anbieten. Keine automatische
+Berechtigungserweiterung durch installierte Bibliotheken.
+
+21.05 Patch überschreitet Limit
+Erst Unterpatches mit sicherem Zwischenstand planen. Bei echter Unteilbarkeit
+Ausnahme mit Risikonachweis; weder unlesbaren Code komprimieren noch Tests streichen.
+
+21.06 Testlauf ist langsam oder instabil
+Testdomäne isolieren, Ursachen messen, Dummy-Netz/Zeit fixieren.
+Nicht den fraglichen Test pauschal überspringen. Gate bei unbelegtem Ergebnis rot.
+
+21.07 Änderungen treffen einen unerwartet neueren Git-Stand
+Falscher SHA stoppt. Änderungen neu differenzieren und Plan-/Scopekonflikt
+entscheiden, statt fremde Änderungen zu überschreiben.
+
+22. ENTWICKLUNGSBERICHT PRO BÜNDEL - MINIMAL UND VOLLSTÄNDIG
+
+22.01 Kurzzusammenfassung
+Projekt/Version/HEAD, aktive Bundle-IDs, Ziel und erreichtes Ergebnis.
+22.02 Zahlen
+Erledigt, offen, blockiert; Patchanzahl, Summe +/- Zeichen, geänderte Dateien,
+gezielte vs. volle Prüfläufe, Defekte, Durchschnittsaufwand, offene Risiken.
+22.03 Ampel
+GRÜN = belegt; GELB = nur teilweise/noch nicht geprüft; ROT = verletzt/gestoppt.
+22.04 Nächste Aktion
+Exakt eine erlaubte P-ID mit Dateiscope und Tests; neue Wünsche bleiben Queue.
+22.05 Wiederanlauf
+Frozen-Plan-ID, Basis-SHA, letzte Gate-Evidence und sichere Recovery Capsule.
+
+23. OFFENE ENTSCHEIDUNGEN VOR G0 - NICHT ERRATEN
+
+23.01 Betriebsmodell
+EMPFOHLENER DEFAULT: lokaler Browser auf Kubuntu/Linux, nur Loopback.
+ALTERNATIVE: Onlinebetrieb mit Accounts und zusätzlicher Sicherheitsarchitektur.
+23.02 MVP-Grenze
+EMPFOHLENER DEFAULT: Schreib-/Kreativwerkzeuge zuerst; echte Grundbedienung
+und sichere Datenübernahme vor Medien-/Plugin-Komplexität.
+23.03 Repositoryname
+VERBINDLICH: provoware/TOOL_ZENTRALE, technischer Slug TOOL_ZENTRALE.
+Lokales Schema: PROVOWARE/TOOL_ZENTRALE/. Ein Repository enthält alle
+integrierten Fachmodule. Keine verschachtelten Unter-Repositories.
+Ein künftiges eigenständiges Fremdtool wird nur über versionierte Verträge
+integriert, nicht über einen fragilen relativen Pfad zum Nachbarprojekt.
+23.04 Datenhoheit
+Persönliche Altdaten nur nach ausdrücklich bestätigter Migrationsprobe nutzen.
+Automatische Cloud-Übertragung ist ausgeschlossen, solange nicht bestellt.
+
+24. FREIGABEEMPFEHLUNG UND KONKRETER NÄCHSTER SCHRITT
+
+24.01 Empfehlung
+ZUERST B001-B012/G-1 als reinen Architekturplan vervollständigen, die drei
+repräsentativen Nutzerabläufe simulieren und offene Verträge dokumentieren.
+DANACH P001-P008/G0 inhaltlich vollständig machen, Quellen/Parität abschließend
+einordnen, Betriebsmodell und MVP festlegen und die Route auf v3.1 einfrieren.
+ERST DANACH P009 als Bootstrap im vorhandenen Repo; zuvor keinen Produktivcode.
+Alle P-Schritte bleiben PLANNED. Geplante B-Schritte und simulierte Architektur
+sind weder implementierte Funktionen noch reale bestandene Integrationstests.
+
+24.02 Fünf wertvolle Folgeideen
+1. Wiederverwendbarer Dokumentkern für Song, Blog, Buch, Wiki und Promptvorlage.
+2. Globale Suche/Tags und Projekt-/Charakterverknüpfungen.
+3. Hilfe-Wiki mit automatischer Kontextzuordnung zu UI-/Fehler-IDs.
+4. Diagnosepaket mit datensparsamem Fehlerbericht und Recovery-Nachweis.
+5. Optionaler Hash-/Duplikathinweis bei Medienimport, ohne Löschautomatik.
+Die priorisierte Empfehlung ist Nummer 1, aber erst nach erfolgreichem G4.
+
+25. QUELLEN UND WEITERFÜHRENDE STANDARDS
+
+25.01 Primärreferenz
+https://github.com/provoware/TOOL_2026_Multi
+https://github.com/provoware/TOOL_2026_Multi/blob/main/docs/MODULPLAN_2026.md
+https://github.com/provoware/TOOL_2026_Multi/blob/main/docs/UX_KONZEPT_LAIENTAUGLICHKEIT.md
+https://github.com/provoware/TOOL_2026_Multi/blob/main/AGENTS.md
+
+25.02 Quellübergreifende Konzepte
+https://github.com/provoware/DATENBANKTOOL
+https://github.com/provoware/PROVOWARE
+https://github.com/provoware/PROVOWARE-LAIENTOOL
+https://github.com/provoware/DB_TOOL_2026
+https://github.com/provoware/PROVOWARE_MASTER_BOOK_2026
+https://github.com/provoware/PROVOWARE_VIDEO_AUTOMATION_2026
+https://github.com/provoware/DUPLIKATE-FINDER2026
+https://github.com/provoware/Schnellprompter-Tool-2026
+
+25.03 Externe Primärstandards - Fassung prüfen und bei G0 pinnen
+WCAG 2.2: https://www.w3.org/TR/WCAG22/
+OWASP ASVS 5.0.0: https://asvs.owasp.org/
+SQLite Online Backup: https://www.sqlite.org/backup.html
+Playwright-Prüfdokumentation: https://playwright.dev/docs/intro
+FastAPI-Dokumentation: https://fastapi.tiangolo.com/
+JSON Schema Draft 2020-12: https://json-schema.org/draft/2020-12
+OpenAPI-Standard: https://spec.openapis.org/oas/
+Git-Versionsgrenze bei Leerordnern: https://git-scm.com/docs/git-svn
+GitHub-Actions-Pfadfilter: https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow
+
+25.04 Letzter Vermerk
+Dies ist ein professioneller PLAN, kein Produktivsystem. Prognosen, spätere
+Dateipfade und Tests sind Sollwerte, keine behaupteten Ausführungsergebnisse.
+Qualitäts-Gates sind erst nach belegtem erfolgreichen Lauf bestanden.
+
+26. BLUEPRINT G-1 - 12 VORGELAGERTE ARCHITEKTURSCHRITTE
+
+26.01 Grundidee und operative Grenze
+BLUEPRINT = versionierte, maschinenlesbare Sollbeschreibung vor dem eigentlichen
+Produktcode. Der realistische Nutzen liegt in Architekturdisziplin, vollständigen
+Verträgen, vorbereiteten Tests und sparsamen späteren Patches. Ein modellierter
+Test ersetzt niemals einen tatsächlich ausgeführten Test. Der Repo-Slug
+TOOL_ZENTRALE ist beschlossen; offene Produktdetails bleiben Entwurf.
+Ausführungsgate G-1 ist eine ARCHITEKTURFREIGABE, keine Produktabnahme.
+
+26.02 BUNDLE B - exakte Route (B001 bis B012)
+
+B001 | PLAN | R1 | Stabile PROVOWARE-Identität und Repositorygrenze
+  AKTION: PROVOWARE als lokalen Container definieren, technischen Tool-Slug,
+  getrennte Display-Namen und klare Repo-Zuständigkeit zum Beschluss vorbereiten.
+  VOR: Unterschied zwischen Workspace, Repo und Produktname dokumentiert.
+  NACHWEIS: keine zwei widersprüchlichen Roots; der beschlossene Slug ist fix.
+  STOP: unklare gemeinsame Schreibrechte oder verschachtelte Git-Verantwortung.
+
+B002 | PLAN | R1 | Altbestand rückwärts in Nutzungsfälle zerlegen
+  AKTION: Bestehende Funktionen als Nutzerziel, Eingabe, Ausgabe, Zustand,
+  Fehlerszenario und Eigentümer katalogisieren; keinerlei Qt-Detail fixieren.
+  VOR: Referenz-SHA und belegte Funktionsmatrix aus P001-Vorarbeit abgleichen.
+  NACHWEIS: jedes MVP-Ziel hat einen nachvollziehbaren Architekturfall.
+  STOP: als bestätigt dargestellte unbesichtigte Legacy-Funktion.
+
+B003 | PLAN | R2 | Gemeinsame Bausteine und Wiederverwendungsgrenzen
+  AKTION: Dokument, Suche, Tags, Vorlagen, Hilfe, Logging, Versionen und Export
+  auf gemeinsame Schnittstellen reduzieren; fremde Repo-Ideen getrennt werten.
+  VOR: Herkunft, Lizenz, Abhängigkeit und Fehlerfamilien bekannt oder offen.
+  NACHWEIS: kein doppelt geplanter gleichartiger Fachkern ohne Begründung.
+  STOP: Kopie eines Qt-Widgets als vermeintlich webbasiertes Kernmodul.
+
+B004 | PLAN | R1 | Stabile Schichten und erlaubte Richtung
+  AKTION: UI, API, SERVICE, DOMAIN, STORAGE, CORE und PLUGIN entkoppeln.
+  VOR: pro Schicht Verantwortung und erlaubte Verbraucher festgehalten.
+  NACHWEIS: statischer Graph enthält keinen Zyklus und keine illegale Richtung.
+  STOP: Domain kennt API, UI kennt SQLite, Plugin umgeht Capability-Prüfung.
+
+B005 | PLAN | R2 | Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen
+  AKTION: Pfade, Besitzer, Katalogstufe CONFIRMED/RESERVED/OPTIONAL sowie
+  technische Stabilität S0/S1/S2 in genau einem Manifest registrieren.
+  VOR: jede Datei besitzt nur eine Verantwortlichkeit und einen relativen Pfad.
+  NACHWEIS: keine doppelten Pfade, keine ungeklärte Kern-Dateiverantwortung.
+  STOP: implizite Schreibpfade außerhalb des ausgewählten Tool-Roots.
+
+B006 | PLAN | R2 | Semantische Kurzcode-Legende
+  AKTION: eindeutige 2-8 Zeichen lange Codes für Architekturkomponenten,
+  dazu Langname, Pfad, Schicht, Verbraucher, Schnittstelle und Tests registrieren.
+  VOR: stabiler Namensraum, gesperrte Wiedervergabe und Normalisierung.
+  NACHWEIS: alle Codes eindeutig, aufgelöst und maximal acht Zeichen.
+  STOP: Code-Dialekt erzeugt versteckte Ausführungslogik oder doppelte Wahrheit.
+
+B007 | PLAN | R1 | Verträge, Datenformate und Rechte
+  AKTION: Datenmodell, Versionierungsgrenzen, HTTP-Verträge, zulässige
+  Capability-Liste, Datenbesitz und Fehlerantworten als Sollschema beschreiben.
+  VOR: Betriebsmodell lokal/online und Sicherheitsgrenze als offene Annahme.
+  NACHWEIS: positive und negative Grenzbedingungen je kritischer Schnittstelle.
+  STOP: erlaubte Plugin-Ausführung ungeprüften Dritt-Codes.
+
+B008 | PLAN | R2 | Drei durchgängige Funktionssimulationen formulieren
+  AKTION: SONG_SAVE, PROJECT_SEARCH und PLUGIN_LOAD mit Pfad, Datenfluss,
+  Schutzpunkten, erwarteten Antworten und negativen Fallvarianten beschreiben.
+  VOR: alle referenzierten IDs haben Definition und eindeutigen Eigentümer.
+  NACHWEIS: je Ablauf mindestens ein Testcode und vier Testfälle.
+  STOP: durch Platzhalter behaupteter echter Datenbank-/Browser-Nachweis.
+
+B009 | PLAN | R2 | Architektur-Prüfautomat spezifizieren
+  AKTION: Einleser, Schema-Validator, DAG-/Schichtencheck, Testzuordnung,
+  Dateistatus-Projektion, Risiko- und Diffbericht als Werkzeuge vorsehen.
+  VOR: Blueprint-Format klein und ohne eigene Programmiersprache halten.
+  NACHWEIS: beschriebener Prüfer hat deterministische Inputs und Resultate.
+  STOP: Prüfer verändert Quellcode automatisch oder vertraut nur auf Cache.
+
+B010 | PLAN | R2 | Virtuellen Dry-Run und Fault-Katalog beurteilen
+  AKTION: negative Szenarien, fehlende Abhängigkeiten, Rechteüberschreitung,
+  Versionsbruch, Namenskollision und ungültige Zielpfade gedanklich einspeisen.
+  VOR: Simulationsergebnisse ausdrücklich als modelliert kennzeichnen.
+  NACHWEIS: alle Lücken und Grenzen landen mit Risiko in der Next Queue.
+  STOP: grüner Architekturgraph wird als grüner Produkt-Integrationstest genutzt.
+
+B011 | PLAN | R1 | Minimalen echten Durchstich spezifizieren
+  AKTION: für die spätere autorisierte Umsetzung eine Vertikalkette
+  UI -> API -> DB -> Speichern -> Neuladen samt Fehler-/Rollbacktest planen.
+  VOR: Durchführung erfolgt NICHT in der reinen Planungsphase.
+  NACHWEIS: eindeutige Testdaten, Umgebung, erwartetes Resultat und Kosten.
+  STOP: vorgezogene Repo-Erstellung oder Nutzung persönlicher Echtdaten.
+
+B012 | PLAN | R1 | Architekturfreigabe G-1 und offene Entscheidungen
+  AKTION: Blueprint, semantische Codes, Dateikatalog, drei Simulationen und
+  Risiken final begutachten; Freeze-ID und Änderungsverfahren festlegen.
+  VOR: der Benutzer hat den verbindlichen Tool-Slug und MVP-Umfang geklärt.
+  NACHWEIS: Architekturprotokoll mit PASS/CONDITIONAL/BLOCKED und Begründung.
+  STOP: ungeklärte S0-Identität, illegale Schichten oder ungetestetes Hochrisiko.
+
+26.03 G-1 Freigabematrix - bewusst keine voreilige Vollständigkeitsbehauptung
+PASS nur, wenn Code-IDs gültig, Pfadkollisionen null, Laufzeitzyklen null,
+illegale Schichten null, mindestens drei vollständige Szenarien mit zugeordneten
+Testabsichten, negatives Plugin-Rechtedefizit geschlossen und offene echte
+Testlücken klar ausgewiesen sind. Die technische Vertikalprobe folgt erst nach
+einer gesonderten Implementierungsfreigabe. Derzeit: G-1 NICHT BESTANDEN.
+
+27. VIRTUELLER DATEIKATALOG UND STABILE PROJEKTIDENTITÄT
+
+27.01 Führender Katalog und Reichweite
+Operativer Repo-Blueprint: blueprint/architecture.yaml.
+Stand dieses Dokuments: 92 einmalige SOLL-Dateipfade, davon 49 CONFIRMED,
+39 RESERVED und 4 OPTIONAL. Es gibt 29 registrierte Komponentencodes.
+Diese Werte sind Entwurfszahlen, keine aus dem Altprojekt bestehenden Dateien.
+Produkt- und Testdateien sind vor einer späteren Umsetzung virtuell. Die
+separat freigegebenen Planungsartefakte können bereits auf dem PR-Branch
+liegen; ihr tatsächlicher Ist-Status kommt nur aus Git, nicht aus dem YAML.
+
+27.02 Lokaler Container und technische Identität
+PROVOWARE/                   - lokaler Workspace, selbst kein Git-Root.
+PROVOWARE/TOOL_ZENTRALE/     - einziger Git-Root der integrierten Webanwendung.
+Der Slug ist bereits vom Benutzer festgelegt; B001 dokumentiert die Entscheidung.
+_shared ist ein optionaler separat versionierter Paketspeicher, KEIN direkter
+Laufzeit-Zugriff auf benachbarte unbekannte Toolordner.
+
+27.03 Architektur-Cluster der 92 geplanten Dateipfade
+blueprint/    Sollquelle, Vertragsschemata, drei Szenario-Vorlagen.
+app/core/     Version, Rechte, Fehler, Logging, Konfiguration, Modul-Registry.
+app/shared/   Wirklich modulübergreifend gebrauchte Fachmodelle.
+app/features/songs/           Song-Backend, Editorassets, Tests, Modulmanifest.
+app/features/projects/        Suche/Projekte, Backend, UI, Tests, Hilfe.
+app/features/plugin_catalog/  Deklarative Pluginansicht, Regeln und Tests.
+app/features/tasks|media/     Nur optionale spätere Fachbereiche.
+app/api/      HTTP-Start, zentrale Vertragsvalidierung, Health.
+app/storage/  SQLite-Transaktion, Migrationsledger und Backup-Basis.
+web/         Semantische Shell, globales Raster, UI-Tokens, Zentralhilfe.
+governance/   Autoritative Route, Versionen, Regressionen und Entscheidungen.
+tests/        Unit-, API-, Integrations-, Sicherheits- und Browser-Nachweise.
+scripts/      Späterer Blueprint-Validator, Patchguard, Impact und Scaffold.
+docs/         Nutzer-/Betriebswissen und kurze Architektur-Entscheidungen.
+Vollständige 92 Pfade einschließlich Besitzer/Stabilität/Katalogstufe stehen
+ausschließlich im YAML-Sollkatalog. Dieses TXT ist die lesbare Erläuterung.
+
+27.04 Dateien nicht blind physisch vorerzeugen
+CONFIRMED = im Ablauf voraussichtlich früh benötigt, nicht bereits implementiert.
+RESERVED = plausible Position, deren genaue Trennung nochmals geprüft wird.
+OPTIONAL = erst beim entsprechenden Scope-Gate durch Nutzen freigeben.
+Stabilität S0 = technische Identität/Registerort; S1 = versionierter Vertrag;
+S2 = interne Umsetzung mit kontrollierter Veränderbarkeit.
+Physischer Scaffold nur auf genehmigte Patch-/Schritt-ID, niemals durch
+ungeprüfte Massenanlage. Das minimiert Dateimüll und zukünftige Umbauten.
+
+27.05 Platzhalter und Kommentare - eindeutige Regel
+In kommentierbaren echten Quellen darf später zum Beispiel stehen:
+  # @slot:SSNG @step:P049 @contract:SONG_SAVE
+In HTML ist stattdessen <!-- @slot:USNG --> zulässig; in CSS /* @slot:UGRD */.
+JSON unterstützt keine Kommentare: dort nur VALIDE Strukturdaten; die
+Slotzuordnung bleibt im Blueprint oder einer gesonderten generierten Metadatei.
+Ein Kommentar meldet niemals selbst einen Statuswechsel; die Registry gewinnt.
+Platzhalter sind im Produktionsstart deaktiviert und dürfen keinen PASS
+vortäuschen; fehlende kritische Implementierungen führen zu FAIL/CLOSED.
+
+27.06 Ein einziges System statt zehn gepflegter Dateilisten
+blueprint/architecture.yaml = geplante Struktur/Codes und deren Beziehungen.
+governance/route.json = freigegebene Entwicklungsschritte und Status.
+governance/versions.json = freigegebene Versionen und Kompatibilität.
+Git = tatsächlich geänderte echte Dateien und Commit-Identität.
+Tests/Evidence = bestätigter, zur Version passender Qualitätsstand.
+Code-/Datei-/Impact-Ansichten sind daraus generierte, löschbare Projektionen.
+Eine Änderung an der Sollstruktur darf NIE automatisch Nutzdaten verändern.
+
+27.07 Bedarfsgesteuerter Scaffold
+Aktion 1: Blueprint-Werte und Zielpfad vorvalidieren.
+Aktion 2: voraussichtliche +/- Zeichen, Zeilen, Dateien und SHA anzeigen.
+Aktion 3: kritische Verzeichnisstruktur aus einem genehmigten Schritt anlegen.
+Aktion 4: korrekte Stub-Syntax je Sprache erzeugen, sonst nur virtuelle Reservierung.
+Aktion 5: schnelle Syntax-/Vertragsprüfung und Registry-Abgleich durchführen.
+Bei Änderung der Schicht oder des Vertrags eine neue Entscheidungs-ID fordern.
+
+28. KURZCODE-LEGENDE ALS SEMANTISCHE, STABILE ADRESSIERUNG
+
+28.01 Codegrammatik und Missbrauchsschutz
+2-8 Zeichen [A-Z0-9], erstes Zeichen ein Buchstabe, global eindeutig.
+K = KERN; D = DOMAIN; B = DB/ADAPTER; S = SERVICE; A = API;
+U = UI; P = PLUGIN-LADER; T = TEST. Diese Vorsilben sind Konventionen,
+keine eingebaute Magie. Nie einen gelöschten Code für anderen Zweck neu
+vergeben. Codes referenzieren echte Verträge statt Quelltext-Abkürzungen.
+
+28.02 Lesbare Legende - 29 Referenzen
+KCFG = Kernkonfiguration.          KLOG = Ereignisprotokoll.
+KERR = Fehlerantworten.            KSEC = Rechteprüfung.
+KVER = Versionsverwaltung.         KCAP = Capability-Grenzen.
+KREG = Modulregistrierung.         KTXT = Externe Texte.
+DDOC = Dokumentmodell.             DSNG = Songmodell.
+DPRJ = Projektmodell.              DPLG = Pluginmanifest.
+BSQL = SQLite-Transaktion.         BSON = Song-Datenadapter.
+BPRJ = Projekt-Datenadapter.       SSNG = Song-Speicherdienst.
+SPSR = Projektsuchdienst.          PLOD = Deklarativer Plugin-Lader.
+SPLG = Plugin-Katalogdienst.       ASNG = Song-HTTP-API.
+APSR = Projektsuch-HTTP-API.       APLG = Plugin-HTTP-API.
+UGRD = UI-Raster.                  USNG = Song-Editor.
+UPSR = Projekt-Suche-Oberfläche.   UPLG = Plugin-Katalog-Oberfläche.
+TSAV = Song-Speichertest.          TPSR = Projektsuchtest.
+TPLG = Plugin-Rechte- und Vertragstest.
+
+28.03 Ein Code ist niemals ein Versprechen fertiger Funktion
+Jede ID besitzt im YAML exakt eine Definition mit Name, Layer, relativem Pfad,
+requires-Verweisen sowie gegebenenfalls verifies-Testbeziehung. Ein durch die
+Legende aufgelöster Code ist nur BESCHRIEBEN. Ein Code bedeutet nicht, dass
+Datei, API, Schema, Browserfunktion oder Regression bereits existieren.
+
+28.04 Voraussagbare Impact- und Patchlogik
+Ändert sich DSNG, sind SSNG, BSON, ASNG, USNG sowie TSAV Kandidaten einer
+gezielten Prüfung. Ändert sich UGRD, betrifft dies potenziell USNG, UPSR,
+UPLG sowie Raster-/Accessibility-Prüfungen. Bei Capability-Änderung KCAP
+müssen KREG, PLOD, SPLG, APLG, UPLG und TPLG neu beurteilt werden.
+Der Transitivabschluss wird deterministisch aus requires berechnet, nicht
+manuell aus einem zweiten handgeschriebenen Register geschätzt.
+
+29. GEDANKLICHE VORABSIMULATION: DREI BEISPIELFUNKTIONEN
+
+29.01 Gemeinsame Simulationsmethode
+NUR MODELL: aus Codebook und Szenarioliste abhängigen Pfad ableiten; dann
+positive Eingabe, vier realistische Fehlerfälle, erwartete Reaktion und
+zuständigen künftigen Test festlegen. Kein Backend, keine Browseroberfläche,
+keine SQLite-Transaktion und kein Plugin wurden in dieser Phase gestartet.
+
+29.02 SIM-01 SONG_SAVE - Speichern ohne stummen Textverlust
+ZIEL: Entwurf eingeben, gültig speichern, danach aus persistentem Zustand laden.
+WEG: USNG -> ASNG -> SSNG -> BSON -> BSQL. SEITENVERTRAG: DSNG -> DDOC.
+SCHUTZ: KSEC für erlaubte Mutation; KERR für sichere Fehlerantwort; KLOG
+für redigierten Diagnosehinweis. Zuordnung: TSAV und Browser-E2E später.
+POS SNG_POS: gültiger Song -> gespeichert und wieder ladbar.
+NEG SNG_INV: ungültige Eingabe -> kein Datenbankeffekt.
+NEG SNG_REV: veraltete Revision -> Konflikt statt fremde Änderungen überschreiben.
+NEG SNG_FAIL: Schreibabbruch -> atomarer Rollback, kein halber Zustand.
+STATISCHE BEWERTUNG: Schichtenfolge plausibel; Rollen und Fehlerpunkte benannt.
+OFFEN: Optimistic Locking/Revision muss in API- und DB-Vertrag konkret werden.
+REALER NACHWEIS SPÄTER: SQLite-Abbruchtest, Reload, Browser-Draft und Backups.
+
+29.03 SIM-02 PROJECT_SEARCH - schnelle, sichere zentrale Suche
+ZIEL: projektbezogene Treffer, stabile Sortierung und verständlichen Leerzustand.
+WEG: UPSR -> APSR -> SPSR -> BPRJ -> BSQL. SEITENVERTRAG: DPRJ -> DDOC.
+SCHUTZ: KSEC für Sichtbarkeit; KERR bei unzulässiger Anfrage; KLOG datensparsam.
+POS PRJ_POS: gültige berechtigte Anfrage -> gefilterte, sortierte Treffer.
+NEG PRJ_NOM: keine Treffer -> barrierefreier Leerzustand, kein Fehler-Schein.
+NEG PRJ_XSS: HTML-/Script-Suchtext -> als reiner Text ausgegeben, kein HTML.
+NEG PRJ_OVR: zu lange/teure Abfrage -> begrenzte, klare Ablehnung.
+STATISCHE BEWERTUNG: Suchpfad benötigt keinen zweiten Suchserver im MVP.
+OFFEN: Rechte-/Projektgrenzen, Indexierung, Abbruch und echte Laufzeitmessung.
+REALER NACHWEIS SPÄTER: Query-Pläne auf Testdaten, XSS-/ACL-Negativtest.
+
+29.04 SIM-03 PLUGIN_LOAD - Laden nur erlaubter Deklarationen
+ZIEL: Ein freigegebenes Manifest anzeigen/registrieren, KEIN fremdes Skript starten.
+WEG: UPLG -> APLG -> SPLG -> PLOD -> KREG -> KCAP. SEITENVERTRAG: DPLG.
+SCHUTZ: KSEC + KCAP + deklarativer PLOD-Loader; Fehler KERR, Audit KLOG.
+POS PLG_POS: vertrauenswürdiges kompatibles Manifest -> Metadaten sichtbar.
+NEG PLG_CAP: nicht bewilligte Capability -> verweigern und protokollieren.
+NEG PLG_ABI: inkompatible Major-Version -> kein Laden.
+NEG PLG_EXEC: ausführbarer Drittcode -> in V1 grundsätzlich abgewiesen.
+STATISCHE BEWERTUNG: Default-Deny und Vertragstrennung sind modelliert.
+OFFEN: Manifestparser, Pfadschutz, Version-Pinning und echte Rechte-Durchsetzung.
+REALER NACHWEIS SPÄTER: absichtlich bösartige Manifeste/Kompatibilitätsfälle.
+
+29.05 Analyse der drei Modellprüfungen
+SONG_SAVE: Qualitätskritisch ist DB-Atomarität/Versionskonflikt.
+PROJECT_SEARCH: Qualitätskritisch sind ACL, XSS und Begrenzung teurer Abfragen.
+PLUGIN_LOAD: Sicherheitskritisch ist das fail-closed Capability-/Code-Verbot.
+Alle drei Szenarien haben IDs, Testzuordnung und vier geplante Fallvarianten.
+Die ERSTE statische Prüfung fand drei falsche Linearitätseinträge:
+BF-001 Songmodell, BF-002 Projektmodell und BF-003 Pluginmanifest. Diese
+Fachverträge wurden als separate Seitenabhängigkeiten gekennzeichnet;
+alle drei Ausführungsketten entsprechen jetzt echten requires-Kanten.
+Das waren Modellierungsfehler, keine entdeckten Defekte eines existierenden Tools.
+Ein tatsächlich bestandener Funktionsnachweis folgt hieraus noch NICHT.
+Simulationsstatus: MODELL VOLLSTÄNDIG ENTWORFEN; REALITÄT UNGETESTET.
+
+30. BLUEPRINT-PRÜFER: TRIGGER, INVARIANTEN UND TESTGRENZEN
+
+30.01 Deterministische Erstprüfung, ohne aufwendigen Generator
+1. YAML einlesen; Pflichtstruktur und erlaubte Werte gegen Schema validieren.
+2. Pfade kanonisieren; keine absoluten Pfade, Traversal oder Zielkollision.
+3. Einzigartige IDs und Codesyntax prüfen; niemals doppelt registrieren.
+4. requires-/verifies-Verweise auf vollständige Existenz prüfen.
+5. Schichten-Richtungen aus erlaubter Layer-Matrix vergleichen.
+6. Zyklusfreiheit der Laufzeitabhängigkeiten durch Graph-Suche prüfen.
+7. Pflichtszenarien und Negativfälle auf Fall-/Testbeziehungen prüfen.
+8. S0-/S1-Sperren und Migrationseffekt für beantragte Änderungen ableiten.
+9. Relevante historische Fehlerfamilien zu Komponenten zuordnen.
+10) Änderungen und erwartete Patchklasse schätzen; Preview ausgeben.
+
+30.02 Ereignisprinzip statt permanenter teurer Vollscans
+Blueprint-Änderung -> Schema, Codegraph, betroffene Szenarien.
+Anwendungscode-Änderung -> SHA, Imports, direkter Test, betroffene Verbraucher.
+API-/DB-Vertragsänderung -> sofort Vertrag-/Migrations-/Negativprüfung.
+CSS-Rasteränderung -> fokussierte Breakpoint-/Tastatur-/Zoomprüfungen.
+Gate G-1 -> vollständiger virtueller Architekturabgleich.
+Gate G0-G11 -> die jeweils vorgeschriebenen echten Nachweise.
+Bei ungültigem Cache, fehlender Datei oder unsicherer Diffbasis: breiter prüfen.
+
+30.03 Trennung der Ergebnisarten
+BLUEPRINT PASS = Manifest, Pfad-, Code- und Graphregeln nachgewiesen.
+MODEL PASS = Szenario in der Sollstruktur vollständig und widerspruchsfrei.
+TEST PASS = tatsächlicher Test an konkretem Commit nachweisbar ausgeführt.
+GATE PASS = alle geforderten Evidence-Arten auf demselben freigegebenen Stand.
+Verwechslung dieser vier Begriffe ist ein Freigabefehler und führt zu BLOCKED.
+
+30.04 Künftiger Real-Durchstich
+Das erste echte vertikale Teststück nutzt einen neuen harmlosen Beispielsong:
+Formular -> API-Validierung -> SQLite-Transaktion -> Neuladen -> Fehler-/Undo.
+Es beweist Kernintegration, nicht 100 Funktionen. Danach erst Module auffüllen.
+Tests von Hand in Kubuntu sind erst nach verfügbaren echten Builds sinnvoll.
+
+30.05 Kosten- und Zeichenlimits gelten weiter
+Generatoren erzeugen nicht unbegrenzt 92 Dateien in einem versteckten Patch.
+Pro Scaffold-Transaktion denselben M/S/K-Haushalt samt Dateizahl messen.
+Autoformat, registrierte reine Generatorausgabe und Schema-Migration nur mit
+begründeter Ausnahme. Katalogänderungen sind klein und tracebar.
+Lokale Zwischenschritte stets reversibel; ein einziger zulässiger Writer.
+
+31. ABSCHLUSS DER KONZEPTITERATION UND BESCHLUSSGRENZE
+
+31.01 Was in Version 3.0 zusätzlich geplant wurde
+A. G-1 mit B001-B012 ohne Umnummerierung von P001-P100 vorgeschaltet.
+B. Fester PROVOWARE-Workspace und ein stabil zu bestätigender Toolname.
+C. 92 Sollpfade in 49 CONFIRMED, 39 RESERVED und 4 OPTIONAL gegliedert.
+D. 29 eindeutige semantische Codes samt nachvollziehbaren requires-Verweisen.
+E. Drei positive Nutzungsfälle und zwölf negative/positive Fallbeschreibungen.
+F. Architektur-S0/S1/S2, deduplizierte Soll-/Ist-/Evidence-Register.
+G. Klar getrennte Modellprüfung, echter Test und formelle Gate-Freigabe.
+
+31.02 Risiken und Entscheidungen offen
+R-01: Der endgültige Repo-/Ordner-Slug bleibt zu bestätigen.
+R-02: Der abschließende Funktions-/Dateikatalog braucht die G0-Quellenparität.
+R-03: Die Layer-Graph-Prüfung besagt nichts über echte Sicherheitsdurchsetzung.
+R-04: SQLite-Transaktionen, Browserbedienung und Performance sind ungetestet.
+R-05: Gemeinsame Pakete zwischen Repos nur versioniert statt direkter Pfadzugriff.
+R-06: Der erste Real-Durchstich benötigt eine SEPARATE Implementierungsfreigabe.
+
+31.03 Änderungskontrolle der Blueprint-Datei
+Jede Änderung benennt Code-ID, Dateiscope, Regelbruch/Kompromiss, Planrevision,
+betroffene P-/B-Schritte sowie nötige Test-/Versionseffekte. Nicht jeden kleinen
+Refactor zur Architekturänderung hochstufen; S2 darf nachweislich flexibel sein.
+Falsche Basisversion, Codekollision, ungültiger Pfad oder doppelte Registry:
+Änderung verweigern, vorliegende Sollversion bewahren, Finding protokollieren.
+
+31.04 Aktueller Status
+REPO-PLANARTEFAKT V3.1 ERSTELLT; B001-B012 AUSFORMULIERT, NICHT ABGENOMMEN.
+CODEKATALOG UND 3 SZENARIEN VIRTUELL MODELLIERT, NICHT IMPLEMENTIERT.
+G-1 NOCH NICHT ABGENOMMEN; P001-P100 UNBERÜHRT. Keine fremden Repos geändert.
+NÄCHSTER SICHERER SCHRITT: UX-/Barrierefreiheits-Gate und Scope prüfen, dann
+den Blueprint als verbindliche Architekturrevision genehmigen.
+
+32. REPOSITORY-SPEZIFISCHE UX- UND BARRIEREFREIHEITSERGÄNZUNG
+
+32.01 Standard und Wertung
+Für TOOL_ZENTRALE gilt WCAG 2.2 Level AA als geplanter Mindest-Abnahmemaßstab,
+nicht als bereits erreichte Eigenschaft. Die detaillierte barrierefreie
+Bedienlogik mit Sehschwäche-/Anfänger-Szenarien steht in docs/UX_BARRIEREFREIHEIT.md.
+Automatische Werkzeuge decken nicht alle Bedienprobleme ab; praktische
+Tastatur-, Zoom-, Screenreader- und Nutzerprüfungen sind verbindlich.
+
+32.02 Layout-/Rastervertrag
+Das UI-Raster dient der responsiven Anordnung und gezielten Layoutprüfung;
+es ist kein Vorwand für künstlich verschachtelte ARIA-Grid-Rollen.
+Semantisches HTML zuerst. 320-CSS-px-Reflow, 200-%-Textvergrößerung, sichtbare
+Fokusposition, veränderliche Kontraste, große Zielbereiche und Fehlerhinweise
+mit Korrekturaktion sind Gate-Bedingungen. 400-%-Browserzoom wird praktisch
+geprüft. Kein farbabhängiger Status und keine ausschließlich ikonische
+Primäraktion.
+
+32.03 Laienführung als Abnahmekriterium
+Nutzerreise A: Anwendung starten -> Song erstellen -> speichern -> neu laden.
+Nutzerreise B: Projekt finden -> Filter erkennen -> Ergebnis öffnen.
+Nutzerreise C: Erweiterung ansehen -> Rechte verstehen -> sicher ablehnen.
+Jede Reise muss ohne Entwicklerbegriffe und ohne Hilfe von außen möglich sein.
+Kontext-Hilfe, verständliches Feedback, Fokus-/Statuskontinuität und sichere
+Rückgängig-Aktion gehören zu den Akzeptanzkriterien ab G4/G5.
+
+33. REPO-BETRIEBS-, PATCH- UND FREIGABEPOLITIK
+
+33.01 Maßgebliche Begleitdokumente
+docs/ENTWICKLUNGSSTANDARD.md definiert Scope, Patchcharaktergrenzen,
+modulare Schichten, Testauswahl, Versions-/Daten- und Freigabedisziplin.
+docs/QUELLEN.md dokumentiert Primärquellen mit geprüften Abrufständen.
+docs/PROMPT_OPTIMIERT.txt enthält den überarbeiteten Arbeitsauftrag.
+governance/route.json führt die 112 Schritte als maschinenlesbares Register.
+
+33.02 Sicheres Einspielen der Planartefakte
+Nur ein isolierter branch docs/blueprint-v3-1; ursprünglichen main-Stand
+6e9f8638f7a7b6334a23d51988d0e3ef9d82a37c als erwartete Basis wahren.
+Keine Produktivdateien erstellen, keine früheren Repositories verändern,
+keine persönliche Datenbank oder vertrauliche Inhalte hochladen.
+Validierung vor PR: eindeutige P-/B-IDs, gültiges YAML/JSON, keine Pfadkollision,
+korrekte Szenarioketten, unveränderte Hauptbranch-Basis. Pull Request als
+Entwurfsprüfung; nicht selbstständig als fertige Produktfreigabe mergen.
+
+33.03 Umsetzungsdisziplin nach späterer Autorisierung
+Pro Patch vorab genaue Scope-Liste, SHA und Zeichen-/Dateibudget. Eine
+Abweichung braucht Ausnahme-ID und Rückkehrplan. Kein massenhaftes Erzeugen
+virtueller Dateien. Tests zuerst risikoorientiert lokal/selektiv, am Gate voll.
+Zusammenführung in main erst mit dokumentierten Sicherheits-/UX-Nachweisen.
+
+ENDE DES MASTERPLANS 3.1
+
+

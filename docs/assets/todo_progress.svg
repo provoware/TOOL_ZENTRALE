@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="930" height="605" viewBox="0 0 930 605" role="img" aria-label="TOOL ZENTRALE Fortschritt 0 von 112">
+<title>TOOL_ZENTRALE – Entwicklungsfortschritt V3.2</title>
+<desc>0 von 112 Hauptschritten bestätigt. Nur VERIFIED mit Nachweis zählt.</desc>
+<rect width="930" height="605" rx="18" fill="#102137"/>
+<text x="27" y="43" font-size="25" font-weight="700" font-family="Arial,sans-serif" fill="#F6FAFC">ENTWICKLUNGSFORTSCHRITT</text>
+<text x="27" y="74" font-size="16" font-family="Arial,sans-serif" fill="#D0E3E9">Gesamt 0/112 (0 %) – nur belegte Abschlüsse</text>
+<text x="28" y="126" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G-1 · Architektur und Blueprint</text>
+<rect x="330" y="112" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="126" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/12</text>
+<text x="28" y="161" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G0 · Bestandsaufnahme</text>
+<rect x="330" y="147" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="161" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/8</text>
+<text x="28" y="196" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G1 · Entwicklungsautomatik</text>
+<rect x="330" y="182" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="196" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/8</text>
+<text x="28" y="231" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G2 · Backend und Datenkern</text>
+<rect x="330" y="217" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="231" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/9</text>
+<text x="28" y="266" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G3 · Import und Datensicherung</text>
+<rect x="330" y="252" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="266" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/8</text>
+<text x="28" y="301" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G4 · Bedienoberfläche</text>
+<rect x="330" y="287" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="301" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/10</text>
+<text x="28" y="336" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G5 · Songs und Kreativfunktionen</text>
+<rect x="330" y="322" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="336" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/13</text>
+<text x="28" y="371" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G6 · Projekte</text>
+<rect x="330" y="357" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="371" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/8</text>
+<text x="28" y="406" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G7 · Medien und Dateien</text>
+<rect x="330" y="392" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="406" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/7</text>
+<text x="28" y="441" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G8 · Werkzeuge und Plugins</text>
+<rect x="330" y="427" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="441" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/7</text>
+<text x="28" y="476" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G9 · Fehlerlernen und Regression</text>
+<rect x="330" y="462" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="476" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/7</text>
+<text x="28" y="511" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G10 · Qualitätsabschluss</text>
+<rect x="330" y="497" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="511" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/8</text>
+<text x="28" y="546" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">G11 · Release und Betrieb</text>
+<rect x="330" y="532" width="520" height="17" rx="8" fill="#34465B"/>
+<text x="866" y="546" fill="#EBF6FA" font-size="13" font-family="Arial,sans-serif">0/7</text>
+<text x="28" y="580" font-size="13" fill="#AFCCD5" font-family="Arial,sans-serif">Statusquelle: governance/route.json · G−1 offen</text>
+</svg>
