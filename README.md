@@ -29,7 +29,8 @@ Einmalig: `python3 -m pip install -r requirements-dev.txt`.
 [Erklärung und Lernregeln](docs/REGRESSION_INFO.md) ·
 [Abschluss- und Gatevertrag](docs/ABSCHLUSS_UND_GATES.md) ·
 [Früher Laienablauf](docs/FRUEHER_LAIENABLAUF.md) ·
-[Geprüfte Grundlagen und offene Punkte](docs/GRUNDLAGE_B001_B003.md).
+[Geprüfte Grundlagen und offene Punkte](docs/GRUNDLAGE_B001_B003.md) ·
+[Schichten, Dateiabgleich und Codelegende](docs/ARCHITEKTUR_B004_B006.md).
 
 ## Einstieg für Laien
 

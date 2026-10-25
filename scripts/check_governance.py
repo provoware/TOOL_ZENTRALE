@@ -72,7 +72,9 @@ def main():
     route = render_todo.load_route(ROOT / 'governance/route.json')
     render_todo.resolve(route)
     data = yaml.load((ROOT / 'blueprint/architecture.yaml').read_text(), Loader=UniqueLoader)
-    validate_blueprint(data, route)
+    from blueprint_view import DOC as VIEW, build, render as render_view
+    if not VIEW.exists() or VIEW.read_text() != render_view(build(data, route)):
+        raise ValueError('Architekturansicht fehlt oder ist veraltet')
     from foundation import DOC, load, render
     if not DOC.exists() or DOC.read_text() != render(load()):
         raise ValueError('Grundlagenansicht fehlt oder ist veraltet')

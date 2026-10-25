@@ -26,14 +26,14 @@
     },
     {
       "path": "README.md",
-      "sha256": "06a282c5a10ef66a3ed24201060b29351bed006e369b9087694b6dc083bb2437",
-      "bytes": 3321,
+      "sha256": "0fc2f8a455f8b388701a40d9f118a7324efcebf859279644bde02b37b90226d1",
+      "bytes": 3398,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "blueprint/architecture.yaml",
-      "sha256": "364356f820b4c263d30a7c189308894980c785496b44a82b5330ad6cf19ed555",
-      "bytes": 39796,
+      "sha256": "17bdb8eb5c42fa694f7ec651719a48ef60443213f56cf8cbcdc74bd6ffb8726c",
+      "bytes": 46074,
       "state": "PRESENT_HASHED"
     },
     {
@@ -44,8 +44,14 @@
     },
     {
       "path": "docs/ARBEITSWEISE.md",
-      "sha256": "26e1a950de0bf4a6d68b3c4548530b349214201973d83bac644a4c69cbd79cf3",
-      "bytes": 7677,
+      "sha256": "5659207be92ef6827157f9d97f5484fece7d2f6bf2071dc56ee4b299988f5425",
+      "bytes": 9392,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/ARCHITEKTUR_B004_B006.md",
+      "sha256": "5632c457abb84f88c52568f0d03255e89f2d204301f8691d995f79509fbf2842",
+      "bytes": 25969,
       "state": "PRESENT_HASHED"
     },
     {
@@ -68,8 +74,8 @@
     },
     {
       "path": "docs/GRUNDLAGE_B001_B003.md",
-      "sha256": "1642cd65c59fe867dd51562e1bfe0f4f3d8e7549e4a1eab83d0d8072e1bd87bd",
-      "bytes": 8160,
+      "sha256": "0e02e1abf564e9f7511e1b6b10202657a9ddfcc5587bcb5cb3bd4031cdb53437",
+      "bytes": 7975,
       "state": "PRESENT_HASHED"
     },
     {
@@ -104,14 +110,14 @@
     },
     {
       "path": "docs/REGRESSION_INFO.md",
-      "sha256": "50168d94299ee3bf79a930af67052cc504f0be4657de73aa616f7858c277db3f",
-      "bytes": 3917,
+      "sha256": "8eb2cecbc88d1da817a9c27753c76a2b395f8547608ca52205f37496cabff6b6",
+      "bytes": 4065,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "docs/TODO_V3_2.md",
-      "sha256": "3d4b5145195dfc8a0d0c9d1fcbab6ea2927ba319eef0289811f7729a3ff461fc",
-      "bytes": 12146,
+      "sha256": "0b5a8c8c2ebd30ff41f790e25e50182bb080b1acc2b5a5a67183bd33f5114974",
+      "bytes": 12145,
       "state": "PRESENT_HASHED"
     },
     {
@@ -122,62 +128,86 @@
     },
     {
       "path": "docs/assets/todo_progress.svg",
-      "sha256": "c59fddbcdc1a08335ee9f801b492738df0b4ccff0653101fea61db2548737330",
+      "sha256": "f1472726eeb740b64cb01a83b478dc1938501c78348894f8cd4b027cdec86bf2",
       "bytes": 4481,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/B001.json",
-      "sha256": "7948519377c0ef9ddda44f2edf376ee8cc2638eaad5b26e8a069059d80df476a",
-      "bytes": 23854,
+      "sha256": "e53822f04c5361c852a58d5b373283a3d3fd6b42ae1787fe52a91fda6c39aa9f",
+      "bytes": 27542,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/B002.json",
-      "sha256": "7cd316ddca3df15f8251ef9fc30ff8654d86ce461322d51a605ca9c0c02a48d4",
-      "bytes": 23854,
+      "sha256": "b1538921a257b5c3056148d20e5e43b071da49c1ee61b5477ffb0466f0b1942d",
+      "bytes": 27542,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/B003.json",
-      "sha256": "012d9cfcb5680017fd5338dd2d7b10934179563156f684796ef009de3d15eab1",
-      "bytes": 23854,
+      "sha256": "795dad2941bc49fb3f7ef0cc80b0ae049387d8a5304b1a11ec840c74176160ce",
+      "bytes": 27542,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/evidence/B004.json",
+      "sha256": "73191a4d4a784afdfadfb7f9f6b967778854f23d995bb69e1de5a888727e9f25",
+      "bytes": 27767,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/evidence/B005.01.json",
+      "sha256": "cdd82aeb2da84c5bb6ce9d5d186437e5587a25e643ac280bb6e41082b0051cc0",
+      "bytes": 27770,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/evidence/B005.json",
+      "sha256": "7a74dd2654be53986da780d399fa1cff03c84c773d8bec70429b1b8d422254d6",
+      "bytes": 27767,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/evidence/B006.json",
+      "sha256": "8c86504d2979edcbd6b04c2ea44d80f6c26e2a5279720c40fa605ca3b515fbfd",
+      "bytes": 27767,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/Q001.json",
-      "sha256": "ea7e75bcc70ec15fa025eede1a97c0fcac7f2f93c2990d335468136e53e82011",
-      "bytes": 24754,
+      "sha256": "b64314ebe24de2f562a6b431ebedbcb8147ce709a37c52a43aeb9e3f5f158bfc",
+      "bytes": 28442,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/Q002.json",
-      "sha256": "a2710c18d2d523d4664553c326db7ff0c482b4fb8b90de1e7bbd56a65fa77cf3",
-      "bytes": 24754,
+      "sha256": "b48065572ccc17737e66927339a4c0c60a4a3813733a9db8d893630f43bbb13c",
+      "bytes": 28442,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/Q003.json",
-      "sha256": "5b7a76ff2657a377396a68daa4043d0e0f127accd0b7f92f66cf85a03fb11878",
-      "bytes": 24960,
+      "sha256": "5fe44298d0067300dab0372e878d56e40255df519f574f668aa3b2253e61ce52",
+      "bytes": 28648,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/foundation.json",
-      "sha256": "6a6b8e7b73937d2ffe7a79e93aff625b5f425151ab3a955e795c7741a0a75aa1",
-      "bytes": 19286,
+      "sha256": "87da4daf55ea223809e079894cb1e6fec21715da32f3b9684f88ec7233c917e5",
+      "bytes": 19059,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/regressions.yaml",
-      "sha256": "00ef3bec3362adeab23c74dbb36d5259dafc1f576793a935447e494fa2e02775",
-      "bytes": 11140,
+      "sha256": "f0bd13863c55018940edb25d7bf2f94c31e494f252b9aa92646d746415c4f4b5",
+      "bytes": 12770,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/route.json",
-      "sha256": "eb367506709264ac21aa8ad280533c7a1999163c954fb5190e0238d2c16c9da1",
-      "bytes": 36094,
+      "sha256": "29504fbd7ba91c94a782144ffd7607734a33f5895f43b8f7ee9472714aee5801",
+      "bytes": 38131,
       "state": "PRESENT_HASHED"
     },
     {
@@ -188,14 +218,26 @@
     },
     {
       "path": "scripts/assist.py",
-      "sha256": "1d5b0b877d35e8e16c8c1ecba6905e5b547f95b4c4935ca71769c948133410d6",
-      "bytes": 6732,
+      "sha256": "31de4db37dc15ae02d64c01f12ed0bc55a5e92d532ddf0389902975bdd3524db",
+      "bytes": 6753,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/blueprint_contract.py",
+      "sha256": "f88064aa1bcd9c86673ce8223bd9f0b54f8c4b3240e9a6924508f5dc934c0cf6",
+      "bytes": 6868,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/blueprint_view.py",
+      "sha256": "4f077f87f6851cd8cb73055abc796ae7e8e7c9e6c14fa65e13d25c45c4e4fe79",
+      "bytes": 6346,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "scripts/check_governance.py",
-      "sha256": "29da4777fe998ce4874e021ae9eb7185c5079b473576f2d6a9335660d739fb2b",
-      "bytes": 3214,
+      "sha256": "cfae855914b719cf3f783ea57d58fa6c110ddea1c2d43ed893d8fc5fa589661b",
+      "bytes": 3403,
       "state": "PRESENT_HASHED"
     },
     {
@@ -212,8 +254,8 @@
     },
     {
       "path": "scripts/foundation.py",
-      "sha256": "2af508e5e0d7ca722e141cf1da8bcd241850cd0bca51d312416cf2c7f123dac8",
-      "bytes": 8667,
+      "sha256": "ac2523d0478be7c10e408541e8422bf9a554326d8b91aa65b66d4a908257a2a4",
+      "bytes": 8637,
       "state": "PRESENT_HASHED"
     },
     {
@@ -265,9 +307,27 @@
       "state": "PRESENT_HASHED"
     },
     {
+      "path": "scripts/test_blueprint_contract.py",
+      "sha256": "9f591be39d7ba0bc6065e94435dcef9bfb2dbeed45f16e942826f36d665615ef",
+      "bytes": 4164,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/test_blueprint_view.py",
+      "sha256": "263a60380fe198ca2774ff2a4d0f81ebc19d9b984bbf1f1037dc45a1c89880bc",
+      "bytes": 1996,
+      "state": "PRESENT_HASHED"
+    },
+    {
       "path": "scripts/test_close_transaction.py",
       "sha256": "6cbe136c457da3c6ce441d41639c360b1d35361f4cc6e9b2d5308e573cfae701",
       "bytes": 2276,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/test_code_history.py",
+      "sha256": "d712a12147f977a9c50c03d189fa160001325e88e1428ade3e3629d3d4a077e1",
+      "bytes": 1528,
       "state": "PRESENT_HASHED"
     },
     {

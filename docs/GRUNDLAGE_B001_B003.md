@@ -60,7 +60,6 @@ Alle Web-Ziele sind PLANNED; CODE_READ/DOCUMENTATION_READ belegt ausschließlich
 
 ## Offene Punkte in sinnvoller Reihenfolge
 
-- **OPEN01 – B004–B006 noch ungeprüft**: Schichten bestätigen, Dateikatalog abgleichen, Codes prüfen; vorhandene Validatoren wiederverwenden (G-1).
 - **OPEN02 – Keine explizite Quelllizenz**: Herkunft und Erlaubnis vor jeder tatsächlichen Quellcodeübernahme klären; bis dahin nur Anforderungen und Muster (G0/vor Codeübernahme).
 - **OPEN03 – Import implementiert; Freigabestatus offen**: Code und Tests enthalten Rückimport; die Dokumentation nennt ihn noch nicht freigegeben. Separate Freigabe prüfen und Webvorschau vor Anwendung planen (P026/P028).
 - **OPEN04 – Noch keine lauffähige Webanwendung**: Erst Architekturabnahme und technische Basis, dann frühen Speichern/Wiederöffnen-Weg real prüfen (G-1/G0/G5).
@@ -68,9 +67,9 @@ Alle Web-Ziele sind PLANNED; CODE_READ/DOCUMENTATION_READ belegt ausschließlich
 
 ## Weiterentwicklung
 
-B004 prüft Schichten und erlaubte Abhängigkeiten, B005 gleicht reale und virtuelle
-Dateien ab, B006 prüft stabile Codes. Bestehende Modelle werden gezielt bestätigt,
-nicht neu erfunden. G-1/G0 bleiben bis zur dokumentierten Entscheidung offen.
+Schichten, Dateikatalog und Codes ergänzen diese Grundlage in B004–B006.
+Aktueller Abschlussstatus und konkrete Folgeschritte stehen in docs/STATUS_KURZ.md.
+G-1/G0 bleiben bis zur dokumentierten Entscheidung offen.
 Die Planung ist kein Nachweis einer funktionierenden Webanwendung.
 
 Erzeugt aus `governance/foundation.json`; mit assist.py --refresh aktualisieren.

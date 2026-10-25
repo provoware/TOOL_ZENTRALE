@@ -255,6 +255,33 @@
       ],
       "prevention": "Quellen commitgebunden, Ziele vollständig, Herkunft offen statt erfunden; keine ungeklärte Direktkopie",
       "next_action": "Quellenzuordnung und Vertragsmatrix korrigieren; danach vollständig prüfen"
+    },
+    {
+      "id": "RG013",
+      "title": "Unvollständiger Architektur-/Codevertrag",
+      "kind": "CONFIRMED",
+      "severity": "HIGH",
+      "symptom": "KTXT ohne geplanten Test; unerlaubte Katalog-, Schicht- oder Codeänderung bleibt unentdeckt",
+      "cause": "Prüfung deckte Metadaten, historische Reservierung und transitive Testzuordnung nicht vollständig ab",
+      "source": "B004–B006-Modellprüfung und unabhängiger lesender Review",
+      "trigger_paths": [
+        "blueprint/architecture.yaml",
+        "scripts/blueprint_contract.py",
+        "scripts/blueprint_view.py",
+        "scripts/test_blueprint_contract.py",
+        "scripts/test_blueprint_view.py",
+        "scripts/test_code_history.py"
+      ],
+      "test_ids": [
+        "test_blueprint_contract.TestBlueprintContract.test_policy_cannot_authorize_domain_ui_dependency",
+        "test_blueprint_contract.TestBlueprintContract.test_unknown_test_target_or_missing_test_trace_rejected",
+        "test_blueprint_contract.TestBlueprintContract.test_file_directory_or_parent_file_collision_rejected",
+        "test_blueprint_contract.TestBlueprintContract.test_conflicting_foreign_code_flags_rejected",
+        "test_blueprint_view.TestBlueprintView.test_new_actual_file_requires_catalog_entry",
+        "test_code_history.TestCodeHistory.test_merged_transient_code_remains_reserved"
+      ],
+      "prevention": "Strikte Schicht-/Pfad-/Besitzerregeln, vollständige erreichbare Git-Historie und abgeleitete geplante Testspuren prüfen",
+      "next_action": "Modellfehler gezielt korrigieren; erzeugte Ansicht und Abschlussbelege erneuern"
     }
   ]
 }

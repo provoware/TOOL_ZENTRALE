@@ -125,3 +125,30 @@ Restbefund. B001–B003 sind Planungsnachweise, keine Produkt- oder Gatefreigabe
 Rückweg: eigene Hunks gegen PR-Stand 6ed0ef7 prüfen, B-Abschlussreferenzen und
 Akten zusammen zurücknehmen, vorherige Q-Akten/Planrevision gemeinsam
 wiederherstellen und Ansichten regenerieren; keine Referenzquellen verändern.
+
+## Architekturprüfung B004–B006
+
+`blueprint/architecture.yaml` bleibt die einzige Sollquelle. Verantwortungen
+je Schicht, Schnittstellen je Code und eine fehlende Textkatalog-Testzuordnung
+sind ergänzt. TTXT und tests/unit/test_text_catalog.py sind nur geplant.
+`blueprint_view.py` gleicht vorhandene Dateien über den bestehenden Snapshot
+ab und erzeugt die ausklappbare Architekturansicht. `--json` liefert dieselbe
+abgeleitete Maschinenansicht ohne zusätzliche handgepflegte Datei.
+
+Unregistrierte Istdateien, Pfadaliasse, Datei-/Verzeichniskollisionen, unbekannte
+Besitzer, unzulässige Schichten- oder Fachmodulzugriffe, freie Fremdcodeflags
+und fehlende Testspuren blockieren den Pflichtcheck. Codes bleiben anhand
+der vollständigen erreichbaren Git-Historie reserviert, einschließlich kurz
+vergebener IDs in gemergten Nebenbranches. Prüfbeziehungen sind keine
+Laufzeitimporte; geplante Tests sind keine tatsächlichen Testresultate.
+
+EX-BLUEPRINT-01 kennzeichnet die reine Metadaten-/Registerrevision und
+generierte Ansichten/Akten. Codepakete: Modell/Tests 11016 Zeichen, 209 +/-
+Zeilen, zwei Dateien; Ansicht/Tests 8312/149/zwei; Historientest 1528/38/eine.
+64 Tests und lesender Review belegen diese Iteration; die echten Produkt-
+Import-, Browser- und Capability-Laufzeittests folgen mit dem Produktcode.
+Vorherige Q- und B001–B003-Akten werden für die geänderte Planrevision in
+einem vollständigen Lauf erneut ausgestellt; kein Status wird blind übernommen.
+Rückweg: eigene Änderungen gegen PR-Stand 39153e5 prüfen; Planänderungen und
+zugehörige Akten zusammen zurücknehmen, Ansichten regenerieren. Keine
+Produktstubs, Nutzdatenmigration oder Gatefreigabe werden daraus abgeleitet.

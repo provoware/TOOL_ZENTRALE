@@ -360,6 +360,15 @@
       "title": "Stabile Schichten und erlaubte Richtung",
       "depends_on": [
         "B003"
+      ],
+      "completion_inputs": [
+        "blueprint/architecture.yaml",
+        "scripts/blueprint_contract.py",
+        "scripts/blueprint_view.py",
+        "scripts/test_blueprint_contract.py",
+        "scripts/test_blueprint_view.py",
+        "scripts/check_governance.py",
+        "scripts/test_code_history.py"
       ]
     },
     "B005": {
@@ -373,8 +382,26 @@
       "substeps": [
         {
           "id": "B005.01",
-          "title": "Dateikatalog mit echter Bestandsliste und Medien-/Importmodulen abgleichen"
+          "title": "Dateikatalog mit echter Bestandsliste und Medien-/Importmodulen abgleichen",
+          "completion_inputs": [
+            "blueprint/architecture.yaml",
+            "scripts/blueprint_contract.py",
+            "scripts/blueprint_view.py",
+            "scripts/test_blueprint_contract.py",
+            "scripts/test_blueprint_view.py",
+            "scripts/check_governance.py",
+            "scripts/test_code_history.py"
+          ]
         }
+      ],
+      "completion_inputs": [
+        "blueprint/architecture.yaml",
+        "scripts/blueprint_contract.py",
+        "scripts/blueprint_view.py",
+        "scripts/test_blueprint_contract.py",
+        "scripts/test_blueprint_view.py",
+        "scripts/check_governance.py",
+        "scripts/test_code_history.py"
       ]
     },
     "B006": {
@@ -384,6 +411,15 @@
       "title": "Semantische Kurzcode-Legende",
       "depends_on": [
         "B005"
+      ],
+      "completion_inputs": [
+        "blueprint/architecture.yaml",
+        "scripts/blueprint_contract.py",
+        "scripts/blueprint_view.py",
+        "scripts/test_blueprint_contract.py",
+        "scripts/test_blueprint_view.py",
+        "scripts/check_governance.py",
+        "scripts/test_code_history.py"
       ]
     },
     "B007": {
@@ -1548,32 +1584,52 @@
   "progress_overrides": {
     "B001": "VERIFIED",
     "B002": "VERIFIED",
-    "B003": "VERIFIED"
+    "B003": "VERIFIED",
+    "B004": "VERIFIED",
+    "B005.01": "VERIFIED",
+    "B005": "VERIFIED",
+    "B006": "VERIFIED"
   },
   "evidence_by_step": {
     "Q001": {
       "record": "governance/evidence/Q001.json",
-      "sha256": "ea7e75bcc70ec15fa025eede1a97c0fcac7f2f93c2990d335468136e53e82011"
+      "sha256": "b64314ebe24de2f562a6b431ebedbcb8147ce709a37c52a43aeb9e3f5f158bfc"
     },
     "Q002": {
       "record": "governance/evidence/Q002.json",
-      "sha256": "a2710c18d2d523d4664553c326db7ff0c482b4fb8b90de1e7bbd56a65fa77cf3"
+      "sha256": "b48065572ccc17737e66927339a4c0c60a4a3813733a9db8d893630f43bbb13c"
     },
     "Q003": {
       "record": "governance/evidence/Q003.json",
-      "sha256": "5b7a76ff2657a377396a68daa4043d0e0f127accd0b7f92f66cf85a03fb11878"
+      "sha256": "5fe44298d0067300dab0372e878d56e40255df519f574f668aa3b2253e61ce52"
     },
     "B001": {
       "record": "governance/evidence/B001.json",
-      "sha256": "7948519377c0ef9ddda44f2edf376ee8cc2638eaad5b26e8a069059d80df476a"
+      "sha256": "e53822f04c5361c852a58d5b373283a3d3fd6b42ae1787fe52a91fda6c39aa9f"
     },
     "B002": {
       "record": "governance/evidence/B002.json",
-      "sha256": "7cd316ddca3df15f8251ef9fc30ff8654d86ce461322d51a605ca9c0c02a48d4"
+      "sha256": "b1538921a257b5c3056148d20e5e43b071da49c1ee61b5477ffb0466f0b1942d"
     },
     "B003": {
       "record": "governance/evidence/B003.json",
-      "sha256": "012d9cfcb5680017fd5338dd2d7b10934179563156f684796ef009de3d15eab1"
+      "sha256": "795dad2941bc49fb3f7ef0cc80b0ae049387d8a5304b1a11ec840c74176160ce"
+    },
+    "B004": {
+      "record": "governance/evidence/B004.json",
+      "sha256": "73191a4d4a784afdfadfb7f9f6b967778854f23d995bb69e1de5a888727e9f25"
+    },
+    "B005.01": {
+      "record": "governance/evidence/B005.01.json",
+      "sha256": "cdd82aeb2da84c5bb6ce9d5d186437e5587a25e643ac280bb6e41082b0051cc0"
+    },
+    "B005": {
+      "record": "governance/evidence/B005.json",
+      "sha256": "7a74dd2654be53986da780d399fa1cff03c84c773d8bec70429b1b8d422254d6"
+    },
+    "B006": {
+      "record": "governance/evidence/B006.json",
+      "sha256": "8c86504d2979edcbd6b04c2ea44d80f6c26e2a5279720c40fa605ca3b515fbfd"
     }
   },
   "step_selector_specification": {

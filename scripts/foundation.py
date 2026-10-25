@@ -123,9 +123,9 @@ def render(data):
     for item in data['open_points']:
         lines.append(f"- **{item['id']} – {item['title']}**: {item['next_action']} ({item['gate']}).")
     lines += ['', '## Weiterentwicklung', '',
-              'B004 prüft Schichten und erlaubte Abhängigkeiten, B005 gleicht reale und virtuelle',
-              'Dateien ab, B006 prüft stabile Codes. Bestehende Modelle werden gezielt bestätigt,',
-              'nicht neu erfunden. G-1/G0 bleiben bis zur dokumentierten Entscheidung offen.',
+              'Schichten, Dateikatalog und Codes ergänzen diese Grundlage in B004–B006.',
+              'Aktueller Abschlussstatus und konkrete Folgeschritte stehen in docs/STATUS_KURZ.md.',
+              'G-1/G0 bleiben bis zur dokumentierten Entscheidung offen.',
               'Die Planung ist kein Nachweis einer funktionierenden Webanwendung.', '',
               'Erzeugt aus `governance/foundation.json`; mit assist.py --refresh aktualisieren.', '']
     return '\n'.join(lines)

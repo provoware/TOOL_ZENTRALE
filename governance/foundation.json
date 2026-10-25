@@ -397,12 +397,6 @@
   ],
   "open_points": [
     {
-      "id": "OPEN01",
-      "title": "B004–B006 noch ungeprüft",
-      "next_action": "Schichten bestätigen, Dateikatalog abgleichen, Codes prüfen; vorhandene Validatoren wiederverwenden",
-      "gate": "G-1"
-    },
-    {
       "id": "OPEN02",
       "title": "Keine explizite Quelllizenz",
       "next_action": "Herkunft und Erlaubnis vor jeder tatsächlichen Quellcodeübernahme klären; bis dahin nur Anforderungen und Muster",

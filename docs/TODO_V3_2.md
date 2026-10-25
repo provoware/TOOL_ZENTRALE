@@ -4,7 +4,7 @@
 
 ![Grafischer Fortschritt: nach Gates und gesamt](assets/todo_progress.svg)
 
-**Gesamt:** 3/112 Hauptschritte (2 %) · **Unteraufgaben:** 0/22 · **G−1:** OPEN.
+**Gesamt:** 6/112 Hauptschritte (5 %) · **Unteraufgaben:** 1/22 · **G−1:** OPEN.
 
 ## Bedienung und verbindliche Regeln
 
@@ -21,15 +21,15 @@
 ## Nummerierte Checkliste
 
 <details open>
-<summary><strong>G-1 – Architektur und Blueprint</strong> (3/12; 25 %)</summary>
+<summary><strong>G-1 – Architektur und Blueprint</strong> (6/12; 50 %)</summary>
 
 - [x] **B001** Stabile PROVOWARE-Identität und Repositorygrenze `PLAN` · `R1`
 - [x] **B002** Altbestand rückwärts in Nutzungsfälle zerlegen `PLAN` · `R1`
 - [x] **B003** Gemeinsame Bausteine und Wiederverwendungsgrenzen `PLAN` · `R2`
-- [ ] **B004** Stabile Schichten und erlaubte Richtung `PLAN` · `R1`
-- [ ] **B005** Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen `PLAN` · `R2`
-  - [ ] `B005.01` Dateikatalog mit echter Bestandsliste und Medien-/Importmodulen abgleichen
-- [ ] **B006** Semantische Kurzcode-Legende `PLAN` · `R2`
+- [x] **B004** Stabile Schichten und erlaubte Richtung `PLAN` · `R1`
+- [x] **B005** Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen `PLAN` · `R2`
+  - [x] `B005.01` Dateikatalog mit echter Bestandsliste und Medien-/Importmodulen abgleichen
+- [x] **B006** Semantische Kurzcode-Legende `PLAN` · `R2`
 - [ ] **B007** Verträge, Datenformate und Rechte `PLAN` · `R1`
   - [ ] `B007.01` Notizvertrag und Fremdplugin-Vertrauensstufen festlegen
 - [ ] **B008** Drei durchgängige Funktionssimulationen formulieren `PLAN` · `R2`
@@ -235,9 +235,9 @@
 ## Nächster Schritt und Warteschlange
 
 Bedingte Vorschau: Jeder Folgeschritt setzt den belegten Abschluss seiner Voraussetzungen voraus. Keine Ausfuehrungs- oder Gatefreigabe.
-1. **B004 – Stabile Schichten und erlaubte Richtung** · Planung
-2. **B005 – Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen** · Planung
-3. **B006 – Semantische Kurzcode-Legende** · Planung
+1. **B007 – Verträge, Datenformate und Rechte** · Planung
+2. **B008 – Drei durchgängige Funktionssimulationen formulieren** · Planung
+3. **B009 – Architektur-Prüfautomat spezifizieren** · Planung
 
 **Patch-Karte beim Start ausfüllen:**
 
