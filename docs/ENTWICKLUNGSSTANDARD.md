@@ -199,3 +199,17 @@ abgleichen und niemals ungefragt überschreiben.
 - JSON Schema Draft 2020-12: https://json-schema.org/draft/2020-12
 - OpenAPI-Spezifikationen: https://spec.openapis.org/oas/
 - Playwright Accessibility Testing: https://playwright.dev/docs/accessibility-testing
+
+## 14. Verbindliche intelligente TODO V3.2
+
+`governance/route.json` bleibt die einzige Statusquelle. Die Checkliste
+`docs/TODO_V3_2.md` und die kontrastreiche Grafik
+`docs/assets/todo_progress.svg` werden ausschließlich durch
+`python3 scripts/render_todo.py` erzeugt. `--check` erkennt veraltete Ansichten.
+
+Ein abgehakter Punkt erfordert VERIFIED, einen zugeordneten Commit-SHA,
+einen echten Testlauf und PASS; ein Elternpunkt mit Unteraufgaben darf erst
+nach deren VERIFIED markiert werden. Ein geplantes Gate ist keine Freigabe.
+Eine Patch-Karte nennt kurz Grund, Effekt, Umfang, Patchklasse, Risiko,
+betroffene Dateien, ausgewählte Checks und Basis-/Ergebnis-SHA.
+Ist die Aufgabe nachweislich schon erfüllt, gilt NO-OP ohne Codeänderung.
