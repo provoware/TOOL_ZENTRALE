@@ -1,0 +1,358 @@
+# PROVOWARE BLUEPRINT 1.1 - TOOL_ZENTRALE; NUR PLANUNG.
+# Einzige maschinenlesbare Soll-Quelle fuer Codes, virtuelle Dateien und Szenarien.
+schema: provoware-blueprint/1.1
+state: draft
+as_of: "2026-10-25"
+source_masterplan: docs/MASTERPLAN_V3_1.txt
+target_repository: provoware/TOOL_ZENTRALE
+target_base_commit: 6e9f8638f7a7b6334a23d51988d0e3ef9d82a37c
+reference_repo: https://github.com/provoware/TOOL_2026_Multi
+reference_commit: 096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d
+
+identity:
+  product_family: PROVOWARE
+  local_workspace: PROVOWARE
+  repository_slug: TOOL_ZENTRALE
+  tool_id: TOOL_ZENTRALE
+  slug_locked: true
+  worktree_model: one_integrated_web_application
+  git_root: PROVOWARE/TOOL_ZENTRALE/
+  relative_paths_only: true
+  display_name_independent_of_slug: true
+  shared_code_policy: local_shared_contracts_or_separately_versioned_package
+  runtime_data_policy: outside_repository
+
+standards:
+  code_regex: "^[A-Z][A-Z0-9]{1,7}$"
+  code_immutable_after_freeze: true
+  reserved_code_reuse: forbidden
+  stable_classes:
+    S0: technical_identity_or_registry_location
+    S1: versioned_contract_or_stable_boundary
+    S2: internal_implementation_may_change
+  planned_file_states:
+    - VIRTUAL
+    - RESERVED
+    - SCAFFOLDED
+    - IMPLEMENTED
+    - VERIFIED
+    - FROZEN
+    - DEPRECATED
+  default_file_state: VIRTUAL
+  file_state_note: generated_from_git_and_step_evidence_not_manually_maintained
+  planned_patch_budgets:
+    micro: {characters: 1500, changed_lines: 30, changed_files: 2}
+    standard: {characters: 6000, changed_lines: 120, changed_files: 3}
+    controlled: {characters: 12000, changed_lines: 250, changed_files: 5}
+  accounting: added_plus_removed_unicode_characters_excluding_diff_headers
+  file_generation: confirmed_only_or_approved_step
+  source_of_truth: this_blueprint
+  authoritative_runtime_state: git_and_route_and_version_ledgers
+  derived_indexes: [file-impact-index, scenario-coverage, code-map, patch-preview]
+
+layers:
+  UI: {root: web_or_feature_public, may_depend_on: [UI, API]}
+  API: {root: app/api_or_feature_backend, may_depend_on: [API, SERVICE, CORE]}
+  SERVICE: {root: app/features_backend, may_depend_on: [SERVICE, DOMAIN, STORAGE, CORE, PLUGIN]}
+  DOMAIN: {root: app/shared_or_feature_backend, may_depend_on: [DOMAIN]}
+  STORAGE: {root: app/storage_or_feature_backend, may_depend_on: [STORAGE, DOMAIN, CORE]}
+  CORE: {root: app/core, may_depend_on: [CORE, DOMAIN]}
+  PLUGIN: {root: app/core_or_feature_backend, may_depend_on: [PLUGIN, DOMAIN, CORE]}
+  QA: {root: tests_or_feature_tests, may_depend_on: []}
+  GOV: {root: governance, may_depend_on: []}
+  TOOL: {root: scripts, may_depend_on: []}
+
+directories:
+  - blueprint
+  - blueprint/contracts
+  - blueprint/scenarios
+  - app
+  - app/core
+  - app/shared
+  - app/api
+  - app/storage
+  - app/storage/migrations
+  - app/features
+  - app/features/songs
+  - app/features/songs/backend
+  - app/features/songs/public
+  - app/features/songs/tests
+  - app/features/songs/help
+  - app/features/projects
+  - app/features/projects/backend
+  - app/features/projects/public
+  - app/features/projects/tests
+  - app/features/projects/help
+  - app/features/plugin_catalog
+  - app/features/plugin_catalog/backend
+  - app/features/plugin_catalog/public
+  - app/features/plugin_catalog/tests
+  - app/features/plugin_catalog/help
+  - app/features/tasks
+  - app/features/tasks/backend
+  - app/features/media
+  - app/features/media/backend
+  - web
+  - web/assets
+  - web/js
+  - web/js/components
+  - web/css
+  - web/i18n
+  - web/help
+  - governance
+  - docs
+  - docs/decisions
+  - tests
+  - tests/unit
+  - tests/api
+  - tests/integration
+  - tests/architecture
+  - tests/e2e
+  - tests/security
+  - scripts
+
+module_contract:
+  module_manifest_key: id
+  module_id_stable: true
+  executable_external_plugins_v1: false
+  public_asset_scope: feature_public_directory_only
+  dependency_direction: core_contract_may_be_consumed_by_feature
+  reverse_import_from_core_to_feature: forbidden
+  cross_feature_direct_import: forbidden_without_versioned_contract
+  module_layout: [manifest.yaml, backend, public, tests, help]
+
+modules:
+  songs: {root: app/features/songs, id: MOD_SONGS, contract_major: 1, state: PLANNED, min_gate: G5}
+  projects: {root: app/features/projects, id: MOD_PROJECTS, contract_major: 1, state: PLANNED, min_gate: G6}
+  plugin_catalog: {root: app/features/plugin_catalog, id: MOD_PLUGIN_CATALOG, contract_major: 1, state: PLANNED, min_gate: G8}
+
+# Katalogstufe: CONFIRMED=frueh benoetigt, RESERVED=wahrscheinlich,
+# OPTIONAL=erst nach Nutzenentscheidung. Status physischer Dateien wird
+# NICHT aus YAML behauptet, sondern spaeter aus Git plus Testbelegen abgeleitet.
+files:
+  blueprint/architecture.yaml: {owner: GOV, stability: S0, catalog: CONFIRMED}
+  blueprint/codes.yaml: {owner: GOV, stability: S1, catalog: CONFIRMED, role: GENERATED_VIEW}
+  blueprint/contracts/openapi.yaml: {owner: API, stability: S1, catalog: CONFIRMED}
+  blueprint/contracts/data.schema.json: {owner: DOMAIN, stability: S1, catalog: CONFIRMED}
+  blueprint/scenarios/song_save.yaml: {owner: QA, stability: S1, catalog: CONFIRMED, role: GENERATED_VIEW}
+  blueprint/scenarios/project_search.yaml: {owner: QA, stability: S1, catalog: CONFIRMED, role: GENERATED_VIEW}
+  blueprint/scenarios/plugin_load.yaml: {owner: QA, stability: S1, catalog: CONFIRMED, role: GENERATED_VIEW}
+  app/__init__.py: {owner: CORE, stability: S2, catalog: CONFIRMED}
+  app/main.py: {owner: CORE, stability: S1, catalog: CONFIRMED}
+  app/core/config.py: {owner: CORE, stability: S1, catalog: CONFIRMED}
+  app/core/errors.py: {owner: CORE, stability: S1, catalog: CONFIRMED}
+  app/core/logging.py: {owner: CORE, stability: S1, catalog: CONFIRMED}
+  app/core/security.py: {owner: CORE, stability: S1, catalog: CONFIRMED}
+  app/core/versions.py: {owner: CORE, stability: S1, catalog: CONFIRMED}
+  app/core/module_registry.py: {owner: CORE, stability: S1, catalog: RESERVED}
+  app/core/capabilities.py: {owner: CORE, stability: S1, catalog: RESERVED}
+  app/core/text_catalog.py: {owner: CORE, stability: S1, catalog: RESERVED}
+  app/shared/document.py: {owner: DOMAIN, stability: S1, catalog: CONFIRMED}
+  app/features/songs/manifest.yaml: {owner: GOV, stability: S1, catalog: CONFIRMED}
+  app/features/songs/backend/domain.py: {owner: DOMAIN, stability: S1, catalog: CONFIRMED}
+  app/features/projects/manifest.yaml: {owner: GOV, stability: S1, catalog: RESERVED}
+  app/features/projects/backend/domain.py: {owner: DOMAIN, stability: S1, catalog: RESERVED}
+  app/features/plugin_catalog/manifest.yaml: {owner: GOV, stability: S1, catalog: RESERVED}
+  app/shared/plugin_manifest.py: {owner: DOMAIN, stability: S1, catalog: RESERVED}
+  app/features/tasks/backend/domain.py: {owner: DOMAIN, stability: S2, catalog: OPTIONAL}
+  app/features/media/backend/domain.py: {owner: DOMAIN, stability: S2, catalog: OPTIONAL}
+  app/features/songs/backend/service.py: {owner: SERVICE, stability: S1, catalog: CONFIRMED}
+  app/features/projects/backend/search.py: {owner: SERVICE, stability: S1, catalog: RESERVED}
+  app/features/plugin_catalog/backend/service.py: {owner: SERVICE, stability: S1, catalog: RESERVED}
+  app/core/backup.py: {owner: SERVICE, stability: S1, catalog: RESERVED}
+  app/core/imports.py: {owner: SERVICE, stability: S1, catalog: RESERVED}
+  app/api/router.py: {owner: API, stability: S1, catalog: CONFIRMED}
+  app/api/contracts.py: {owner: API, stability: S1, catalog: CONFIRMED}
+  app/api/health.py: {owner: API, stability: S1, catalog: CONFIRMED}
+  app/features/songs/backend/routes.py: {owner: API, stability: S1, catalog: CONFIRMED}
+  app/features/projects/backend/routes.py: {owner: API, stability: S1, catalog: RESERVED}
+  app/features/plugin_catalog/backend/routes.py: {owner: API, stability: S1, catalog: RESERVED}
+  app/features/media/backend/routes.py: {owner: API, stability: S2, catalog: OPTIONAL}
+  app/storage/db.py: {owner: STORAGE, stability: S1, catalog: CONFIRMED}
+  app/storage/migration_ledger.py: {owner: STORAGE, stability: S1, catalog: CONFIRMED}
+  app/storage/migrations/001_core.sql: {owner: STORAGE, stability: S1, catalog: CONFIRMED}
+  app/features/songs/backend/repository.py: {owner: STORAGE, stability: S1, catalog: CONFIRMED}
+  app/features/projects/backend/repository.py: {owner: STORAGE, stability: S1, catalog: RESERVED}
+  app/storage/backup_adapter.py: {owner: STORAGE, stability: S1, catalog: RESERVED}
+  app/core/declarative_loader.py: {owner: PLUGIN, stability: S1, catalog: RESERVED}
+  app/core/capability_guard.py: {owner: PLUGIN, stability: S1, catalog: RESERVED}
+  web/index.html: {owner: UI, stability: S1, catalog: CONFIRMED}
+  web/css/tokens.css: {owner: UI, stability: S1, catalog: CONFIRMED}
+  web/css/grid.css: {owner: UI, stability: S1, catalog: CONFIRMED}
+  web/css/components.css: {owner: UI, stability: S2, catalog: RESERVED}
+  web/js/app.js: {owner: UI, stability: S1, catalog: CONFIRMED}
+  web/js/api_client.js: {owner: UI, stability: S1, catalog: CONFIRMED}
+  web/js/state.js: {owner: UI, stability: S1, catalog: CONFIRMED}
+  web/js/components/grid.js: {owner: UI, stability: S1, catalog: CONFIRMED}
+  web/js/components/notifications.js: {owner: UI, stability: S1, catalog: RESERVED}
+  web/js/components/help.js: {owner: UI, stability: S1, catalog: RESERVED}
+  app/features/songs/public/editor.js: {owner: UI, stability: S1, catalog: CONFIRMED}
+  app/features/projects/public/search.js: {owner: UI, stability: S1, catalog: RESERVED}
+  app/features/plugin_catalog/public/catalog.js: {owner: UI, stability: S1, catalog: RESERVED}
+  web/i18n/de.json: {owner: UI, stability: S1, catalog: CONFIRMED}
+  web/i18n/en.json: {owner: UI, stability: S2, catalog: OPTIONAL}
+  web/help/index.md: {owner: UI, stability: S1, catalog: RESERVED}
+  app/features/songs/help/de.md: {owner: UI, stability: S2, catalog: RESERVED}
+  app/features/projects/help/de.md: {owner: UI, stability: S2, catalog: RESERVED}
+  app/features/plugin_catalog/help/de.md: {owner: UI, stability: S2, catalog: RESERVED}
+  governance/route.json: {owner: GOV, stability: S0, catalog: CONFIRMED}
+  governance/versions.json: {owner: GOV, stability: S0, catalog: CONFIRMED}
+  governance/modules.json: {owner: GOV, stability: S1, catalog: RESERVED}
+  governance/regressions.yaml: {owner: GOV, stability: S1, catalog: CONFIRMED}
+  governance/decisions.md: {owner: GOV, stability: S1, catalog: CONFIRMED}
+  governance/events.jsonl: {owner: GOV, stability: S1, catalog: RESERVED}
+  docs/USER_GUIDE.md: {owner: GOV, stability: S2, catalog: CONFIRMED}
+  docs/decisions/0001-architecture.md: {owner: GOV, stability: S1, catalog: CONFIRMED}
+  docs/operations.md: {owner: GOV, stability: S2, catalog: RESERVED}
+  app/features/songs/tests/test_domain.py: {owner: QA, stability: S2, catalog: CONFIRMED}
+  tests/architecture/test_graph.py: {owner: QA, stability: S1, catalog: CONFIRMED}
+  app/features/songs/tests/test_api.py: {owner: QA, stability: S2, catalog: CONFIRMED}
+  app/features/projects/tests/test_api.py: {owner: QA, stability: S2, catalog: RESERVED}
+  app/features/plugin_catalog/tests/test_api.py: {owner: QA, stability: S2, catalog: RESERVED}
+  app/features/songs/tests/test_save.py: {owner: QA, stability: S2, catalog: CONFIRMED}
+  app/features/projects/tests/test_search.py: {owner: QA, stability: S2, catalog: RESERVED}
+  app/features/plugin_catalog/tests/test_manifest.py: {owner: QA, stability: S2, catalog: RESERVED}
+  app/features/songs/tests/test_e2e.py: {owner: QA, stability: S2, catalog: CONFIRMED}
+  tests/e2e/test_accessibility.py: {owner: QA, stability: S2, catalog: RESERVED}
+  tests/security/test_permissions.py: {owner: QA, stability: S2, catalog: CONFIRMED}
+  app/features/plugin_catalog/tests/test_denial.py: {owner: QA, stability: S2, catalog: RESERVED}
+  scripts/blueprint_validate.py: {owner: TOOL, stability: S1, catalog: CONFIRMED}
+  scripts/blueprint_preview.py: {owner: TOOL, stability: S1, catalog: RESERVED}
+  scripts/patch_guard.py: {owner: TOOL, stability: S1, catalog: CONFIRMED}
+  scripts/impact_select.py: {owner: TOOL, stability: S1, catalog: RESERVED}
+  scripts/scaffold.py: {owner: TOOL, stability: S1, catalog: RESERVED}
+  scripts/release_check.py: {owner: TOOL, stability: S1, catalog: RESERVED}
+
+# Die Codes bezeichnen Komponenten/Schnittstellen, nicht verkleidete Codezeilen.
+# Dependencies bilden erlaubte Laufzeit- / Bauzeit-Verbrauchsrichtungen.
+codebook:
+  KCFG: {label: Konfiguration, layer: CORE, path: app/core/config.py, requires: []}
+  KLOG: {label: Ereignisprotokoll, layer: CORE, path: app/core/logging.py, requires: [KCFG]}
+  KERR: {label: Fehlerantworten, layer: CORE, path: app/core/errors.py, requires: [KLOG]}
+  KSEC: {label: Rechtepruefung, layer: CORE, path: app/core/security.py, requires: [KCFG]}
+  KVER: {label: Versionen, layer: CORE, path: app/core/versions.py, requires: [KCFG]}
+  KCAP: {label: Faehigkeitsgrenzen, layer: CORE, path: app/core/capabilities.py, requires: [KCFG]}
+  KREG: {label: Modulregistrierung, layer: CORE, path: app/core/module_registry.py, requires: [KCAP]}
+  KTXT: {label: Textkatalog, layer: CORE, path: app/core/text_catalog.py, requires: [KCFG]}
+  DDOC: {label: Dokumentmodell, layer: DOMAIN, path: app/shared/document.py, requires: []}
+  DSNG: {label: Songmodell, layer: DOMAIN, path: app/features/songs/backend/domain.py, requires: [DDOC]}
+  DPRJ: {label: Projektmodell, layer: DOMAIN, path: app/features/projects/backend/domain.py, requires: [DDOC]}
+  DPLG: {label: Pluginmanifest, layer: DOMAIN, path: app/shared/plugin_manifest.py, requires: []}
+  BSQL: {label: SQLite Transaktion, layer: STORAGE, path: app/storage/db.py, requires: [KCFG, KLOG]}
+  BSON: {label: Song-Repository, layer: STORAGE, path: app/features/songs/backend/repository.py, requires: [BSQL, DSNG]}
+  BPRJ: {label: Projekt-Repository, layer: STORAGE, path: app/features/projects/backend/repository.py, requires: [BSQL, DPRJ]}
+  SSNG: {label: Song-Speicherung, layer: SERVICE, path: app/features/songs/backend/service.py, requires: [DSNG, BSON, KLOG]}
+  SPSR: {label: Projektsuche, layer: SERVICE, path: app/features/projects/backend/search.py, requires: [DPRJ, BPRJ, KLOG]}
+  PLOD: {label: Deklarativer Plugin-Lader, layer: PLUGIN, path: app/core/declarative_loader.py, requires: [DPLG, KREG, KCAP]}
+  SPLG: {label: Plugin-Katalog, layer: SERVICE, path: app/features/plugin_catalog/backend/service.py, requires: [PLOD, KLOG]}
+  ASNG: {label: Song-API, layer: API, path: app/features/songs/backend/routes.py, requires: [SSNG, KSEC, KERR]}
+  APSR: {label: Such-API, layer: API, path: app/features/projects/backend/routes.py, requires: [SPSR, KSEC, KERR]}
+  APLG: {label: Plugin-API, layer: API, path: app/features/plugin_catalog/backend/routes.py, requires: [SPLG, KSEC, KERR]}
+  UGRD: {label: UI-Raster, layer: UI, path: web/js/components/grid.js, requires: []}
+  USNG: {label: Song-Editor, layer: UI, path: app/features/songs/public/editor.js, requires: [UGRD, ASNG]}
+  UPSR: {label: Projekt-Suche-UI, layer: UI, path: app/features/projects/public/search.js, requires: [UGRD, APSR]}
+  UPLG: {label: Plugin-Katalog-UI, layer: UI, path: app/features/plugin_catalog/public/catalog.js, requires: [UGRD, APLG]}
+  TSAV: {label: Song-Speichertest, layer: QA, path: app/features/songs/tests/test_save.py, verifies: [USNG, ASNG, SSNG, BSON, BSQL]}
+  TPSR: {label: Projektsuchtest, layer: QA, path: app/features/projects/tests/test_search.py, verifies: [UPSR, APSR, SPSR, BPRJ]}
+  TPLG: {label: Plugin-Schutztest, layer: QA, path: app/features/plugin_catalog/tests/test_denial.py, verifies: [UPLG, APLG, SPLG, PLOD, KCAP]}
+
+simulation_policy:
+  type: contract_and_graph_dry_run
+  no_claim_of_real_execution: true
+  required_checks:
+    - globally_unique_code_ids
+    - code_pattern_and_stable_target
+    - all_dependencies_exist
+    - acyclic_runtime_dependency_graph
+    - no_layer_direction_violation
+    - referenced_files_in_catalog
+    - all_scenarios_have_one_or_more_tests
+    - denied_capabilities_default_closed
+    - negative_scenarios_defined
+    - fixed_slug_of_existing_repository
+    - same_sha_for_evidence_when_implemented
+  approval_threshold:
+    missing_codes: 0
+    duplicate_paths: 0
+    dependency_cycles: 0
+    invalid_layer_edges: 0
+    missing_scenario_tests: 0
+
+ux_traceability:
+  source_of_requirements: docs/UX_BARRIEREFREIHEIT.md
+  shared_browser_test: tests/e2e/test_accessibility.py
+  cases:
+    U01: {codes: [USNG], earliest_gate: G5}
+    U02: {codes: [UGRD, USNG], earliest_gate: G4}
+    U03: {codes: [UGRD, USNG, UPSR], earliest_gate: G4}
+    U04: {codes: [UGRD], earliest_gate: G4}
+    U05: {codes: [UGRD], earliest_gate: G4}
+    U06: {codes: [USNG, UPSR, UPLG], earliest_gate: G4}
+    U07: {codes: [USNG, UPSR, UPLG], earliest_gate: G4}
+    U08: {codes: [USNG, ASNG, KERR], earliest_gate: G5}
+    U09: {codes: [USNG, SSNG, BSON], earliest_gate: G5}
+    U10: {codes: [UGRD, UPLG, KREG], earliest_gate: G8}
+
+scenarios:
+  song_save:
+    objective: create_edit_save_reopen_song_without_silent_loss
+    path: [USNG, ASNG, SSNG, BSON, BSQL]
+    side_contracts: [DSNG, DDOC]
+    guards: [KSEC, KERR, KLOG]
+    tests: [TSAV]
+    simulation_cases:
+      - {id: SNG_POS, input: valid_song, expected: stored_and_reopenable}
+      - {id: SNG_INV, input: invalid_song, expected: reject_without_mutation}
+      - {id: SNG_REV, input: obsolete_revision, expected: conflict_instead_of_overwrite}
+      - {id: SNG_FAIL, input: interrupted_commit, expected: transaction_rollback}
+    unresolved_until_real_code: [actual_transaction_rollback, browser_draft_handling]
+  project_search:
+    objective: scoped_query_with_stable_sort_and_safe_empty_state
+    path: [UPSR, APSR, SPSR, BPRJ, BSQL]
+    side_contracts: [DPRJ, DDOC]
+    guards: [KSEC, KERR, KLOG]
+    tests: [TPSR]
+    simulation_cases:
+      - {id: PRJ_POS, input: scoped_query, expected: matching_sorted_results}
+      - {id: PRJ_NOM, input: no_matches, expected: accessible_empty_state}
+      - {id: PRJ_XSS, input: malicious_search_text, expected: escaped_display}
+      - {id: PRJ_OVR, input: overlarge_query, expected: bounded_validation_error}
+    unresolved_until_real_code: [query_performance, actual_data_scoping]
+  plugin_load:
+    objective: load_declarative_manifest_without_executing_foreign_code
+    path: [UPLG, APLG, SPLG, PLOD, KREG, KCAP]
+    side_contracts: [DPLG]
+    guards: [KSEC, KERR, KLOG]
+    tests: [TPLG]
+    simulation_cases:
+      - {id: PLG_POS, input: trusted_declarative_manifest, expected: metadata_loaded}
+      - {id: PLG_CAP, input: unauthorized_capability, expected: denied_without_execution}
+      - {id: PLG_ABI, input: incompatible_contract_major, expected: rejected}
+      - {id: PLG_EXEC, input: executable_foreign_plugin, expected: rejected_in_v1}
+    unresolved_until_real_code: [manifest_parser_exploits, actual_permission_enforcement]
+
+analysis_findings:
+  - id: BF-001
+    state: resolved_in_blueprint
+    problem: domain_contract_wrongly_placed_inside_song_execution_path
+    correction: moved_DSNG_DDOC_to_side_contracts
+  - id: BF-002
+    state: resolved_in_blueprint
+    problem: project_model_wrongly_placed_inside_search_execution_path
+    correction: moved_DPRJ_DDOC_to_side_contracts
+  - id: BF-003
+    state: resolved_in_blueprint
+    problem: plugin_manifest_wrongly_placed_after_capability_guard_in_linear_path
+    correction: moved_DPLG_to_side_contracts
+
+gate_minus_one:
+  planning_steps: [B001, B002, B003, B004, B005, B006, B007, B008, B009, B010, B011, B012]
+  result_state: planned_not_passed
+  must_show:
+    - codebook_validity
+    - catalog_traceability
+    - scenario_completeness
+    - open_risks_and_decisions
+    - signed_off_slug_and_boundary_contracts
+  actual_vertical_slice: deferred_to_authorized_implementation
+  no_repository_mutation: true

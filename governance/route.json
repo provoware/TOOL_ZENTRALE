@@ -1,0 +1,804 @@
+{
+  "schema": "provoware-route/3.1",
+  "tool_id": "TOOL_ZENTRALE",
+  "repository": "provoware/TOOL_ZENTRALE",
+  "source_plan": "docs/MASTERPLAN_V3_1.txt",
+  "source_reference_sha": "6e9f8638f7a7b6334a23d51988d0e3ef9d82a37c",
+  "plan_status": "DRAFT_NOT_APPROVED",
+  "default_step_and_gate_status": "PLANNED",
+  "details_are_authoritative_in": "docs/MASTERPLAN_V3_1.txt",
+  "execution_order": "B001..B012 then P001..P100, gated and single_writer",
+  "status_semantics": "Nur geaenderte Schritte erfassen; Evidenz mit SHA.",
+  "gates": {
+    "G-1": {
+      "first": "B001",
+      "last": "B012",
+      "scope": [
+        "blueprint/",
+        "docs/",
+        "governance/"
+      ]
+    },
+    "G0": {
+      "first": "P001",
+      "last": "P008",
+      "scope": [
+        "blueprint/",
+        "docs/",
+        "governance/"
+      ]
+    },
+    "G1": {
+      "first": "P009",
+      "last": "P016",
+      "scope": [
+        "governance/",
+        "scripts/",
+        ".github/"
+      ]
+    },
+    "G2": {
+      "first": "P017",
+      "last": "P025",
+      "scope": [
+        "app/core/",
+        "app/api/",
+        "app/storage/"
+      ]
+    },
+    "G3": {
+      "first": "P026",
+      "last": "P033",
+      "scope": [
+        "app/core/",
+        "app/storage/",
+        "tests/integration/"
+      ]
+    },
+    "G4": {
+      "first": "P034",
+      "last": "P043",
+      "scope": [
+        "web/",
+        "tests/e2e/",
+        "docs/"
+      ]
+    },
+    "G5": {
+      "first": "P044",
+      "last": "P056",
+      "scope": [
+        "app/features/songs/",
+        "app/shared/",
+        "web/"
+      ]
+    },
+    "G6": {
+      "first": "P057",
+      "last": "P064",
+      "scope": [
+        "app/features/projects/",
+        "app/features/tasks/"
+      ]
+    },
+    "G7": {
+      "first": "P065",
+      "last": "P071",
+      "scope": [
+        "app/features/media/",
+        "app/storage/"
+      ]
+    },
+    "G8": {
+      "first": "P072",
+      "last": "P078",
+      "scope": [
+        "app/features/plugin_catalog/",
+        "app/core/"
+      ]
+    },
+    "G9": {
+      "first": "P079",
+      "last": "P085",
+      "scope": [
+        "governance/",
+        "scripts/",
+        "tests/"
+      ]
+    },
+    "G10": {
+      "first": "P086",
+      "last": "P093",
+      "scope": [
+        "tests/",
+        "docs/",
+        ".github/"
+      ]
+    },
+    "G11": {
+      "first": "P094",
+      "last": "P100",
+      "scope": [
+        "governance/",
+        "docs/",
+        "scripts/"
+      ]
+    }
+  },
+  "steps": {
+    "B001": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Stabile PROVOWARE-Identität und Repositorygrenze"
+    },
+    "B002": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Altbestand rückwärts in Nutzungsfälle zerlegen"
+    },
+    "B003": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R2",
+      "title": "Gemeinsame Bausteine und Wiederverwendungsgrenzen"
+    },
+    "B004": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Stabile Schichten und erlaubte Richtung"
+    },
+    "B005": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R2",
+      "title": "Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen"
+    },
+    "B006": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R2",
+      "title": "Semantische Kurzcode-Legende"
+    },
+    "B007": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Verträge, Datenformate und Rechte"
+    },
+    "B008": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R2",
+      "title": "Drei durchgängige Funktionssimulationen formulieren"
+    },
+    "B009": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R2",
+      "title": "Architektur-Prüfautomat spezifizieren"
+    },
+    "B010": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R2",
+      "title": "Virtuellen Dry-Run und Fault-Katalog beurteilen"
+    },
+    "B011": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Minimalen echten Durchstich spezifizieren"
+    },
+    "B012": {
+      "gate": "G-1",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Architekturfreigabe G-1 und offene Entscheidungen"
+    },
+    "P001": {
+      "gate": "G0",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Quellenstand fixieren"
+    },
+    "P002": {
+      "gate": "G0",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Funktionale Bestandsmatrix"
+    },
+    "P003": {
+      "gate": "G0",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Datenformat- und Schutzinventar"
+    },
+    "P004": {
+      "gate": "G0",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Andere Repositories fokussiert vergleichen"
+    },
+    "P005": {
+      "gate": "G0",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Historische Fehlerbibliothek einfrieren"
+    },
+    "P006": {
+      "gate": "G0",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Nutzungs-/Hostingentscheidung"
+    },
+    "P007": {
+      "gate": "G0",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "MVP, Modulfolge und Nicht-Ziele"
+    },
+    "P008": {
+      "gate": "G0",
+      "patch": "PLAN",
+      "risk": "R1",
+      "title": "Route und Repositorynamen freigeben"
+    },
+    "P009": {
+      "gate": "G1",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Vorhandenes Git-Repository kontrolliert einrichten"
+    },
+    "P010": {
+      "gate": "G1",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Reproduzierbare Toolchain"
+    },
+    "P011": {
+      "gate": "G1",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Produkt-/API-/DB-/Plugin-Versionsquelle"
+    },
+    "P012": {
+      "gate": "G1",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Minimale Qualitätspipeline"
+    },
+    "P013": {
+      "gate": "G1",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Ereignis-ID und Fehlerredaktion"
+    },
+    "P014": {
+      "gate": "G1",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Erste Regressionfamilien registrieren"
+    },
+    "P015": {
+      "gate": "G1",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Patch-Budget- und SHA-Guard"
+    },
+    "P016": {
+      "gate": "G1",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Impact-Index und Recovery Capsule"
+    },
+    "P017": {
+      "gate": "G2",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Geschützter API-Start"
+    },
+    "P018": {
+      "gate": "G2",
+      "patch": "S",
+      "risk": "R1",
+      "title": "API-Fehler- und Validierungskontrakt"
+    },
+    "P019": {
+      "gate": "G2",
+      "patch": "K",
+      "risk": "R1",
+      "title": "SQLite-Verbindung und Transaktionsschicht"
+    },
+    "P020": {
+      "gate": "G2",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Schema-Migrationsledger"
+    },
+    "P021": {
+      "gate": "G2",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Daten-Repository-Port"
+    },
+    "P022": {
+      "gate": "G2",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Projekt-/Dokumentgrundmodell"
+    },
+    "P023": {
+      "gate": "G2",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Datei-/Medienreferenzmodell"
+    },
+    "P024": {
+      "gate": "G2",
+      "patch": "S",
+      "risk": "R1",
+      "title": "API-Contract-Testpaket"
+    },
+    "P025": {
+      "gate": "G2",
+      "patch": "K",
+      "risk": "R1",
+      "title": "G2-Datenkern-Nachweis"
+    },
+    "P026": {
+      "gate": "G3",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Legacy-Snapshot und Importbericht"
+    },
+    "P027": {
+      "gate": "G3",
+      "patch": "S",
+      "risk": "R1",
+      "title": "JSON- und Textformatparser"
+    },
+    "P028": {
+      "gate": "G3",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Import-Dry-Run mit Konfliktstrategie"
+    },
+    "P029": {
+      "gate": "G3",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Transaktionaler Import in neue Datenbasis"
+    },
+    "P030": {
+      "gate": "G3",
+      "patch": "S",
+      "risk": "R1",
+      "title": "SQLite-Backup samt Manifest"
+    },
+    "P031": {
+      "gate": "G3",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Anhänge und Ausnahmen im Backup"
+    },
+    "P032": {
+      "gate": "G3",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Isolierter Restore mit Journal/Undo"
+    },
+    "P033": {
+      "gate": "G3",
+      "patch": "K",
+      "risk": "R1",
+      "title": "G3 vollständiger Migrations-Roundtrip"
+    },
+    "P034": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Semantische HTML-Grundhülle"
+    },
+    "P035": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R2",
+      "title": "CSS-Farb-/Abstands-/Typografie-Tokens"
+    },
+    "P036": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Responsive Grid und Debug-Raster"
+    },
+    "P037": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Navigation und Seitenzustände"
+    },
+    "P038": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Gemeinsame Formularprimitive"
+    },
+    "P039": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Speichern-Verwerfen-Abbrechen-Vertrag"
+    },
+    "P040": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Textkatalog und fehlende Schlüssel"
+    },
+    "P041": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Hilfestufen und F1-Kontext"
+    },
+    "P042": {
+      "gate": "G4",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Erste Browser-End-to-End-Reisen"
+    },
+    "P043": {
+      "gate": "G4",
+      "patch": "K",
+      "risk": "R1",
+      "title": "G4 Layout-/Accessibility-Grundabnahme"
+    },
+    "P044": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Profil-Stammdaten"
+    },
+    "P045": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Genre-Zufall und Favoriten"
+    },
+    "P046": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Charakterfibel und Referenzen"
+    },
+    "P047": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Song-Dokumentenmodell"
+    },
+    "P048": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Songbibliothek und Filter"
+    },
+    "P049": {
+      "gate": "G5",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Songeditor mit Speicherzustand"
+    },
+    "P050": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Song-Fassungen und Wiederherstellung"
+    },
+    "P051": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Allgemeiner Texteditor"
+    },
+    "P052": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Textbuttons und Platzhalter"
+    },
+    "P053": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Buch-/Kapitelwerkstatt"
+    },
+    "P054": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Ideenarchiv und Kompositionskopien"
+    },
+    "P055": {
+      "gate": "G5",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Wiki und Wissensverweise"
+    },
+    "P056": {
+      "gate": "G5",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Gemeinsame Suche/Export und kreatives MVP-Gate"
+    },
+    "P057": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Aufgaben- und Statusmodell"
+    },
+    "P058": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Aufgabenoberfläche und Schnellaktionen"
+    },
+    "P059": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Kalenderdaten und Ansichten"
+    },
+    "P060": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Erinnerung mit klarer Browsergrenze"
+    },
+    "P061": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Link-Schnellstarter"
+    },
+    "P062": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Kontometadaten ohne Passworttresor"
+    },
+    "P063": {
+      "gate": "G6",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Entwicklungspool und Projektimporte"
+    },
+    "P064": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "G6 modulübergreifende Nutzerreise"
+    },
+    "P065": {
+      "gate": "G7",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Medienzugriffsvertrag"
+    },
+    "P066": {
+      "gate": "G7",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Audioplayer"
+    },
+    "P067": {
+      "gate": "G7",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Bildvorschau"
+    },
+    "P068": {
+      "gate": "G7",
+      "patch": "K",
+      "risk": "R1",
+      "title": "FFmpeg-Adapter"
+    },
+    "P069": {
+      "gate": "G7",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Jobwarteschlange und Wiederaufnahme"
+    },
+    "P070": {
+      "gate": "G7",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Medienbackup und Referenzprüfung"
+    },
+    "P071": {
+      "gate": "G7",
+      "patch": "K",
+      "risk": "R1",
+      "title": "G7 Medien-Fault-Lab"
+    },
+    "P072": {
+      "gate": "G8",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Deklaratives Modulmanifest"
+    },
+    "P073": {
+      "gate": "G8",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Modulregistrierung und Lifecycle"
+    },
+    "P074": {
+      "gate": "G8",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Capability-Grenze"
+    },
+    "P075": {
+      "gate": "G8",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Formularbaukasten als Datenmodell"
+    },
+    "P076": {
+      "gate": "G8",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Modulhilfe und geordneter Katalog"
+    },
+    "P077": {
+      "gate": "G8",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Entscheidung über Drittcode-Sandbox"
+    },
+    "P078": {
+      "gate": "G8",
+      "patch": "S",
+      "risk": "R1",
+      "title": "G8 Manifest-/Capability-Negativgate"
+    },
+    "P079": {
+      "gate": "G9",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Fehlersignaturen und Klassifizierung"
+    },
+    "P080": {
+      "gate": "G9",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Impact-basierte Testauswahl"
+    },
+    "P081": {
+      "gate": "G9",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Ergebnis-Cache und Stale-Schutz"
+    },
+    "P082": {
+      "gate": "G9",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Negative Fehlerfamilien"
+    },
+    "P083": {
+      "gate": "G9",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Reparaturhypothesen statt Autonomie"
+    },
+    "P084": {
+      "gate": "G9",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Evidenz-/Recovery-Capsule erzeugen"
+    },
+    "P085": {
+      "gate": "G9",
+      "patch": "K",
+      "risk": "R1",
+      "title": "G9 Regressions-/Reparaturtest"
+    },
+    "P086": {
+      "gate": "G10",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Threat-Model aktualisieren"
+    },
+    "P087": {
+      "gate": "G10",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Security-Prüfprofil nach OWASP ASVS"
+    },
+    "P088": {
+      "gate": "G10",
+      "patch": "S",
+      "risk": "R1",
+      "title": "API-/CSP-/Upload-Sicherheitsprobe"
+    },
+    "P089": {
+      "gate": "G10",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Accessibility-Prüfmatrix"
+    },
+    "P090": {
+      "gate": "G10",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Performance-Baseline"
+    },
+    "P091": {
+      "gate": "G10",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Datenintegritäts-/Skalierungsprobe"
+    },
+    "P092": {
+      "gate": "G10",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Konsistenz von Text, Hilfe, Release und Manifest"
+    },
+    "P093": {
+      "gate": "G10",
+      "patch": "K",
+      "risk": "R1",
+      "title": "G10 Vollregression des Releasekandidaten"
+    },
+    "P094": {
+      "gate": "G11",
+      "patch": "S",
+      "risk": "R1",
+      "title": "Release-Manifest und Versionstitel"
+    },
+    "P095": {
+      "gate": "G11",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Paketbau und Herkunft"
+    },
+    "P096": {
+      "gate": "G11",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Laienstart und Installationsassistent"
+    },
+    "P097": {
+      "gate": "G11",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Updates und Rückkehr"
+    },
+    "P098": {
+      "gate": "G11",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Pilot mit echten Anfängeraufgaben"
+    },
+    "P099": {
+      "gate": "G11",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Endnutzer- und Betriebshandbuch"
+    },
+    "P100": {
+      "gate": "G11",
+      "patch": "K",
+      "risk": "R1",
+      "title": "G11 finale Freigabeentscheidung"
+    }
+  },
+  "progress_overrides": {},
+  "evidence_by_step": {}
+}
