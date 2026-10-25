@@ -15,10 +15,41 @@ Sollstatus VIRTUAL und Teststatus VERIFIED bleiben getrennte Dimensionen.
 
 ## Iteration und Abweichungen
 
-1. Basis, Scope, Ziel und direkte Prüfungen fixieren; drei logische Schritte
-   mit Vorbedingungen anzeigen. Nur den aktuellen Auftrag ausführen.
-2. Änderung klein halten, direkt prüfen, Ergebnis und Grenzen dokumentieren.
-3. Vor Übergabe Ansichten aktualisieren und nächste drei Schritte neu berechnen.
+0. **Main-Vorprüfung vor jeder Planung:** Aktuellen GitHub-Main-SHA und CI
+   lesen; lokale Reständerungen, unveröffentlichte Commits und offene PRs gegen
+   diesen Stand abgleichen. Vorhandene Arbeit auf zusammenhängende, geprüfte
+   und bereits autorisierte Übernahmeteile prüfen. Weder Cache noch ein alter
+   origin/main-Verweis ersetzen die aktuelle GitHub-Abfrage.
+1. **Übernahme zuerst:** Übertragbare Teile kontrolliert integrieren. Nur einen
+   kohärenten Stand mit passenden Prüfnachweisen und erwartetem Head-SHA mergen.
+   Blockierte/unfreigegebene Teile samt Grund registrieren, keine fremden Änderungen
+   überschreiben oder ungetesteten Teilstand herauslösen. Anschließend Main-Baum,
+   Main-CI und lokalen Checkout verifizieren. Gibt es nichts zu übernehmen: NO-OP.
+2. **Erst jetzt planen:** Bei verifizierter Main-Basis Scope, Ziel und direkte
+   Prüfungen bestimmen; drei logische Schritte mit Vorbedingungen planen.
+   Registrierte Blocker stehen vorn. Eine ungeklärte Main-Basis blockiert den
+   Beginn neuer Entwicklungsarbeit; zunächst wird die Vorprüfung vervollständigt.
+3. **Umsetzen und prüfen:** Änderung klein halten, direkt prüfen, Ergebnis und
+   Grenzen dokumentieren. Prüfungen angemessen zum tatsächlichen Diff auswählen.
+4. **Übergabe:** Ansichten aktualisieren, beauftragte Repository-/Main-Übernahme
+   abschließen und deren Ergebnis melden. Die angezeigte nächste Dreierfolge
+   bleibt eine bedingte Vorschau bis zur Main-Vorprüfung der nächsten Iteration.
+
+Die ausführende Assistenz verwendet für die Remotevorprüfung die GitHub-Verbindung;
+assist.py übernimmt die lokalen Prüfungen. Ein CI-Lauf allein startet keine neue
+Entwicklungsiteration und führt keinen Merge aus.
+
+**Maschinenlesbarer Startbeleg:** `work/iteration/start.json` (ignoriert,
+kein zweites dauerhaftes Aufgabenregister). Schema `provoware-iteration-start/1`:
+checked_at_utc, main_sha, local_head, worktree_clean_at_start, open_prs,
+transferable_parts, integrated_prs, blocked_parts, main_ci und result.
+`planning_allowed` ist nur bei `result: MAIN_VERIFIED` zulässig. PR-/Teilbefunde
+enthalten Scope, Status, Beleg und Grund; das Ergebnis wird aus den tatsächlich
+beobachteten Ständen erzeugt, niemals als pauschale Freigabe vorbelegt.
+Ein Startbeleg gilt nur für die aktuelle Vorprüfung; vor der nächsten Iteration
+Main und Kandidaten erneut lesen. Fehlender Zugriff/ungeklärte Basis wird als
+BLOCKED und planning_allowed=false dokumentiert. Fehlende Integrationsfreigabe
+wird nicht aus einem grünen Test abgeleitet.
 
 Eine notwendige Abweichung erhält in `route.json.iteration_queue` eine stabile
 ID, title, reason, status und depends_on. Offene Einträge stehen in dokumentierter
@@ -191,3 +222,13 @@ und Evidenzprüfung bilden den Nachweis; reale Produktprüfung und Gatefreigabe
 werden daraus nicht abgeleitet. Review-Gegenbeispiele sind in RG014 erfasst.
 Rückweg: eigene Änderungen gegen Main 9fc0f5a prüfen, Plan und Belege zusammen
 zurücknehmen und Ansichten erneuern. Keine privaten Daten werden geändert.
+
+## Main-Vorprüfung dieser Regeländerung
+
+Zu Beginn waren lokaler Main und GitHub auf f97a386 identisch; Main-CI
+40223105187 bestand, offene Main-PRs und übertragbare Restteile: keine.
+Der Startbeleg dokumentiert deshalb MAIN_VERIFIED mit NO-OP-Übernahme.
+Erst danach wurden die Iterationsregeln angepasst. Keine Produktplanung oder
+Gatefreigabe wird dadurch vorgezogen; die neue Reihenfolge gilt vor dem
+nächsten Drei-Schritt-Plan. Änderungen betreffen Regeln und ihre abgeleiteten
+Dateihashes; der vorhandene Pflichtlauf prüft die Repositorykonsistenz.
