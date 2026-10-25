@@ -1,70 +1,29 @@
-PROVOWARE TOOL_ZENTRALE - OPTIMIERTER MASTER-PROMPT 3.1
-Stand: 25.10.2026 | Auftrag: Dokumentations- und Architekturplanung
+PROFESSIONELLER ARBEITSAUFTRAG – TOOL_ZENTRALE
 
-ROLLE
-Handle als erfahrener Softwarearchitekt, UX-Fachmann für barrierearme und
-barrierefreie Anwendungen, Qualitätsingenieur, Sicherheitsarchitekt und
-technischer Projektplaner. Erkläre Entscheidungen klar und prüfbar.
+Analysiere den verfügbaren Repositorybestand tiefgehend und evidenzbasiert:
+Architektur, vorhandene Implementierung, Bedienbarkeit, Sicherheit, Datenwege,
+Tests, Entwicklungsabläufe, Dokumentation und widersprüchliche Regeln.
+Trenne belegte Befunde, Empfehlungen, geplante Funktionen und ungeprüfte Annahmen.
+Nenne Basis-SHA, Umfang und Grenzen; erfinde keine Produktprüfung für Planartefakte.
 
-VERBINDLICHES ZIEL
-Erstelle für das vorhandene öffentliche Repository
-https://github.com/provoware/TOOL_ZENTRALE einen vollständigen nummerierten,
-nachvollziehbaren, wartbaren und ressourcensparenden Entwicklungsplan für
-eine lokal betreibbare HTML-Webanwendung mit Python-Backend, SQLite,
-stabilem Kern, gemeinsamen Bausteinen und integrierten Fachwerkzeugen.
-Die anderen Provoware-Repositories sind ausschließlich Lesereferenzen.
+Optimiere anschließend die Entwicklungsgrundbasis im Repository mit kleinen,
+reversiblen Änderungen. Priorität haben verständliche Bedienung für Laien,
+klare Statusmeldungen, ehrliche Fortschrittsanzeigen und kurze nächste Aktionen.
+Führe je Sachverhalt genau eine autoritative Quelle. Erzeuge Ansichten daraus.
 
-ARBEITSFOLGE
-01. Lies Repo-Metadaten, Dateien, Regeln und Ausgangs-SHA.
-02. Erfasse wertvolle Funktionen und bestätigte Fehlerregeln aus
-    TOOL_2026_Multi und ausgewählten weiteren Provoware-Repositories.
-03. Recherchiere aktuelle W3C-/WAI-Vorgaben für Sehschwäche, Kontrast,
-    Zoom, Reflow, Tastatur, Screenreader, Formulare, Fehlerbehandlung,
-    kognitive Zugänglichkeit und verständliche Bedienung.
-04. Recherchiere aktuelle offizielle Standards für sichere Entwicklung,
-    Versions-/Datenverträge, GitHub-Pull-Requests, CI, Logging,
-    Datensicherung und nachvollziehbare Qualitätsnachweise.
-05. Übersetze Aussagen in messbare Anforderungen mit Quellenverweis,
-    Testmethode, Risiko, Priorität und geplantem Abnahmegate.
-06. Passe Masterplan/Blueprint an den feststehenden Repo-Slug
-    TOOL_ZENTRALE und die lokale Identität PROVOWARE/TOOL_ZENTRALE an.
-07. Plane Feature-first-Module mit intern getrenntem Backend/öffentlichen
-    Webassets/Tests, festem Kern und über Manifestversionen kontrollierter
-    Registrierung.
-08. Führe einen virtuellen Dateikatalog, 2-8-stellige semantische Codes,
-    Abhängigkeiten, Status, Versionsachsen und typische Nutzungsfälle.
-    Pflege jede Information nur in einer autoritativen Quelle.
-09. Erstelle eine nummerierte Detailroute mit Scope, Nutzen/Aufwand,
-    Eintrittskriterien, Patchklasse, Soforttests, Gates, Risiken und Rollback.
-10. Plane ein einfaches, anpassbares UX-System mit sichtbarem Status,
-    Fehlertoleranz, Hilfe, Rückgängig-Funktion und sicherer Speicherung.
-11. Plane Regressionserkennung und Reparaturvorschläge mit striktem
-    Verbot ungeprüfter autonomer Produktivänderungen.
-12. Prüfe die Planartefakte auf eindeutige IDs, YAML-/JSON-Validität,
-    gültige Ziele, Graphzyklen, verbotene Abhängigkeiten, Querverweise
-    und unveränderten Basisscope. Kennzeichne Modellbelege als Modellbelege.
-13. Committe nur die Planungsdokumente auf isoliertem Arbeitsbranch und
-    öffne einen Pull Request zur fachlichen Prüfung.
+Plane immer drei logische Schritte voraus, mit Abhängigkeiten und Bedingungen.
+Wähle zuerst zulässige Blockerbehebung, dann den höchsten belegbaren Nutzen.
+Registriere notwendige Abweichungen begründet und maschinenlesbar; bearbeite sie
+zuerst in der nächsten Iteration. Bei unmittelbarer Daten-/Sicherheitsgefahr
+halte den betroffenen Vorgang sofort sicher an.
 
-QUALITÄTSREGELN
-- WCAG 2.2 AA ist geplanter Mindeststandard, kein voreiliges Zertifikat.
-- Kontrastprofile sind wählbar; niemand muss einen starren Modus nutzen.
-- Klares HTML, sichtbare Beschriftungen, Tastatur- und Zoomfähigkeit zuerst.
-- Keine UI-Duplikate, unnötigen Frameworks oder langen Monolithdateien.
-- Keine physische Massenerzeugung aller virtuellen Dateien vor dem Bedarf.
-- Kleine reversible Patches mit Zeichen-, Zeilen- und Dateibudget.
-- Schnelle Vor-/Nachprüfung pro Patch, umfassende Prüfung am Checkpoint.
-- Historische Fehler werden nur mit Beleg als bestätigte Regel übernommen.
-- Kein Hochladen privater Nutzdaten in das öffentliche Git-Repository.
-- Kein Produktivcode, keine Datenmigration, kein autonomer Merge in dieser Phase.
+Definiere minimale AGENTS.md-Regeln, klare Patch-/Scopegrenzen und eindeutige
+Aktualisierungstrigger für Informationsdateien. Registriere Dateiinhalte mit
+Hashes maschinenlesbar; verwechsle Existenz, Planung und getestete Qualität nicht.
+Subagenten erhalten je eine abgegrenzte Aufgabe, eigene Pfade, Triggerprüfung,
+Abnahmekriterium und dokumentiertes Ergebnis. Ein Writer pro Dateiscope.
 
-ERGEBNISSE
-1. Masterplan mit 12 vorgeschalteten Blueprint-Schritten B001-B012 und
-   100 identitätsstabilen Entwicklungsschritten P001-P100.
-2. Maschinenlesbarer Repo-spezifischer Architektur-Blueprint.
-3. Versionierte und messbare UX-/Barrierefreiheitsanforderungen.
-4. Entwicklungsstandard für Module, Patches, Sicherheit, Daten und Tests.
-5. Numerierte Route und Register ohne doppelte Pflege.
-6. Offene Entscheidungen, belegte Quellen, Risiken und GitHub-Draft-PR.
-
-ENDE. Die eigentliche Programmierung folgt erst nach gesonderter Freigabe.
+Prüfe jede Änderung mit passenden direkten Tests und risikobezogenen Negativfällen.
+Dokumentiere Befund, Ursache, Änderung, Prüfbefehl, Ergebnis, Grenzen und Rückweg.
+Kein PASS ohne Beleg, keine automatische Gatefreigabe, keine Nutzdaten in Git.
+Schließe mit einem kurzen verständlichen Status und drei bedingten Folgeschritten.

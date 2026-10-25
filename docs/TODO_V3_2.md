@@ -234,9 +234,10 @@
 
 ## Nächster Schritt und Warteschlange
 
-1. **B001 – Stabile PROVOWARE-Identität und Repositorygrenze** · JETZT (Planung)
-2. **B002 – Altbestand rückwärts in Nutzungsfälle zerlegen** · DANACH (nicht freigegeben)
-3. **B003 – Gemeinsame Bausteine und Wiederverwendungsgrenzen** · DANACH (nicht freigegeben)
+Bedingte Vorschau: Jeder Folgeschritt setzt den belegten Abschluss seiner Voraussetzungen voraus. Keine Ausfuehrungs- oder Gatefreigabe.
+1. **Q001 – Echte Evidenzbindung spezifizieren und prüfen** · PRIORITAET: Abweichung
+2. **Q002 – Gateentscheidungen und Blueprintprüfung absichern** · PRIORITAET: Abweichung
+3. **Q003 – Frühen laiengerechten Nutzungsweg priorisieren** · PRIORITAET: Abweichung
 
 **Patch-Karte beim Start ausfüllen:**
 

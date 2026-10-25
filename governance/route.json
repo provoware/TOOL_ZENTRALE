@@ -1292,6 +1292,33 @@
       ]
     }
   },
+  "iteration_queue": [
+  {
+    "id": "Q001",
+    "title": "Echte Evidenzbindung spezifizieren und prüfen",
+    "reason": "A03: syntaktische SHA-Prüfung genügt nicht; Planrevision, Quell-/Testhash und Toolchain an realen Lauf binden.",
+    "status": "PLANNED",
+    "depends_on": []
+  },
+  {
+    "id": "Q002",
+    "title": "Gateentscheidungen und Blueprintprüfung absichern",
+    "reason": "A04/A09: Freigabeinstanz und exakten Stand registrieren; permanenten Modellvalidator ergänzen.",
+    "status": "PLANNED",
+    "depends_on": [
+      "Q001"
+    ]
+  },
+  {
+    "id": "Q003",
+    "title": "Frühen laiengerechten Nutzungsweg priorisieren",
+    "reason": "A07: Song speichern und wieder öffnen vor Komfortmodulen planen; bestehende IDs und Sicherheitsvoraussetzungen erhalten.",
+    "status": "PLANNED",
+    "depends_on": [
+      "Q002"
+    ]
+  }
+],
   "progress_overrides": {},
   "evidence_by_step": {},
   "step_selector_specification": {

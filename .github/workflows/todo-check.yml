@@ -13,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Aufgabenlogik und Negativfälle testen
-        run: python3 scripts/test_render_todo.py
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
       - name: Checkliste und Fortschrittsgrafik abgleichen
         run: python3 scripts/render_todo.py --check
+      - name: Dateistände und Kurzstatus prüfen
+        run: python3 scripts/project_state.py --check

@@ -1,0 +1,124 @@
+{
+  "schema": "provoware-file-state/1",
+  "meaning": "content_snapshot_not_test_or_gate_evidence",
+  "excluded_generated": [
+    "governance/file_state.json",
+    "docs/STATUS_KURZ.md"
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/todo-check.yml",
+      "sha256": "7bfb721adfa403f5e520696ee3e1735e7e2d30096308fad4bb7626766317f1e4",
+      "bytes": 520,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "d3b53e90880357a99fad1c42b6b9b4bc921c77cb78adc92f404eaa1a7e7cf441",
+      "bytes": 2450,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "README.md",
+      "sha256": "49a028b5393687fb182810a9d5cc175257f33429363d286dc7f82a2b4ae3924b",
+      "bytes": 2798,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "blueprint/architecture.yaml",
+      "sha256": "ef2736143d704d2b56bbbebaa7df9333e3d9bd61d474f9f57f3f1b035ed08b93",
+      "bytes": 37301,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/ARBEITSWEISE.md",
+      "sha256": "1c2729f6ad197279e766562e70eed239a8860ab3f278e1db12ff3c02da55b937",
+      "bytes": 4516,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/AUDIT_2026_10_25.md",
+      "sha256": "8754e48d0217e07c51dea0aa8d8a92d458ac1a9cb8174b5b0b18a9c38fdd8b16",
+      "bytes": 6657,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/ENTWICKLUNGSSTANDARD.md",
+      "sha256": "b4efcdef605b643c9d6a2259e8d406157e10d208bde490a8ae54fd5b1e76c38a",
+      "bytes": 11411,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/MASTERPLAN_V3_1.txt",
+      "sha256": "17d87be8165952a1040fb87b144a92ff179dab693ddf3316ae7bff59143ceef8",
+      "bytes": 88281,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/MASTERPLAN_V3_2_DELTA.txt",
+      "sha256": "8ab9762994c9b526259346296842e46d0d2f61d73312cb8e0790fc40d19e953d",
+      "bytes": 20390,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/PROMPT_OPTIMIERT.txt",
+      "sha256": "8fdf2b46c08fcb39f173788c60718672ad49c7e4480b09c72aa43f0f59e10b43",
+      "bytes": 1871,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/QUELLEN.md",
+      "sha256": "3b69aa5b3d50beebec022bc4a18f76f7ab09f88e9b5dd94422e28d626b8b1b55",
+      "bytes": 4154,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/TODO_V3_2.md",
+      "sha256": "bb7ec1f057a3cb2149b894c02b5c30c2c37120f0a5639592ab70478be3dd7855",
+      "bytes": 12195,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/UX_BARRIEREFREIHEIT.md",
+      "sha256": "1766d2174ed5825616bd390c957d5661b00e6546332b55d15e013b7041feaa7a",
+      "bytes": 12295,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/assets/todo_progress.svg",
+      "sha256": "31db532eaed7eef51cf4771ea0d06b5d29493b1e1afd3d5cad86387da7cbb8ce",
+      "bytes": 4412,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/route.json",
+      "sha256": "19a5d6159679ead77cec327eba98ea72e7f3025113b6273263444bc6f8f93d65",
+      "bytes": 29663,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/project_state.py",
+      "sha256": "326b3d75e2ab25f70b0b735020ea52a9b5840ecd8c393544a66896bbaeee28fe",
+      "bytes": 3744,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/render_todo.py",
+      "sha256": "1602e4d08b5b38d92531a505c77c9c915bd63ee818ac5927cc5fa1cfc6b74be0",
+      "bytes": 14924,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/test_project_state.py",
+      "sha256": "1f030efac6f9a64030045a5f2bc87ad2142fa1643cb625da3c40fbc501356b46",
+      "bytes": 1582,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/test_render_todo.py",
+      "sha256": "82fc1181e6f58b92773cbfe6c3e3730b899821722ad9fd7db26cfcbe1257474b",
+      "bytes": 7251,
+      "state": "PRESENT_HASHED"
+    }
+  ]
+}

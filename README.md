@@ -17,6 +17,10 @@ Die Anzeige wird aus `governance/route.json` erzeugt. Ein Häkchen zählt erst
 nach `VERIFIED` und Prüfnachweis; das bloße Bearbeiten des Markdown-Kästchens
 gilt nicht als Abschluss. G−1 und der Plan bleiben noch nicht freigegeben.
 
+**[Kurzstatus und nächste drei Schritte](docs/STATUS_KURZ.md)** ·
+[Arbeitsweise und Aktualisierungstrigger](docs/ARBEITSWEISE.md) ·
+[Audit und Prüfgrenzen](docs/AUDIT_2026_10_25.md)
+
 ## Einstieg für Laien
 
 Die Anwendung wird später lokal im Browser unter Linux/Kubuntu gestartet,

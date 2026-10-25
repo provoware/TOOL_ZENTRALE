@@ -229,6 +229,30 @@ modules:
     state: PLANNED
     min_gate: G6
 files:
+  scripts/project_state.py:
+    owner: TOOL
+    stability: S2
+    catalog: CONFIRMED
+  scripts/test_project_state.py:
+    owner: QA
+    stability: S2
+    catalog: CONFIRMED
+  governance/file_state.json:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  docs/STATUS_KURZ.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  docs/ARBEITSWEISE.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  docs/AUDIT_2026_10_25.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
   blueprint/architecture.yaml:
     owner: GOV
     stability: S0

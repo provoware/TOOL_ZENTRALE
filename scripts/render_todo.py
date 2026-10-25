@@ -40,7 +40,9 @@ def load_route(path):
     steps, gates = payload["steps"], payload["gates"]
     if len(steps) != 112 or list(gates) != list(GATE_LABELS):
         raise ValueError("Erwartet 112 stabile Hauptschritte und 13 Gates")
-    if not all(key in steps for key in ("B001", "B012", "P001", "P100")):
+    expected = {f"B{index:03d}" for index in range(1, 13)}
+    expected.update(f"P{index:03d}" for index in range(1, 101))
+    if set(steps) != expected:
         raise ValueError("Stabile Schrittnummern fehlen")
     return payload
 
@@ -52,13 +54,85 @@ def evidence_valid(entry):
     ) and entry["result"] == "PASS" and bool(re.fullmatch(r"[0-9a-f]{40}", entry["source_sha"]))
 
 
+def dependency_graph(route):
+    """Validate identifiers and explicit prerequisites before deriving any view."""
+    nodes = dict(route["steps"])
+    for parent in route["steps"].values():
+        for sub in parent.get("substeps", []):
+            sid = sub.get("id")
+            if not isinstance(sid, str) or not sid.strip() or sid in nodes:
+                raise ValueError("Doppelte oder leere Unteraufgaben-ID")
+            nodes[sid] = dict(sub, depends_on=parent.get("depends_on", []) + sub.get("depends_on", []))
+    for item in route.get("iteration_queue", []):
+        sid = item.get("id")
+        if not isinstance(sid, str) or not sid.strip() or sid in nodes:
+            raise ValueError("Doppelte oder leere Abweichungs-ID")
+        if not isinstance(item.get("reason"), str) or not item["reason"].strip():
+            raise ValueError(f"{sid}: Abweichung ohne Begruendung")
+        if item.get("status") not in {"PLANNED", DONE}:
+            raise ValueError(f"{sid}: ungueltiger Abweichungsstatus")
+        nodes[sid] = item
+    graph = {}
+    for sid, item in nodes.items():
+        dependencies = item.get("depends_on", [])
+        if not isinstance(dependencies, list) or any(not isinstance(dep, str) for dep in dependencies):
+            raise ValueError(f"{sid}: ungueltige Abhaengigkeiten")
+        if len(dependencies) != len(set(dependencies)) or any(dep not in nodes for dep in dependencies):
+            raise ValueError(f"{sid}: doppelte oder unbekannte Abhaengigkeit")
+        graph[sid] = dependencies
+    visiting, visited = set(), set()
+
+    def visit(sid):
+        if sid in visiting:
+            raise ValueError(f"{sid}: Abhaengigkeitszyklus")
+        if sid in visited:
+            return
+        visiting.add(sid)
+        for dep in graph[sid]:
+            visit(dep)
+        visiting.remove(sid)
+        visited.add(sid)
+
+    for sid in graph:
+        visit(sid)
+    return nodes, graph
+
+
+def next_three(route, actual):
+    """Return a conditional, topological preview; never grant execution approval."""
+    nodes, graph = dependency_graph(route)
+    simulated = {sid for sid, done in actual.items() if done}
+    candidates = [item["id"] for item in route.get("iteration_queue", [])]
+    candidates += list(route["steps"])
+    queue_status = {item["id"]: item["status"] for item in route.get("iteration_queue", [])}
+    result = []
+    while len(result) < 3:
+        selected = None
+        pending = [item["id"] for item in route.get("iteration_queue", [])
+                   if item["id"] not in simulated]
+        eligible = pending[:1] if pending else candidates
+        for sid in eligible:
+            status = queue_status.get(sid, route.get("progress_overrides", {}).get(
+                sid, route["default_step_and_gate_status"]))
+            if sid in simulated or status in {"BLOCKED", "DEPRECATED"}:
+                continue
+            if all(dep in simulated for dep in graph[sid]):
+                selected = sid
+                break
+        if selected is None:
+            break
+        result.append(selected)
+        simulated.add(selected)
+        simulated.update(sub["id"] for sub in nodes[selected].get("substeps", []))
+    return result
+
+
 def resolve(route):
+    nodes, graph = dependency_graph(route)
     steps = route["steps"]
     statuses = route.get("progress_overrides", {})
     evidence = route.get("evidence_by_step", {})
-    ids = set(steps)
-    for parent in steps.values():
-        ids.update(sub["id"] for sub in parent.get("substeps", []))
+    ids = set(nodes)
     if set(statuses) - ids or set(evidence) - ids:
         raise ValueError("Unbekannte Status-/Evidenz-ID; Abbruch")
     actual = {}
@@ -79,6 +153,16 @@ def resolve(route):
         if status == DONE and any(not actual[sub["id"]] for sub in step.get("substeps", [])):
             raise ValueError(f"{step_id}: VERIFIED vor Abschluss der Unteraufgaben")
         actual[step_id] = status == DONE
+    for item in route.get("iteration_queue", []):
+        sid = item["id"]
+        if sid in statuses:
+            raise ValueError(f"{sid}: Abweichungsstatus nur in iteration_queue pflegen")
+        if item["status"] == DONE and not evidence_valid(evidence.get(sid)):
+            raise ValueError(f"{sid}: VERIFIED ohne aktuellen Pruefnachweis")
+        actual[sid] = item["status"] == DONE
+    for sid, dependencies in graph.items():
+        if actual[sid] and any(not actual[dep] for dep in dependencies):
+            raise ValueError(f"{sid}: VERIFIED vor Abschluss der Abhaengigkeiten")
     return actual
 
 
@@ -146,10 +230,16 @@ def make_markdown(route, actual, totals):
                 result.append(f"  - [{marker}] `{sub['id']}` {sub['title']}")
         result.extend(["", "</details>", ""])
     result.extend(["## Nächster Schritt und Warteschlange", ""])
-    queued = [(sid, item) for sid, item in route["steps"].items() if not actual[sid]][:3]
-    for index, (sid, item) in enumerate(queued):
-        label = "JETZT (Planung)" if index == 0 else "DANACH (nicht freigegeben)"
-        result.append(f"{index + 1}. **{sid} – {item['title']}** · {label}")
+    nodes, _ = dependency_graph(route)
+    queued = next_three(route, actual)
+    result.append("Bedingte Vorschau: Jeder Folgeschritt setzt den belegten Abschluss "
+                  "seiner Voraussetzungen voraus. Keine Ausfuehrungs- oder Gatefreigabe.")
+    for index, sid in enumerate(queued):
+        item = nodes[sid]
+        label = "PRIORITAET: Abweichung" if sid not in route["steps"] else "Planung"
+        result.append(f"{index + 1}. **{sid} – {item.get('title', item.get('reason'))}** · {label}")
+    if not queued:
+        result.append("Keine weitere Aufgabe vorschlagbar: Blockaden und Voraussetzungen pruefen.")
     result.extend([
         "", "**Patch-Karte beim Start ausfüllen:**",
         "", "```text",
