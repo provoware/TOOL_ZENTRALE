@@ -1,0 +1,287 @@
+{
+  "schema": "provoware-regressions/1",
+  "scope": "development_artifacts_not_product_runtime",
+  "families": [
+    {
+      "id": "RG001",
+      "title": "Unbelegter Schrittabschluss",
+      "kind": "CONFIRMED",
+      "severity": "HIGH",
+      "symptom": "VERIFIED trotz offener Voraussetzungen",
+      "cause": "Abhängigkeiten wurden nicht geprüft",
+      "source": "scripts/render_todo.py; Audit A01",
+      "trigger_paths": [
+        "scripts/render_todo.py",
+        "governance/route.json"
+      ],
+      "test_ids": [
+        "test_render_todo.TestTodo.test_completion_requires_dependencies",
+        "test_render_todo.TestTodo.test_substep_inherits_parent_dependencies",
+        "test_render_todo.TestTodo.test_fake_completion_is_rejected"
+      ],
+      "prevention": "Nachweis und Voraussetzungen vor Abschluss prüfen",
+      "next_action": "Voraussetzungen und echte Evidenz korrigieren"
+    },
+    {
+      "id": "RG002",
+      "title": "Defekter Abhängigkeitsgraph",
+      "kind": "PREVENTIVE",
+      "severity": "HIGH",
+      "symptom": "Zyklus oder unbekanntes Ziel verhindert Planung",
+      "cause": "Ungültige Referenz oder doppelte ID",
+      "source": "Graph-Negativtests",
+      "trigger_paths": [
+        "scripts/render_todo.py",
+        "governance/route.json"
+      ],
+      "test_ids": [
+        "test_render_todo.TestTodo.test_dependency_graph_rejects_invalid_edges_and_cycles",
+        "test_render_todo.TestTodo.test_duplicate_substep_rejected"
+      ],
+      "prevention": "IDs und Graph vor jeder Anzeige validieren",
+      "next_action": "Fehlerhafte Route gezielt korrigieren"
+    },
+    {
+      "id": "RG003",
+      "title": "Blockade oder Abweichung übergangen",
+      "kind": "CONFIRMED",
+      "severity": "MEDIUM",
+      "symptom": "Vorschau schlägt nicht zulässige Folgearbeit vor",
+      "cause": "Reine Dateireihenfolge statt Voraussetzungen",
+      "source": "Audit A02 und nachträgliche Queue-Prüfung",
+      "trigger_paths": [
+        "scripts/render_todo.py",
+        "governance/route.json"
+      ],
+      "test_ids": [
+        "test_render_todo.TestTodo.test_blocked_or_deprecated_chain_has_no_ready_successor",
+        "test_render_todo.TestTodo.test_pending_deviation_blocks_regular_route_until_resolved"
+      ],
+      "prevention": "Priorisierte Abweichung zuerst klären",
+      "next_action": "Erste offene Abweichung auflösen"
+    },
+    {
+      "id": "RG004",
+      "title": "Veraltete Dateiinformation",
+      "kind": "PREVENTIVE",
+      "severity": "MEDIUM",
+      "symptom": "Angezeigte Hashes passen nicht zu Dateien",
+      "cause": "Quelle verändert, Ansicht nicht aktualisiert",
+      "source": "Hashdrift-Negativprobe im Audit",
+      "trigger_paths": [
+        "scripts/project_state.py",
+        "scripts/test_project_state.py"
+      ],
+      "test_ids": [
+        "test_project_state.TestState.test_changes_additions_deletions_and_exclusions"
+      ],
+      "prevention": "Inhalte deterministisch vergleichen",
+      "next_action": "Hilfe mit --refresh starten"
+    },
+    {
+      "id": "RG005",
+      "title": "Symlink im registrierten Scope",
+      "kind": "PREVENTIVE",
+      "severity": "HIGH",
+      "symptom": "Register würde externen Dateiinhalt lesen",
+      "cause": "Ungeprüfte symbolische Verknüpfung",
+      "source": "Symlink-Negativtest",
+      "trigger_paths": [
+        "scripts/project_state.py",
+        "scripts/test_project_state.py"
+      ],
+      "test_ids": [
+        "test_project_state.TestState.test_symlink_is_rejected"
+      ],
+      "prevention": "Symlink vor Inhaltslesen ablehnen",
+      "next_action": "Verknüpfung und Scope prüfen"
+    },
+    {
+      "id": "RG006",
+      "title": "Veralteter oder fehlgeschlagener Laufbericht",
+      "kind": "PREVENTIVE",
+      "severity": "HIGH",
+      "symptom": "Alter PASS wird trotz verändertem Stand verwendet",
+      "cause": "Fehlende Inhalts-, Plan- oder Toolchainbindung",
+      "source": "Q001/Audit A03",
+      "trigger_paths": [
+        "scripts/run_evidence.py",
+        "scripts/assist.py",
+        "scripts/test_assist.py",
+        "scripts/test_run_evidence.py"
+      ],
+      "test_ids": [
+        "test_assist.TestAssist.test_evidence_detects_content_and_toolchain_drift",
+        "test_assist.TestAssist.test_failed_check_and_timeout_cannot_pass",
+        "test_run_evidence.TestGeneratedEvidence.test_generated_view_drift_invalidates_context",
+        "test_assist.TestAssist.test_early_failure_overwrites_previous_pass_report"
+      ],
+      "prevention": "Vorher-/Nachher-Fingerprint und Checkresultate vergleichen",
+      "next_action": "Prüfhilfe erneut ausführen; keine Gatefreigabe ableiten"
+    },
+    {
+      "id": "RG007",
+      "title": "Unbekannte Testzuordnung",
+      "kind": "PREVENTIVE",
+      "severity": "HIGH",
+      "symptom": "Änderung bleibt ungeprüft oder Test fehlt",
+      "cause": "Unvollständige Trigger oder falsche Test-ID",
+      "source": "Selektions-Negativtests",
+      "trigger_paths": [
+        "scripts/regression_registry.py",
+        "governance/regressions.yaml",
+        "scripts/assist.py",
+        "scripts/test_assist.py"
+      ],
+      "test_ids": [
+        "test_assist.TestAssist.test_unknown_impact_expands_suite",
+        "test_assist.TestAssist.test_missing_test_is_failure",
+        "test_assist.TestAssist.test_registry_rejects_invalid_trigger_and_duplicate"
+      ],
+      "prevention": "Unbekannten Impact auf vollständige Entwicklungssuite erweitern",
+      "next_action": "Zuordnung ergänzen und Negativtest behalten"
+    },
+    {
+      "id": "RG008",
+      "title": "Wiederholungsfehler ohne Lernbeleg",
+      "kind": "PREVENTIVE",
+      "severity": "MEDIUM",
+      "symptom": "Derselbe Fehler wird erneut ohne Fallbezug bearbeitet",
+      "cause": "Fehlerbeobachtung wird nicht strukturiert erfasst",
+      "source": "Lernkandidaten-Test",
+      "trigger_paths": [
+        "scripts/run_evidence.py",
+        "scripts/assist.py",
+        "scripts/test_assist.py"
+      ],
+      "test_ids": [
+        "test_assist.TestAssist.test_repeat_failure_is_learning_candidate_without_raw_text"
+      ],
+      "prevention": "Check-ID und Signatur lokal protokollieren; Ursache geprüft übernehmen",
+      "next_action": "Minimalfall reproduzieren und Register erweitern"
+    },
+    {
+      "id": "RG009",
+      "title": "Ungebundener oder veralteter Schrittabschluss",
+      "kind": "CONFIRMED",
+      "severity": "HIGH",
+      "symptom": "VERIFIED trotz bloßem Legacy-PASS oder verändertem Prüfgegenstand",
+      "cause": "Abschlussstatus und Prüflauf waren nicht verbindlich gekoppelt",
+      "source": "Audit A03 / Q001 und neue Negativtests",
+      "trigger_paths": [
+        "scripts/completion_contract.py",
+        "scripts/complete_step.py",
+        "scripts/plan_contract.py",
+        "scripts/test_completion.py",
+        "scripts/run_evidence.py",
+        "governance/route.json"
+      ],
+      "test_ids": [
+        "test_completion.TestCompletion.test_legacy_pass_and_wrong_target_are_rejected",
+        "test_completion.TestCompletion.test_source_test_and_plan_drift_rejected",
+        "test_completion.TestCompletion.test_valid_scope_and_status_do_not_create_hash_cycle",
+        "test_completion.TestCompletion.test_development_suite_cannot_certify_product_step",
+        "test_close_transaction.TestCloseTransaction.test_symlink_or_traversal_rejected_before_write",
+        "test_close_transaction.TestCloseTransaction.test_route_write_failure_restores_existing_artifact"
+      ],
+      "prevention": "Gebundene Akte, echte Commitbasis und identische Scopebytes verlangen",
+      "next_action": "Vollständig prüfen und Abschlussakte neu erzeugen"
+    },
+    {
+      "id": "RG010",
+      "title": "Gate oder frühe Nutzungspriorität umgangen",
+      "kind": "CONFIRMED",
+      "severity": "HIGH",
+      "symptom": "Folgearbeit beginnt ohne Freigabe oder Komfort blockiert den ersten Song",
+      "cause": "Gategrenzen nur beschrieben; numerische Kette statt Nutzerreise",
+      "source": "Audit A04/A07 / Q002/Q003 und Review",
+      "trigger_paths": [
+        "scripts/completion_contract.py",
+        "scripts/check_governance.py",
+        "scripts/test_gates.py",
+        "scripts/test_blueprint.py",
+        "governance/route.json",
+        "blueprint/architecture.yaml",
+        "scripts/gate_contract.py",
+        "scripts/test_close_transaction.py"
+      ],
+      "test_ids": [
+        "test_gates.TestGates.test_checked_does_not_open_next_gate",
+        "test_gates.TestGates.test_missing_incomplete_or_stale_gate_evidence_rejected",
+        "test_gates.TestGates.test_approved_requires_bound_decision",
+        "test_blueprint.TestBlueprint.test_real_blueprint_and_early_song_path"
+      ],
+      "prevention": "Gatemitglieder, Entscheidung und Abhängigkeiten mechanisch prüfen",
+      "next_action": "Fehlende Abnahme klären; geplante frühe Nutzerreise erhalten"
+    },
+    {
+      "id": "RG011",
+      "title": "Testfixture übernimmt Live-Abschlussmetadaten",
+      "kind": "CONFIRMED",
+      "severity": "MEDIUM",
+      "symptom": "Graph-Negativtests scheitern nach erstem echten Abschluss an fremden Evidenz-IDs",
+      "cause": "Fixture löschte Warteschlange, behielt aber deren Evidenzreferenzen",
+      "source": "Erster Q001–Q003-Abschlusslauf dieser Iteration; anschließender Pflichtlauf erkannte den Fehler",
+      "trigger_paths": [
+        "scripts/test_render_todo.py",
+        "governance/route.json"
+      ],
+      "test_ids": [
+        "test_render_todo.TestTodo.test_initial_view_is_not_approved",
+        "test_render_todo.TestTodo.test_fake_completion_is_rejected"
+      ],
+      "prevention": "Live-Status, Evidenz und Gates in isolierten Graphfixtures gemeinsam zurücksetzen",
+      "next_action": "Testfixture isolieren, vollständigen Lauf und Abschlussbelege erneuern"
+    },
+    {
+      "id": "RG012",
+      "title": "Unbelegte Legacyübernahme oder unvollständige Grundlage",
+      "kind": "PREVENTIVE",
+      "severity": "HIGH",
+      "symptom": "Plan behauptet Quellenfunktion, MVP-Zuordnung oder Wiederverwendung ohne passenden Beleg",
+      "cause": "Quellenstand, Zielschritt oder gemeinsamer Vertrag nicht verbindlich zugeordnet",
+      "source": "Lesender B001–B003-Review und zugehörige Negativtests",
+      "trigger_paths": [
+        "governance/foundation.json",
+        "scripts/foundation.py",
+        "scripts/test_foundation.py",
+        "blueprint/architecture.yaml"
+      ],
+      "test_ids": [
+        "test_foundation.TestFoundation.test_wrong_repository_and_mutable_source_links_rejected",
+        "test_foundation.TestFoundation.test_empty_targets_or_reuse_and_missing_contracts_rejected",
+        "test_foundation.TestFoundation.test_rewritten_receipts_cannot_change_pinned_reference",
+        "test_foundation.TestFoundation.test_direct_reuse_cannot_bypass_license_review"
+      ],
+      "prevention": "Quellen commitgebunden, Ziele vollständig, Herkunft offen statt erfunden; keine ungeklärte Direktkopie",
+      "next_action": "Quellenzuordnung und Vertragsmatrix korrigieren; danach vollständig prüfen"
+    },
+    {
+      "id": "RG013",
+      "title": "Unvollständiger Architektur-/Codevertrag",
+      "kind": "CONFIRMED",
+      "severity": "HIGH",
+      "symptom": "KTXT ohne geplanten Test; unerlaubte Katalog-, Schicht- oder Codeänderung bleibt unentdeckt",
+      "cause": "Prüfung deckte Metadaten, historische Reservierung und transitive Testzuordnung nicht vollständig ab",
+      "source": "B004–B006-Modellprüfung und unabhängiger lesender Review",
+      "trigger_paths": [
+        "blueprint/architecture.yaml",
+        "scripts/blueprint_contract.py",
+        "scripts/blueprint_view.py",
+        "scripts/test_blueprint_contract.py",
+        "scripts/test_blueprint_view.py",
+        "scripts/test_code_history.py"
+      ],
+      "test_ids": [
+        "test_blueprint_contract.TestBlueprintContract.test_policy_cannot_authorize_domain_ui_dependency",
+        "test_blueprint_contract.TestBlueprintContract.test_unknown_test_target_or_missing_test_trace_rejected",
+        "test_blueprint_contract.TestBlueprintContract.test_file_directory_or_parent_file_collision_rejected",
+        "test_blueprint_contract.TestBlueprintContract.test_conflicting_foreign_code_flags_rejected",
+        "test_blueprint_view.TestBlueprintView.test_new_actual_file_requires_catalog_entry",
+        "test_code_history.TestCodeHistory.test_merged_transient_code_remains_reserved"
+      ],
+      "prevention": "Strikte Schicht-/Pfad-/Besitzerregeln, vollständige erreichbare Git-Historie und abgeleitete geplante Testspuren prüfen",
+      "next_action": "Modellfehler gezielt korrigieren; erzeugte Ansicht und Abschlussbelege erneuern"
+    }
+  ]
+}

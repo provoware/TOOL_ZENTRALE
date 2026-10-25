@@ -1,0 +1,520 @@
+{
+  "schema": "provoware-foundation/1",
+  "target_repository_id": "1433219642",
+  "reference": {
+    "repository": "provoware/TOOL_2026_Multi",
+    "commit": "096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d",
+    "main_at_review": "096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d",
+    "truncated": false,
+    "blob_count": 356,
+    "files": [
+      {
+        "id": "SRC01",
+        "path": "app/song_document.py",
+        "blob_sha": "0c1f10b7bd65507ffacfc594bafd648ac0522528",
+        "sha256": "da660b0e3ebf8fb9cd246c4790a9b66d804c1e195642339d5dc3e175c7f33b26",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/app/song_document.py"
+      },
+      {
+        "id": "SRC02",
+        "path": "app/song_library.py",
+        "blob_sha": "18e14bb023eb2cd09ed812a916b524f4b4752e5f",
+        "sha256": "af45aad85391a26fd8accdf21e6cb89f74e305dae8dc5303688d5d5a90ec8247",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/app/song_library.py"
+      },
+      {
+        "id": "SRC03",
+        "path": "app/development_pool_import.py",
+        "blob_sha": "5eff79df6d9c668b95c023f5c588617e99a52329",
+        "sha256": "e873fb60bd72f49cdaeafcf3d9963c612e1348c04eee5a691821311a8c803882",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/app/development_pool_import.py"
+      },
+      {
+        "id": "SRC04",
+        "path": "app/module_contracts.py",
+        "blob_sha": "378f9a9d0e9d114b49b35bf949332c46a3a8085f",
+        "sha256": "429249dd80e54a5fbafa4f8023bfe0e28c1f19c194324fa3e3b9674769c8d146",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/app/module_contracts.py"
+      },
+      {
+        "id": "SRC05",
+        "path": "app/media_files.py",
+        "blob_sha": "a2f3da96032d87c3c42a275ea705d608ea99d960",
+        "sha256": "e1318684f74cb58815037788b4e0d42fe724708e2ade6379b68af6b9654e01a7",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/app/media_files.py"
+      },
+      {
+        "id": "SRC06",
+        "path": "app/quick_note.py",
+        "blob_sha": "01e275aea9436e08eb371a4834b636136d0e6be5",
+        "sha256": "3f0ae8f0bb532321dbf5b699c5444de2d9d5208d4b4cf6c522c8c8e6540c12cc",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/app/quick_note.py"
+      },
+      {
+        "id": "SRC07",
+        "path": "app/atomic_io.py",
+        "blob_sha": "16d3952a4b362ea606a75229866d4bb49f840d59",
+        "sha256": "f2a4eab45b1a2b41c933b9fd388409b4741fee91ceb883aa478d324c15e5ec0a",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/app/atomic_io.py"
+      },
+      {
+        "id": "SRC08",
+        "path": "app/data_search.py",
+        "blob_sha": "09da34028e0a837297fbdb08b07c99d34ad28208",
+        "sha256": "29bc0e8fc5c5abe1efec42e4b7d8378d6c55b1bafad78a99be82e7ca09416635",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/app/data_search.py"
+      },
+      {
+        "id": "SRC09",
+        "path": "tests/test_song_logic.py",
+        "blob_sha": "d4a82cc18ee3e58596a9e355a330b041ef468c4d",
+        "sha256": "9f25355b900b304f5a8a55425f66e73c7b4a3735c07b7ea6b1577f2edde24d2f",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/tests/test_song_logic.py"
+      },
+      {
+        "id": "SRC10",
+        "path": "tests/test_development_pool_import.py",
+        "blob_sha": "0b498487668e24942f591e931561ab98b8595975",
+        "sha256": "ea8ca26ae9a80f7cca8e00bcc969f1c3e0d3e6bb9d17b9370a72d8375d97a7cb",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/tests/test_development_pool_import.py"
+      },
+      {
+        "id": "SRC11",
+        "path": "tests/test_module_contracts.py",
+        "blob_sha": "1e249e8b4a82bf9e6d5fb74dc6ff9ac7f9da6371",
+        "sha256": "649461f12df2e4dc76c2c12b7003bdae2b3f1669f378586c8009b6247784b8a5",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/tests/test_module_contracts.py"
+      },
+      {
+        "id": "SRC12",
+        "path": "tests/test_media_files.py",
+        "blob_sha": "c1848d2e2de2c6c5bf2bfade4df36306ed6e435e",
+        "sha256": "62e77ea3319f6c464c691d369c56def6a2576c1bbbcce3d26fded26283599ca8",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/tests/test_media_files.py"
+      },
+      {
+        "id": "SRC13",
+        "path": "docs/DATENSICHERUNG.md",
+        "blob_sha": "ff9101399f513088032d8c5eaa603cbc431952d4",
+        "sha256": "a2b7c9aacea307895a8f3bdbdd180e55cb6d62e24c60d1b8a7e4db38e2638b6c",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/docs/DATENSICHERUNG.md"
+      },
+      {
+        "id": "SRC14",
+        "path": "docs/ENTWICKLUNGSPOOL.md",
+        "blob_sha": "97bfb3f754c8638b05cb4a2802aa1c72d6d0eb3b",
+        "sha256": "365af58145e79fca79a4d0eb3a98d8acdf600f312f14760cf564c19ed6de66d0",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/docs/ENTWICKLUNGSPOOL.md"
+      },
+      {
+        "id": "SRC15",
+        "path": "requirements.txt",
+        "blob_sha": "27c14d2ae5b5c3729a9bd3b301522d3d111cce96",
+        "sha256": "385e039f43c455549f3e79039a7b68169284eac3f18a35e0db4fa5ebdec01e44",
+        "url": "https://github.com/provoware/TOOL_2026_Multi/blob/096dc03ae362eed8141b0dbc0c8e91ab0b8daa2d/requirements.txt"
+      }
+    ],
+    "license_file_found": false
+  },
+  "use_cases": [
+    {
+      "id": "UC01",
+      "area": "songs",
+      "goal": "Song speichern und wieder öffnen",
+      "input": "Titel, Text und Abschnitte",
+      "output": "gleicher Text nach erneutem Öffnen",
+      "state": "Entwurf → gespeichert; vorige Fassung bleibt gesichert",
+      "failure": "Titelkollision, Abbruch, ungültiger Abschnitt",
+      "owner": "Songs",
+      "gap": "DB-Revision und Browser-Draftschutz neu; Dateipfad ist kein Webvertrag",
+      "sources": [
+        "SRC01",
+        "SRC09"
+      ],
+      "target_steps": [
+        "P047",
+        "P048",
+        "P049"
+      ],
+      "target_status": "PLANNED",
+      "legacy_evidence": "CODE_READ"
+    },
+    {
+      "id": "UC02",
+      "area": "songs",
+      "goal": "Ältere Songfassung wiederherstellen",
+      "input": "Song-ID und ausgewählte Fassung",
+      "output": "früherer Text; vorheriger aktueller Stand gesichert",
+      "state": "gespeichert → wiederhergestellt",
+      "failure": "fremde Fassung oder falscher Ordner",
+      "owner": "Songs",
+      "gap": "Bestätigung und atomare DB-Revision statt Dateinamenlogik",
+      "sources": [
+        "SRC01"
+      ],
+      "target_steps": [
+        "P050"
+      ],
+      "target_status": "PLANNED",
+      "legacy_evidence": "CODE_READ"
+    },
+    {
+      "id": "UC03",
+      "area": "projects",
+      "goal": "Projekt finden und sicher organisieren",
+      "input": "Projektname, Status und Arbeitsbestand",
+      "output": "zugeordnetes Projekt; unabhängige Kopie",
+      "state": "offen, aktiv, fertig, archiviert",
+      "failure": "Namenskollision, unzulässige Datei oder volle Sicherung",
+      "owner": "Projekte",
+      "gap": "Websuche und explizite Assetrechte; keine hostweiten Dateipfade",
+      "sources": [
+        "SRC14",
+        "SRC03",
+        "SRC10"
+      ],
+      "target_steps": [
+        "P063",
+        "P057"
+      ],
+      "target_status": "PLANNED",
+      "legacy_evidence": "CODE_READ"
+    },
+    {
+      "id": "UC04",
+      "area": "plugins",
+      "goal": "Werkzeug katalogisieren und bewusst aktivieren",
+      "input": "bekannte Modul-ID und Metadaten",
+      "output": "validierter Katalog; keine Ausführung",
+      "state": "registriert oder deaktiviert",
+      "failure": "unbekannte ID, falsche Version, Zusatzpfad",
+      "owner": "Plugin-Katalog",
+      "gap": "Desktopprotokoll mit Zoom ist kein Webmodulvertrag",
+      "sources": [
+        "SRC04",
+        "SRC11"
+      ],
+      "target_steps": [
+        "P072",
+        "P074"
+      ],
+      "target_status": "PLANNED",
+      "legacy_evidence": "CODE_READ"
+    },
+    {
+      "id": "UC05",
+      "area": "import",
+      "goal": "Import vor dem Schreiben verstehen",
+      "input": "Archiv mit Metadaten und Arbeitsdateien",
+      "output": "geplante Anzahl, Konflikte und danach autorisierte neue Kopie",
+      "state": "Vorschau → bestätigt → angewandt",
+      "failure": "Traversal, Duplikate, übergroße Dateien",
+      "owner": "Importwerkzeug",
+      "gap": "Legacyfunktion schreibt direkt; Vorschau muss eigenständig gebaut werden",
+      "sources": [
+        "SRC03",
+        "SRC10",
+        "SRC14"
+      ],
+      "target_steps": [
+        "P028",
+        "P029",
+        "P063"
+      ],
+      "target_status": "PLANNED",
+      "legacy_evidence": "CODE_READ"
+    },
+    {
+      "id": "UC06",
+      "area": "media",
+      "goal": "Medien prüfen und wiederfinden",
+      "input": "freigegebene Asset-ID und Typ",
+      "output": "Vorschau oder verständlicher fehlender Verweis",
+      "state": "verfügbar, fehlt oder gesperrt",
+      "failure": "Symlink, fremder Typ, fehlende Datei",
+      "owner": "Medien",
+      "gap": "Legacy erwartet absolute Hostpfade; Browser erhält ausschließlich IDs",
+      "sources": [
+        "SRC05",
+        "SRC12"
+      ],
+      "target_steps": [
+        "P065",
+        "P066",
+        "P067"
+      ],
+      "target_status": "PLANNED",
+      "legacy_evidence": "CODE_READ"
+    },
+    {
+      "id": "UC07",
+      "area": "quick_notes",
+      "goal": "Schnellnotiz einmalig sichern",
+      "input": "Notiztext und Request-ID",
+      "output": "dauerhaft bestätigte einzelne Notiz",
+      "state": "Entwurf → bestätigt; Fehler erhält Eingabe",
+      "failure": "Doppelanfrage, Schreibabbruch, volle Datei",
+      "owner": "Schnellnotizen",
+      "gap": "Legacy liest und ersetzt die Gesamtdatei ohne Request-ID; Serialisierung und Idempotenz neu",
+      "sources": [
+        "SRC06",
+        "SRC09"
+      ],
+      "target_steps": [
+        "P034",
+        "P042"
+      ],
+      "target_status": "PLANNED",
+      "legacy_evidence": "CODE_READ"
+    },
+    {
+      "id": "UC08",
+      "area": "backup",
+      "goal": "Geschützte Daten unabhängig sichern",
+      "input": "bestätigter Datenstand und Ziel",
+      "output": "prüfbares Paket mit manifestierten Ein-/Ausschlüssen",
+      "state": "geplant → geprüft → gesichert",
+      "failure": "fehlender Anhang, beschädigtes Backup",
+      "owner": "Gemeinsamer Speicherdienst",
+      "gap": "Legacydokumentation ist kein Web-SQLite-Restorebeleg",
+      "sources": [
+        "SRC13"
+      ],
+      "target_steps": [
+        "P030",
+        "P031",
+        "P032"
+      ],
+      "target_status": "PLANNED",
+      "legacy_evidence": "DOCUMENTATION_READ"
+    }
+  ],
+  "reuse": [
+    {
+      "component": "Dokumentmodell und Parser",
+      "decision": "ADAPT_AFTER_LICENSE",
+      "dependencies": "stdlib; app.atomic_io; Datei-I/O im selben Modul",
+      "reason": "Dataclasses und Parser fachlich nützlich; Domain von Speicheradapter trennen",
+      "sources": [
+        "SRC01"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    },
+    {
+      "component": "Suche/Sortieren in Songbibliothek",
+      "decision": "EXTRACT_LOGIC_AFTER_LICENSE",
+      "dependencies": "PySide6 wird bereits beim Modulimport geladen",
+      "reason": "Pure Hilfsfunktionen nur getrennt neu anbinden; keine Qt-Bibliothek im Webkern",
+      "sources": [
+        "SRC02"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    },
+    {
+      "component": "Atomarer Dateischreibweg",
+      "decision": "ADOPT_PATTERN",
+      "dependencies": "stdlib plus verzögert importiertes app.performance.observe",
+      "reason": "Flush/Replace-Muster nutzen; nicht als Ersatz für DB-Transaktion oder Logs ungeprüft kopieren",
+      "sources": [
+        "SRC07"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    },
+    {
+      "component": "Gemeinsame Suche",
+      "decision": "ADAPT_CONTRACT",
+      "dependencies": "stdlib, os.fwalk und lokale Pfade",
+      "reason": "Budgets und Abbruch übernehmen; nur autorisierte Datenbereiche; HTML-Ausgabe escapen",
+      "sources": [
+        "SRC08"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    },
+    {
+      "component": "Projektarchivimport",
+      "decision": "SPLIT_PREVIEW_AND_APPLY",
+      "dependencies": "development_pool, module_archive, zipfile",
+      "reason": "Validierung von Mutation trennen; kein erster Schreibakt vor Vorschau",
+      "sources": [
+        "SRC03",
+        "SRC10"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    },
+    {
+      "component": "Modulregistrierung",
+      "decision": "DECLARATIVE_METADATA_ONLY",
+      "dependencies": "stdlib, atomic_io; UI-Protokoll mit set_zoom",
+      "reason": "Whitelist und Metadaten trennen; fremder Code bleibt deaktiviert",
+      "sources": [
+        "SRC04",
+        "SRC11"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    },
+    {
+      "component": "Medienregister",
+      "decision": "ADAPT_TO_ASSET_IDS",
+      "dependencies": "stdlib, atomic_io und absolute lokale Pfade",
+      "reason": "Datenhoheit bleibt im Adapter; nie absolute Pfade vom Browser übernehmen",
+      "sources": [
+        "SRC05",
+        "SRC12"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    },
+    {
+      "component": "Schnellnotizadapter",
+      "decision": "REIMPLEMENT_CONTRACT",
+      "dependencies": "stdlib, atomic_io; gesamter Altinhalt im Speicher",
+      "reason": "Einmalige Request-ID, Serialisierung und Versionsfelder fehlen; Verträge neu umsetzen",
+      "sources": [
+        "SRC06",
+        "SRC09"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    },
+    {
+      "component": "Backup und Hilfeführung",
+      "decision": "ADOPT_REQUIREMENTS",
+      "dependencies": "Dokumentierte manuelle Sicherung; keine neue App ausgeführt",
+      "reason": "Eine gemeinsame Sicherungs-/Hilfebasis mit fachlichen Adaptern; keine doppelte Schattenimplementierung",
+      "sources": [
+        "SRC13",
+        "SRC14"
+      ],
+      "direct_copy_allowed": false,
+      "license_status": "UNRESOLVED"
+    }
+  ],
+  "open_points": [
+    {
+      "id": "OPEN02",
+      "title": "Keine explizite Quelllizenz",
+      "next_action": "Herkunft und Erlaubnis vor jeder tatsächlichen Quellcodeübernahme klären; bis dahin nur Anforderungen und Muster",
+      "gate": "G0/vor Codeübernahme"
+    },
+    {
+      "id": "OPEN03",
+      "title": "Import implementiert; Freigabestatus offen",
+      "next_action": "Code und Tests enthalten Rückimport; die Dokumentation nennt ihn noch nicht freigegeben. Separate Freigabe prüfen und Webvorschau vor Anwendung planen",
+      "gate": "P026/P028"
+    },
+    {
+      "id": "OPEN04",
+      "title": "Noch keine lauffähige Webanwendung",
+      "next_action": "Erst Architekturabnahme und technische Basis, dann frühen Speichern/Wiederöffnen-Weg real prüfen",
+      "gate": "G-1/G0/G5"
+    },
+    {
+      "id": "OPEN05",
+      "title": "Datenort und Installationspaket konkretisieren",
+      "next_action": "Geschützten externen Datenordner, Python-Zielmatrix und Backup-/Offlineprobe im passenden Schritt festlegen",
+      "gate": "P006/P010/G11"
+    }
+  ],
+  "shared_contracts": [
+    {
+      "id": "document",
+      "owner": "Fachmodell / Songs",
+      "interface": "DocumentPort.load/save(expected_revision)",
+      "boundary": "Domain kennt weder HTTP noch Dateisystem; Fachadapter bleiben eigenständig",
+      "sources": [
+        "SRC01"
+      ],
+      "target_status": "PLANNED",
+      "source_status": "CODE_READ"
+    },
+    {
+      "id": "search",
+      "owner": "Gemeinsamer Suchdienst",
+      "interface": "SearchPort.query(authorized_scope, query, limit)",
+      "boundary": "Nur freigegebene Daten und begrenzte Ergebnisse; keine freie Hostsuche",
+      "sources": [
+        "SRC08"
+      ],
+      "target_status": "PLANNED",
+      "source_status": "CODE_READ"
+    },
+    {
+      "id": "tags",
+      "owner": "Gemeinsame Fachvalidierung",
+      "interface": "TagSet.normalize(values)",
+      "boundary": "Ein Tagformat; Anzeige und Speicherung bleiben getrennt",
+      "sources": [
+        "SRC01"
+      ],
+      "target_status": "PLANNED",
+      "source_status": "CODE_READ"
+    },
+    {
+      "id": "templates",
+      "owner": "Gemeinsamer Vorlagenrenderer",
+      "interface": "TemplatePort.render(template_id, variables)",
+      "boundary": "Keine freie HTML-/Skriptausführung; fachliche Platzhalter explizit",
+      "sources": [],
+      "target_status": "PLANNED",
+      "source_status": "OPEN"
+    },
+    {
+      "id": "help",
+      "owner": "Gemeinsamer Hilfekatalog",
+      "interface": "HelpPort.resolve(context_id, language)",
+      "boundary": "Ein Kontextschlüssel je Hilfe; verständliche Texte außerhalb Fachlogik",
+      "sources": [],
+      "target_status": "PLANNED",
+      "source_status": "OPEN"
+    },
+    {
+      "id": "logging",
+      "owner": "Kern / Diagnose",
+      "interface": "EventSink.emit(code, severity, correlation_id, redacted_details)",
+      "boundary": "Keine Nutztexte, Tokens oder privaten Pfade; Nutzerhilfe und Diagnose getrennt",
+      "sources": [],
+      "target_status": "PLANNED",
+      "source_status": "OPEN"
+    },
+    {
+      "id": "versions",
+      "owner": "Dokumentrevisionsdienst",
+      "interface": "RevisionPort.list/restore(id, expected_revision)",
+      "boundary": "Inhaltsfassungen von Produkt-/API-/DB-/Buildversionen trennen",
+      "sources": [
+        "SRC01"
+      ],
+      "target_status": "PLANNED",
+      "source_status": "CODE_READ"
+    },
+    {
+      "id": "export",
+      "owner": "Gemeinsamer Exportdienst mit Formatadaptern",
+      "interface": "ExportPort.render(document_id, revision, format)",
+      "boundary": "Arbeitsstand bleibt unverändert; Export ist kein Backup",
+      "sources": [
+        "SRC01"
+      ],
+      "target_status": "PLANNED",
+      "source_status": "CODE_READ"
+    }
+  ],
+  "review": {
+    "baseline_commit": "6ed0ef714b879d1f5f08e11f46d425a7ca2c6258",
+    "read_only_reference": true,
+    "legacy_tests_executed": false,
+    "source_code_copied_into_product": false,
+    "result": "PLAN_REVIEW_PASS",
+    "notes": [
+      "Gemeinsame Pflichtverträge und offene Herkunft ergänzt",
+      "Leere Zielzuordnungen und verschobene Referenzstände werden abgelehnt",
+      "Implementierung und menschliche Freigabe ausdrücklich getrennt"
+    ]
+  }
+}

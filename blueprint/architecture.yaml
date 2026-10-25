@@ -60,17 +60,20 @@ standards:
   - patch-preview
 layers:
   UI:
+    responsibility: Zustände, Eingaben und Hilfe verständlich darstellen
     root: web_or_feature_public
     may_depend_on:
     - UI
     - API
   API:
+    responsibility: Anfragen, Rechte, Grenzen und sichere Antworten prüfen
     root: app/api_or_feature_backend
     may_depend_on:
     - API
     - SERVICE
     - CORE
   SERVICE:
+    responsibility: Fachliche Anwendungsfälle über stabile Grenzen orchestrieren
     root: app/features_backend
     may_depend_on:
     - SERVICE
@@ -79,33 +82,40 @@ layers:
     - CORE
     - PLUGIN
   DOMAIN:
+    responsibility: Fachwerte und Regeln ohne Transport- oder Speichertechnik validieren
     root: app/shared_or_feature_backend
     may_depend_on:
     - DOMAIN
   STORAGE:
+    responsibility: Persistenz, Transaktionen und kontrollierten Dateizugriff kapseln
     root: app/storage_or_feature_backend
     may_depend_on:
     - STORAGE
     - DOMAIN
     - CORE
   CORE:
+    responsibility: Gemeinsame Konfiguration, Identität, Diagnose und Sicherheitsgrenzen führen
     root: app/core
     may_depend_on:
     - CORE
     - DOMAIN
   PLUGIN:
+    responsibility: Deklarative Registrierung und erlaubte lokale Starter kontrollieren
     root: app/core_or_feature_backend
     may_depend_on:
     - PLUGIN
     - DOMAIN
     - CORE
   QA:
+    responsibility: Verträge und negative Fälle unabhängig prüfen
     root: tests_or_feature_tests
     may_depend_on: []
   GOV:
+    responsibility: Planung, Nachweise und Entscheidungen nachvollziehbar führen
     root: governance
     may_depend_on: []
   TOOL:
+    responsibility: Entwicklungs- und Startvorgänge begrenzt unterstützen
     root: scripts
     may_depend_on: []
 directories:
@@ -229,6 +239,190 @@ modules:
     state: PLANNED
     min_gate: G6
 files:
+  scripts/test_code_history.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  scripts/blueprint_contract.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/blueprint_view.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_blueprint_contract.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_blueprint_view.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  docs/ARCHITEKTUR_B004_B006.md:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  tests/unit/test_text_catalog.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B004.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B005.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B005.01.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B006.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/foundation.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  scripts/foundation.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_foundation.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  docs/GRUNDLAGE_B001_B003.md:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B001.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B002.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B003.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  scripts/gate_contract.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_close_transaction.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/Q001.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/Q002.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/Q003.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  scripts/plan_contract.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/completion_contract.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/complete_step.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/check_governance.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_completion.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_gates.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_blueprint.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  requirements-dev.txt:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  docs/FRUEHER_LAIENABLAUF.md:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  docs/ABSCHLUSS_UND_GATES.md:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_run_evidence.py:
+    owner: QA
+    stability: S2
+    catalog: CONFIRMED
+  scripts/regression_registry.py:
+    owner: TOOL
+    stability: S2
+    catalog: CONFIRMED
+  scripts/run_evidence.py:
+    owner: TOOL
+    stability: S2
+    catalog: CONFIRMED
+  scripts/assist.py:
+    owner: TOOL
+    stability: S2
+    catalog: CONFIRMED
+  scripts/test_assist.py:
+    owner: QA
+    stability: S2
+    catalog: CONFIRMED
+  docs/REGRESSION_INFO.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  docs/ITERATION_REGRESSION.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  scripts/project_state.py:
+    owner: TOOL
+    stability: S2
+    catalog: CONFIRMED
+  scripts/test_project_state.py:
+    owner: QA
+    stability: S2
+    catalog: CONFIRMED
+  governance/file_state.json:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  docs/STATUS_KURZ.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  docs/ARBEITSWEISE.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
+  docs/AUDIT_2026_10_25.md:
+    owner: GOV
+    stability: S2
+    catalog: CONFIRMED
   blueprint/architecture.yaml:
     owner: GOV
     stability: S0
@@ -837,75 +1031,88 @@ files:
     catalog: RESERVED
 codebook:
   KCFG:
+    interface: "Lokale Einstellungen laden, validieren und freigegeben bereitstellen"
     label: Konfiguration
     layer: CORE
     path: app/core/config.py
     requires: []
   KLOG:
+    interface: "Redigiertes Ereignis mit Code, Schwere und Korrelations-ID schreiben"
     label: Ereignisprotokoll
     layer: CORE
     path: app/core/logging.py
     requires:
     - KCFG
   KERR:
+    interface: "Fehlercode in sichere API-Antwort und nächste Hilfe übersetzen"
     label: Fehlerantworten
     layer: CORE
     path: app/core/errors.py
     requires:
     - KLOG
   KSEC:
+    interface: "Aktion und Datenbereich gegen explizite Rechte prüfen"
     label: Rechtepruefung
     layer: CORE
     path: app/core/security.py
     requires:
     - KCFG
   KVER:
+    interface: "Produkt-, API-, DB- und Buildkennung getrennt bereitstellen"
     label: Versionen
     layer: CORE
     path: app/core/versions.py
     requires:
     - KCFG
   KCAP:
+    interface: "Capability-Anfrage prüfen; unbekannte Fähigkeiten verweigern"
     label: Faehigkeitsgrenzen
     layer: CORE
     path: app/core/capabilities.py
     requires:
     - KCFG
   KREG:
+    interface: "Bekannte Modul-ID anhand gültigen Vertrags registrieren"
     label: Modulregistrierung
     layer: CORE
     path: app/core/module_registry.py
     requires:
     - KCAP
   KTXT:
+    interface: "Textschlüssel und Sprache auflösen; fehlenden Schlüssel diagnostizieren"
     label: Textkatalog
     layer: CORE
     path: app/core/text_catalog.py
     requires:
     - KCFG
   DDOC:
+    interface: "Dokument-ID, Inhalt und erwartete Revision fachlich validieren"
     label: Dokumentmodell
     layer: DOMAIN
     path: app/shared/document.py
     requires: []
   DSNG:
+    interface: "Songtitel, Abschnitte und Metadaten ohne I/O validieren"
     label: Songmodell
     layer: DOMAIN
     path: app/features/songs/backend/domain.py
     requires:
     - DDOC
   DPRJ:
+    interface: "Projekt-ID, Titel und Status ohne I/O validieren"
     label: Projektmodell
     layer: DOMAIN
     path: app/features/projects/backend/domain.py
     requires:
     - DDOC
   DPLG:
+    interface: "Deklarative Modulmetadaten und Vertragsversion validieren"
     label: Pluginmanifest
     layer: DOMAIN
     path: app/shared/plugin_manifest.py
     requires: []
   BSQL:
+    interface: "Transaktion beginnen, bestätigen oder vollständig zurücknehmen"
     label: SQLite Transaktion
     layer: STORAGE
     path: app/storage/db.py
@@ -913,6 +1120,7 @@ codebook:
     - KCFG
     - KLOG
   BSON:
+    interface: "Song und Revision über parametrisierten Speicheradapter laden/sichern"
     label: Song-Repository
     layer: STORAGE
     path: app/features/songs/backend/repository.py
@@ -920,6 +1128,7 @@ codebook:
     - BSQL
     - DSNG
   BPRJ:
+    interface: "Projekt und freigegebene Suchdaten aus Speicheradapter laden"
     label: Projekt-Repository
     layer: STORAGE
     path: app/features/projects/backend/repository.py
@@ -927,6 +1136,7 @@ codebook:
     - BSQL
     - DPRJ
   SSNG:
+    interface: "Song mit erwarteter Revision speichern; Konflikt explizit melden"
     label: Song-Speicherung
     layer: SERVICE
     path: app/features/songs/backend/service.py
@@ -935,6 +1145,7 @@ codebook:
     - BSON
     - KLOG
   SPSR:
+    interface: "Begrenzte Projektsuche im erlaubten Datenbereich ausführen"
     label: Projektsuche
     layer: SERVICE
     path: app/features/projects/backend/search.py
@@ -943,6 +1154,7 @@ codebook:
     - BPRJ
     - KLOG
   PLOD:
+    interface: "Geprüftes Manifest lesen; keinen fremden Programmcode ausführen"
     label: Deklarativer Plugin-Lader
     layer: PLUGIN
     path: app/core/declarative_loader.py
@@ -951,6 +1163,7 @@ codebook:
     - KREG
     - KCAP
   SPLG:
+    interface: "Validierte Katalogeinträge lesen und kontrolliert ändern"
     label: Plugin-Katalog
     layer: SERVICE
     path: app/features/plugin_catalog/backend/service.py
@@ -958,6 +1171,7 @@ codebook:
     - PLOD
     - KLOG
   ASNG:
+    interface: "Songanfrage validieren und sicher an Speicherdienst weitergeben"
     label: Song-API
     layer: API
     path: app/features/songs/backend/routes.py
@@ -966,6 +1180,7 @@ codebook:
     - KSEC
     - KERR
   APSR:
+    interface: "Suchanfrage begrenzen und autorisierte Ergebnisse zurückgeben"
     label: Such-API
     layer: API
     path: app/features/projects/backend/routes.py
@@ -974,6 +1189,7 @@ codebook:
     - KSEC
     - KERR
   APLG:
+    interface: "Kataloganfrage prüfen und deklarative Metadaten zurückgeben"
     label: Plugin-API
     layer: API
     path: app/features/plugin_catalog/backend/routes.py
@@ -982,11 +1198,13 @@ codebook:
     - KSEC
     - KERR
   UGRD:
+    interface: "Layoutzustand aus verfügbarem Raum und Anzeigeprofil ableiten"
     label: UI-Raster
     layer: UI
     path: web/js/components/grid.js
     requires: []
   USNG:
+    interface: "Entwurf bearbeiten, speichern, abbrechen und Fehlerzustand erhalten"
     label: Song-Editor
     layer: UI
     path: app/features/songs/public/editor.js
@@ -994,6 +1212,7 @@ codebook:
     - UGRD
     - ASNG
   UPSR:
+    interface: "Suchtext erfassen und Ergebnisse samt Leerzustand anzeigen"
     label: Projekt-Suche-UI
     layer: UI
     path: app/features/projects/public/search.js
@@ -1001,6 +1220,7 @@ codebook:
     - UGRD
     - APSR
   UPLG:
+    interface: "Katalog und Rechte verständlich anzeigen; kein Fremdcode laden"
     label: Plugin-Katalog-UI
     layer: UI
     path: app/features/plugin_catalog/public/catalog.js
@@ -1008,6 +1228,7 @@ codebook:
     - UGRD
     - APLG
   TSAV:
+    interface: "Song-Speichern und Wiederöffnen einschließlich Konflikt/Abbruch prüfen"
     label: Song-Speichertest
     layer: QA
     path: app/features/songs/tests/test_save.py
@@ -1018,6 +1239,7 @@ codebook:
     - BSON
     - BSQL
   TPSR:
+    interface: "Suchergebnis, Begrenzung und Leerzustand prüfen"
     label: Projektsuchtest
     layer: QA
     path: app/features/projects/tests/test_search.py
@@ -1027,6 +1249,7 @@ codebook:
     - SPSR
     - BPRJ
   TPLG:
+    interface: "Manifest-, Versions- und Capability-Verweigerung prüfen"
     label: Plugin-Schutztest
     layer: QA
     path: app/features/plugin_catalog/tests/test_denial.py
@@ -1037,11 +1260,13 @@ codebook:
     - PLOD
     - KCAP
   DNOTE:
+    interface: "Notiztext und Request-ID fachlich begrenzen"
     label: Schnellnotizmodell
     layer: DOMAIN
     path: app/shared/quick_note.py
     requires: []
   FNOTE:
+    interface: "Serialisierten dauerhaften Text-Append ausführen; Teilende erkennen"
     label: TXT-Append-Adapter
     layer: STORAGE
     path: app/storage/text_append.py
@@ -1049,6 +1274,7 @@ codebook:
     - KCFG
     - KLOG
   SNOTE:
+    interface: "Notiz idempotent mit serverseitiger Version dauerhaft bestätigen"
     label: Schnellnotizdienst
     layer: SERVICE
     path: app/features/quick_notes/backend/service.py
@@ -1058,6 +1284,7 @@ codebook:
     - KVER
     - KLOG
   ANOTE:
+    interface: "Notizanfrage prüfen und bestätigten Speicherstatus zurückgeben"
     label: Schnellnotiz-API
     layer: API
     path: app/features/quick_notes/backend/routes.py
@@ -1066,6 +1293,7 @@ codebook:
     - KSEC
     - KERR
   UNOTE:
+    interface: "Einzeilige Notiz erfassen; Entwurf bis Bestätigung erhalten"
     label: Schnellnotiz-Einzeiler
     layer: UI
     path: app/features/quick_notes/public/quick_note.js
@@ -1073,6 +1301,7 @@ codebook:
     - UGRD
     - ANOTE
   TNOTE:
+    interface: "Doppelrequest, Schreibabbruch und Notizerhalt prüfen"
     label: Notiz-Append-Regressionssuite
     layer: QA
     path: app/features/quick_notes/tests/test_append.py
@@ -1082,12 +1311,14 @@ codebook:
     - SNOTE
     - FNOTE
   DMED:
+    interface: "Medien-ID, Typ und Größenvertrag fachlich validieren"
     label: Medienmodell
     layer: DOMAIN
     path: app/features/media/backend/domain.py
     requires:
     - DDOC
   SMED:
+    interface: "Freigegebenes Medium prüfen und sichere Vorschau bereitstellen"
     label: Mediendienste
     layer: SERVICE
     path: app/features/media/backend/service.py
@@ -1096,6 +1327,7 @@ codebook:
     - BSQL
     - KLOG
   AMED:
+    interface: "Medienanfrage anhand Asset-ID und Rechten validieren"
     label: Medien-API
     layer: API
     path: app/features/media/backend/routes.py
@@ -1104,6 +1336,7 @@ codebook:
     - KSEC
     - KERR
   UMED:
+    interface: "Vorschau oder verständlichen fehlenden Verweis anzeigen"
     label: Medienoberflaeche
     layer: UI
     path: app/features/media/public/media.js
@@ -1111,6 +1344,7 @@ codebook:
     - UGRD
     - AMED
   TMED:
+    interface: "Medientyp, Pfadgrenze und beschädigte Vorschau prüfen"
     label: Medien-Regressionssuite
     layer: QA
     path: app/features/media/tests/test_media.py
@@ -1119,6 +1353,7 @@ codebook:
     - AMED
     - SMED
   SIMP:
+    interface: "Import zuerst ohne Mutation prüfen und Konfliktvorschau liefern"
     label: Import-Preview-Service
     layer: SERVICE
     path: app/core/imports.py
@@ -1126,6 +1361,7 @@ codebook:
     - BSQL
     - KLOG
   AIMP:
+    interface: "Importvorschau und gesondert bestätigte Anwendung anfordern"
     label: Import-API
     layer: API
     path: app/features/import_tool/backend/routes.py
@@ -1134,6 +1370,7 @@ codebook:
     - KSEC
     - KERR
   UIMP:
+    interface: "Umfang und Konflikte vor bewusst bestätigtem Import anzeigen"
     label: Import-Dialog
     layer: UI
     path: app/features/import_tool/public/import_ui.js
@@ -1141,6 +1378,7 @@ codebook:
     - UGRD
     - AIMP
   TIMP:
+    interface: "Vorschau, Zielkonflikt und Unterbrechung ohne Quellmutation prüfen"
     label: Import-UI-/Kollisionsregression
     layer: QA
     path: app/features/import_tool/tests/test_import.py
@@ -1149,29 +1387,34 @@ codebook:
     - AIMP
     - SIMP
   LBOOT:
+    interface: "Lokale Instanz prüfen und erst nach gültigem Health-Signal öffnen"
     label: Klickstarter
     layer: TOOL
     path: scripts/start_tool.sh
     requires: []
   TBOOT:
+    interface: "Erststart, Doppelstart und sichere Fehlerhilfe prüfen"
     label: Klickstart-/Doppelstarttest
     layer: QA
     path: tests/integration/test_first_launch.py
     verifies:
     - LBOOT
   TOFF:
+    interface: "Offlinepaket auf sauberem Zielsystem ohne Netzbedarf prüfen"
     label: Offlineinstallations-Test
     layer: QA
     path: tests/integration/test_offline_install.py
     verifies:
     - LBOOT
   UVIEW:
+    interface: "Komfort-/Kompaktprofil ohne Entwurfs- oder Fokusverlust wechseln"
     label: Komfort-/Kompaktmodus
     layer: UI
     path: web/js/components/view_modes.js
     requires:
     - UGRD
   TVIEW:
+    interface: "Anzeigeprofilwechsel einschließlich Notizentwurf prüfen"
     label: Anzeigeprofil-Regressionssuite
     layer: QA
     path: tests/e2e/test_view_modes.py
@@ -1179,6 +1422,7 @@ codebook:
     - UVIEW
     - UNOTE
   PCMD:
+    interface: "Ausschließlich bestätigte lokale Argumentliste mit Capabilities starten"
     label: Gepruefter externer Starter
     layer: PLUGIN
     path: app/core/trusted_launcher.py
@@ -1187,6 +1431,7 @@ codebook:
     - KSEC
     - KREG
   SPLX:
+    interface: "Freigegebenen Fremdstarter orchestrieren; Shellstrings verweigern"
     label: Sicherer Fremdstarterdienst
     layer: SERVICE
     path: app/features/plugin_catalog/backend/trusted_launch.py
@@ -1194,6 +1439,7 @@ codebook:
     - PCMD
     - KLOG
   APLX:
+    interface: "Starteranfrage nach ID, Berechtigung und Vertrag prüfen"
     label: Fremdstarter-API
     layer: API
     path: app/features/plugin_catalog/backend/launch_routes.py
@@ -1202,6 +1448,7 @@ codebook:
     - KSEC
     - KERR
   UPLX:
+    interface: "Startfolgen und Rechte vor bewusster Aktion verständlich anzeigen"
     label: Fremdstarter-Oberflaeche
     layer: UI
     path: app/features/plugin_catalog/public/launch.js
@@ -1209,6 +1456,7 @@ codebook:
     - UGRD
     - APLX
   TPST:
+    interface: "Shellinjektion, fehlende Capability und freien Drittcode verweigern"
     label: Fremdstarter-Schutztests
     layer: QA
     path: app/features/plugin_catalog/tests/test_trusted_launch.py
@@ -1219,6 +1467,14 @@ codebook:
     - PCMD
     - KCAP
     - PLOD
+  TTXT:
+    label: Textkatalog-Vertragstest
+    interface: "Fehlende Textschlüssel und kontrollierten Fallback prüfen"
+    layer: QA
+    path: tests/unit/test_text_catalog.py
+    verifies:
+    - KTXT
+
 simulation_policy:
   type: contract_and_graph_dry_run
   no_claim_of_real_execution: true

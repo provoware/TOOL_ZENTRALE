@@ -2,12 +2,12 @@
   "schema": "provoware-route/3.2",
   "tool_id": "TOOL_ZENTRALE",
   "repository": "provoware/TOOL_ZENTRALE",
-  "source_plan": "docs/MASTERPLAN_V3_1.txt + docs/MASTERPLAN_V3_2_DELTA.txt",
+  "source_plan": "docs/MASTERPLAN_V3_1.txt + docs/MASTERPLAN_V3_2_DELTA.txt + docs/FRUEHER_LAIENABLAUF.md",
   "source_reference_sha": "6e9f8638f7a7b6334a23d51988d0e3ef9d82a37c",
   "plan_status": "CANDIDATE_NOT_APPROVED",
   "default_step_and_gate_status": "PLANNED",
-  "details_are_authoritative_in": "docs/MASTERPLAN_V3_1.txt + docs/MASTERPLAN_V3_2_DELTA.txt",
-  "execution_order": "B001..B012 then P001..P100, gated and single_writer",
+  "details_are_authoritative_in": "docs/MASTERPLAN_V3_1.txt + docs/MASTERPLAN_V3_2_DELTA.txt + docs/FRUEHER_LAIENABLAUF.md",
+  "execution_order": "Explicit dependencies and gate membership; early song and project paths before comfort features",
   "status_semantics": "Nur geaenderte Schritte erfassen; Evidenz mit SHA.",
   "todo_contract_v3_2": {
     "source_of_truth": "governance/route.json",
@@ -15,7 +15,10 @@
     "generated_progress": "docs/assets/todo_progress.svg",
     "generator": "scripts/render_todo.py",
     "completion_status": "VERIFIED",
-    "completion_evidence_fields": ["source_sha", "test_run", "result"],
+    "completion_evidence_fields": [
+      "record",
+      "sha256"
+    ],
     "success_result": "PASS",
     "completed_parent_requires_completed_substeps": true,
     "no_automatic_gate_approval": true,
@@ -29,6 +32,20 @@
         "blueprint/",
         "docs/",
         "governance/"
+      ],
+      "members": [
+        "B001",
+        "B002",
+        "B003",
+        "B004",
+        "B005",
+        "B006",
+        "B007",
+        "B008",
+        "B009",
+        "B010",
+        "B011",
+        "B012"
       ]
     },
     "G0": {
@@ -38,6 +55,16 @@
         "blueprint/",
         "docs/",
         "governance/"
+      ],
+      "members": [
+        "P001",
+        "P002",
+        "P003",
+        "P004",
+        "P005",
+        "P006",
+        "P007",
+        "P008"
       ]
     },
     "G1": {
@@ -52,6 +79,16 @@
         ".gitignore",
         "pyproject.toml",
         "requirements.lock"
+      ],
+      "members": [
+        "P009",
+        "P010",
+        "P011",
+        "P012",
+        "P013",
+        "P014",
+        "P015",
+        "P016"
       ]
     },
     "G2": {
@@ -60,7 +97,19 @@
       "scope": [
         "app/core/",
         "app/api/",
-        "app/storage/"
+        "app/storage/",
+        "app/shared/"
+      ],
+      "members": [
+        "P017",
+        "P018",
+        "P019",
+        "P020",
+        "P021",
+        "P022",
+        "P023",
+        "P024",
+        "P025"
       ]
     },
     "G3": {
@@ -69,7 +118,18 @@
       "scope": [
         "app/core/",
         "app/storage/",
-        "tests/integration/"
+        "tests/integration/",
+        "app/features/import_tool/backend/"
+      ],
+      "members": [
+        "P026",
+        "P027",
+        "P028",
+        "P029",
+        "P030",
+        "P031",
+        "P032",
+        "P033"
       ]
     },
     "G4": {
@@ -82,24 +142,72 @@
         "app/features/quick_notes/",
         "app/storage/",
         "app/shared/"
+      ],
+      "members": [
+        "P034",
+        "P035",
+        "P036",
+        "P037",
+        "P038",
+        "P039",
+        "P040",
+        "P041",
+        "P042",
+        "P043"
       ]
     },
     "G5": {
-      "first": "P044",
+      "first": "P047",
       "last": "P056",
       "scope": [
         "app/features/songs/",
         "app/shared/",
-        "web/"
+        "web/",
+        "app/api/",
+        "app/storage/",
+        "app/core/",
+        "app/features/songs/tests/",
+        "tests/e2e/",
+        "tests/integration/"
+      ],
+      "members": [
+        "P047",
+        "P048",
+        "P049",
+        "P050",
+        "P056"
       ]
     },
     "G6": {
-      "first": "P057",
+      "first": "P063",
       "last": "P064",
       "scope": [
         "app/features/projects/",
         "app/features/tasks/",
-        "app/features/import_tool/"
+        "app/features/import_tool/",
+        "app/features/songs/",
+        "app/shared/",
+        "web/",
+        "tests/e2e/",
+        "tests/integration/"
+      ],
+      "members": [
+        "P063",
+        "P057",
+        "P058",
+        "P059",
+        "P060",
+        "P061",
+        "P062",
+        "P044",
+        "P045",
+        "P046",
+        "P051",
+        "P052",
+        "P053",
+        "P054",
+        "P055",
+        "P064"
       ]
     },
     "G7": {
@@ -108,6 +216,15 @@
       "scope": [
         "app/features/media/",
         "app/storage/"
+      ],
+      "members": [
+        "P065",
+        "P066",
+        "P067",
+        "P068",
+        "P069",
+        "P070",
+        "P071"
       ]
     },
     "G8": {
@@ -116,6 +233,15 @@
       "scope": [
         "app/features/plugin_catalog/",
         "app/core/"
+      ],
+      "members": [
+        "P072",
+        "P073",
+        "P074",
+        "P075",
+        "P076",
+        "P077",
+        "P078"
       ]
     },
     "G9": {
@@ -125,6 +251,15 @@
         "governance/",
         "scripts/",
         "tests/"
+      ],
+      "members": [
+        "P079",
+        "P080",
+        "P081",
+        "P082",
+        "P083",
+        "P084",
+        "P085"
       ]
     },
     "G10": {
@@ -137,6 +272,16 @@
         "packaging/",
         "scripts/",
         "Start_TOOL_ZENTRALE.desktop"
+      ],
+      "members": [
+        "P086",
+        "P087",
+        "P088",
+        "P089",
+        "P090",
+        "P091",
+        "P092",
+        "P093"
       ]
     },
     "G11": {
@@ -149,6 +294,15 @@
         "packaging/",
         "Start_TOOL_ZENTRALE.desktop",
         "tests/integration/"
+      ],
+      "members": [
+        "P094",
+        "P095",
+        "P096",
+        "P097",
+        "P098",
+        "P099",
+        "P100"
       ]
     }
   },
@@ -158,7 +312,14 @@
       "patch": "PLAN",
       "risk": "R1",
       "title": "Stabile PROVOWARE-Identität und Repositorygrenze",
-      "depends_on": []
+      "depends_on": [],
+      "completion_inputs": [
+        "governance/foundation.json",
+        "scripts/foundation.py",
+        "scripts/test_foundation.py",
+        "blueprint/architecture.yaml",
+        "docs/GRUNDLAGE_B001_B003.md"
+      ]
     },
     "B002": {
       "gate": "G-1",
@@ -167,6 +328,13 @@
       "title": "Altbestand rückwärts in Nutzungsfälle zerlegen",
       "depends_on": [
         "B001"
+      ],
+      "completion_inputs": [
+        "governance/foundation.json",
+        "scripts/foundation.py",
+        "scripts/test_foundation.py",
+        "blueprint/architecture.yaml",
+        "docs/GRUNDLAGE_B001_B003.md"
       ]
     },
     "B003": {
@@ -176,6 +344,13 @@
       "title": "Gemeinsame Bausteine und Wiederverwendungsgrenzen",
       "depends_on": [
         "B002"
+      ],
+      "completion_inputs": [
+        "governance/foundation.json",
+        "scripts/foundation.py",
+        "scripts/test_foundation.py",
+        "blueprint/architecture.yaml",
+        "docs/GRUNDLAGE_B001_B003.md"
       ]
     },
     "B004": {
@@ -185,6 +360,15 @@
       "title": "Stabile Schichten und erlaubte Richtung",
       "depends_on": [
         "B003"
+      ],
+      "completion_inputs": [
+        "blueprint/architecture.yaml",
+        "scripts/blueprint_contract.py",
+        "scripts/blueprint_view.py",
+        "scripts/test_blueprint_contract.py",
+        "scripts/test_blueprint_view.py",
+        "scripts/check_governance.py",
+        "scripts/test_code_history.py"
       ]
     },
     "B005": {
@@ -198,8 +382,26 @@
       "substeps": [
         {
           "id": "B005.01",
-          "title": "Dateikatalog mit echter Bestandsliste und Medien-/Importmodulen abgleichen"
+          "title": "Dateikatalog mit echter Bestandsliste und Medien-/Importmodulen abgleichen",
+          "completion_inputs": [
+            "blueprint/architecture.yaml",
+            "scripts/blueprint_contract.py",
+            "scripts/blueprint_view.py",
+            "scripts/test_blueprint_contract.py",
+            "scripts/test_blueprint_view.py",
+            "scripts/check_governance.py",
+            "scripts/test_code_history.py"
+          ]
         }
+      ],
+      "completion_inputs": [
+        "blueprint/architecture.yaml",
+        "scripts/blueprint_contract.py",
+        "scripts/blueprint_view.py",
+        "scripts/test_blueprint_contract.py",
+        "scripts/test_blueprint_view.py",
+        "scripts/check_governance.py",
+        "scripts/test_code_history.py"
       ]
     },
     "B006": {
@@ -209,6 +411,15 @@
       "title": "Semantische Kurzcode-Legende",
       "depends_on": [
         "B005"
+      ],
+      "completion_inputs": [
+        "blueprint/architecture.yaml",
+        "scripts/blueprint_contract.py",
+        "scripts/blueprint_view.py",
+        "scripts/test_blueprint_contract.py",
+        "scripts/test_blueprint_view.py",
+        "scripts/check_governance.py",
+        "scripts/test_code_history.py"
       ]
     },
     "B007": {
@@ -730,40 +941,13 @@
         }
       ]
     },
-    "P044": {
-      "gate": "G5",
-      "patch": "S",
-      "risk": "R2",
-      "title": "Profil-Stammdaten",
-      "depends_on": [
-        "P043"
-      ]
-    },
-    "P045": {
-      "gate": "G5",
-      "patch": "S",
-      "risk": "R2",
-      "title": "Genre-Zufall und Favoriten",
-      "depends_on": [
-        "P044"
-      ]
-    },
-    "P046": {
-      "gate": "G5",
-      "patch": "S",
-      "risk": "R2",
-      "title": "Charakterfibel und Referenzen",
-      "depends_on": [
-        "P045"
-      ]
-    },
     "P047": {
       "gate": "G5",
       "patch": "S",
       "risk": "R1",
       "title": "Song-Dokumentenmodell",
       "depends_on": [
-        "P046"
+        "P043"
       ]
     },
     "P048": {
@@ -793,58 +977,28 @@
         "P049"
       ]
     },
-    "P051": {
-      "gate": "G5",
-      "patch": "S",
-      "risk": "R2",
-      "title": "Allgemeiner Texteditor",
-      "depends_on": [
-        "P050"
-      ]
-    },
-    "P052": {
-      "gate": "G5",
-      "patch": "S",
-      "risk": "R2",
-      "title": "Textbuttons und Platzhalter",
-      "depends_on": [
-        "P051"
-      ]
-    },
-    "P053": {
-      "gate": "G5",
-      "patch": "S",
-      "risk": "R2",
-      "title": "Buch-/Kapitelwerkstatt",
-      "depends_on": [
-        "P052"
-      ]
-    },
-    "P054": {
-      "gate": "G5",
-      "patch": "S",
-      "risk": "R2",
-      "title": "Ideenarchiv und Kompositionskopien",
-      "depends_on": [
-        "P053"
-      ]
-    },
-    "P055": {
-      "gate": "G5",
-      "patch": "S",
-      "risk": "R2",
-      "title": "Wiki und Wissensverweise",
-      "depends_on": [
-        "P054"
-      ]
-    },
     "P056": {
       "gate": "G5",
       "patch": "K",
       "risk": "R1",
       "title": "Gemeinsame Suche/Export und kreatives MVP-Gate",
       "depends_on": [
-        "P055"
+        "P050"
+      ]
+    },
+    "P063": {
+      "gate": "G6",
+      "patch": "K",
+      "risk": "R1",
+      "title": "Entwicklungspool und Projektimporte",
+      "depends_on": [
+        "P056"
+      ],
+      "substeps": [
+        {
+          "id": "P063.01",
+          "title": "Benutzerfuehrung fuer Importvorschau und Konfliktliste anlegen"
+        }
       ]
     },
     "P057": {
@@ -853,7 +1007,7 @@
       "risk": "R2",
       "title": "Aufgaben- und Statusmodell",
       "depends_on": [
-        "P056"
+        "P063"
       ]
     },
     "P058": {
@@ -901,19 +1055,76 @@
         "P061"
       ]
     },
-    "P063": {
+    "P044": {
       "gate": "G6",
-      "patch": "K",
-      "risk": "R1",
-      "title": "Entwicklungspool und Projektimporte",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Profil-Stammdaten",
       "depends_on": [
-        "P062"
-      ],
-      "substeps": [
-        {
-          "id": "P063.01",
-          "title": "Benutzerfuehrung fuer Importvorschau und Konfliktliste anlegen"
-        }
+        "P063"
+      ]
+    },
+    "P045": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Genre-Zufall und Favoriten",
+      "depends_on": [
+        "P044"
+      ]
+    },
+    "P046": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Charakterfibel und Referenzen",
+      "depends_on": [
+        "P045"
+      ]
+    },
+    "P051": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Allgemeiner Texteditor",
+      "depends_on": [
+        "P046"
+      ]
+    },
+    "P052": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Textbuttons und Platzhalter",
+      "depends_on": [
+        "P051"
+      ]
+    },
+    "P053": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Buch-/Kapitelwerkstatt",
+      "depends_on": [
+        "P052"
+      ]
+    },
+    "P054": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Ideenarchiv und Kompositionskopien",
+      "depends_on": [
+        "P053"
+      ]
+    },
+    "P055": {
+      "gate": "G6",
+      "patch": "S",
+      "risk": "R2",
+      "title": "Wiki und Wissensverweise",
+      "depends_on": [
+        "P054"
       ]
     },
     "P064": {
@@ -922,7 +1133,8 @@
       "risk": "R2",
       "title": "G6 modulübergreifende Nutzerreise",
       "depends_on": [
-        "P063"
+        "P062",
+        "P055"
       ]
     },
     "P065": {
@@ -1292,8 +1504,134 @@
       ]
     }
   },
-  "progress_overrides": {},
-  "evidence_by_step": {},
+  "iteration_queue": [
+    {
+      "id": "Q001",
+      "title": "Echte Evidenzbindung spezifizieren und prüfen",
+      "reason": "A03: syntaktische SHA-Prüfung genügt nicht; Planrevision, Quell-/Testhash und Toolchain an realen Lauf binden.",
+      "status": "VERIFIED",
+      "depends_on": [],
+      "completion_inputs": [
+        "scripts/plan_contract.py",
+        "scripts/completion_contract.py",
+        "scripts/complete_step.py",
+        "scripts/check_governance.py",
+        "scripts/render_todo.py",
+        "scripts/run_evidence.py",
+        "scripts/assist.py",
+        "scripts/test_completion.py",
+        "scripts/test_gates.py",
+        "scripts/test_blueprint.py",
+        "scripts/test_render_todo.py",
+        "requirements-dev.txt",
+        "scripts/gate_contract.py",
+        "scripts/test_close_transaction.py"
+      ]
+    },
+    {
+      "id": "Q002",
+      "title": "Gateentscheidungen und Blueprintprüfung absichern",
+      "reason": "A04/A09: Freigabeinstanz und exakten Stand registrieren; permanenten Modellvalidator ergänzen.",
+      "status": "VERIFIED",
+      "depends_on": [
+        "Q001"
+      ],
+      "completion_inputs": [
+        "scripts/plan_contract.py",
+        "scripts/completion_contract.py",
+        "scripts/complete_step.py",
+        "scripts/check_governance.py",
+        "scripts/render_todo.py",
+        "scripts/run_evidence.py",
+        "scripts/assist.py",
+        "scripts/test_completion.py",
+        "scripts/test_gates.py",
+        "scripts/test_blueprint.py",
+        "scripts/test_render_todo.py",
+        "requirements-dev.txt",
+        "scripts/gate_contract.py",
+        "scripts/test_close_transaction.py"
+      ]
+    },
+    {
+      "id": "Q003",
+      "title": "Frühen laiengerechten Nutzungsweg priorisieren",
+      "reason": "A07: Song speichern und wieder öffnen vor Komfortmodulen planen; bestehende IDs und Sicherheitsvoraussetzungen erhalten.",
+      "status": "VERIFIED",
+      "depends_on": [
+        "Q002"
+      ],
+      "completion_inputs": [
+        "scripts/plan_contract.py",
+        "scripts/completion_contract.py",
+        "scripts/complete_step.py",
+        "scripts/check_governance.py",
+        "scripts/render_todo.py",
+        "scripts/run_evidence.py",
+        "scripts/assist.py",
+        "scripts/test_completion.py",
+        "scripts/test_gates.py",
+        "scripts/test_blueprint.py",
+        "scripts/test_render_todo.py",
+        "requirements-dev.txt",
+        "docs/FRUEHER_LAIENABLAUF.md",
+        "blueprint/architecture.yaml",
+        "scripts/gate_contract.py",
+        "scripts/test_close_transaction.py"
+      ]
+    }
+  ],
+  "progress_overrides": {
+    "B001": "VERIFIED",
+    "B002": "VERIFIED",
+    "B003": "VERIFIED",
+    "B004": "VERIFIED",
+    "B005.01": "VERIFIED",
+    "B005": "VERIFIED",
+    "B006": "VERIFIED"
+  },
+  "evidence_by_step": {
+    "Q001": {
+      "record": "governance/evidence/Q001.json",
+      "sha256": "b64314ebe24de2f562a6b431ebedbcb8147ce709a37c52a43aeb9e3f5f158bfc"
+    },
+    "Q002": {
+      "record": "governance/evidence/Q002.json",
+      "sha256": "b48065572ccc17737e66927339a4c0c60a4a3813733a9db8d893630f43bbb13c"
+    },
+    "Q003": {
+      "record": "governance/evidence/Q003.json",
+      "sha256": "5fe44298d0067300dab0372e878d56e40255df519f574f668aa3b2253e61ce52"
+    },
+    "B001": {
+      "record": "governance/evidence/B001.json",
+      "sha256": "e53822f04c5361c852a58d5b373283a3d3fd6b42ae1787fe52a91fda6c39aa9f"
+    },
+    "B002": {
+      "record": "governance/evidence/B002.json",
+      "sha256": "b1538921a257b5c3056148d20e5e43b071da49c1ee61b5477ffb0466f0b1942d"
+    },
+    "B003": {
+      "record": "governance/evidence/B003.json",
+      "sha256": "795dad2941bc49fb3f7ef0cc80b0ae049387d8a5304b1a11ec840c74176160ce"
+    },
+    "B004": {
+      "record": "governance/evidence/B004.json",
+      "sha256": "73191a4d4a784afdfadfb7f9f6b967778854f23d995bb69e1de5a888727e9f25"
+    },
+    "B005.01": {
+      "record": "governance/evidence/B005.01.json",
+      "sha256": "cdd82aeb2da84c5bb6ce9d5d186437e5587a25e643ac280bb6e41082b0051cc0"
+    },
+    "B005": {
+      "record": "governance/evidence/B005.json",
+      "sha256": "7a74dd2654be53986da780d399fa1cff03c84c773d8bec70429b1b8d422254d6"
+    },
+    "B006": {
+      "record": "governance/evidence/B006.json",
+      "sha256": "8c86504d2979edcbd6b04c2ea44d80f6c26e2a5279720c40fa605ca3b515fbfd"
+    }
+  },
   "step_selector_specification": {
     "immutable_origin": "commit_sha_plus_plan_revision",
     "stable_ids": "B001-B012_and_P001-P100_unmodified",
@@ -1364,5 +1702,20 @@
     "DP03_ROUTE",
     "DP04_SIMULATIONS",
     "DP05_REGRESSION"
-  ]
+  ],
+  "completion_policy": {
+    "schema": "provoware-completion/1",
+    "required_checks": [
+      "regression-info",
+      "render_todo.py",
+      "project_state.py",
+      "governance-contract",
+      "development-suite"
+    ],
+    "source_binding": "existing_ancestor_commit_plus_exact_tested_scope",
+    "approval_actors": [
+      "provoware"
+    ]
+  },
+  "gate_decisions": {}
 }

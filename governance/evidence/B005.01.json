@@ -1,0 +1,759 @@
+{
+  "schema": "provoware-completion/1",
+  "step_id": "B005.01",
+  "subject_kind": "base_commit_plus_tested_worktree_scope",
+  "plan_sha256": "745c0dfbe46e94cfcd523d890d7f0a7ca6d9571635a8f02f0ef0bd97cac93ca0",
+  "inputs": {
+    "blueprint/architecture.yaml": "17bdb8eb5c42fa694f7ec651719a48ef60443213f56cf8cbcdc74bd6ffb8726c",
+    "scripts/blueprint_contract.py": "f88064aa1bcd9c86673ce8223bd9f0b54f8c4b3240e9a6924508f5dc934c0cf6",
+    "scripts/blueprint_view.py": "4f077f87f6851cd8cb73055abc796ae7e8e7c9e6c14fa65e13d25c45c4e4fe79",
+    "scripts/check_governance.py": "cfae855914b719cf3f783ea57d58fa6c110ddea1c2d43ed893d8fc5fa589661b",
+    "scripts/test_blueprint_contract.py": "9f591be39d7ba0bc6065e94435dcef9bfb2dbeed45f16e942826f36d665615ef",
+    "scripts/test_blueprint_view.py": "263a60380fe198ca2774ff2a4d0f81ebc19d9b984bbf1f1037dc45a1c89880bc",
+    "scripts/test_code_history.py": "d712a12147f977a9c50c03d189fa160001325e88e1428ade3e3629d3d4a077e1"
+  },
+  "report": {
+    "schema": "provoware-check-run/1",
+    "created_at": "2026-10-25T18:13:38.134689+00:00",
+    "context": {
+      "source_sha": "715e217872e80db386384a850a3d5f69b8848b78",
+      "content_sha256": "af10d275f86344e136ebbf97f7c7a79c70db0b84bbd021dfb83698a5e07db0db",
+      "file_manifest": [
+        {
+          "path": ".github/workflows/todo-check.yml",
+          "sha256": "907d70b363db5d406b0ea7bf5c7cc19f41eb4af86d6f69625ac2343cac81d449",
+          "bytes": 913,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": ".gitignore",
+          "sha256": "9db00cf929aef856e1bf3b2232da34e374b97e4667b92f55e6cc2f65022b7f63",
+          "bytes": 44,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "bf022f1c4030df470a918c9d40d3a7a726cebc40b45cf934708368f365e89bfc",
+          "bytes": 3102,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "README.md",
+          "sha256": "0fc2f8a455f8b388701a40d9f118a7324efcebf859279644bde02b37b90226d1",
+          "bytes": 3398,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "blueprint/architecture.yaml",
+          "sha256": "17bdb8eb5c42fa694f7ec651719a48ef60443213f56cf8cbcdc74bd6ffb8726c",
+          "bytes": 46074,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ABSCHLUSS_UND_GATES.md",
+          "sha256": "7ee495a3c95369624aa047016932af8d675f0908e25e6d88739962b0c98e872b",
+          "bytes": 5993,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ARBEITSWEISE.md",
+          "sha256": "5659207be92ef6827157f9d97f5484fece7d2f6bf2071dc56ee4b299988f5425",
+          "bytes": 9392,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ARCHITEKTUR_B004_B006.md",
+          "sha256": "b94e1a8b205e2d27060d1b8eba1f12c7d2f5f0ba4ccc0ff17ae3093b25f32081",
+          "bytes": 25969,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/AUDIT_2026_10_25.md",
+          "sha256": "8754e48d0217e07c51dea0aa8d8a92d458ac1a9cb8174b5b0b18a9c38fdd8b16",
+          "bytes": 6657,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ENTWICKLUNGSSTANDARD.md",
+          "sha256": "b4efcdef605b643c9d6a2259e8d406157e10d208bde490a8ae54fd5b1e76c38a",
+          "bytes": 11411,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/FRUEHER_LAIENABLAUF.md",
+          "sha256": "0dea46e671d3bf273145264c2fa2e82451f11f7719501a494dedb6607777c5a8",
+          "bytes": 2304,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/GRUNDLAGE_B001_B003.md",
+          "sha256": "0e02e1abf564e9f7511e1b6b10202657a9ddfcc5587bcb5cb3bd4031cdb53437",
+          "bytes": 7975,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ITERATION_REGRESSION.md",
+          "sha256": "4d9d042e020f80c4eb1f893bfaf08c754f9d32e61c3b1203bb05e0fd89e36923",
+          "bytes": 4429,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/MASTERPLAN_V3_1.txt",
+          "sha256": "17d87be8165952a1040fb87b144a92ff179dab693ddf3316ae7bff59143ceef8",
+          "bytes": 88281,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/MASTERPLAN_V3_2_DELTA.txt",
+          "sha256": "8ab9762994c9b526259346296842e46d0d2f61d73312cb8e0790fc40d19e953d",
+          "bytes": 20390,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/PROMPT_OPTIMIERT.txt",
+          "sha256": "8fdf2b46c08fcb39f173788c60718672ad49c7e4480b09c72aa43f0f59e10b43",
+          "bytes": 1871,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/QUELLEN.md",
+          "sha256": "3b69aa5b3d50beebec022bc4a18f76f7ab09f88e9b5dd94422e28d626b8b1b55",
+          "bytes": 4154,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/REGRESSION_INFO.md",
+          "sha256": "8eb2cecbc88d1da817a9c27753c76a2b395f8547608ca52205f37496cabff6b6",
+          "bytes": 4065,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/TODO_V3_2.md",
+          "sha256": "c03d8263fb02aec4064946c2043d42a60acb3657704d03ae4f3cbfe56ca453d6",
+          "bytes": 12208,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/UX_BARRIEREFREIHEIT.md",
+          "sha256": "1766d2174ed5825616bd390c957d5661b00e6546332b55d15e013b7041feaa7a",
+          "bytes": 12295,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/assets/todo_progress.svg",
+          "sha256": "74fa917ba0c55ddfcebde576bb0ac18baed70315f4192de6bed1d3848ff23dfc",
+          "bytes": 4411,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/B001.json",
+          "sha256": "7948519377c0ef9ddda44f2edf376ee8cc2638eaad5b26e8a069059d80df476a",
+          "bytes": 23854,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/B002.json",
+          "sha256": "7cd316ddca3df15f8251ef9fc30ff8654d86ce461322d51a605ca9c0c02a48d4",
+          "bytes": 23854,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/B003.json",
+          "sha256": "012d9cfcb5680017fd5338dd2d7b10934179563156f684796ef009de3d15eab1",
+          "bytes": 23854,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/Q001.json",
+          "sha256": "ea7e75bcc70ec15fa025eede1a97c0fcac7f2f93c2990d335468136e53e82011",
+          "bytes": 24754,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/Q002.json",
+          "sha256": "a2710c18d2d523d4664553c326db7ff0c482b4fb8b90de1e7bbd56a65fa77cf3",
+          "bytes": 24754,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/Q003.json",
+          "sha256": "5b7a76ff2657a377396a68daa4043d0e0f127accd0b7f92f66cf85a03fb11878",
+          "bytes": 24960,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/foundation.json",
+          "sha256": "87da4daf55ea223809e079894cb1e6fec21715da32f3b9684f88ec7233c917e5",
+          "bytes": 19059,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/regressions.yaml",
+          "sha256": "f0bd13863c55018940edb25d7bf2f94c31e494f252b9aa92646d746415c4f4b5",
+          "bytes": 12770,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/route.json",
+          "sha256": "41e12d63c8df7070063e68ef1fe4d696bc2ac4d8399215e8c91c97542ecd4a9b",
+          "bytes": 36417,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "requirements-dev.txt",
+          "sha256": "3102fbd0b7cf477f1a206207bfabbf76017d4333368852ae52e6272d90d0e418",
+          "bytes": 97,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/assist.py",
+          "sha256": "31de4db37dc15ae02d64c01f12ed0bc55a5e92d532ddf0389902975bdd3524db",
+          "bytes": 6753,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/blueprint_contract.py",
+          "sha256": "f88064aa1bcd9c86673ce8223bd9f0b54f8c4b3240e9a6924508f5dc934c0cf6",
+          "bytes": 6868,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/blueprint_view.py",
+          "sha256": "4f077f87f6851cd8cb73055abc796ae7e8e7c9e6c14fa65e13d25c45c4e4fe79",
+          "bytes": 6346,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/check_governance.py",
+          "sha256": "cfae855914b719cf3f783ea57d58fa6c110ddea1c2d43ed893d8fc5fa589661b",
+          "bytes": 3403,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/complete_step.py",
+          "sha256": "6bc947aa0e3d604d05dee16b001cffbf14d18d9edbb01254780ed86fd610d91b",
+          "bytes": 4563,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/completion_contract.py",
+          "sha256": "239b6c4f79befa3ecdd8323119da690fae649cf4e611b70e172d0f9a2ad30649",
+          "bytes": 4560,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/foundation.py",
+          "sha256": "ac2523d0478be7c10e408541e8422bf9a554326d8b91aa65b66d4a908257a2a4",
+          "bytes": 8637,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/gate_contract.py",
+          "sha256": "8db2ba3c5426956541bfd29235bd5a74a66e5e85725a3f7689db06789e13d8dc",
+          "bytes": 4035,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/plan_contract.py",
+          "sha256": "0b5ac9bea7f3b90210b2f645061cf5f66f788d5361391d9813931948db7abfa7",
+          "bytes": 596,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/project_state.py",
+          "sha256": "dc2931d3419faafebd4de8e3aebbdfc608fa0c5a9abb6ecc577d3f3d1f98347d",
+          "bytes": 4021,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/regression_registry.py",
+          "sha256": "07cd2af8e5c5f3e59453e841d1f79c6b7c7ebbf07f261e7cc4a545d5961442b0",
+          "bytes": 6588,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/render_todo.py",
+          "sha256": "7fd6224a268a1da602dfc727f13bf2e9e53875c0bc39dd2f6efcb1cdde4549c6",
+          "bytes": 15383,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/run_evidence.py",
+          "sha256": "1209b77d86fe49237a95c2ae1515911562cebd805a0b4cfbc4e5235a5cb60aa3",
+          "bytes": 3607,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_assist.py",
+          "sha256": "6a29602b53c356feb28811003fc26df4cf1103deee68e74c31b6bc66666b909d",
+          "bytes": 5375,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_blueprint.py",
+          "sha256": "2e2f5931d4dd228686cd325b0dfcd3e13762f15d43da04b7ded83ddadaefc005",
+          "bytes": 1440,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_blueprint_contract.py",
+          "sha256": "9f591be39d7ba0bc6065e94435dcef9bfb2dbeed45f16e942826f36d665615ef",
+          "bytes": 4164,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_blueprint_view.py",
+          "sha256": "263a60380fe198ca2774ff2a4d0f81ebc19d9b984bbf1f1037dc45a1c89880bc",
+          "bytes": 1996,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_close_transaction.py",
+          "sha256": "6cbe136c457da3c6ce441d41639c360b1d35361f4cc6e9b2d5308e573cfae701",
+          "bytes": 2276,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_code_history.py",
+          "sha256": "d712a12147f977a9c50c03d189fa160001325e88e1428ade3e3629d3d4a077e1",
+          "bytes": 1528,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_completion.py",
+          "sha256": "85597f0bb27a2cb851e463f1912f524be6fe66fecf8d6c11afe3c55eb38b87a3",
+          "bytes": 4826,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_foundation.py",
+          "sha256": "b6c1cc56d0984817ee6f44ae0bebe8175599a0e33449d450fd276febdcbb73b1",
+          "bytes": 3031,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_gates.py",
+          "sha256": "215fb1c0755dc757fed96af1cac67910049ae4d7faeb791b54d7bf16422d1959",
+          "bytes": 4231,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_project_state.py",
+          "sha256": "1f030efac6f9a64030045a5f2bc87ad2142fa1643cb625da3c40fbc501356b46",
+          "bytes": 1582,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_render_todo.py",
+          "sha256": "41afdf487e71c212bf26df845280c87e85d36c69b6282f42b8d9015adb607143",
+          "bytes": 7574,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_run_evidence.py",
+          "sha256": "7fe91c9607592ed3c5fffd887e0258a237143a07870765a751d00a3c3c9b93e1",
+          "bytes": 1860,
+          "state": "PRESENT_HASHED"
+        }
+      ],
+      "plan_contract_sha256": "745c0dfbe46e94cfcd523d890d7f0a7ca6d9571635a8f02f0ef0bd97cac93ca0",
+      "generated_sha256": {
+        "governance/file_state.json": "88be3f76fad5de1369fb75d5f6e3581f824200a288af4caf9122917a61e47339",
+        "docs/STATUS_KURZ.md": "e132ba3243e0d6f2e0962a8c4a7721bd6fc9bbc1727746824996d1ce8882bfe3"
+      },
+      "plan_sha256": "41e12d63c8df7070063e68ef1fe4d696bc2ac4d8399215e8c91c97542ecd4a9b",
+      "registry_sha256": "f0bd13863c55018940edb25d7bf2f94c31e494f252b9aa92646d746415c4f4b5",
+      "python": "3.12.14",
+      "implementation": "CPython",
+      "platform": "linux",
+      "dependencies": {
+        "PyYAML": "6.0.3"
+      }
+    },
+    "context_after": {
+      "source_sha": "715e217872e80db386384a850a3d5f69b8848b78",
+      "content_sha256": "af10d275f86344e136ebbf97f7c7a79c70db0b84bbd021dfb83698a5e07db0db",
+      "file_manifest": [
+        {
+          "path": ".github/workflows/todo-check.yml",
+          "sha256": "907d70b363db5d406b0ea7bf5c7cc19f41eb4af86d6f69625ac2343cac81d449",
+          "bytes": 913,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": ".gitignore",
+          "sha256": "9db00cf929aef856e1bf3b2232da34e374b97e4667b92f55e6cc2f65022b7f63",
+          "bytes": 44,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "bf022f1c4030df470a918c9d40d3a7a726cebc40b45cf934708368f365e89bfc",
+          "bytes": 3102,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "README.md",
+          "sha256": "0fc2f8a455f8b388701a40d9f118a7324efcebf859279644bde02b37b90226d1",
+          "bytes": 3398,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "blueprint/architecture.yaml",
+          "sha256": "17bdb8eb5c42fa694f7ec651719a48ef60443213f56cf8cbcdc74bd6ffb8726c",
+          "bytes": 46074,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ABSCHLUSS_UND_GATES.md",
+          "sha256": "7ee495a3c95369624aa047016932af8d675f0908e25e6d88739962b0c98e872b",
+          "bytes": 5993,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ARBEITSWEISE.md",
+          "sha256": "5659207be92ef6827157f9d97f5484fece7d2f6bf2071dc56ee4b299988f5425",
+          "bytes": 9392,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ARCHITEKTUR_B004_B006.md",
+          "sha256": "b94e1a8b205e2d27060d1b8eba1f12c7d2f5f0ba4ccc0ff17ae3093b25f32081",
+          "bytes": 25969,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/AUDIT_2026_10_25.md",
+          "sha256": "8754e48d0217e07c51dea0aa8d8a92d458ac1a9cb8174b5b0b18a9c38fdd8b16",
+          "bytes": 6657,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ENTWICKLUNGSSTANDARD.md",
+          "sha256": "b4efcdef605b643c9d6a2259e8d406157e10d208bde490a8ae54fd5b1e76c38a",
+          "bytes": 11411,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/FRUEHER_LAIENABLAUF.md",
+          "sha256": "0dea46e671d3bf273145264c2fa2e82451f11f7719501a494dedb6607777c5a8",
+          "bytes": 2304,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/GRUNDLAGE_B001_B003.md",
+          "sha256": "0e02e1abf564e9f7511e1b6b10202657a9ddfcc5587bcb5cb3bd4031cdb53437",
+          "bytes": 7975,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/ITERATION_REGRESSION.md",
+          "sha256": "4d9d042e020f80c4eb1f893bfaf08c754f9d32e61c3b1203bb05e0fd89e36923",
+          "bytes": 4429,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/MASTERPLAN_V3_1.txt",
+          "sha256": "17d87be8165952a1040fb87b144a92ff179dab693ddf3316ae7bff59143ceef8",
+          "bytes": 88281,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/MASTERPLAN_V3_2_DELTA.txt",
+          "sha256": "8ab9762994c9b526259346296842e46d0d2f61d73312cb8e0790fc40d19e953d",
+          "bytes": 20390,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/PROMPT_OPTIMIERT.txt",
+          "sha256": "8fdf2b46c08fcb39f173788c60718672ad49c7e4480b09c72aa43f0f59e10b43",
+          "bytes": 1871,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/QUELLEN.md",
+          "sha256": "3b69aa5b3d50beebec022bc4a18f76f7ab09f88e9b5dd94422e28d626b8b1b55",
+          "bytes": 4154,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/REGRESSION_INFO.md",
+          "sha256": "8eb2cecbc88d1da817a9c27753c76a2b395f8547608ca52205f37496cabff6b6",
+          "bytes": 4065,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/TODO_V3_2.md",
+          "sha256": "c03d8263fb02aec4064946c2043d42a60acb3657704d03ae4f3cbfe56ca453d6",
+          "bytes": 12208,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/UX_BARRIEREFREIHEIT.md",
+          "sha256": "1766d2174ed5825616bd390c957d5661b00e6546332b55d15e013b7041feaa7a",
+          "bytes": 12295,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "docs/assets/todo_progress.svg",
+          "sha256": "74fa917ba0c55ddfcebde576bb0ac18baed70315f4192de6bed1d3848ff23dfc",
+          "bytes": 4411,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/B001.json",
+          "sha256": "7948519377c0ef9ddda44f2edf376ee8cc2638eaad5b26e8a069059d80df476a",
+          "bytes": 23854,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/B002.json",
+          "sha256": "7cd316ddca3df15f8251ef9fc30ff8654d86ce461322d51a605ca9c0c02a48d4",
+          "bytes": 23854,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/B003.json",
+          "sha256": "012d9cfcb5680017fd5338dd2d7b10934179563156f684796ef009de3d15eab1",
+          "bytes": 23854,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/Q001.json",
+          "sha256": "ea7e75bcc70ec15fa025eede1a97c0fcac7f2f93c2990d335468136e53e82011",
+          "bytes": 24754,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/Q002.json",
+          "sha256": "a2710c18d2d523d4664553c326db7ff0c482b4fb8b90de1e7bbd56a65fa77cf3",
+          "bytes": 24754,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/evidence/Q003.json",
+          "sha256": "5b7a76ff2657a377396a68daa4043d0e0f127accd0b7f92f66cf85a03fb11878",
+          "bytes": 24960,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/foundation.json",
+          "sha256": "87da4daf55ea223809e079894cb1e6fec21715da32f3b9684f88ec7233c917e5",
+          "bytes": 19059,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/regressions.yaml",
+          "sha256": "f0bd13863c55018940edb25d7bf2f94c31e494f252b9aa92646d746415c4f4b5",
+          "bytes": 12770,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "governance/route.json",
+          "sha256": "41e12d63c8df7070063e68ef1fe4d696bc2ac4d8399215e8c91c97542ecd4a9b",
+          "bytes": 36417,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "requirements-dev.txt",
+          "sha256": "3102fbd0b7cf477f1a206207bfabbf76017d4333368852ae52e6272d90d0e418",
+          "bytes": 97,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/assist.py",
+          "sha256": "31de4db37dc15ae02d64c01f12ed0bc55a5e92d532ddf0389902975bdd3524db",
+          "bytes": 6753,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/blueprint_contract.py",
+          "sha256": "f88064aa1bcd9c86673ce8223bd9f0b54f8c4b3240e9a6924508f5dc934c0cf6",
+          "bytes": 6868,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/blueprint_view.py",
+          "sha256": "4f077f87f6851cd8cb73055abc796ae7e8e7c9e6c14fa65e13d25c45c4e4fe79",
+          "bytes": 6346,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/check_governance.py",
+          "sha256": "cfae855914b719cf3f783ea57d58fa6c110ddea1c2d43ed893d8fc5fa589661b",
+          "bytes": 3403,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/complete_step.py",
+          "sha256": "6bc947aa0e3d604d05dee16b001cffbf14d18d9edbb01254780ed86fd610d91b",
+          "bytes": 4563,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/completion_contract.py",
+          "sha256": "239b6c4f79befa3ecdd8323119da690fae649cf4e611b70e172d0f9a2ad30649",
+          "bytes": 4560,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/foundation.py",
+          "sha256": "ac2523d0478be7c10e408541e8422bf9a554326d8b91aa65b66d4a908257a2a4",
+          "bytes": 8637,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/gate_contract.py",
+          "sha256": "8db2ba3c5426956541bfd29235bd5a74a66e5e85725a3f7689db06789e13d8dc",
+          "bytes": 4035,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/plan_contract.py",
+          "sha256": "0b5ac9bea7f3b90210b2f645061cf5f66f788d5361391d9813931948db7abfa7",
+          "bytes": 596,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/project_state.py",
+          "sha256": "dc2931d3419faafebd4de8e3aebbdfc608fa0c5a9abb6ecc577d3f3d1f98347d",
+          "bytes": 4021,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/regression_registry.py",
+          "sha256": "07cd2af8e5c5f3e59453e841d1f79c6b7c7ebbf07f261e7cc4a545d5961442b0",
+          "bytes": 6588,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/render_todo.py",
+          "sha256": "7fd6224a268a1da602dfc727f13bf2e9e53875c0bc39dd2f6efcb1cdde4549c6",
+          "bytes": 15383,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/run_evidence.py",
+          "sha256": "1209b77d86fe49237a95c2ae1515911562cebd805a0b4cfbc4e5235a5cb60aa3",
+          "bytes": 3607,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_assist.py",
+          "sha256": "6a29602b53c356feb28811003fc26df4cf1103deee68e74c31b6bc66666b909d",
+          "bytes": 5375,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_blueprint.py",
+          "sha256": "2e2f5931d4dd228686cd325b0dfcd3e13762f15d43da04b7ded83ddadaefc005",
+          "bytes": 1440,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_blueprint_contract.py",
+          "sha256": "9f591be39d7ba0bc6065e94435dcef9bfb2dbeed45f16e942826f36d665615ef",
+          "bytes": 4164,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_blueprint_view.py",
+          "sha256": "263a60380fe198ca2774ff2a4d0f81ebc19d9b984bbf1f1037dc45a1c89880bc",
+          "bytes": 1996,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_close_transaction.py",
+          "sha256": "6cbe136c457da3c6ce441d41639c360b1d35361f4cc6e9b2d5308e573cfae701",
+          "bytes": 2276,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_code_history.py",
+          "sha256": "d712a12147f977a9c50c03d189fa160001325e88e1428ade3e3629d3d4a077e1",
+          "bytes": 1528,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_completion.py",
+          "sha256": "85597f0bb27a2cb851e463f1912f524be6fe66fecf8d6c11afe3c55eb38b87a3",
+          "bytes": 4826,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_foundation.py",
+          "sha256": "b6c1cc56d0984817ee6f44ae0bebe8175599a0e33449d450fd276febdcbb73b1",
+          "bytes": 3031,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_gates.py",
+          "sha256": "215fb1c0755dc757fed96af1cac67910049ae4d7faeb791b54d7bf16422d1959",
+          "bytes": 4231,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_project_state.py",
+          "sha256": "1f030efac6f9a64030045a5f2bc87ad2142fa1643cb625da3c40fbc501356b46",
+          "bytes": 1582,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_render_todo.py",
+          "sha256": "41afdf487e71c212bf26df845280c87e85d36c69b6282f42b8d9015adb607143",
+          "bytes": 7574,
+          "state": "PRESENT_HASHED"
+        },
+        {
+          "path": "scripts/test_run_evidence.py",
+          "sha256": "7fe91c9607592ed3c5fffd887e0258a237143a07870765a751d00a3c3c9b93e1",
+          "bytes": 1860,
+          "state": "PRESENT_HASHED"
+        }
+      ],
+      "plan_contract_sha256": "745c0dfbe46e94cfcd523d890d7f0a7ca6d9571635a8f02f0ef0bd97cac93ca0",
+      "generated_sha256": {
+        "governance/file_state.json": "88be3f76fad5de1369fb75d5f6e3581f824200a288af4caf9122917a61e47339",
+        "docs/STATUS_KURZ.md": "e132ba3243e0d6f2e0962a8c4a7721bd6fc9bbc1727746824996d1ce8882bfe3"
+      },
+      "plan_sha256": "41e12d63c8df7070063e68ef1fe4d696bc2ac4d8399215e8c91c97542ecd4a9b",
+      "registry_sha256": "f0bd13863c55018940edb25d7bf2f94c31e494f252b9aa92646d746415c4f4b5",
+      "python": "3.12.14",
+      "implementation": "CPython",
+      "platform": "linux",
+      "dependencies": {
+        "PyYAML": "6.0.3"
+      }
+    },
+    "changed_paths": [],
+    "checks": [
+      {
+        "id": "regression-info",
+        "result": "PASS",
+        "returncode": 0
+      },
+      {
+        "id": "render_todo.py",
+        "result": "PASS",
+        "returncode": 0
+      },
+      {
+        "id": "project_state.py",
+        "result": "PASS",
+        "returncode": 0
+      },
+      {
+        "id": "governance-contract",
+        "result": "PASS",
+        "returncode": 0
+      },
+      {
+        "id": "development-suite",
+        "result": "PASS",
+        "returncode": 0
+      }
+    ],
+    "result": "PASS",
+    "candidates": []
+  }
+}

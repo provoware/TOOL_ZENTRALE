@@ -1,8 +1,9 @@
-name: V3.2 TODO-Nachweis
+name: Entwicklungsbasis und lernende Regression
 
 on:
   pull_request:
   push:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -10,9 +11,25 @@ permissions:
 jobs:
   todo-consistency:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
-      - name: Aufgabenlogik und Negativfälle testen
-        run: python3 scripts/test_render_todo.py
-      - name: Checkliste und Fortschrittsgrafik abgleichen
-        run: python3 scripts/render_todo.py --check
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Gepinnte Prüfabhängigkeit installieren
+        run: python -m pip install -r requirements-dev.txt
+      - name: Automatische Hilfe und Regression ausführen
+        run: python3 scripts/assist.py
+      - name: Maschinenlesbaren Laufbericht sichern
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: development-regression-report
+          path: work/regression/latest.json
+          retention-days: 14
+          if-no-files-found: warn
