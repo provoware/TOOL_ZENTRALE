@@ -1,7 +1,7 @@
 # Verträge, Szenarien und Prüfautomat B007–B009
 
 **Modell:** MODEL_CONTRACT_PASS. **Reale Browser-/DB-/Pluginausführung:** NOT_TESTED.
-**Umfang:** 8 Szenarien, 34 Fälle, 55 Codes und 211 Sollpfade – dynamisch ermittelt.
+**Umfang:** 8 Szenarien, 34 Fälle, 55 Codes und 214 Sollpfade – dynamisch ermittelt.
 
 ## Daten und Versionen
 

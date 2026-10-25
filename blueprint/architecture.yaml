@@ -299,6 +299,18 @@ files:
     owner: GOV
     stability: S1
     catalog: CONFIRMED
+  governance/evidence/B010.01.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B010.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B011.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
   scripts/test_code_history.py:
     owner: QA
     stability: S1
