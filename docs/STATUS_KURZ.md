@@ -1,7 +1,7 @@
 # Projektstatus
 
 **Phase:** Planung; noch keine startbare Anwendung.
-**Belegt abgeschlossen:** 0/112 Hauptschritte (0 %).
+**Belegt abgeschlossen:** 3/112 Hauptschritte (2 %).
 **Entwicklungsbasis:** 3/3 Korrekturaufgaben geprüft.
 **Planstatus:** `CANDIDATE_NOT_APPROVED`; keine automatische Freigabe.
 
@@ -10,9 +10,9 @@
 Bedingte Vorschau: jeder Folgeschritt setzt den Erfolg seiner Vorgänger
 und die erforderliche Freigabe voraus. Keine Ausführungszusage.
 
-1. **B001:** Stabile PROVOWARE-Identität und Repositorygrenze
-2. **B002:** Altbestand rückwärts in Nutzungsfälle zerlegen
-3. **B003:** Gemeinsame Bausteine und Wiederverwendungsgrenzen
+1. **B004:** Stabile Schichten und erlaubte Richtung
+2. **B005:** Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen
+3. **B006:** Semantische Kurzcode-Legende
 
 ## So geht es weiter
 

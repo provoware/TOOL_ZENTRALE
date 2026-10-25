@@ -14,7 +14,7 @@ oder keine Pfadangabe erweitern auf alle vorhandenen Tests.
 
 Push, Pull Request und manueller Workflowstart lösen dieselbe Hilfe in CI aus.
 Es läuft kein dauernder Hintergrunddienst. --refresh verändert ausschließlich
-die fünf bekannten abgeleiteten Ansichten, niemals Produktcode oder Nutzdaten.
+die bekannten abgeleiteten Ansichten, niemals Produktcode oder Nutzdaten.
 
 ## Wie das System lernt
 
@@ -48,6 +48,7 @@ Schrittstatus noch Gatefreigaben automatisch an. Abschlussbelege werden mit
 | RG009 | CONFIRMED | Ungebundener oder veralteter Schrittabschluss | Vollständig prüfen und Abschlussakte neu erzeugen |
 | RG010 | CONFIRMED | Gate oder frühe Nutzungspriorität umgangen | Fehlende Abnahme klären; geplante frühe Nutzerreise erhalten |
 | RG011 | CONFIRMED | Testfixture übernimmt Live-Abschlussmetadaten | Testfixture isolieren, vollständigen Lauf und Abschlussbelege erneuern |
+| RG012 | PREVENTIVE | Unbelegte Legacyübernahme oder unvollständige Grundlage | Quellenzuordnung und Vertragsmatrix korrigieren; danach vollständig prüfen |
 
 ## Pflege und Grenzen
 

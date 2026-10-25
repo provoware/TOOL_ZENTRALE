@@ -28,7 +28,8 @@ Einmalig: `python3 -m pip install -r requirements-dev.txt`.
 `python3 scripts/assist.py --refresh` aktualisiert zusätzlich abgeleitete Ansichten.
 [Erklärung und Lernregeln](docs/REGRESSION_INFO.md) ·
 [Abschluss- und Gatevertrag](docs/ABSCHLUSS_UND_GATES.md) ·
-[Früher Laienablauf](docs/FRUEHER_LAIENABLAUF.md).
+[Früher Laienablauf](docs/FRUEHER_LAIENABLAUF.md) ·
+[Geprüfte Grundlagen und offene Punkte](docs/GRUNDLAGE_B001_B003.md).
 
 ## Einstieg für Laien
 

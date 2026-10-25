@@ -312,7 +312,14 @@
       "patch": "PLAN",
       "risk": "R1",
       "title": "Stabile PROVOWARE-Identität und Repositorygrenze",
-      "depends_on": []
+      "depends_on": [],
+      "completion_inputs": [
+        "governance/foundation.json",
+        "scripts/foundation.py",
+        "scripts/test_foundation.py",
+        "blueprint/architecture.yaml",
+        "docs/GRUNDLAGE_B001_B003.md"
+      ]
     },
     "B002": {
       "gate": "G-1",
@@ -321,6 +328,13 @@
       "title": "Altbestand rückwärts in Nutzungsfälle zerlegen",
       "depends_on": [
         "B001"
+      ],
+      "completion_inputs": [
+        "governance/foundation.json",
+        "scripts/foundation.py",
+        "scripts/test_foundation.py",
+        "blueprint/architecture.yaml",
+        "docs/GRUNDLAGE_B001_B003.md"
       ]
     },
     "B003": {
@@ -330,6 +344,13 @@
       "title": "Gemeinsame Bausteine und Wiederverwendungsgrenzen",
       "depends_on": [
         "B002"
+      ],
+      "completion_inputs": [
+        "governance/foundation.json",
+        "scripts/foundation.py",
+        "scripts/test_foundation.py",
+        "blueprint/architecture.yaml",
+        "docs/GRUNDLAGE_B001_B003.md"
       ]
     },
     "B004": {
@@ -1524,19 +1545,35 @@
       ]
     }
   ],
-  "progress_overrides": {},
+  "progress_overrides": {
+    "B001": "VERIFIED",
+    "B002": "VERIFIED",
+    "B003": "VERIFIED"
+  },
   "evidence_by_step": {
     "Q001": {
       "record": "governance/evidence/Q001.json",
-      "sha256": "eeb6388988d0a2e324c2ef8c8990466ffea5e6100aa1a9489cffbe104dfa9143"
+      "sha256": "ea7e75bcc70ec15fa025eede1a97c0fcac7f2f93c2990d335468136e53e82011"
     },
     "Q002": {
       "record": "governance/evidence/Q002.json",
-      "sha256": "8130a856051333a1ae794043568b65cd0db761037a0f20a5738bde831a084b28"
+      "sha256": "a2710c18d2d523d4664553c326db7ff0c482b4fb8b90de1e7bbd56a65fa77cf3"
     },
     "Q003": {
       "record": "governance/evidence/Q003.json",
-      "sha256": "00ed6fc7cd966bef0fef00ac7111608c9186099125eb43cc3bab4f93b901338e"
+      "sha256": "5b7a76ff2657a377396a68daa4043d0e0f127accd0b7f92f66cf85a03fb11878"
+    },
+    "B001": {
+      "record": "governance/evidence/B001.json",
+      "sha256": "7948519377c0ef9ddda44f2edf376ee8cc2638eaad5b26e8a069059d80df476a"
+    },
+    "B002": {
+      "record": "governance/evidence/B002.json",
+      "sha256": "7cd316ddca3df15f8251ef9fc30ff8654d86ce461322d51a605ca9c0c02a48d4"
+    },
+    "B003": {
+      "record": "governance/evidence/B003.json",
+      "sha256": "012d9cfcb5680017fd5338dd2d7b10934179563156f684796ef009de3d15eab1"
     }
   },
   "step_selector_specification": {

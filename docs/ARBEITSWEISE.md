@@ -104,3 +104,24 @@ G5 führt direkt zum Song-Speichern/Wiederöffnen, G6 beginnt mit Projektvorscha
 Planidentität wird ohne Status-/Evidenzverwaltung berechnet; jeder zertifizierte
 Scope bleibt dennoch bytegenau an Code, Tests und Python-/Parserkontext gebunden.
 Die permanente Governanceprüfung benötigt `PyYAML==6.0.3` aus requirements-dev.txt.
+
+## Quellenbasierte Grundlagenschritte B001–B003
+
+`governance/foundation.json` führt die festen Quellenbelege, Nutzungsfälle,
+Wiederverwendungsentscheidungen und offenen Punkte. Die lesbare Grundlage
+wird daraus mit `foundation.py` erzeugt und durch `check_governance.py` geprüft.
+Referenzdateien bleiben ausschließlich im ignorierten work/-Bereich; Quellcode
+wird nicht in die Produktstruktur kopiert. Quellenlektüre, geplante Webfunktion
+und echte Funktionsprüfung sind getrennte Aussagen. Die neue Planrevision
+erfordert eine gemeinsame erneute Zertifizierung bereits geprüfter Q-Aufgaben;
+deren ursprünglicher Implementierungsabschluss geht dadurch nicht verloren.
+
+Diese Übernahme verwendet EX-FOUND-01 für reine Quellbeleg-/Registerdaten,
+generierte Grundlage und erneuerte Abschlussakten. Quellcodepaket Grundlage
+plus Negativtests: 11660 Zeichen, 209 +/- Zeilen, zwei Dateien (K eingehalten).
+Integration: 519 Zeichen, sieben +/- Zeilen, drei Dateien. 49 Entwicklungstests,
+Governance-/Ansichts-/Evidenzprüfung bestanden; lesender Review ohne kritischen
+Restbefund. B001–B003 sind Planungsnachweise, keine Produkt- oder Gatefreigabe.
+Rückweg: eigene Hunks gegen PR-Stand 6ed0ef7 prüfen, B-Abschlussreferenzen und
+Akten zusammen zurücknehmen, vorherige Q-Akten/Planrevision gemeinsam
+wiederherstellen und Ansichten regenerieren; keine Referenzquellen verändern.

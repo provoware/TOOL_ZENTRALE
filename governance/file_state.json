@@ -26,14 +26,14 @@
     },
     {
       "path": "README.md",
-      "sha256": "fe2764cbf7a37c18e99f031f75c7da312db2022e95d0d44141595402ce0a533c",
-      "bytes": 3248,
+      "sha256": "06a282c5a10ef66a3ed24201060b29351bed006e369b9087694b6dc083bb2437",
+      "bytes": 3321,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "blueprint/architecture.yaml",
-      "sha256": "c1d985f9dcbbb9112948c6fd5bf0814875d32c837474c1af5157fc16b96e59c1",
-      "bytes": 39189,
+      "sha256": "364356f820b4c263d30a7c189308894980c785496b44a82b5330ad6cf19ed555",
+      "bytes": 39796,
       "state": "PRESENT_HASHED"
     },
     {
@@ -44,8 +44,8 @@
     },
     {
       "path": "docs/ARBEITSWEISE.md",
-      "sha256": "8335e268de0e30b0f4d00e174ccd48b16659490390c7a199e40902a7150edcde",
-      "bytes": 6289,
+      "sha256": "26e1a950de0bf4a6d68b3c4548530b349214201973d83bac644a4c69cbd79cf3",
+      "bytes": 7677,
       "state": "PRESENT_HASHED"
     },
     {
@@ -64,6 +64,12 @@
       "path": "docs/FRUEHER_LAIENABLAUF.md",
       "sha256": "0dea46e671d3bf273145264c2fa2e82451f11f7719501a494dedb6607777c5a8",
       "bytes": 2304,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "docs/GRUNDLAGE_B001_B003.md",
+      "sha256": "1642cd65c59fe867dd51562e1bfe0f4f3d8e7549e4a1eab83d0d8072e1bd87bd",
+      "bytes": 8160,
       "state": "PRESENT_HASHED"
     },
     {
@@ -98,14 +104,14 @@
     },
     {
       "path": "docs/REGRESSION_INFO.md",
-      "sha256": "46e2d30c26cf7a65c243f6cde177e590a9f2af426576b32ddafc267d1ef7822d",
-      "bytes": 3761,
+      "sha256": "50168d94299ee3bf79a930af67052cc504f0be4657de73aa616f7858c277db3f",
+      "bytes": 3917,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "docs/TODO_V3_2.md",
-      "sha256": "48882feed0a2a0c5ad9875b4f9b2689e0d34893f3ff2e2e8dd9c0c5e9c6af7fb",
-      "bytes": 12167,
+      "sha256": "3d4b5145195dfc8a0d0c9d1fcbab6ea2927ba319eef0289811f7729a3ff461fc",
+      "bytes": 12146,
       "state": "PRESENT_HASHED"
     },
     {
@@ -116,38 +122,62 @@
     },
     {
       "path": "docs/assets/todo_progress.svg",
-      "sha256": "74fa917ba0c55ddfcebde576bb0ac18baed70315f4192de6bed1d3848ff23dfc",
-      "bytes": 4411,
+      "sha256": "c59fddbcdc1a08335ee9f801b492738df0b4ccff0653101fea61db2548737330",
+      "bytes": 4481,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/evidence/B001.json",
+      "sha256": "7948519377c0ef9ddda44f2edf376ee8cc2638eaad5b26e8a069059d80df476a",
+      "bytes": 23854,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/evidence/B002.json",
+      "sha256": "7cd316ddca3df15f8251ef9fc30ff8654d86ce461322d51a605ca9c0c02a48d4",
+      "bytes": 23854,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/evidence/B003.json",
+      "sha256": "012d9cfcb5680017fd5338dd2d7b10934179563156f684796ef009de3d15eab1",
+      "bytes": 23854,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/Q001.json",
-      "sha256": "eeb6388988d0a2e324c2ef8c8990466ffea5e6100aa1a9489cffbe104dfa9143",
-      "bytes": 21682,
+      "sha256": "ea7e75bcc70ec15fa025eede1a97c0fcac7f2f93c2990d335468136e53e82011",
+      "bytes": 24754,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/Q002.json",
-      "sha256": "8130a856051333a1ae794043568b65cd0db761037a0f20a5738bde831a084b28",
-      "bytes": 21682,
+      "sha256": "a2710c18d2d523d4664553c326db7ff0c482b4fb8b90de1e7bbd56a65fa77cf3",
+      "bytes": 24754,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/evidence/Q003.json",
-      "sha256": "00ed6fc7cd966bef0fef00ac7111608c9186099125eb43cc3bab4f93b901338e",
-      "bytes": 21888,
+      "sha256": "5b7a76ff2657a377396a68daa4043d0e0f127accd0b7f92f66cf85a03fb11878",
+      "bytes": 24960,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "governance/foundation.json",
+      "sha256": "6a6b8e7b73937d2ffe7a79e93aff625b5f425151ab3a955e795c7741a0a75aa1",
+      "bytes": 19286,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/regressions.yaml",
-      "sha256": "0ba08407cb695968f6d641243977fe16d1c62512a1c5b5661752401ed8be3d93",
-      "bytes": 9871,
+      "sha256": "00ef3bec3362adeab23c74dbb36d5259dafc1f576793a935447e494fa2e02775",
+      "bytes": 11140,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "governance/route.json",
-      "sha256": "4719ba6475f5e7f422d78feb45e9ed94664dcd759a8abe3f49f228c69202d774",
-      "bytes": 34889,
+      "sha256": "eb367506709264ac21aa8ad280533c7a1999163c954fb5190e0238d2c16c9da1",
+      "bytes": 36094,
       "state": "PRESENT_HASHED"
     },
     {
@@ -158,14 +188,14 @@
     },
     {
       "path": "scripts/assist.py",
-      "sha256": "7de36d4e70ea4477ed64a08396d3575a64cf4ad8c64dcd3b37a31a2f3d13c980",
-      "bytes": 6715,
+      "sha256": "1d5b0b877d35e8e16c8c1ecba6905e5b547f95b4c4935ca71769c948133410d6",
+      "bytes": 6732,
       "state": "PRESENT_HASHED"
     },
     {
       "path": "scripts/check_governance.py",
-      "sha256": "05d54668f736fc13a38f3d5073a4ded3376415e97667031c5fa43c4bae84eb5a",
-      "bytes": 3037,
+      "sha256": "29da4777fe998ce4874e021ae9eb7185c5079b473576f2d6a9335660d739fb2b",
+      "bytes": 3214,
       "state": "PRESENT_HASHED"
     },
     {
@@ -178,6 +208,12 @@
       "path": "scripts/completion_contract.py",
       "sha256": "239b6c4f79befa3ecdd8323119da690fae649cf4e611b70e172d0f9a2ad30649",
       "bytes": 4560,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/foundation.py",
+      "sha256": "2af508e5e0d7ca722e141cf1da8bcd241850cd0bca51d312416cf2c7f123dac8",
+      "bytes": 8667,
       "state": "PRESENT_HASHED"
     },
     {
@@ -200,8 +236,8 @@
     },
     {
       "path": "scripts/regression_registry.py",
-      "sha256": "da85c5971d3c471bcf34641ee33330714cd2a10d489bc93b010ea3e1b5870890",
-      "bytes": 6594,
+      "sha256": "07cd2af8e5c5f3e59453e841d1f79c6b7c7ebbf07f261e7cc4a545d5961442b0",
+      "bytes": 6588,
       "state": "PRESENT_HASHED"
     },
     {
@@ -238,6 +274,12 @@
       "path": "scripts/test_completion.py",
       "sha256": "85597f0bb27a2cb851e463f1912f524be6fe66fecf8d6c11afe3c55eb38b87a3",
       "bytes": 4826,
+      "state": "PRESENT_HASHED"
+    },
+    {
+      "path": "scripts/test_foundation.py",
+      "sha256": "b6c1cc56d0984817ee6f44ae0bebe8175599a0e33449d450fd276febdcbb73b1",
+      "bytes": 3031,
       "state": "PRESENT_HASHED"
     },
     {

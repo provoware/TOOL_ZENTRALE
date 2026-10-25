@@ -232,6 +232,29 @@
       ],
       "prevention": "Live-Status, Evidenz und Gates in isolierten Graphfixtures gemeinsam zurücksetzen",
       "next_action": "Testfixture isolieren, vollständigen Lauf und Abschlussbelege erneuern"
+    },
+    {
+      "id": "RG012",
+      "title": "Unbelegte Legacyübernahme oder unvollständige Grundlage",
+      "kind": "PREVENTIVE",
+      "severity": "HIGH",
+      "symptom": "Plan behauptet Quellenfunktion, MVP-Zuordnung oder Wiederverwendung ohne passenden Beleg",
+      "cause": "Quellenstand, Zielschritt oder gemeinsamer Vertrag nicht verbindlich zugeordnet",
+      "source": "Lesender B001–B003-Review und zugehörige Negativtests",
+      "trigger_paths": [
+        "governance/foundation.json",
+        "scripts/foundation.py",
+        "scripts/test_foundation.py",
+        "blueprint/architecture.yaml"
+      ],
+      "test_ids": [
+        "test_foundation.TestFoundation.test_wrong_repository_and_mutable_source_links_rejected",
+        "test_foundation.TestFoundation.test_empty_targets_or_reuse_and_missing_contracts_rejected",
+        "test_foundation.TestFoundation.test_rewritten_receipts_cannot_change_pinned_reference",
+        "test_foundation.TestFoundation.test_direct_reuse_cannot_bypass_license_review"
+      ],
+      "prevention": "Quellen commitgebunden, Ziele vollständig, Herkunft offen statt erfunden; keine ungeklärte Direktkopie",
+      "next_action": "Quellenzuordnung und Vertragsmatrix korrigieren; danach vollständig prüfen"
     }
   ]
 }

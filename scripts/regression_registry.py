@@ -79,7 +79,7 @@ def render_info(data):
              '4. Die drei nächsten bedingten Schritte aus der Route anzeigen.', '',
              'Push, Pull Request und manueller Workflowstart lösen dieselbe Hilfe in CI aus.',
              'Es läuft kein dauernder Hintergrunddienst. --refresh verändert ausschließlich',
-             'die fünf bekannten abgeleiteten Ansichten, niemals Produktcode oder Nutzdaten.', '',
+             'die bekannten abgeleiteten Ansichten, niemals Produktcode oder Nutzdaten.', '',
              '## Wie das System lernt', '',
              'Ein fehlgeschlagener Lauf erzeugt automatisch Kandidaten mit Prüf-ID und',
              'stabiler Signatur (Test-ID bei gezielter Auswahl, Suite-ID im Gesamtlauf).',

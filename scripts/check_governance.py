@@ -73,6 +73,9 @@ def main():
     render_todo.resolve(route)
     data = yaml.load((ROOT / 'blueprint/architecture.yaml').read_text(), Loader=UniqueLoader)
     validate_blueprint(data, route)
+    from foundation import DOC, load, render
+    if not DOC.exists() or DOC.read_text() != render(load()):
+        raise ValueError('Grundlagenansicht fehlt oder ist veraltet')
     print('GOVERNANCE PASS: Blueprint, Evidenz und Gates geprüft; keine Freigabe erteilt.')
 
 

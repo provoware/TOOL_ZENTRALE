@@ -4,7 +4,7 @@
 
 ![Grafischer Fortschritt: nach Gates und gesamt](assets/todo_progress.svg)
 
-**Gesamt:** 0/112 Hauptschritte (0 %) · **Unteraufgaben:** 0/22 · **G−1:** OPEN.
+**Gesamt:** 3/112 Hauptschritte (2 %) · **Unteraufgaben:** 0/22 · **G−1:** OPEN.
 
 ## Bedienung und verbindliche Regeln
 
@@ -21,11 +21,11 @@
 ## Nummerierte Checkliste
 
 <details open>
-<summary><strong>G-1 – Architektur und Blueprint</strong> (0/12; 0 %)</summary>
+<summary><strong>G-1 – Architektur und Blueprint</strong> (3/12; 25 %)</summary>
 
-- [ ] **B001** Stabile PROVOWARE-Identität und Repositorygrenze `PLAN` · `R1`
-- [ ] **B002** Altbestand rückwärts in Nutzungsfälle zerlegen `PLAN` · `R1`
-- [ ] **B003** Gemeinsame Bausteine und Wiederverwendungsgrenzen `PLAN` · `R2`
+- [x] **B001** Stabile PROVOWARE-Identität und Repositorygrenze `PLAN` · `R1`
+- [x] **B002** Altbestand rückwärts in Nutzungsfälle zerlegen `PLAN` · `R1`
+- [x] **B003** Gemeinsame Bausteine und Wiederverwendungsgrenzen `PLAN` · `R2`
 - [ ] **B004** Stabile Schichten und erlaubte Richtung `PLAN` · `R1`
 - [ ] **B005** Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen `PLAN` · `R2`
   - [ ] `B005.01` Dateikatalog mit echter Bestandsliste und Medien-/Importmodulen abgleichen
@@ -235,9 +235,9 @@
 ## Nächster Schritt und Warteschlange
 
 Bedingte Vorschau: Jeder Folgeschritt setzt den belegten Abschluss seiner Voraussetzungen voraus. Keine Ausfuehrungs- oder Gatefreigabe.
-1. **B001 – Stabile PROVOWARE-Identität und Repositorygrenze** · Planung
-2. **B002 – Altbestand rückwärts in Nutzungsfälle zerlegen** · Planung
-3. **B003 – Gemeinsame Bausteine und Wiederverwendungsgrenzen** · Planung
+1. **B004 – Stabile Schichten und erlaubte Richtung** · Planung
+2. **B005 – Virtuellen Dateikatalog mit Stabilitätsklassen aufstellen** · Planung
+3. **B006 – Semantische Kurzcode-Legende** · Planung
 
 **Patch-Karte beim Start ausfüllen:**
 

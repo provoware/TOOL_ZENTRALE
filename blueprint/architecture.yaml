@@ -229,6 +229,34 @@ modules:
     state: PLANNED
     min_gate: G6
 files:
+  governance/foundation.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  scripts/foundation.py:
+    owner: TOOL
+    stability: S1
+    catalog: CONFIRMED
+  scripts/test_foundation.py:
+    owner: QA
+    stability: S1
+    catalog: CONFIRMED
+  docs/GRUNDLAGE_B001_B003.md:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B001.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B002.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
+  governance/evidence/B003.json:
+    owner: GOV
+    stability: S1
+    catalog: CONFIRMED
   scripts/gate_contract.py:
     owner: TOOL
     stability: S1
